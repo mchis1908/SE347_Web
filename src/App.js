@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Admin/Home';
+import SignIn from './pages/SignIn/SignIn';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Chi dep trai</p>
-      </header>
+      <SignIn/>
     </div>
   );
 }
