@@ -1,10 +1,10 @@
 import React from 'react'
-import "./Menu.css";
-import logo from "../../Images/logo.png";
+import "./EmployeeMenu.css";
+import logo from "../../../Images/logo.png";
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react';
 
-function Menu() {
+function EmployeeMenu() {
   return (
     <div className="sidebar">
         <div className='sidebar_logo'>
@@ -35,7 +35,9 @@ function Menu() {
             <Icon icon="la:file-invoice-dollar" />
             <span>Hóa Đơn</span>
         </div>
-        <div className='sidebar_item'>
+        {/* --------------------------------------- */}
+        
+        <div className='sidebar_item_bottom-employee'>
             <Icon icon="ri:logout-box-line" />
             <span>Đăng xuất</span>
         </div>
@@ -43,4 +45,4 @@ function Menu() {
   )
 }
 
-export default Menu
+export default EmployeeMenu

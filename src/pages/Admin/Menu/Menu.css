@@ -32,7 +32,16 @@
     padding-top: 20px;
     padding-left: 15px;
 }
+.sidebar_item_bottom{
+    color: #152737;
+    padding-top: 200px;
+    padding-left: 15px;
+}
 .sidebar_item:hover{
+    color: #fe4880;
+    cursor: pointer;
+}
+.sidebar_item_bottom:hover{
     color: #fe4880;
     cursor: pointer;
 }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import "./AdminHome.css"
+import "./EmployeeHome.css"
 import { Icon } from '@iconify/react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Menu from "../../common/Menu/Menu"
-import Header from '../../common/Header/Header'
-import moment from 'moment';
+import Menu from "../Menu/EmployeeMenu"
+import Header from '../../../common/Header/Header'
 
-function AdminHome() {
+function EmployeeHome() {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -20,12 +19,12 @@ function AdminHome() {
     setShowCalendar(false);
   };
   return (
-    <div className='AdminHome'>
+    <div className='EmployeeHome'>
       <Menu/>
       <Header/>
 {/* -------------------------------------------------------------- */}
-      <div className='AdminHome_main'>
-        <div className='AdminHome_Overview'>
+      <div className='EmployeeHome_main'>
+        <div className='EmployeeHome_Overview'>
           <div className='Overview_block'>
             <div className='Block_top'>
               <Icon icon="fluent-mdl2:product-variant" />
@@ -54,8 +53,8 @@ function AdminHome() {
           </div>
         </div>
 {/* -------------------------------------------------------------- */}
-        <div className="AdminHome_Bottom">
-          <div className='AdminHome_Chart'>
+        <div className="EmployeeHome_Bottom">
+          <div className='EmployeeHome_Chart'>
             <div className='Chart_Name'>Tên biểu đồ</div>
             <div className='Chart_Date'>
               <p className='Chart_LabelDay'>Ngày:</p>
@@ -70,7 +69,7 @@ function AdminHome() {
             {/* -------------------------------------------------------------- */}
             <div className='Chart_Detail'></div>
           </div>
-          <div className='AdminHome_CustomerRecent'>
+          <div className='EmployeeHome_CustomerRecent'>
             <div className='CustomerRecent_Label'>Khách hàng gần đây</div>
             <div className='CustomerRecent_Info'>
               <div className='CustomerRecent_Name'>Nguyễn Văn A</div>
@@ -120,4 +119,4 @@ function AdminHome() {
   )
 }
 
-export default AdminHome
+export default EmployeeHome
