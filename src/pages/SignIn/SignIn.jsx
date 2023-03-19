@@ -1,10 +1,14 @@
 import React from 'react'
 import "./SignIn.css"
 import logo from "../../Images/logo.png"
-
+import { useNavigate } from 'react-router-dom'
 
 
 const SignIn = () => {
+    const navigate = useNavigate()
+    function handleClick() {
+        navigate('/admin/home');
+      }
     return (
         <div className='Sign_In_Wrapper'>
             <section className='SignIn'>
@@ -24,7 +28,7 @@ const SignIn = () => {
                                 <input type="password" name="password" id="password" placeholder="Mật khẩu" />
                             </div>
                         </form>
-                        <button className='signin_btn' ><h3>Đăng nhập</h3></button>
+                        <button className='signin_btn' onClick={handleClick} ><h3>Đăng nhập</h3></button>
                     </div>
                 </div>
             </section>
