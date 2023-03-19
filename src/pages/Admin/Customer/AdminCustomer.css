@@ -1,0 +1,84 @@
+.AdminCustomer_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.AdminCustomer_searchbar{
+    width: 88%;
+    height: 8vh;
+    padding-top: 2vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-area{
+    width: 50vw;
+    height: 5vh;
+    border-radius: 20px 0 0 20px;
+    padding-left: 2vw;
+    border-style: none;
+    font-size: 15px;
+    background-color: white;
+}
+.search-btn{
+    font-size: 30px;
+    border-radius: 0 20px 20px 0;
+    border-width: 0;
+    background-color: white;
+    display: inline;
+    height: 5.2vh;
+    margin-left: 1px;
+}
+.bg-search-btn :active{
+    background-color: #152737;
+}
+.AdminCustomer-information{
+    width: 80vw;
+    height: 82vh;
+    overflow: auto;
+    background-color: #fff;
+    
+    margin-left: 4vw;
+}
+.AdminCustomer-information{
+    display: block;
+
+}
+.AdminCustomer-information-header{
+    width: 79vw;
+    border-radius: 10px 10px 0 0;
+    background-color: #fff;
+    position: fixed;
+
+    /* display: none; */
+}
+.AdminCustomer-information-header td{
+    width: 20vw;
+    text-align: left;
+    line-height: 6vh;
+    padding-left: 2vw;
+
+}
+.AdminCustomer_detail_infor{
+    padding-top: 6vh;
+}
+.AdminCustomer-information-detail{
+    padding-top: 2vh;
+    display: block;
+}
+.AdminCustomer-information-detail :hover{
+    background-color: #152737;
+    cursor: pointer;
+    color: #fff;
+}
+.AdminCustomer-information-detail-wrapper td{
+    width: 20vw;
+    line-height: 4vh;
+    padding-left: 2vw;
+    /* display: inline; */
+}

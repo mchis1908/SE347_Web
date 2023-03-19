@@ -45,6 +45,9 @@
     color: #fe4880;
     cursor: pointer;
 }
+.sidebar a{
+    text-decoration: none;
+}
 .iconify{
     padding-right: 10px;
     font-size: 25px;

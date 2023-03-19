@@ -34,8 +34,9 @@
 }
 .sidebar_item_bottom{
     color: #152737;
-    padding-top: 200px;
+    margin-top: 220px;
     padding-left: 15px;
+    margin-bottom: 14px;
 }
 .sidebar_item:hover{
     color: #fe4880;
@@ -44,6 +45,9 @@
 .sidebar_item_bottom:hover{
     color: #fe4880;
     cursor: pointer;
+}
+.sidebar a{
+    text-decoration: none;
 }
 .iconify{
     padding-right: 10px;

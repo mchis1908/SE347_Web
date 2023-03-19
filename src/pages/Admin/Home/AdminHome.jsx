@@ -3,7 +3,7 @@ import "./AdminHome.css"
 import { Icon } from '@iconify/react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Menu from "../Menu/Menu"
+import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 
 function AdminHome() {

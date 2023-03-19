@@ -3,8 +3,10 @@ import "./EmployeeMenu.css";
 import logo from "../../../Images/logo.png";
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router-dom'
 
 function EmployeeMenu() {
+    
   return (
     <div className="sidebar">
         <div className='sidebar_logo'>
@@ -36,11 +38,13 @@ function EmployeeMenu() {
             <span>Hóa Đơn</span>
         </div>
         {/* --------------------------------------- */}
+        <Link to='/'>
+            <div className='sidebar_item_bottom-employee'>
+                <Icon icon="ri:logout-box-line" />
+                <span>Đăng xuất</span>
+            </div>
+        </Link>
         
-        <div className='sidebar_item_bottom-employee'>
-            <Icon icon="ri:logout-box-line" />
-            <span>Đăng xuất</span>
-        </div>
     </div>
   )
 }
