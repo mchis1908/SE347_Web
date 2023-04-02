@@ -1,0 +1,46 @@
+.AdminDeposit_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.AdminDeposit_Bottom{
+    position: relative;
+    background-color: #EDEDED;
+    height: 88vh;
+    width: 84vw;
+    padding: 30px 0 0 20px;
+
+    display: flex;
+}
+.AdminDeposit_Chart{
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px 0 0 30px;
+
+    display: flex;
+    /* justify-content: space-between; */
+}
+.AdminDeposit_Chart .Chart_Date{
+    /* margin-left: auto; */
+    height: fit-content;
+}
+.Chart_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.AdminDeposit_Chart .Chart_Date .Chart_Calendar{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 16px;
+
+    display:inline;
+}

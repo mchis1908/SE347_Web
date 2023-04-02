@@ -8,7 +8,7 @@
     color: rgb(0, 0, 0);
 }
 .AdminInvoice_searchbar{
-    width: 88%;
+    width: 95%;
     height: 8vh;
     padding-top: 2vh;
 
@@ -37,6 +37,21 @@
 .bg-search-btn :active{
     background-color: #152737;
 }
+.AdminInvoice_btn_create{
+    width: 10vw;
+    height: 5vh;
+    margin-left: 10vh;
+    background-color: #152737;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    border-width: 0;
+}
+.AdminInvoice_btn_create:hover{
+    background-color: #fe4880;
+    color: white;
+    cursor:pointer;
+}
 .AdminInvoice-information{
     width: 80vw;
     height: 82vh;
@@ -47,27 +62,31 @@
 }
 .AdminInvoice-information{
     display: block;
-
 }
 .AdminInvoice-information-header{
-    width: 79vw;
+    width: 80vw;
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
 
     /* display: none; */
 }
-.AdminInvoice-information-header td{
-    width: 20vw;
-    text-align: left;
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.AdminInvoice-information-header th{
+    width: 15.8vw;
     line-height: 6vh;
-    padding-left: 2vw;
+    text-align: center;
 
 }
 .AdminInvoice_detail_infor{
     padding-top: 6vh;
 }
 .AdminInvoice-information-detail{
+    width: 100%;
     padding-top: 2vh;
     display: block;
 }
@@ -77,8 +96,7 @@
     color: #fff;
 }
 .AdminInvoice-information-detail-wrapper td{
-    width: 20vw;
-    line-height: 4vh;
-    padding-left: 2vw;
-    /* display: inline; */
+    width: 15vw;
+    line-height: 6vh;
+    text-align: center;
 }

@@ -8,7 +8,7 @@
     color: rgb(0, 0, 0);
 }
 .AdminAccount_searchbar{
-    width: 88%;
+    width: 95%;
     height: 8vh;
     padding-top: 2vh;
 
@@ -37,6 +37,21 @@
 .bg-search-btn :active{
     background-color: #152737;
 }
+.AdminAccount_btn_create{
+    width: 10vw;
+    height: 5vh;
+    margin-left: 10vh;
+    background-color: #152737;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    border-width: 0;
+}
+.AdminAccount_btn_create:hover{
+    background-color: #fe4880;
+    color: white;
+    cursor:pointer;
+}
 .AdminAccount-information{
     width: 80vw;
     height: 82vh;
@@ -47,27 +62,31 @@
 }
 .AdminAccount-information{
     display: block;
-
 }
 .AdminAccount-information-header{
-    width: 79vw;
+    width: 80vw;
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
 
     /* display: none; */
 }
-.AdminAccount-information-header td{
-    width: 20vw;
-    text-align: left;
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.AdminAccount-information-header th{
+    width: 25vw;
     line-height: 6vh;
-    padding-left: 2vw;
+    text-align: center;
 
 }
 .AdminAccount_detail_infor{
     padding-top: 6vh;
 }
 .AdminAccount-information-detail{
+    width: 100%;
     padding-top: 2vh;
     display: block;
 }
@@ -77,8 +96,7 @@
     color: #fff;
 }
 .AdminAccount-information-detail-wrapper td{
-    width: 20vw;
-    line-height: 4vh;
-    padding-left: 2vw;
-    /* display: inline; */
+    width: 25vw;
+    line-height: 6vh;
+    text-align: center;
 }

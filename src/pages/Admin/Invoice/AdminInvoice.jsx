@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './AdminInvoice.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
@@ -87,6 +87,27 @@ function AdminInvoice() {
   sl: 5
 },
 ]
+const [isSorted, setIsSorted] = useState(false);
+const [data,setData]= useState(invoices)
+const [initialData,setInitialData]= useState(data)
+console.log('data',data)
+
+const sortByName = () => {
+  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  setData(sortedData);
+  setIsSorted(true);
+};
+const resetData = () => {
+  setData(initialData);
+  setIsSorted(false);
+};
+const handleClick = () => {
+  if (isSorted) {
+    resetData();
+  } else {
+    sortByName();
+  }
+};
   return (
     <div className='AdminInvoice'>
       <Menu/>
@@ -99,24 +120,24 @@ function AdminInvoice() {
           <div >
             <table className="AdminInvoice-information">
                 <tr className="AdminInvoice-information-header">
-                        <td>Mã hóa đơn</td>
-                        <td>Chủ sở hữu</td>
-                        <td>Số lượng sản phẩm</td>
-                        <td>Sản phẩm đã bán</td>
-                        <td>Ngày quyết toán</td>
+                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Chủ sở hữu <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số lượng sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Loại hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminInvoice_detail_infor'>
                   {
-                    invoices.map(invoice => {
+                    data.map(data => {
                           return (
                                   <tr className='AdminInvoice-information-detail'>
                                       <div className='AdminInvoice-information-detail-wrapper'>
-                                          <td className='team-name'>{invoice.name}</td>
-                                          <td className='stadium-name'>{invoice.phone}</td>
-                                          <td className=''>{invoice.mail}</td>
-                                          <td className=''>{invoice.sl}</td>
-                                          <td className=''>{invoice.madon}</td>
+                                          <td className='team-name'>{data.name}</td>
+                                          <td className='stadium-name'>{data.phone}</td>
+                                          <td className=''>{data.mail}</td>
+                                          <td className=''>{data.sl}</td>
+                                          <td className=''>{data.madon}</td>
                                       </div>
                                   </tr>
                           )

@@ -41,6 +41,9 @@
     color: #fe4880;
     cursor: pointer;
 }
+.sidebar_item:active{
+    color: bisque;
+}
 .sidebar_item_bottom-employee:hover{
     color: #fe4880;
     cursor: pointer;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './AdminAccount.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
@@ -87,6 +87,27 @@ function AdminAccount() {
   sl: 5
 },
 ]
+const [isSorted, setIsSorted] = useState(false);
+const [data,setData]= useState(accounts)
+const [initialData,setInitialData]= useState(data)
+console.log('data',data)
+
+const sortByName = () => {
+  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  setData(sortedData);
+  setIsSorted(true);
+};
+const resetData = () => {
+  setData(initialData);
+  setIsSorted(false);
+};
+const handleClick = () => {
+  if (isSorted) {
+    resetData();
+  } else {
+    sortByName();
+  }
+};
   return (
     <div className='AdminAccount'>
       <Menu/>
@@ -95,24 +116,25 @@ function AdminAccount() {
         <div className='AdminAccount_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập tài khoản cần tìm'/>
           <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <button className='AdminAccount_btn_create'>Tạo tài khoản +</button>
         </div>
           <div >
             <table className="AdminAccount-information">
                 <tr className="AdminAccount-information-header">
-                        <td>Tài khoản</td>
-                        <td>Mật khẩu</td>
-                        <td>Tên nhân viên</td>
+                        <th>Tài khoản <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Mật khẩu <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Tên nhân viên <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminAccount_detail_infor'>
                   {
-                    accounts.map(account => {
+                    data.map(data => {
                           return (
                                   <tr className='AdminAccount-information-detail'>
                                       <div className='AdminAccount-information-detail-wrapper'>
-                                          <td className='team-name'>{account.name}</td>
-                                          <td className='stadium-name'>{account.phone}</td>
-                                          <td className=''>{account.mail}</td>
+                                          <td className='team-name'>{data.name}</td>
+                                          <td className='stadium-name'>{data.phone}</td>
+                                          <td className=''>{data.mail}</td>
                                       </div>
                                   </tr>
                           )

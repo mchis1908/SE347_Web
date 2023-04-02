@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './AdminProduct.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
@@ -87,6 +87,27 @@ function AdminProduct() {
   sl: 5
 },
 ]
+const [isSorted, setIsSorted] = useState(false);
+const [data,setData]= useState(products)
+const [initialData,setInitialData]= useState(data)
+console.log('data',data)
+
+const sortByName = () => {
+  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  setData(sortedData);
+  setIsSorted(true);
+};
+const resetData = () => {
+  setData(initialData);
+  setIsSorted(false);
+};
+const handleClick = () => {
+  if (isSorted) {
+    resetData();
+  } else {
+    sortByName();
+  }
+};
   return (
     <div className='AdminProduct'>
       <Menu/>
@@ -99,26 +120,26 @@ function AdminProduct() {
           <div >
             <table className="AdminProduct-information">
                 <tr className="AdminProduct-information-header">
-                        <td>Mã sản phẩm</td>
-                        <td>Mã hóa đơn</td>
-                        <td>Chủ sở hữu</td>
-                        <td>Giá bán</td>
-                        <td>Hình ảnh</td>
-                        <td>Trạng thái</td>
+                        <th>Mã sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Chủ sở hữu <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Giá bán <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Hình ảnh <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminProduct_detail_infor'>
                   {
-                    products.map(product => {
+                    data.map(data => {
                           return (
                                   <tr className='AdminProduct-information-detail'>
                                       <div className='AdminProduct-information-detail-wrapper'>
-                                          <td className='team-name'>{product.name}</td>
-                                          <td className='stadium-name'>{product.phone}</td>
-                                          <td className=''>{product.mail}</td>
-                                          <td className=''>{product.sl}</td>
-                                          <td className=''>{product.madon}</td>
-                                          <td className=''>{product.madon}</td>
+                                          <td className='team-name'>{data.name}</td>
+                                          <td className='stadium-name'>{data.phone}</td>
+                                          <td className=''>{data.mail}</td>
+                                          <td className=''>{data.sl}</td>
+                                          <td className=''>{data.madon}</td>
+                                          <td className=''>{data.madon}</td>
                                       </div>
                                   </tr>
                           )
