@@ -8,10 +8,12 @@ import { useNavigate } from 'react-router-dom'
 function AdminMenu() {
   return (
     <div className="sidebar">
-        <div className='sidebar_logo'>
-            <img src={logo} alt='logo' class='sidebar_PlanB'/>
-            <span class='sidebar_title'>PLAN B</span>
-        </div>
+        <Link to='/admin/home'>
+            <div className='sidebar_logo'>
+                <img src={logo} alt='logo' class='sidebar_PlanB'/>
+                <span class='sidebar_title'>PLAN B</span>
+            </div>
+        </Link>
         <Link to='/admin/home'>
             <div className='sidebar_item'>
                 <Icon icon="material-symbols:dashboard-outline-rounded" />

@@ -36,6 +36,7 @@
 }
 .bg-search-btn :active{
     background-color: #152737;
+    color:white;
 }
 .AdminStaff_btn_create{
     width: 10vw;
@@ -59,12 +60,13 @@
     background-color: #fff;
     
     margin-left: 4vw;
+    border-radius: 10px;
 }
 .AdminStaff-information{
     display: block;
 }
 .AdminStaff-information-header{
-    width: 79vw;
+    width: 80vw;
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
@@ -77,13 +79,12 @@ table{
     border-spacing: 0;
 }
 .AdminStaff-information-header th{
-    width: 15.8vw;
+    width: 18vw;
     line-height: 6vh;
     text-align: center;
-
 }
 .AdminStaff_detail_infor{
-    padding-top: 5vh;
+    padding-top: 7vh;
 }
 .AdminStaff-information-detail{
     width: 100%;
@@ -96,7 +97,10 @@ table{
     color: #fff;
 }
 .AdminStaff-information-detail-wrapper td{
-    width: 15vw;
+    width: 15.8vw;
     line-height: 6vh;
     text-align: center;
+
+    min-width: 15.8vw;
+    max-width: 15.8vw;
 }

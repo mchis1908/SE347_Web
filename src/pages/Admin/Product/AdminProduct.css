@@ -36,6 +36,7 @@
 }
 .bg-search-btn :active{
     background-color: #152737;
+    color:white;
 }
 .AdminProduct_btn_create{
     width: 10vw;
@@ -59,6 +60,7 @@
     background-color: #fff;
     
     margin-left: 4vw;
+    border-radius: 10px;
 }
 .AdminProduct-information{
     display: block;
@@ -83,7 +85,7 @@ table{
 
 }
 .AdminProduct_detail_infor{
-    padding-top: 6vh;
+    padding-top: 7vh;
 }
 .AdminProduct-information-detail{
     width: 100%;
@@ -96,7 +98,10 @@ table{
     color: #fff;
 }
 .AdminProduct-information-detail-wrapper td{
-    width: 15vw;
+    width: 13.15vw;
     line-height: 6vh;
     text-align: center;
+
+    max-width: 13.15vw;
+    min-width: 13.15vw;
 }

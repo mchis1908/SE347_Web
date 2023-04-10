@@ -1,0 +1,94 @@
+.AdminRevenue_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.AdminRevenue_Top{
+    position: relative;
+    margin: 2vw 0 1vw 2vw;
+    width: 94%;
+    height: 40vh;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.AdminRevenue_Bottom{
+    position: relative;
+    background-color: #EDEDED;
+    height: 48vh;
+    width: 85vw;
+    margin: 30px 0 10px 20px;
+
+    display: flex;
+}
+.AdminRevenue_Chart{
+    flex:3;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+}
+.AdminRevenue_Chart .AdminRevenue_Chart_Label{
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+}
+.Chart_Name{
+    display: inline-block;
+    font-weight: 500;
+}
+.Chart_Date{
+    padding-right: auto;
+    height: fit-content;
+    display: inline-block;
+}
+.AdminRevenue_CustomerRecent{
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    margin-left: 20px;
+    border-radius: 20px;
+}
+.Chart_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.AdminRevenue_Chart .Chart_Date .Chart_Calendar{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 16px;
+    z-index: 999;
+    display:inline;
+}
+.AdminRevenue_CustomerRecent{
+    padding: 20px;
+}
+.CustomerRecent_Label{
+    padding-bottom: 10px;
+    color: rgba(53, 162, 235, 1);
+    font-size: 16px;
+    font-weight: 500;
+}
+.AdminRevenue_CustomerRecent .CustomerRecent_Info{
+    text-align: center;
+    color: #A2AAB2;
+    font-size: 14px;
+    padding: 10px 0;
+}
+.CustomerRecent_Name{
+    display: inline;
+}
+.CustomerRecent_Phone{
+    padding-left: 70px;
+    display: inline;
+}
+.CustomerRecent_ViewMore{
+    text-align: center;
+    font-weight: 500;
+}

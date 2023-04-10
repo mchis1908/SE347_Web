@@ -36,6 +36,7 @@
 }
 .bg-search-btn :active{
     background-color: #152737;
+    color:white;
 }
 .AdminInvoice_btn_create{
     width: 10vw;
@@ -59,6 +60,7 @@
     background-color: #fff;
     
     margin-left: 4vw;
+    border-radius: 10px;
 }
 .AdminInvoice-information{
     display: block;
@@ -96,7 +98,11 @@ table{
     color: #fff;
 }
 .AdminInvoice-information-detail-wrapper td{
-    width: 15vw;
+    width: 15.8vw;
     line-height: 6vh;
     text-align: center;
+
+    min-width: 15.8vw;
+    max-width: 15.8vw;
+
 }

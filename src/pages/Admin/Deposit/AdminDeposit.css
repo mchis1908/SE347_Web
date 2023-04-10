@@ -12,11 +12,11 @@
     background-color: #EDEDED;
     height: 88vh;
     width: 84vw;
-    padding: 30px 0 0 20px;
+    margin: 30px 0 0 20px;
 
     display: flex;
 }
-.AdminDeposit_Chart{
+.AdminDeposit_Content{
     flex:1;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
@@ -25,22 +25,95 @@
     display: flex;
     /* justify-content: space-between; */
 }
-.AdminDeposit_Chart .Chart_Date{
+.AdminDeposit_Content .Content_Date{
     /* margin-left: auto; */
     height: fit-content;
 }
-.Chart_LabelDay{
+.Content_LabelDay{
     color:black;
     display:inline;
 
     font-size: 16px;
     font-weight: 500;
 }
-.AdminDeposit_Chart .Chart_Date .Chart_Calendar{
+.AdminDeposit_Content .Content_Date .Content_Calendar{
     background-color: transparent;
     border: none;
     color: blue;
     font-size: 16px;
 
     display:inline;
+}
+.AdminDeposit_Detail{
+    padding-top: 20px;
+    height: fit-content;
+}
+.AdminDeposit_CustomerInf{
+    padding-top: 20px;
+}
+.AdminDeposit_CustomerInf_Label{
+    display: inline;
+}
+.AdminDeposit_CustomerInf_Input{
+    display: inline;
+    margin-left: 5vw;
+    width: 30vw;
+    height: 2.7vh;
+
+    border-radius: 10px;
+
+}
+.AdminDeposit_ProductList{
+    width: 50vw;
+    
+    height: 50vh;
+    padding-top: 10px;
+    overflow: auto;
+}
+.AdminDeposit_ProductInf{
+    display: flex;
+    flex-direction: row;
+}
+.AdminDeposit_ProductInf .ProductInf_Label{
+    flex:1;
+}
+.ProductInf_Id{
+    flex:1;
+}
+.ProductInf_Cost{
+    flex:1;
+}
+.ProductInf_Image{
+    flex:1;
+}
+.AdminDeposit_btnChange{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.AdminDeposit_btnAddProduct{
+    background-color: #2a9df4;
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+
+    width: 11vw;
+    height: 4vh;
+}
+.AdminDeposit_btnAddProduct:active{
+    background-color: #FF5C5C;
+    color: white;
+}
+.AdminDeposit_btnConfirm{
+    background-color: #649e3c;
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+
+    width: 11vw;
+    height: 4vh;
+}
+.AdminDeposit_btnConfirm:active{
+    background-color: #FF5C5C;
+    color: white;
 }

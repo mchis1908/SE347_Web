@@ -1,0 +1,140 @@
+.AdminPay_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.AdminPay_Top{
+    position: relative;
+    height: 5vh;
+    width: 84vw;
+    margin:3vh 0 0 2vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AdminPay_ProductInf_Label{
+    display: inline-block;
+}
+.AdminPay_ProductInf_Input{
+    display: inline-block;
+    margin-left: 3vw;
+    width: 38vw;
+    height: 3.5vh;
+
+    border-radius: 20px 0 0 20px;
+    border-width: 0;
+    padding-left: 15px;
+}
+.AdminPay_ProductInf_SearchBtn{
+    border-radius: 0 20px 20px 0;
+    background-color: #fff;
+    height: 3.75vh;
+    margin-left: 1px;
+}
+.AdminPay_ProductInf_SearchBtn:active{
+    background-color: #152737;
+    color:white;
+}
+.AdminPay_Bottom{
+    position: relative;
+    background-color: #EDEDED;
+    height: 80vh;
+    width: 84vw;
+    margin: 30px 0 0 20px;
+
+    display: flex;
+}
+.AdminPay_Content{
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px 0 0 30px;
+
+    display: flex;
+    /* justify-content: space-between; */
+}
+.AdminPay_Content .Content_Date{
+    /* margin-left: auto; */
+    height: fit-content;
+}
+.Content_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.AdminPay_Content .Content_Date .Content_Calendar{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 16px;
+
+    display:inline;
+}
+.AdminPay_Detail{
+    padding-top: 20px;
+    height: fit-content;
+}
+.AdminPay_CustomerInf{
+    padding-top: 20px;
+}
+.AdminPay_CustomerInf_Label{
+    display: inline;
+}
+.AdminPay_CustomerInf_Input{
+    display: inline;
+    margin-left: 5vw;
+    width: 30vw;
+    height: 2.7vh;
+
+    border-radius: 10px;
+    padding-left: 10px;
+
+}
+.AdminPay_ProductList{
+    width: 50vw;
+    
+    height: 45vh;
+    padding-top: 10px;
+    overflow: auto;
+}
+.AdminPay_ProductInf{
+    display: flex;
+    flex-direction: row;
+}
+.AdminPay_ProductInf .ProductInf_Label{
+    flex:1;
+}
+.ProductInf_Id{
+    flex:1;
+}
+.ProductInf_Cost{
+    flex:1;
+}
+.ProductInf_Image{
+    flex:1;
+}
+.AdminPay_btnChange{
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.AdminPay_btnPay{
+    background-color: #2a9df4;
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+
+    width: 11vw;
+    height: 4vh;
+}
+.AdminPay_btnPay:active{
+    background-color: #FF5C5C;
+    color: white;
+}

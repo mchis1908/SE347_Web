@@ -3,8 +3,9 @@ import './AdminProduct.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
+import AdminDetailProduct from './ModalDetailProduct/AdminDetailProduct';
 
-function AdminProduct() {
+function AdminProduct(props) {
   const products = [
     {
         name: 'Huỳnh Minh Chí',
@@ -87,6 +88,15 @@ function AdminProduct() {
   sl: 5
 },
 ]
+const [isOpen, setIsOpen] = useState(false);
+
+const openPopup = () => {
+  setIsOpen(true);
+};
+
+const closePopup = () => {
+  setIsOpen(false);
+};
 const [isSorted, setIsSorted] = useState(false);
 const [data,setData]= useState(products)
 const [initialData,setInitialData]= useState(data)
@@ -132,7 +142,7 @@ const handleClick = () => {
                   {
                     data.map(data => {
                           return (
-                                  <tr className='AdminProduct-information-detail'>
+                                  <tr className='AdminProduct-information-detail' onClick={openPopup}>
                                       <div className='AdminProduct-information-detail-wrapper'>
                                           <td className='team-name'>{data.name}</td>
                                           <td className='stadium-name'>{data.phone}</td>
@@ -146,7 +156,14 @@ const handleClick = () => {
                       })
                   }
                 </div>
-                
+                {isOpen &&
+                  <AdminDetailProduct
+                    title="Chỉnh sửa sản phẩm"
+                    onClose={closePopup}
+                  >
+                    {props.children}
+                  </AdminDetailProduct>
+                }
             </table>
           </div>
       </div>

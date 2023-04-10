@@ -36,6 +36,7 @@
 }
 .bg-search-btn :active{
     background-color: #152737;
+    color:white;
 }
 .AdminAccount_btn_create{
     width: 10vw;
@@ -59,6 +60,7 @@
     background-color: #fff;
     
     margin-left: 4vw;
+    border-radius: 10px;
 }
 .AdminAccount-information{
     display: block;
@@ -83,7 +85,7 @@ table{
 
 }
 .AdminAccount_detail_infor{
-    padding-top: 6vh;
+    padding-top: 7vh;
 }
 .AdminAccount-information-detail{
     width: 100%;
