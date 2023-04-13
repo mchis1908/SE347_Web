@@ -135,6 +135,7 @@ const handleClick = () => {
                                           <td className='team-name'>{data.name}</td>
                                           <td className='stadium-name'>{data.phone}</td>
                                           <td className=''>{data.mail}</td>
+                                          <td className='btn_deleteAccount'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
                           )

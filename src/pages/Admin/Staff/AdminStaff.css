@@ -55,11 +55,12 @@
 }
 .AdminStaff-information{
     width: 80vw;
-    height: 82vh;
+    height: 80vh;
     overflow: auto;
     background-color: #fff;
     
     margin-left: 4vw;
+    margin-bottom: 2vh;
     border-radius: 10px;
 }
 .AdminStaff-information{
@@ -79,7 +80,7 @@ table{
     border-spacing: 0;
 }
 .AdminStaff-information-header th{
-    width: 18vw;
+    width: 15.3vw;
     line-height: 6vh;
     text-align: center;
 }
@@ -97,10 +98,32 @@ table{
     color: #fff;
 }
 .AdminStaff-information-detail-wrapper td{
-    width: 15.8vw;
+    width: 14.5vw;
     line-height: 6vh;
     text-align: center;
 
-    min-width: 15.8vw;
-    max-width: 15.8vw;
+    min-width: 14.5vw;
+    max-width: 14.5vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
+}
+.AdminStaff-information-detail-wrapper .btn_deleteStaff{
+    width: 1.5vw;
+    text-align: center;
+    max-width: 1.5vw;
+    min-width: 1.5vw;
+    display: none;
+
+    z-index: 9998;
+}
+.AdminStaff-information-detail-wrapper .btn_deleteStaff:hover{
+    color: white;
+}
+/* th,td{
+    border: 1px solid #ccc;
+} */
+.AdminStaff-information-detail:hover .btn_deleteStaff {
+    display: table-cell;
 }

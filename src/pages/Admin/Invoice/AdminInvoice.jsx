@@ -138,6 +138,7 @@ const handleClick = () => {
                                           <td className=''>{data.mail}</td>
                                           <td className=''>{data.sl}</td>
                                           <td className=''>{data.madon}</td>
+                                          <td className='btn_deleteInvoice'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
                           )

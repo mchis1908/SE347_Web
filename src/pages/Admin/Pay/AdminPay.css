@@ -43,9 +43,9 @@
 .AdminPay_Bottom{
     position: relative;
     background-color: #EDEDED;
-    height: 80vh;
+    height: 79.5vh;
     width: 84vw;
-    margin: 30px 0 0 20px;
+    margin: 10px 0 20px 20px;
 
     display: flex;
 }

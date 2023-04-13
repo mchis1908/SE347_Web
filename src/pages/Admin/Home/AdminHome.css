@@ -81,15 +81,15 @@
     background-color: #EDEDED;
     height: 66vh;
     width: 85vw;
-    padding: 30px 0 0 20px;
-
+    padding: 15px 0 0 20px;
+    margin-bottom: 13px;
     display: flex;
 }
 .AdminHome_Chart{
     flex:3;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
 }
 .AdminHome_Chart .AdminHome_Chart_Label{
     height: fit-content;
@@ -176,4 +176,10 @@
     text-align: center;
     font-size: 14px;
     color: #878787;
+}
+.CustomerRecent_ViewMore:hover{
+    color: #1e1e1e;
+}
+.AdminHome_CustomerRecent a{
+    text-decoration: none;
 }

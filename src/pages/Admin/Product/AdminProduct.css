@@ -55,12 +55,13 @@
 }
 .AdminProduct-information{
     width: 80vw;
-    height: 82vh;
+    height: 80vh;
     overflow: auto;
     background-color: #fff;
     
     margin-left: 4vw;
     border-radius: 10px;
+    margin-bottom: 2vh;
 }
 .AdminProduct-information{
     display: block;
@@ -79,10 +80,9 @@ table{
     border-spacing: 0;
 }
 .AdminProduct-information-header th{
-    width: 15.8vw;
+    width: 12.55vw;
     line-height: 6vh;
     text-align: center;
-
 }
 .AdminProduct_detail_infor{
     padding-top: 7vh;
@@ -98,10 +98,32 @@ table{
     color: #fff;
 }
 .AdminProduct-information-detail-wrapper td{
-    width: 13.15vw;
+    width: 11.85vw;
     line-height: 6vh;
     text-align: center;
 
-    max-width: 13.15vw;
-    min-width: 13.15vw;
+    max-width: 11.85vw;
+    min-width: 11.85vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
+}
+.AdminProduct-information-detail-wrapper .btn_deleteProduct{
+    width: 2vw;
+    text-align: center;
+    max-width: 2vw;
+    min-width: 2vw;
+    display: none;
+
+    z-index: 9998;
+}
+.AdminProduct-information-detail-wrapper .btn_deleteProduct:hover{
+    color: white;
+}
+/* th,td{
+    border: 1px solid #ccc;
+} */
+.AdminProduct-information-detail:hover .btn_deleteProduct {
+    display: table-cell;
 }
