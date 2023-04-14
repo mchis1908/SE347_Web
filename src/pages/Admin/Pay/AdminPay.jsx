@@ -77,8 +77,7 @@ function AdminPay() {
   return (
     <div className='AdminPay'>
       <Menu/>
-      <Header/>
-{/* -------------------------------------------------------------- */}
+      <Header title="THANH TOÁN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminPay_main'>
         <div className="AdminPay_Top">
           <p className='AdminPay_ProductInf_Label'>Tìm kiếm</p>

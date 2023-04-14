@@ -11,14 +11,14 @@ import AdminDetailCustomer from './ModalDetailCustomer/AdminDetailCustomer';
 function AdminCustomer(props) {
   const customers = [
     {
-      name: 'Yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ aaaaaaaaaaaaaaaaaaaaaaaa ',
+      name: 'Yaaaaaaaaaaaaaaa',
       mail:'20521130@gmail.com',
-      phone:'037648836111111111111111111111111111111',
+      phone:'0376488361',
       recent:'30/03/2023',
       cost:'3.000',
     },
     {
-      name: 'Minh Chíiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+      name: 'Minh Chí',
       mail:'20521130@gmail.com',
       phone:'0376488362',
       recent:'30/03/2023',
@@ -70,8 +70,8 @@ const handleClick = () => {
 };
   return (
     <div className='AdminCustomer'>
-      <Menu/>
-      <Header/>
+      <Menu />
+      <Header title="QUẢN LÝ KHÁCH HÀNG" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminCustomer_main'>
         <div className='AdminCustomer_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập khách hàng cần tìm'/>

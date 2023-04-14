@@ -91,29 +91,29 @@
     display: flex;
     justify-content: space-around;
 }
-.AdminDeposit_btnAddProduct{
-    background-color: #2a9df4;
+.AdminDeposit_btnChange button{
     color: white;
     border-width: 0;
     border-radius: 10px;
-
     width: 11vw;
     height: 4vh;
 }
-.AdminDeposit_btnAddProduct:active{
+.AdminDeposit_btnChange button:active{
     background-color: #FF5C5C;
-    color: white;
+}
+.AdminDeposit_btnAddProduct{    
+    background-color: #29bbd8;
 }
 .AdminDeposit_btnConfirm{
     background-color: #649e3c;
-    color: white;
-    border-width: 0;
-    border-radius: 10px;
-
-    width: 11vw;
-    height: 4vh;
 }
-.AdminDeposit_btnConfirm:active{
-    background-color: #FF5C5C;
-    color: white;
+.AdminDeposit_btnCancel{
+    background-color: #ed3d3d;
+
+}
+.AdminDeposit_btnPrintProduct{
+    background-color: #29bbd8;
+}
+.AdminDeposit_btnPrintInvoice{
+    background-color: #649e3c;
 }

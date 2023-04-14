@@ -45,7 +45,7 @@ const handleClick = () => {
   return (
     <div className='AdminStaff'>
       <Menu/>
-      <Header/>
+      <Header title="QUẢN LÝ NHÂN VIÊN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminStaff_main'>
         <div className='AdminStaff_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập nhân viên cần tìm'/>

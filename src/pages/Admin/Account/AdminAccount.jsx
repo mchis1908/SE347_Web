@@ -111,7 +111,7 @@ const handleClick = () => {
   return (
     <div className='AdminAccount'>
       <Menu/>
-      <Header/>
+      <Header title="QUẢN LÝ TÀI KHOẢN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminAccount_main'>
         <div className='AdminAccount_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập tài khoản cần tìm'/>

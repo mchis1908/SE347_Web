@@ -18,7 +18,7 @@ function AdminDetailProduct(props) {
           </div>
           <div className='AdminDetailProduct_modal-body-inf_input'>
             <input className='Input_PropProduct' type='text' placeholder='Nhập tên sản phẩm'></input>
-            <input className='Input_PropProduct' type='text' placeholder='Chọn Loại sản phẩm'></input>
+            <input className='Input_PropProduct' type='text' placeholder='Chọn loại sản phẩm'></input>
             <input className='Input_PropProduct' type='text' placeholder='Nhập giá sản phẩm'></input>
           </div>
           <div className='AdminDetailProduct_modal-body-inf_image'>
@@ -28,7 +28,6 @@ function AdminDetailProduct(props) {
         </div>
         <div className='AdminDetailProduct_modal_Btn_Change'>
             <button className='AdminDetailProduct_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
-            <button className='AdminDetailProduct_modal_Btn_Change_Delete' onClick={props.onClose}>Xóa sản phẩm</button>
             <button className='AdminDetailProduct_modal_Btn_Change_Confirm' onClick={props.onClose}>Xác nhận</button>
         </div>
       </div>

@@ -71,7 +71,7 @@ function AdminRevenue() {
   return (
     <div className='AdminRevenue'>
       <Menu/>
-      <Header/>
+      <Header title="QUẢN LÝ DOANH THU" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminRevenue_main'>
         <div className='AdminRevenue_Top'>
           <div className='AdminRevenue_Chart'>

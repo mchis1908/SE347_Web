@@ -16,14 +16,14 @@ function AdminHome() {
       {
         label: 'Sản phẩm bán được',
         data: ['100','200','500','400','600','100','100','200','500','400','600','100'],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'rgba(6, 170, 171)',
+        backgroundColor: 'rgba(6, 170, 171, 0.5)',
       },
       {
         label: 'Sản phẩm nhận ký gửi',
         data: ['200','400','50','800','300','300','500','100','300','900','200','800'],
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: 'rgb(255, 119, 119)',
+        backgroundColor: 'rgb(255, 119, 119, 0.5)',
       },
     ],
   };
@@ -144,8 +144,7 @@ function AdminHome() {
   return (
     <div className='AdminHome'>
       <Menu/>
-      <Header/>
-{/* -------------------------------------------------------------- */}
+      <Header title="TRANG CHỦ" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminHome_main'>
         <div className='AdminHome_Overview'>
           <div className='Overview_block1'>
