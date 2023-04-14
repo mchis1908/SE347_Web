@@ -65,6 +65,7 @@
 }
 .AdminDeposit_ProductList{
     width: 50vw;
+    max-width: 50vw;
     
     height: 50vh;
     padding-top: 10px;
@@ -74,17 +75,33 @@
     display: flex;
     flex-direction: row;
 }
-.AdminDeposit_ProductInf .ProductInf_Label{
-    flex:1;
+.AdminDeposit_ProductInf:hover{
+    background-color: aliceblue;
+    cursor: pointer;
 }
-.ProductInf_Id{
-    flex:1;
+.AdminDeposit_ProductInf td{
+    width: 8vw;
+    line-height: 6vh;
+    text-align: center;
+
+    max-width: 8vw;
+    min-width: 8vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
 }
-.ProductInf_Cost{
-    flex:1;
+.AdminDeposit_ProductInf .btn_deleteProduct{
+    width: 2vw;
+    text-align: center;
+    max-width: 2vw;
+    min-width: 2vw;
+    display: none;
+
+    z-index: 9998;
 }
-.ProductInf_Image{
-    flex:1;
+.AdminDeposit_ProductInf:hover .btn_deleteProduct {
+    display: table-cell;
 }
 .AdminDeposit_btnChange{
     margin-top: 15px;

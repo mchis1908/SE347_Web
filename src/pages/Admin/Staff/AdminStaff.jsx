@@ -50,6 +50,7 @@ const handleClick = () => {
         <div className='AdminStaff_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập nhân viên cần tìm'/>
           <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <button className='AdminStaff_btn_create'>Thêm nhân viên +</button>
         </div>
           <div >
             <table className="AdminStaff-information">

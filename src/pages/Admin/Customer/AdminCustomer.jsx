@@ -7,7 +7,6 @@ import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailCustomer from './ModalDetailCustomer/AdminDetailCustomer';
 
-
 function AdminCustomer(props) {
   const customers = [
     {
@@ -85,7 +84,7 @@ const handleClick = () => {
                         <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Lần đến gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số tiền có thể nhận <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số đơn hàng ký gửi <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <hr/>
                 </tr>
                 <div className='AdminCustomer_detail_infor'>

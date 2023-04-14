@@ -12,55 +12,55 @@ function AdminPay() {
       id: '1',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '2',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '3',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '4',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '5',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '6',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '7',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '8',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
     {
       id: '9',
       label:'Quần jean',
       cost:'100.000',
-      img:'Hình ảnh',
+      img:'http://surl.li/ggptd',
     },
 ]
   const [showCalendar, setShowCalendar] = useState(false);
@@ -107,22 +107,23 @@ function AdminPay() {
                   products.map(products => {
                         return (
                           <div className='AdminPay_ProductInf'>
-                            <p className='ProductInf_Id'></p>                    
-                            <p className='ProductInf_Id'>{products.id}</p>
-                            <p className='ProductInf_Label'>{products.label}</p>
-                            <p className='ProductInf_Cost'>{products.img}</p>
-                            <p className='ProductInf_Image'>{products.cost}</p>
+                            <td></td>                    
+                            <td>{products.id}</td>
+                            <td>{products.label}</td>
+                            <td><img style={{width:'50px', height:'40px'}} src={products.img}/></td>
+                            <td>{products.cost}</td>
+                            <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                           </div>
                         )
                     })
                 }
               </div>
               <div className='AdminPay_ProductInf'>
-                <p className='ProductInf_Id'>Tổng:</p>                    
-                <p className='ProductInf_Id'>15</p>                    
-                <p className='ProductInf_Label'></p>
-                <p className='ProductInf_Cost'></p>
-                <p className='ProductInf_Image'>2.000.000</p>
+                <td>Tổng:</td>                    
+                <td>{products.length}</td>                    
+                <td></td>
+                <td></td>
+                <td>2.000.000</td>
               </div>
               <div className='AdminPay_btnChange'>
                 <button className='AdminPay_btnPay'>Thanh toán</button>

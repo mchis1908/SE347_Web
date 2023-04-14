@@ -5,95 +5,92 @@ import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 
 function AdminInvoice() {
-  const invoices = [
-    {
-        name: 'Huỳnh Minh Chí',
-        madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
-    },
-    {
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
-  },{
-    name: 'Huỳnh Minh Chí',
-    madon: '0756982',
-    mail:'20521130@gmail.com',
-    phone:'0376488361',
-    sl: 5
-},{
-        name: 'Huỳnh Minh Chí',
-        madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
-    },{
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
-  },{
-    name: 'Huỳnh Minh Chí',
-    madon: '0756982',
-    mail:'20521130@gmail.com',
-    phone:'0376488361',
-    sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
-},{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+const invoices = [
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Bán hàng',
+  trangthai: 'Đã thanh toán'
 },
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Ký gửi',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Ký gửi',
+  trangthai: 'Chưa thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Bán hàng',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Bán hàng',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Ký gửi',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Ký gửi',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Bán hàng',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Bán hàng',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'aHuỳnh Minh Chí',
+  soluong:'10',
+  loai:'Ký gửi',
+  trangthai: 'Đã thanh toán'
+},
+{
+  madon: '56422122',
+  khachhang: 'Huỳnh Minh Chí',
+  soluong:'10',
+  loai:'Bán hàng',
+  trangthai: 'Đã thanh toán'
+},
+
 ]
 const [isSorted, setIsSorted] = useState(false);
 const [data,setData]= useState(invoices)
 const [initialData,setInitialData]= useState(data)
-console.log('data',data)
 
 const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  const sortedData = [...data].sort((a, b) => a.khachhang.localeCompare(b.khachhang));
   setData(sortedData);
   setIsSorted(true);
 };
@@ -133,11 +130,11 @@ const handleClick = () => {
                           return (
                                   <tr className='AdminInvoice-information-detail'>
                                       <div className='AdminInvoice-information-detail-wrapper'>
-                                          <td className='team-name'>{data.name}</td>
-                                          <td className='stadium-name'>{data.phone}</td>
-                                          <td className=''>{data.mail}</td>
-                                          <td className=''>{data.sl}</td>
-                                          <td className=''>{data.madon}</td>
+                                          <td>{data.madon}</td>
+                                          <td>{data.khachhang}</td>
+                                          <td>{data.soluong}</td>
+                                          <td>{data.loai}</td>
+                                          <td>{data.trangthai}</td>
                                           <td className='btn_deleteInvoice'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>

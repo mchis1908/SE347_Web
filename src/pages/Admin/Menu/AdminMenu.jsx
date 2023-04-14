@@ -20,18 +20,7 @@ function AdminMenu() {
                 <span >Trang Chủ</span>
             </div>
         </Link>
-        <Link to='/admin/customer'>
-            <div className='sidebar_item'>
-                <Icon icon="mdi:user-details-outline" />
-                <span>Khách Hàng</span>
-            </div>
-        </Link>
-        <Link to='/admin/product'>
-            <div className='sidebar_item'>
-                <Icon icon="fluent-mdl2:product-variant" />
-                <span>Sản Phẩm</span>
-            </div>
-        </Link>
+        
         <Link to='/admin/deposit'>
             <div className='sidebar_item'>
                 <Icon icon="ic:outline-shopping-cart-checkout" />
@@ -50,18 +39,30 @@ function AdminMenu() {
                 <span>Hóa Đơn</span>
             </div>
         </Link>
-
-        {/* --------------------------------------- */}
-        <Link to='/admin/staff'>
+        <Link to='/admin/customer'>
             <div className='sidebar_item'>
-                <Icon icon="clarity:employee-group-line" />
-                <span>Nhân Viên</span>
+                <Icon icon="mdi:user-details-outline" />
+                <span>Khách Hàng</span>
             </div>
         </Link>
+        <Link to='/admin/product'>
+            <div className='sidebar_item'>
+                <Icon icon="fluent-mdl2:product-variant" />
+                <span>Sản Phẩm</span>
+            </div>
+        </Link>
+
+        {/* --------------------------------------- */}
         <Link to='/admin/revenue'>
             <div className='sidebar_item'>
                 <Icon icon="la:file-invoice-dollar" />
                 <span>Doanh Thu</span>
+            </div>
+        </Link>
+        <Link to='/admin/staff'>
+            <div className='sidebar_item'>
+                <Icon icon="clarity:employee-group-line" />
+                <span>Nhân Viên</span>
             </div>
         </Link>
         <Link to='/admin/account'>
