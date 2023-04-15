@@ -1,0 +1,115 @@
+.EmployeeInvoice_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.EmployeeInvoice_searchbar{
+    width: 95%;
+    height: 8vh;
+    padding-top: 2vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-area{
+    width: 50vw;
+    height: 5vh;
+    border-radius: 20px 0 0 20px;
+    padding-left: 2vw;
+    border-style: none;
+    font-size: 15px;
+    background-color: white;
+}
+.search-btn{
+    font-size: 30px;
+    border-radius: 0 20px 20px 0;
+    border-width: 0;
+    background-color: white;
+    display: inline;
+    height: 5.2vh;
+    margin-left: 1px;
+}
+.bg-search-btn :active{
+    background-color: #152737;
+    color:white;
+}
+.EmployeeInvoice_btn_create{
+    width: 10vw;
+    height: 5vh;
+    margin-left: 10vh;
+    background-color: #152737;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    border-width: 0;
+}
+.EmployeeInvoice_btn_create:hover{
+    background-color: #fe4880;
+    color: white;
+    cursor:pointer;
+}
+.EmployeeInvoice-information{
+    width: 80vw;
+    height: 80vh;
+    overflow: auto;
+    background-color: #fff;
+    
+    margin-left: 4vw;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+}
+.EmployeeInvoice-information{
+    display: block;
+}
+.EmployeeInvoice-information-header{
+    width: 80vw;
+    border-radius: 10px 10px 0 0;
+    background-color: #fff;
+    position: fixed;
+
+    /* display: none; */
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.EmployeeInvoice-information-header th{
+    width: 15.3vw;
+    line-height: 6vh;
+    text-align: center;
+}
+.EmployeeInvoice_detail_infor{
+    padding-top: 6vh;
+}
+.EmployeeInvoice-information-detail{
+    width: 100%;
+    padding-top: 2vh;
+    display: block;
+}
+.EmployeeInvoice-information-detail :hover{
+    background-color: #152737;
+    cursor: pointer;
+    color: #fff;
+}
+.EmployeeInvoice-information-detail-wrapper td{
+    width: 14.5vw;
+    line-height: 6vh;
+    text-align: center;
+
+    min-width: 14.5vw;
+    max-width: 14.5vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
+}
+
+/* th,td{
+    border: 1px solid #ccc;
+} */

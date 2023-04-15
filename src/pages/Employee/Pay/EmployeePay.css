@@ -1,0 +1,153 @@
+.EmployeePay_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.EmployeePay_Top{
+    position: relative;
+    height: 5vh;
+    width: 84vw;
+    margin:3vh 0 0 2vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.EmployeePay_ProductInf_Label{
+    display: inline-block;
+}
+.EmployeePay_ProductInf_Input{
+    display: inline-block;
+    margin-left: 3vw;
+    width: 38vw;
+    height: 3.5vh;
+
+    border-radius: 20px 0 0 20px;
+    border-width: 0;
+    padding-left: 15px;
+}
+.EmployeePay_ProductInf_SearchBtn{
+    border-radius: 0 20px 20px 0;
+    background-color: #fff;
+    height: 3.75vh;
+    margin-left: 1px;
+}
+.EmployeePay_ProductInf_SearchBtn:active{
+    background-color: #152737;
+    color:white;
+}
+.EmployeePay_Bottom{
+    position: relative;
+    background-color: #EDEDED;
+    height: 79.5vh;
+    width: 84vw;
+    margin: 10px 0 20px 20px;
+
+    display: flex;
+}
+.EmployeePay_Content{
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px 0 0 30px;
+
+    display: flex;
+    /* justify-content: space-between; */
+}
+.EmployeePay_Content .Content_Date{
+    /* margin-left: auto; */
+    height: fit-content;
+}
+.Content_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.EmployeePay_Content .Content_Date .Content_Calendar{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 16px;
+
+    display:inline;
+}
+.EmployeePay_Detail{
+    padding-top: 20px;
+    height: fit-content;
+}
+.EmployeePay_CustomerInf{
+    padding-top: 20px;
+}
+.EmployeePay_CustomerInf_Label{
+    display: inline;
+}
+.EmployeePay_CustomerInf_Input{
+    display: inline;
+    margin-left: 5vw;
+    width: 30vw;
+    height: 2.7vh;
+
+    border-radius: 10px;
+    padding-left: 10px;
+
+}
+.EmployeePay_ProductList{
+    width: 50vw;
+    max-width: 50vw;
+    
+    height: 45vh;
+    padding-top: 10px;
+    overflow: auto;
+}
+.EmployeePay_ProductInf:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+}
+.EmployeePay_ProductInf td{
+    width: 8vw;
+    line-height: 6vh;
+    text-align: center;
+
+    max-width: 8vw;
+    min-width: 8vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
+}
+.EmployeePay_ProductInf .btn_deleteProduct{
+    width: 2vw;
+    text-align: center;
+    max-width: 2vw;
+    min-width: 2vw;
+    display: none;
+
+    z-index: 9998;
+}
+.EmployeePay_ProductInf:hover .btn_deleteProduct {
+    display: table-cell;
+}
+.EmployeePay_btnChange{
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.EmployeePay_btnPay{
+    background-color: #2a9df4;
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+
+    width: 11vw;
+    height: 4vh;
+}
+.EmployeePay_btnPay:active{
+    background-color: #FF5C5C;
+    color: white;
+}

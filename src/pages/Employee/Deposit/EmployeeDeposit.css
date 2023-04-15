@@ -1,0 +1,136 @@
+.EmployeeDeposit_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.EmployeeDeposit_Bottom{
+    position: relative;
+    background-color: #EDEDED;
+    height: 85vh;
+    width: 84vw;
+    margin: 30px 0 20px 20px;
+
+    display: flex;
+}
+.EmployeeDeposit_Content{
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px 0 0 30px;
+
+    display: flex;
+    /* justify-content: space-between; */
+}
+.EmployeeDeposit_Content .Content_Date{
+    /* margin-left: auto; */
+    height: fit-content;
+}
+.Content_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.EmployeeDeposit_Content .Content_Date .Content_Calendar{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 16px;
+
+    display:inline;
+}
+.EmployeeDeposit_Detail{
+    padding-top: 20px;
+    height: fit-content;
+}
+.EmployeeDeposit_CustomerInf{
+    padding-top: 20px;
+}
+.EmployeeDeposit_CustomerInf_Label{
+    display: inline;
+}
+.EmployeeDeposit_CustomerInf_Input{
+    display: inline;
+    margin-left: 5vw;
+    width: 30vw;
+    height: 2.7vh;
+
+    border-radius: 10px;
+
+}
+.EmployeeDeposit_ProductList{
+    width: 50vw;
+    max-width: 50vw;
+    
+    height: 50vh;
+    padding-top: 10px;
+    overflow: auto;
+}
+.EmployeeDeposit_ProductInf{
+    display: flex;
+    flex-direction: row;
+}
+.EmployeeDeposit_ProductInf:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+}
+.EmployeeDeposit_ProductInf td{
+    width: 8vw;
+    line-height: 6vh;
+    text-align: center;
+
+    max-width: 8vw;
+    min-width: 8vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
+}
+.EmployeeDeposit_ProductInf .btn_deleteProduct{
+    width: 2vw;
+    text-align: center;
+    max-width: 2vw;
+    min-width: 2vw;
+    display: none;
+
+    z-index: 9998;
+}
+.EmployeeDeposit_ProductInf:hover .btn_deleteProduct {
+    display: table-cell;
+}
+.EmployeeDeposit_btnChange{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.EmployeeDeposit_btnChange button{
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+    width: 11vw;
+    height: 4vh;
+}
+.EmployeeDeposit_btnChange button:active{
+    background-color: #FF5C5C;
+}
+.EmployeeDeposit_btnAddProduct{    
+    background-color: #29bbd8;
+}
+.EmployeeDeposit_btnConfirm{
+    background-color: #649e3c;
+}
+.EmployeeDeposit_btnCancel{
+    background-color: #ed3d3d;
+
+}
+.EmployeeDeposit_btnPrintProduct{
+    background-color: #29bbd8;
+}
+.EmployeeDeposit_btnPrintInvoice{
+    background-color: #649e3c;
+}

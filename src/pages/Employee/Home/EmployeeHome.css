@@ -1,0 +1,185 @@
+.EmployeeHome_main{
+    position: absolute;
+    top: 8vh;
+    left: 12vw;
+    width: 88vw;
+    height: fit-content;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+.EmployeeHome_Overview{
+    margin-left: 5vw;
+    width: 88%;
+    height: 20vh;
+    padding-top: 2vh;
+
+    display: flex;
+    justify-content: space-between;
+}
+.Overview_block1{
+    width: 22%;
+    height: 20vh;
+    background-color: #d6e0ff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #517dff;
+}
+.Overview_block2{
+    width: 22%;
+    height: 20vh;
+    background-color: #ffd6d9;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    color: #ff333f;
+}
+.Overview_block3{
+    width: 22%;
+    height: 20vh;
+    background-color: #ffead6;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ff9533;
+}
+.Overview_block4{
+    width: 22%;
+    height: 20vh;
+    background-color: #d6ffe0;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #30d559;
+}
+.Block_top .iconify{
+    font-size: 40px;
+
+    height: 6vh;
+    width: 6vw;
+}
+.Block_top{
+    font-size: 60px;
+    padding: 12px 0 0 30px;
+    font-weight:500;
+}
+.Block_bottom{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: #000;
+
+    font-weight: 500;
+}
+.EmployeeHome_Bottom{
+    position: relative;
+    background-color: #EDEDED;
+    height: 66vh;
+    width: 85vw;
+    padding: 15px 0 0 20px;
+    margin-bottom: 13px;
+    display: flex;
+}
+.EmployeeHome_Chart{
+    flex:3;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px;
+}
+.EmployeeHome_Chart .EmployeeHome_Chart_Label{
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+}
+.Chart_Name{
+    display: inline-block;
+    font-weight: 500;
+}
+.Chart_Date{
+    padding-right: auto;
+    height: fit-content;
+    display: inline-block;
+}
+.EmployeeHome_CustomerRecent{
+    flex:1;
+    background-color: rgb(255, 255, 255);
+    margin-left: 20px;
+    border-radius: 20px;
+}
+.Chart_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.EmployeeHome_Chart .Chart_Date .Chart_Calendar{
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 16px;
+    z-index: 999;
+    display:inline;
+
+}
+.EmployeeHome_CustomerRecent{
+    padding: 20px;
+}
+.CustomerRecent_Label{
+    padding-bottom: 10px;
+    color: rgba(53, 162, 235, 1);
+    font-size: 16px;
+    font-weight: 500;
+}
+.CustomerRecent_Info_List{
+    max-height: 54vh;
+    overflow: auto;
+}
+.CustomerRecent_Info{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 0;
+
+    display: flex;
+}
+.CustomerRecent_Avt{
+    flex:1;
+    max-width: 28px;
+    max-height: 28px;
+    height: 28px;
+    border-radius: 100%;
+}
+.CustomerRecent_Name{
+    flex:3;
+    margin-left: 20px;
+    max-width: 6.5vw;
+
+    text-align: center;
+    margin-top: 7px;
+
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+}
+.CustomerRecent_Phone{
+    margin-top: 7px;
+    margin-right: 5px;
+}
+.CustomerRecent_ViewMore{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #878787;
+}
+.CustomerRecent_ViewMore:hover{
+    color: #1e1e1e;
+}
+.EmployeeHome_CustomerRecent a{
+    text-decoration: none;
+}

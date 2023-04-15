@@ -147,33 +147,33 @@ function AdminHome() {
       <Header title="TRANG CHỦ" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminHome_main'>
         <div className='AdminHome_Overview'>
-          <div className='Overview_block1'>
+        <div className='Overview_block1'>
             <div className='Block_top'>
               <Icon icon="fluent-mdl2:product-variant" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Sản phẩm trong kho</p>
+            <p className='Block_bottom'>Sản phẩm đã nhận hôm nay</p>
           </div>
           <div className='Overview_block2'>
             <div className='Block_top'>
               <Icon icon="la:file-invoice-dollar" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Số hóa đơn đến hạn</p>
+            <p className='Block_bottom'>Số hóa đơn ký gửi hôm nay</p>
           </div>
           <div className='Overview_block3'>
             <div className='Block_top'>
-              <Icon icon="material-symbols:bar-chart" />
+              <Icon icon="clarity:employee-group-line" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Doanh thu hôm nay</p>
+            <p className='Block_bottom'>Nhân viên của cửa hàng</p>
           </div>
           <div className='Overview_block4'>
             <div className='Block_top'>
               <Icon icon="la:file-invoice-dollar" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Số đơn ký gửi hôm nay</p>
+            <p className='Block_bottom'>Số hóa đơn bán hàng hôm nay</p>
           </div>
         </div>
 {/* -------------------------------------------------------------- */}

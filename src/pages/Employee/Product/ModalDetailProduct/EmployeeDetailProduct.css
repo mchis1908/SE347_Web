@@ -1,0 +1,115 @@
+.EmployeeDetailProduct {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.EmployeeDetailProduct_modal {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 55vw;
+    height: 45vh;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    position: relative;
+}
+.EmployeeDetailProduct_modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+.EmployeeDetailProduct_modal-header{
+    text-align: center;
+    margin-bottom: 3vh;
+}
+.EmployeeDetailProduct_modal-header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.EmployeeDetailProduct_modal-body-inf_label{
+    flex:1;
+    display: block;
+}
+.Label_PropProduct+ .Label_PropProduct{
+    margin-top: 22px;
+}
+.EmployeeDetailProduct_modal-body-inf_input{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+.Input_PropProduct{
+    width: 20vw;
+    height: 3vh;
+    border-radius: 5px;
+}
+.Input_PropProduct+ .Input_PropProduct{
+    margin-top: 15px;
+}
+.EmployeeDetailProduct_modal-body-inf_image{
+    flex: 1;
+}
+.EmployeeDetailProduct_modal_Btn_AddImg{
+    width: 10vw;
+    height: 4vh;
+    background-color: burlywood;
+    border-width: 0;
+    border-radius: 10px;
+
+    margin-top: 1vh;
+}
+.EmployeeDetailProduct_modal_Btn_Change{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+.EmployeeDetailProduct_modal_Btn_Change_Cancel{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#152737 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.EmployeeDetailProduct_modal_Btn_Change_Delete{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#ab2a33 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.EmployeeDetailProduct_modal_Btn_Change_Confirm{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#249a42 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+button:hover{
+    background-color:#977555 ;
+    color: #fff;
+    cursor: pointer;
+}

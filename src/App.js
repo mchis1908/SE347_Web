@@ -2,7 +2,6 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import SignIn from './pages/SignIn/SignIn';
 import AdminHome from './pages/Admin/Home/AdminHome';
-import EmployeeHome from './pages/Employee/Home/EmployeeHome';
 import AdminProduct from './pages/Admin/Product/AdminProduct';
 import AdminCustomer from './pages/Admin/Customer/AdminCustomer';
 import AdminInvoice from './pages/Admin/Invoice/AdminInvoice';
@@ -11,6 +10,13 @@ import AdminDeposit from './pages/Admin/Deposit/AdminDeposit';
 import AdminPay from './pages/Admin/Pay/AdminPay';
 import AdminRevenue from './pages/Admin/Revenue/AdminRevenue';
 import AdminAccount from './pages/Admin/Account/AdminAccount';
+// ------------------------------------------------------
+import EmployeeHome from './pages/Employee/Home/EmployeeHome';
+import EmployeeDeposit from './pages/Employee/Deposit/EmployeeDeposit';
+import EmployeePay from './pages/Employee/Pay/EmployeePay';
+import EmployeeProduct from './pages/Employee/Product/EmployeeProduct';
+import EmployeeCustomer from './pages/Employee/Customer/EmployeeCustomer';
+import EmployeeInvoice from './pages/Employee/Invoice/EmployeeInvoice';
 
 function App() {
   return (
@@ -29,6 +35,11 @@ function App() {
         <Route exact path="/admin/account" element={<AdminAccount/>} />
         {/* -----Employee----- */}
         <Route exact path="/employee/home" element={<EmployeeHome/>} />
+        <Route exact path="/employee/customer" element={<EmployeeCustomer/>} />
+        <Route exact path="/employee/product" element={<EmployeeProduct/>} />
+        <Route exact path="/employee/invoice" element={<EmployeeInvoice/>} />
+        <Route exact path="/employee/deposit" element={<EmployeeDeposit/>} />
+        <Route exact path="/employee/pay" element={<EmployeePay/>} />
       </Routes>
     </div>
   );
