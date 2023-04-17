@@ -3,8 +3,9 @@ import './EmployeeInvoice.css'
 import Menu from "../Menu/EmployeeMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
+import EmployeeDetailInvoice from './ModalDetailInvoice/EmployeeDetailInvoice';
 
-function EmployeeInvoice() {
+function EmployeeInvoice(props) {
 const invoices = [
 {
   madon: '56422122',
@@ -82,9 +83,17 @@ const invoices = [
   soluong:'10',
   loai:'Bán hàng',
   trangthai: 'Đã thanh toán'
-},
-
+}
 ]
+const [isOpen, setIsOpen] = useState(false);
+
+const openPopup = () => {
+  setIsOpen(true);
+};
+
+const closePopup = () => {
+  setIsOpen(false);
+};
 const [isSorted, setIsSorted] = useState(false);
 const [data,setData]= useState(invoices)
 const [initialData,setInitialData]= useState(data)
@@ -128,7 +137,7 @@ const handleClick = () => {
                   {
                     data.map(data => {
                           return (
-                          <tr className='EmployeeInvoice-information-detail'>
+                          <tr className='EmployeeInvoice-information-detail' onClick={openPopup}>
                               <div className='EmployeeInvoice-information-detail-wrapper'>
                                   <td>{data.madon}</td>
                                   <td>{data.khachhang}</td>
@@ -141,7 +150,14 @@ const handleClick = () => {
                       })
                   }
                 </div>
-                
+                {isOpen &&
+                  <EmployeeDetailInvoice
+                    title="Chi tiết hóa đơn"
+                    onClose={closePopup}
+                  >
+                    {props.children}
+                  </EmployeeDetailInvoice>
+                }    
             </table>
           </div>
       </div>

@@ -8,84 +8,97 @@ import EmployeeDetailProduct from './ModalDetailProduct/EmployeeDetailProduct';
 function EmployeeProduct(props) {
   const products = [
     {
-        name: 'Huỳnh Minh Chí',
+        masp: '26500000323',
         madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
+        loai:'Quần',
+        trangthai:'Đã bán',
+        gia: 500000,
+        hinhanh:'http://surl.li/ggptd'
     },
     {
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
+      masp: '26500000323',
+      madon: '075000006982',
+      loai:'Quần',
+      trangthai:'Đã bán',
+      gia: 500000,
+      hinhanh:'http://surl.li/ggptd'
   },{
-    name: 'Huỳnh Minh Chí',
-    madon: '0756982',
-    mail:'20521130@gmail.com',
-    phone:'0376488361',
-    sl: 5
+    masp: '26500000323',
+    madon: '075000006982',
+    loai:'Quần',
+    trangthai:'Đã bán',
+    gia: 500000,
+    hinhanh:'http://surl.li/ggptd'
 },{
-        name: 'Huỳnh Minh Chí',
-        madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
+        masp: '26500000323',
+        madon: '075000006982',
+        loai:'Áo',
+        trangthai:'Đã bán',
+        gia: 500000,
+        hinhanh:'http://surl.li/ggptd'
     },{
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
+      masp: '26500000323',
+      madon: '075000006982',
+      loai:'Áo',
+      trangthai:'Đã bán',
+      gia: 500000,
+      hinhanh:'http://surl.li/ggptd'
   },{
-    name: 'Huỳnh Minh Chí',
-    madon: '0756982',
-    mail:'20521130@gmail.com',
-    phone:'0376488361',
-    sl: 5
+    masp: '26500000323',
+    madon: '075000006982',
+    loai:'Áo',
+    trangthai:'Đã bán',
+    gia: 500000,
+    hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  madon: '075000006982',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },
 ]
 const [isOpen, setIsOpen] = useState(false);
@@ -144,12 +157,12 @@ const handleClick = () => {
                           return (
                                   <tr className='EmployeeProduct-information-detail' onClick={openPopup}>
                                       <div className='EmployeeProduct-information-detail-wrapper'>
-                                          <td className='team-name'>{data.name}</td>
-                                          <td className='stadium-name'>{data.phone}</td>
-                                          <td className=''>{data.mail}</td>
-                                          <td className=''>{data.sl}</td>
-                                          <td className=''>{data.madon}</td>
-                                          <td className=''>{data.madon}</td>
+                                        <td >{data.masp}</td>
+                                        <td >{data.madon}</td>
+                                        <td >{data.loai}</td>
+                                        <td >{data.gia}</td>
+                                        <td >{data.trangthai}</td>
+                                        <td><img style={{heigh:'60px', width:'60px'}} src={data.hinhanh}/></td>
                                       </div>
                                   </tr>
                           )

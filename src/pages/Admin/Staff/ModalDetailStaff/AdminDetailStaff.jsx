@@ -14,6 +14,7 @@ function AdminDetailStaff(props) {
           <div className='AdminDetailStaff_modal-body-inf_label'>
             <p className='Label_PropStaff'>Tên nhân viên:</p>
             <p className='Label_PropStaff'>Số điện thoại:</p>
+            <p className='Label_PropStaff'>Email:</p>
             <p className='Label_PropStaff'>Lương cơ bản:</p>
             <p className='Label_PropStaff'>Lương theo giờ:</p>
             <p className='Label_PropStaff'>Tài khoản:</p>
@@ -22,6 +23,7 @@ function AdminDetailStaff(props) {
           <div className='AdminDetailStaff_modal-body-inf_input'>
             <input className='Input_PropStaff' type='text' placeholder='Nhập tên nhân viên'></input>
             <input className='Input_PropStaff' type='text' placeholder='Nhập số điện thoại nhân viên'></input>
+            <input className='Input_PropStaff' type='text' placeholder='Nhập số email nhân viên'></input>
             <input className='Input_PropStaff' type='text' placeholder='Nhập lương cơ bản'></input>
             <input className='Input_PropStaff' type='text' placeholder='Nhập lương theo giờ'></input>
             <input className='Input_PropStaff' type='text' placeholder='Nhập tài khoản'></input>

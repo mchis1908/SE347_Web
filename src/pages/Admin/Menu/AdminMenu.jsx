@@ -55,8 +55,8 @@ function AdminMenu() {
         {/* --------------------------------------- */}
         <Link to='/admin/revenue'>
             <div className='sidebar_item'>
-                <Icon icon="la:file-invoice-dollar" />
-                <span>Doanh Thu</span>
+                <Icon icon="mdi:report-bell-curve-cumulative" />
+                <span>Biểu đồ</span>
             </div>
         </Link>
         <Link to='/admin/staff'>
@@ -65,10 +65,22 @@ function AdminMenu() {
                 <span>Nhân Viên</span>
             </div>
         </Link>
+        <Link to='/admin/schedule'>
+            <div className='sidebar_item'>
+                <Icon icon="material-symbols:home-work-outline-rounded" />
+                <span>Chấm Công</span>
+            </div>
+        </Link>
+        {/* <Link to='/admin/report'>
+            <div className='sidebar_item'>
+                <Icon icon="la:file-invoice-dollar" />
+                <span>Báo Cáo</span>
+            </div>
+        </Link> */}
         <Link to='/admin/account'>
             <div className='sidebar_item'>
                 <Icon icon="material-symbols:settings-account-box-outline" />
-                <span>Tài khoản</span>
+                <span>Tài Khoản</span>
             </div>
         </Link>
         <Link to='/'>

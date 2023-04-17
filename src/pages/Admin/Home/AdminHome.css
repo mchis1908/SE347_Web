@@ -99,6 +99,7 @@
 .Chart_Name{
     display: inline-block;
     font-weight: 500;
+    color: rgba(53, 162, 235, 1);
 }
 .Chart_Date{
     padding-right: auto;

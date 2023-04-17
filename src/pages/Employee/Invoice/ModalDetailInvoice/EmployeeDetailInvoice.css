@@ -1,0 +1,184 @@
+.EmployeeDetailInvoice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.EmployeeDetailInvoice_modal {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 80vw;
+    height: 89vh;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    position: relative;
+}
+/* .EmployeeDetailInvoice_modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+} */
+.EmployeeDetailInvoice_modal-header{
+    text-align: center;
+    margin-bottom: 3vh;
+}
+.EmployeeDetailInvoice_modal-header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.EmployeeDetailInvoice_modal_Btn_Change{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+.EmployeeDetailInvoice_modal_Btn_Change_Cancel{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#152737 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.EmployeeDetailInvoice_modal_Btn_Change_Confirm{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#249a42 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+button:hover{
+    background-color:#977555 ;
+    color: #fff;
+    cursor: pointer;
+}
+
+.EmployeeDetailInvoice_Bottom{
+    position: relative;
+    height: 70vh;
+    width: 70vw;
+    margin: 10px 0 20px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+.EmployeeDetailInvoice_Detail_Content_Date{
+    /* margin-left: auto; */
+    height: fit-content;
+    display: flex;
+    margin-left: 4.2vw;
+}
+.EmployeeDetailInvoice_Detail_Content_LabelDay{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.EmployeeDetailInvoice_Detail_Content_Date .EmployeeDetailInvoice_Detail_Content_Calendar{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+
+    display:inline;
+    padding-left: 30px;
+}
+.EmployeeDetailInvoice_Detail{
+    padding-top: 20px;
+    height: fit-content;
+}
+.EmployeeDetailInvoice_CustomerInf_Label{
+    display: inline;
+    font-weight: 500;
+}
+.EmployeeDetailInvoice_CustomerInf_Input{
+    display: inline;
+    margin-left: 5vw;
+    width: 30vw;
+    height: 2.7vh;
+
+    border-radius: 10px;
+    padding-left: 10px;
+
+}
+.ProductInf_Label{
+    display: flex;
+    padding-left: 4.2vw;
+    font-weight: 500;
+}
+.EmployeeDetailInvoice_ProductList{
+    width: 50vw;
+    max-width: 50vw;
+    
+    height: 45vh;
+    padding-top: 10px;
+    overflow: auto;
+}
+.EmployeeDetailInvoice_ProductInf:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+}
+.EmployeeDetailInvoice_ProductInf td{
+    width: 8vw;
+    line-height: 6vh;
+    text-align: center;
+
+    max-width: 8vw;
+    min-width: 8vw;
+    white-space: nowrap;
+    overflow: hidden; /* ẩn phần vượt quá khung */
+    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
+}
+.EmployeeDetailInvoice_ProductInf .btn_deleteProduct{
+    width: 2vw;
+    text-align: center;
+    max-width: 2vw;
+    min-width: 2vw;
+    display: none;
+
+    z-index: 9998;
+}
+.EmployeeDetailInvoice_ProductInf:hover .btn_deleteProduct {
+    display: table-cell;
+}
+.EmployeeDetailInvoice_btnChange{
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.EmployeeDetailInvoice_btnDetailInvoice{
+    background-color: #2a9df4;
+    color: white;
+    border-width: 0;
+    border-radius: 10px;
+
+    width: 11vw;
+    height: 4vh;
+}
+.EmployeeDetailInvoice_btnDetailInvoice:active{
+    background-color: #FF5C5C;
+    color: white;
+}

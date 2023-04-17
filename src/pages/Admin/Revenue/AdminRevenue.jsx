@@ -40,9 +40,9 @@ function AdminRevenue() {
     ]
   };
   const data3 = {
-    labels: ['January', 'February'],
+    labels: ['Bán hàng', 'Ký gửi'],
     datasets: [{
-      label: 'My First Dataset',
+      label: 'Hóa đơn',
       data: [300, 50],
       backgroundColor: [
         'rgb(249, 175, 94,0.54)',
@@ -98,7 +98,7 @@ function AdminRevenue() {
             <Bar data={data2} options={options} />
           </div>
           <div className='AdminRevenue_ProductPercents'>
-            <div className='ProductPercents_Label'>Biểu đồ sản phẩm</div>
+            <div className='ProductPercents_Label'>Biểu đồ hóa đơn</div>
             <Doughnut data={data3} options={options} />
           </div>
         </div>

@@ -8,84 +8,97 @@ import AdminDetailProduct from './ModalDetailProduct/AdminDetailProduct';
 function AdminProduct(props) {
   const products = [
     {
-        name: 'Huỳnh Minh Chí',
-        madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
+        masp: '26500000323',
+        tensp: 'Áo gucci',
+        loai:'Quần',
+        trangthai:'Đã bán',
+        gia: 500000,
+        hinhanh:'http://surl.li/ggptd'
     },
     {
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
+      masp: '26500000323',
+      tensp: 'Quần jean',
+      loai:'Quần',
+      trangthai:'Đã bán',
+      gia: 500000,
+      hinhanh:'http://surl.li/ggptd'
   },{
-    name: 'Huỳnh Minh Chí',
-    madon: '0756982',
-    mail:'20521130@gmail.com',
-    phone:'0376488361',
-    sl: 5
+    masp: '26500000323',
+    tensp: 'Quần jean',
+    loai:'Quần',
+    trangthai:'Đã bán',
+    gia: 500000,
+    hinhanh:'http://surl.li/ggptd'
 },{
-        name: 'Huỳnh Minh Chí',
-        madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
+        masp: '26500000323',
+        tensp: 'Quần jean',
+        loai:'Áo',
+        trangthai:'Đã bán',
+        gia: 500000,
+        hinhanh:'http://surl.li/ggptd'
     },{
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
+      masp: '26500000323',
+      tensp: 'Quần jean',
+      loai:'Áo',
+      trangthai:'Đã bán',
+      gia: 500000,
+      hinhanh:'http://surl.li/ggptd'
   },{
-    name: 'Huỳnh Minh Chí',
-    madon: '0756982',
-    mail:'20521130@gmail.com',
-    phone:'0376488361',
-    sl: 5
+    masp: '26500000323',
+    tensp: 'Quần jean',
+    loai:'Áo',
+    trangthai:'Đã bán',
+    gia: 500000,
+    hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },{
-  name: 'Huỳnh Minh Chí',
-  madon: '0756982',
-  mail:'20521130@gmail.com',
-  phone:'0376488361',
-  sl: 5
+  masp: '26500000323',
+  tensp: 'Quần jean',
+  loai:'Quần',
+  trangthai:'Đã bán',
+  gia: 500000,
+  hinhanh:'http://surl.li/ggptd'
 },
 ]
 const [isOpen, setIsOpen] = useState(false);
@@ -103,7 +116,7 @@ const [initialData,setInitialData]= useState(data)
 console.log('data',data)
 
 const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  const sortedData = [...data].sort((a, b) => a.masp.localeCompare(b.masp));
   setData(sortedData);
   setIsSorted(true);
 };
@@ -121,7 +134,7 @@ const handleClick = () => {
   return (
     <div className='AdminProduct'>
       <Menu/>
-      <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' masp='Huỳnh Minh Chí'/>
       <div className='AdminProduct_main'>
         <div className='AdminProduct_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập sản phẩm cần tìm'/>
@@ -131,8 +144,8 @@ const handleClick = () => {
             <table className="AdminProduct-information">
                 <tr className="AdminProduct-information-header">
                         <th>Mã sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Chủ sở hữu <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Tên sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Loại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Giá bán <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Hình ảnh <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
@@ -144,12 +157,12 @@ const handleClick = () => {
                           return (
                                   <tr className='AdminProduct-information-detail' onClick={openPopup}>
                                       <div className='AdminProduct-information-detail-wrapper'>
-                                          <td className='team-name'>{data.name}</td>
-                                          <td className='stadium-name'>{data.phone}</td>
-                                          <td className=''>{data.mail}</td>
-                                          <td className=''>{data.sl}</td>
-                                          <td className=''>{data.madon}</td>
-                                          <td className=''>{data.madon}</td>
+                                          <td >{data.masp}</td>
+                                          <td >{data.tensp}</td>
+                                          <td >{data.loai}</td>
+                                          <td >{data.gia}</td>
+                                          <td >{data.trangthai}</td>
+                                          <td><img style={{heigh:'60px', width:'60px'}} src={data.hinhanh}/></td>
                                           <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>

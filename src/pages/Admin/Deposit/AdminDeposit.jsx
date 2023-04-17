@@ -1,69 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./AdminDeposit.css"
 import { Icon } from '@iconify/react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
-import AdminAddProduct from '../Product/ModalDetailProduct/AdminDetailProduct';
+import AdminDetailDeposit from './ModalDetailDeposit/AdminDetailDeposit';
+import Axios from "axios";
 
 function AdminDeposit(props) {
-  const products = [
-    {
-      id: '1',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '2',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '3',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '4',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '5',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '6',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '7',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '8',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-    {
-      id: '9',
-      label:'Quần jean',
-      cost:'100.000',
-      img:'http://surl.li/ggptd',
-    },
-]
+const [tensanpham, setTenSanPham] = useState()
+const [khachhang, setKhachHang] = useState()
+const [masanpham, setMaSanPham] = useState()
+const [loaisanpham, setLoaiSanPham] = useState()
+const [trangthai, setTrangThai] = useState()
+const [gia, setGia] = useState()
+const [hinhanh, setHinhAnh] = useState()
+
+const submitHLVHandler = ()=>{
+  const fd = new FormData()
+  fd.append('TENSP', tensanpham)
+  fd.append('SDTKHACHHANG', khachhang)
+  fd.append('MASP', masanpham)
+  fd.append('LOAI', loaisanpham)
+  fd.append('TRANGTHAI', trangthai)
+  fd.append('GIA', gia)
+  fd.append('HINHANH', hinhanh)
+
+  Axios.post('http://localhost:8000/v1/sanpham/taosanpham', fd)
+  window.location.reload()
+}
+let [sanphams, setSanPham] = useState([])
+const getCLB = async () => {
+    try {
+        const res = await Axios.get('http://localhost:8000/v1/sanpham/getaProduct/'+'001d30009ff71de813521e7b')
+        setSanPham(res.data);
+        sanphams=res.data;
+    }
+    catch (error) {
+        console.log(error.message)
+    }
+}
+useEffect(() => {
+    getCLB()
+}, [])
 const [isOpen, setIsOpen] = useState(false);
 
 const openPopup = () => {
@@ -85,17 +65,17 @@ const handleDateChange = (date) => {
   setShowCalendar(false);
 };
 const [showNotSuccess, setShowNotSuccess] = useState(true);
-  const [showSuccess, setShowSuccess] = useState(false);
+const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleConfirm = () => {
-    setShowNotSuccess(false);
-    setShowSuccess(true);
-  };
+const handleConfirm = () => {
+  setShowNotSuccess(false);
+  setShowSuccess(true);
+};
 
-  const handleCancel = () => {
-    setShowNotSuccess(true);
-    setShowSuccess(false);
-  };
+const handleCancel = () => {
+  setShowNotSuccess(true);
+  setShowSuccess(false);
+};
 return (
   <div className='AdminDeposit'>
     <Menu/>
@@ -121,14 +101,14 @@ return (
             <p className='ProductInf_Label'>Sản phẩm:</p>
             <div className='AdminDeposit_ProductList'>
               {
-                products.map(products => {
+                sanphams.map((sanphams,index) => {
                       return (
                         <div className='AdminDeposit_ProductInf'>
                           <td></td>                    
-                          <td>{products.id}</td>
-                          <td>{products.label}</td>
-                          <td><img style={{width:'50px', height:'40px'}} src={products.img}/></td>
-                          <td>{products.cost}</td>
+                          <td>{index+1}</td>
+                          <td>{sanphams.LOAI}</td>
+                          <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
+                          <td>{sanphams.GIA}</td>
                           <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                         </div>
                       )
@@ -137,7 +117,7 @@ return (
             </div>
             <div className='AdminDeposit_ProductInf'>
               <td>Tổng:</td>               
-              <td>{products.length}</td>                    
+              <td>{sanphams.length}</td>                    
               <td></td>
               <td></td>
               <td>2.000.000</td>
@@ -154,12 +134,12 @@ return (
                 <>
                   <button className='AdminDeposit_btnAddProduct' onClick={openPopup}>Thêm sản phẩm</button>
                   {isOpen &&
-                    <AdminAddProduct
+                    <AdminDetailDeposit
                       title="Thêm sản phẩm"
                       onClose={closePopup}
                     >
                       {props.children}
-                    </AdminAddProduct>
+                    </AdminDetailDeposit>
                   }
                   <button className='AdminDeposit_btnConfirm' onClick={handleConfirm}>Xác nhận tạo hóa đơn</button>
                 </>

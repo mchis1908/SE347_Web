@@ -1,4 +1,4 @@
-.AdminDetailStaff {
+.AdminDetailDeposit {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,64 +10,80 @@
     justify-content: center;
     align-items: center;
   }
-.AdminDetailStaff_modal {
+.AdminDetailDeposit_modal {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 55vw;
-    height: 65vh;
+    height: 45vh;
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
     position: relative;
 }
-.AdminDetailStaff_modal-body {
+.AdminDetailDeposit_modal-body {
     display: flex;
     justify-content: center;
     align-items: center;
 
     text-align: center;
 }
-.AdminDetailStaff_modal-header{
+.AdminDetailDeposit_modal-header{
     text-align: center;
     margin-bottom: 3vh;
 }
-.AdminDetailStaff_modal-header button {
+.AdminDetailDeposit_modal-header button {
     position: absolute;
     top: 10px;
     right: 10px;
+    width: 2vw;
     border: none;
-    background-color: transparent;
     cursor: pointer;
+    color:rgb(65, 81, 81)
 }
-.AdminDetailStaff_modal-body-inf_label{
+.AdminDetailDeposit_modal-body-inf_label{
+    flex:1;
     display: block;
 }
-.Label_PropStaff+ .Label_PropStaff{
+.Label_PropDeposit+ .Label_PropDeposit{
     margin-top: 22px;
 }
-.AdminDetailStaff_modal-body-inf_input{
+.AdminDetailDeposit_modal-body-inf_input{
+    flex:1;
     display: flex;
     flex-direction: column;
 }
-.AdminDetailStaff_modal-body-inf_label+ .AdminDetailStaff_modal-body-inf_input{
-    margin-left: 25px;
-}
-.Input_PropStaff{
-    width: 24vw;
+.Input_PropDeposit{
+    width: 20vw;
     height: 3vh;
     border-radius: 5px;
 }
-.Input_PropStaff+ .Input_PropStaff{
+.Input_PropDeposit+ .Input_PropDeposit{
     margin-top: 15px;
 }
-.AdminDetailStaff_modal_Btn_Change{
+.AdminDetailDeposit_modal-body-inf_image{
+    flex: 1;
+}
+.AdminDetailDeposit_modal_Btn_AddImg{
+    width: 10vw;
+    height: 4vh;
+    background-color: burlywood;
+    border-width: 0;
+    border-radius: 10px;
+
+    margin-top: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3.8vw;
+}
+.AdminDetailDeposit_modal_Btn_Change{
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
 }
-.AdminDetailStaff_modal_Btn_Change_Cancel{
+.AdminDetailDeposit_modal_Btn_Change_Cancel{
     width: 10vw;
     height: 4vh;
     text-align: center;
@@ -77,7 +93,17 @@
     border-width: 0;
     border-radius: 10px;
 }
-.AdminDetailStaff_modal_Btn_Change_Confirm{
+.AdminDetailDeposit_modal_Btn_Change_Delete{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#ab2a33 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.AdminDetailDeposit_modal_Btn_Change_Confirm{
     width: 10vw;
     height: 4vh;
     text-align: center;

@@ -12,11 +12,13 @@ function AdminDetailProduct(props) {
         <div className="AdminDetailProduct_modal-body">
           {props.children}
           <div className='AdminDetailProduct_modal-body-inf_label'>
-            <p className='Label_PropProduct'>Tên sản phẩm</p>
-            <p className='Label_PropProduct'>Loại sản phẩm</p>
-            <p className='Label_PropProduct'>Giá sản phẩm</p>
+            <p className='Label_PropProduct'>Mã hóa đơn:</p>
+            <p className='Label_PropProduct'>Tên sản phẩm:</p>
+            <p className='Label_PropProduct'>Loại sản phẩm:</p>
+            <p className='Label_PropProduct'>Giá sản phẩm:</p>
           </div>
           <div className='AdminDetailProduct_modal-body-inf_input'>
+            <input className='Input_PropProduct' type='text' value='123456'></input>
             <input className='Input_PropProduct' type='text' placeholder='Nhập tên sản phẩm'></input>
             <input className='Input_PropProduct' type='text' placeholder='Chọn loại sản phẩm'></input>
             <input className='Input_PropProduct' type='text' placeholder='Nhập giá sản phẩm'></input>
