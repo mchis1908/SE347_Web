@@ -1,106 +1,28 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './AdminProduct.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailProduct from './ModalDetailProduct/AdminDetailProduct';
+import Axios from "axios";
 
 function AdminProduct(props) {
-  const products = [
-    {
-        masp: '26500000323',
-        tensp: 'Áo gucci',
-        loai:'Quần',
-        trangthai:'Đã bán',
-        gia: 500000,
-        hinhanh:'http://surl.li/ggptd'
-    },
-    {
-      masp: '26500000323',
-      tensp: 'Quần jean',
-      loai:'Quần',
-      trangthai:'Đã bán',
-      gia: 500000,
-      hinhanh:'http://surl.li/ggptd'
-  },{
-    masp: '26500000323',
-    tensp: 'Quần jean',
-    loai:'Quần',
-    trangthai:'Đã bán',
-    gia: 500000,
-    hinhanh:'http://surl.li/ggptd'
-},{
-        masp: '26500000323',
-        tensp: 'Quần jean',
-        loai:'Áo',
-        trangthai:'Đã bán',
-        gia: 500000,
-        hinhanh:'http://surl.li/ggptd'
-    },{
-      masp: '26500000323',
-      tensp: 'Quần jean',
-      loai:'Áo',
-      trangthai:'Đã bán',
-      gia: 500000,
-      hinhanh:'http://surl.li/ggptd'
-  },{
-    masp: '26500000323',
-    tensp: 'Quần jean',
-    loai:'Áo',
-    trangthai:'Đã bán',
-    gia: 500000,
-    hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},{
-  masp: '26500000323',
-  tensp: 'Quần jean',
-  loai:'Quần',
-  trangthai:'Đã bán',
-  gia: 500000,
-  hinhanh:'http://surl.li/ggptd'
-},
-]
+  let [sanphams, setSanPham] = useState([])
+  const getSANPHAM = async () => {
+      try {
+          const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanpham')
+          setSanPham(res.data);
+          sanphams=res.data;
+          console.log(sanphams);
+      }
+      catch (error) {
+          console.log(error.message)
+      }
+  }
+  useEffect(() => {
+    getSANPHAM();
+  }, [])
+
 const [isOpen, setIsOpen] = useState(false);
 
 const openPopup = () => {
@@ -111,9 +33,8 @@ const closePopup = () => {
   setIsOpen(false);
 };
 const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(products)
+const [data,setData]= useState(sanphams)
 const [initialData,setInitialData]= useState(data)
-console.log('data',data)
 
 const sortByName = () => {
   const sortedData = [...data].sort((a, b) => a.masp.localeCompare(b.masp));
@@ -153,16 +74,16 @@ const handleClick = () => {
                 </tr>
                 <div className='AdminProduct_detail_infor'>
                   {
-                    data.map(data => {
+                    sanphams.map(sanphams => {
                           return (
                                   <tr className='AdminProduct-information-detail' onClick={openPopup}>
                                       <div className='AdminProduct-information-detail-wrapper'>
-                                          <td >{data.masp}</td>
-                                          <td >{data.tensp}</td>
-                                          <td >{data.loai}</td>
-                                          <td >{data.gia}</td>
-                                          <td >{data.trangthai}</td>
-                                          <td><img style={{heigh:'60px', width:'60px'}} src={data.hinhanh}/></td>
+                                          <td >{sanphams.MASANPHAM}</td>
+                                          <td >{sanphams.TENSANPHAM}</td>
+                                          <td >{sanphams.LOAI}</td>
+                                          <td >{sanphams.GIA}</td>
+                                          <td >{sanphams.TRANGTHAI}</td>
+                                          <td><img style={{heigh:'60px', width:'60px'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
                                           <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>

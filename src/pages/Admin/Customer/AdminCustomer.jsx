@@ -1,43 +1,31 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './AdminCustomer.css'
-import ReactTable from 'react-table';
-// import 'react-table/react-table.css';
+// import ReactTable from 'react-table';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailCustomer from './ModalDetailCustomer/AdminDetailCustomer';
+import Axios from "axios";
+
+
 
 function AdminCustomer(props) {
-  const customers = [
-    {
-      name: 'Yaaaaaaaaaaaaaaa',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      recent:'30/03/2023',
-      cost:'3.000',
-    },
-    {
-      name: 'Minh Chí',
-      mail:'20521130@gmail.com',
-      phone:'0376488362',
-      recent:'30/03/2023',
-      cost:'3.000',
-    },
-    {
-      name: 'Ronaldo',
-      mail:'20521130@gmail.com',
-      phone:'0376488367',
-      recent:'30/03/2023',
-      cost:'3.000',
-    },
-    {
-      name: 'Messi',
-      mail:'20521130@gmail.com',
-      phone:'0376488368',
-      recent:'30/03/2023',
-      cost:'3.000',
-    },
-]
+  
+  let [khachhangs, setKhachHang] = useState([])
+  const getSANPHAM = async () => {
+      try {
+          const res = await Axios.get('http://localhost:8000/v1/khachhang/getkhachhang')
+          setKhachHang(res.data);
+          khachhangs=res.data;
+          console.log(khachhangs);
+      }
+      catch (error) {
+          console.log(error.message)
+      }
+  }
+  useEffect(() => {
+    getSANPHAM();
+  }, [])
 const [isOpen, setIsOpen] = useState(false);
 
 const openPopup = () => {
@@ -48,7 +36,7 @@ const closePopup = () => {
   setIsOpen(false);
 };
 const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(customers)
+const [data,setData]= useState(khachhangs)
 const [initialData,setInitialData]= useState(data)
 
 const sortByName = () => {
@@ -83,21 +71,21 @@ const handleClick = () => {
                         <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Lần đến gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Hóa đơn gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Số đơn hàng ký gửi <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <hr/>
                 </tr>
                 <div className='AdminCustomer_detail_infor'>
                   {
-                    data.map(data => {
+                    khachhangs.map(khachhangs => {
                           return (
                                   <tr className='AdminCustomer-information-detail' onClick={openPopup}>
                                       <div className='AdminCustomer-information-detail-wrapper'>
-                                          <td>{data.name}</td>
-                                          <td>{data.phone}</td>
-                                          <td>{data.mail}</td>
-                                          <td>{data.recent}</td>
-                                          <td>{data.cost}</td>
+                                          <td>{khachhangs.HOTEN}</td>
+                                          <td>{khachhangs.SDT}</td>
+                                          <td>{khachhangs.EMAIL}</td>
+                                          <td>{khachhangs.LANDENGANNHAT}</td>
+                                          <td>{khachhangs.SODONKYGUI}</td>
                                           <td className='btn_deleteCustomer'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>

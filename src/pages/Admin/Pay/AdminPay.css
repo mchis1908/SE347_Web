@@ -11,7 +11,7 @@
     position: relative;
     height: 5vh;
     width: 84vw;
-    margin:3vh 0 0 2vw;
+    margin:2vh 0 0 2vw;
 
     display: flex;
     justify-content: center;
@@ -23,8 +23,8 @@
 .AdminPay_ProductInf_Input{
     display: inline-block;
     margin-left: 3vw;
-    width: 38vw;
-    height: 3.5vh;
+    width: 50vw;
+    height: 5vh;
 
     border-radius: 20px 0 0 20px;
     border-width: 0;
@@ -33,7 +33,7 @@
 .AdminPay_ProductInf_SearchBtn{
     border-radius: 0 20px 20px 0;
     background-color: #fff;
-    height: 3.75vh;
+    height: 5.25vh;
     margin-left: 1px;
 }
 .AdminPay_ProductInf_SearchBtn:active{
@@ -43,9 +43,9 @@
 .AdminPay_Bottom{
     position: relative;
     background-color: #EDEDED;
-    height: 79.5vh;
+    height: 81vh;
     width: 84vw;
-    margin: 10px 0 20px 20px;
+    margin: 10px 0 20px 30px;
 
     display: flex;
 }
@@ -53,69 +53,42 @@
     flex:1;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    padding: 20px 0 0 30px;
 
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: center;
+    align-items: center;
 }
-.AdminPay_Content .Content_Date{
-    /* margin-left: auto; */
-    height: fit-content;
-}
-.Content_LabelDay{
-    color:black;
-    display:inline;
-
-    font-size: 16px;
-    font-weight: 500;
-}
-.AdminPay_Content .Content_Date .Content_Calendar{
-    background-color: transparent;
-    border: none;
-    color: blue;
-    font-size: 16px;
-
-    display:inline;
+.AdminPay_CustomerInf{
+    display: flex;
+    max-height: 5vh;
 }
 .AdminPay_Detail{
     padding-top: 20px;
     height: fit-content;
 }
-.AdminPay_CustomerInf{
-    padding-top: 20px;
-}
-.AdminPay_CustomerInf_Label{
-    display: inline;
-}
-.AdminPay_CustomerInf_Input{
-    display: inline;
-    margin-left: 5vw;
-    width: 30vw;
-    height: 2.7vh;
-
-    border-radius: 10px;
-    padding-left: 10px;
-
-}
 .AdminPay_ProductList{
-    width: 50vw;
-    max-width: 50vw;
+    width: 60vw;
+    max-width: 60vw;
     
-    height: 45vh;
+    height:41vh;
     padding-top: 10px;
     overflow: auto;
+}
+.AdminPay_ProductInf{
+    display: flex;
+    flex-direction: row;
 }
 .AdminPay_ProductInf:hover{
     background-color: aliceblue;
     cursor: pointer;
 }
 .AdminPay_ProductInf td{
-    width: 8vw;
+    width: 8.5vw;
     line-height: 6vh;
     text-align: center;
 
-    max-width: 8vw;
-    min-width: 8vw;
+    max-width: 8.5vw;
+    min-width: 8.5vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
@@ -134,20 +107,20 @@
     display: table-cell;
 }
 .AdminPay_btnChange{
-    padding-top: 10px;
+    margin-top: 5px;
     display: flex;
     justify-content: flex-end;
 }
-.AdminPay_btnPay{
-    background-color: #2a9df4;
+.AdminPay_btnChange button{
     color: white;
     border-width: 0;
     border-radius: 10px;
-
     width: 11vw;
     height: 4vh;
 }
-.AdminPay_btnPay:active{
+.AdminPay_btnChange button:active{
     background-color: #FF5C5C;
-    color: white;
+}
+.AdminPay_btnConfirm{    
+    background-color: #29bbd8;
 }

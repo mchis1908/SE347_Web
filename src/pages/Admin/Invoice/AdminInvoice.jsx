@@ -1,90 +1,27 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './AdminInvoice.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailInvoice from './ModalDetailInvoice/AdminDetailInvoice';
+import Axios from "axios";
 
 function AdminInvoice(props) {
-const invoices = [
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Bán hàng',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Ký gửi',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Ký gửi',
-  trangthai: 'Chưa thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Bán hàng',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Bán hàng',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Ký gửi',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Ký gửi',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Bán hàng',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Bán hàng',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'aHuỳnh Minh Chí',
-  soluong:'10',
-  loai:'Ký gửi',
-  trangthai: 'Đã thanh toán'
-},
-{
-  madon: '56422122',
-  khachhang: 'Huỳnh Minh Chí',
-  soluong:'10',
-  loai:'Bán hàng',
-  trangthai: 'Đã thanh toán'
-}
-]
+  let [hoadons, setHoaDon] = useState([])
+  const getHoaDon = async () => {
+      try {
+          const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon')
+          setHoaDon(res.data);
+          hoadons=res.data;
+          console.log(hoadons);
+      }
+      catch (error) {
+          console.log(error.message)
+      }
+  }
+  useEffect(() => {
+    getHoaDon();
+  }, [])
 const [isOpen, setIsOpen] = useState(false);
 
 const openPopup = () => {
@@ -95,11 +32,11 @@ const closePopup = () => {
   setIsOpen(false);
 };
 const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(invoices)
+const [data,setData]= useState(hoadons)
 const [initialData,setInitialData]= useState(data)
 
 const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.khachhang.localeCompare(b.khachhang));
+  const sortedData = [...data].sort((a, b) => a.MAHOADON.localeCompare(b.MAHOADON));
   setData(sortedData);
   setIsSorted(true);
 };
@@ -135,15 +72,15 @@ const handleClick = () => {
                 </tr>
                 <div className='AdminInvoice_detail_infor'>
                   {
-                    data.map(data => {
+                    hoadons.map(hoadons => {
                           return (
                                   <tr className='AdminInvoice-information-detail' onClick={openPopup}>
                                       <div className='AdminInvoice-information-detail-wrapper'>
-                                          <td>{data.madon}</td>
-                                          <td>{data.khachhang}</td>
-                                          <td>{data.soluong}</td>
-                                          <td>{data.loai}</td>
-                                          <td>{data.trangthai}</td>
+                                          <td>{hoadons.MAHOADON}</td>
+                                          <td>{hoadons.SDT}</td>
+                                          <td>{hoadons.SOLUONG}</td>
+                                          <td>{hoadons.LOAI}</td>
+                                          <td>{hoadons.TRANGTHAI}</td>
                                           <td className='btn_deleteInvoice'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
