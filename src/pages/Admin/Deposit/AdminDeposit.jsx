@@ -28,7 +28,7 @@ const getKH = async () => {
 let [sanphams, setSanPham] = useState([])
 const getSANPHAM = async () => {
     try {
-        const res = await Axios.get('http://localhost:8000/v1/sanpham/getaProduct/'+'001d30009ff71de813521e7b')
+        const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanphambymakygui/'+'001d30009ff71de813521e7b')
         setSanPham(res.data);
         sanphams=res.data;
     }
@@ -78,7 +78,11 @@ const handleConfirm = () => {
     })
     Axios.patch('http://localhost:8000/v1/sanpham/updatesanphambymahd/'+'001d30009ff71de813521e7b', 
     {
-      MAHOADON: randommahoadon
+      MAHOADONKG: randommahoadon
+    })
+    Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
+    {
+      LANDENGANNHAT: currentDate.toLocaleString()
     })
     window.alert('Hóa đơn đã được tạo thành công')
     setShowNotSuccess(false);
@@ -108,7 +112,7 @@ const handleCancel = () => {
 const calculateTotal = () => {
   let total =0;
   for(let i = 0; i < sanphams.length; i++) {
-    total+=sanphams[i].GIA;
+    total+=sanphams[i].GIANHAN;
   }
   return total;
 };
@@ -152,7 +156,7 @@ return (
                         <td>{sanphams.TENSANPHAM}</td>
                         <td>{sanphams.LOAI}</td>
                         <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
-                        <td>{sanphams.GIA}</td>
+                        <td>{sanphams.GIANHAN}</td>
                         <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                       </div>
                     )

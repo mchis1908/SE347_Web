@@ -98,22 +98,23 @@ table{
     color: #fff;
 }
 .AdminInvoice-information-detail-wrapper td{
-    width: 14.5vw;
+    width: 14.05vw;
     line-height: 6vh;
+    padding-right: 1.3vw;
+    padding-bottom: 5px;
     text-align: center;
 
-    min-width: 14.5vw;
-    max-width: 14.5vw;
+    min-width: 14.05vw;
+    max-width: 14.05vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-    padding: 0 0.4vw;
 }
 .AdminInvoice-information-detail-wrapper .btn_deleteInvoice{
-    width: 1.5vw;
+    width: 1vw;
     text-align: center;
-    max-width: 1.5vw;
-    min-width: 1.5vw;
+    max-width: 1vw;
+    min-width: 1vw;
     display: none;
 
     z-index: 9998;

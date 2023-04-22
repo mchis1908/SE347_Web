@@ -26,8 +26,22 @@ const getKH = async () => {
     }
 }
 
+let [thamso, setThamSo] = useState([])
+  const getThamSo = async () => {
+      try {
+          const res = await Axios.get('http://localhost:8000/v1/thamso/getthamso/hoahongcho1sp')
+          setThamSo(res.data);
+          thamso=res.data;
+          console.log(thamso);
+      }
+      catch (error) {
+          console.log(error.message)
+      }
+  }
+
 useEffect(() => {
   getKH();
+  getThamSo();
 }, [])
 
 let [sanphams, setSanPham] = useState([])
@@ -55,20 +69,31 @@ const handleConfirm = () => {
       NGAYTAODON: currentDate.toLocaleString()
     })
     sanphams.map(sanphams =>{
+      const gianhan= sanphams.GIANHAN;
+      const hoahong= thamso[0].GIATRITHAMSO;
       const idproduct= sanphams.MASANPHAM;
       Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+idproduct, 
       {
-        TRANGTHAI: 'Đã Bán'
+        TRANGTHAI: 'Đã Bán',
+        HOAHONG: gianhan*hoahong,
+        TIENKHACHNHAN: gianhan-gianhan*hoahong,
+        MAHOADONBH: randommahoadon
       })
     })
+    Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
+    {
+      LANDENGANNHAT: currentDate.toLocaleString()
+    })
     window.alert('Hóa đơn đã được tạo thành công')
+    setSanPham([]);
+    window.location.reload();
   }
   
 };
 const calculateTotal = () => {
   let total =0;
   for(let i = 0; i < sanphams.length; i++) {
-    total+=sanphams[i].GIA;
+    total+=sanphams[i].GIANHAN;
   }
   return total;
   
@@ -141,7 +166,7 @@ const handleSearch = () => {
                         <td>{sanphams.TENSANPHAM}</td>
                         <td>{sanphams.LOAI}</td>
                         <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
-                        <td>{sanphams.GIA}</td>
+                        <td>{sanphams.GIANHAN}</td>
                         <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                       </div>
                     )

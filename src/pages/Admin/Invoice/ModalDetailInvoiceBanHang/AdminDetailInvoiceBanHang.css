@@ -1,4 +1,4 @@
-.AdminDetailInvoice {
+.AdminDetailInvoiceBanHang {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
   }
-.AdminDetailInvoice_modal {
+.AdminDetailInvoiceBanHang_modal {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
@@ -22,11 +22,11 @@
     overflow: auto;
     position: relative;
 }
-.AdminDetailInvoice_modal-header{
+.AdminDetailInvoiceBanHang_modal-header{
     text-align: center;
     margin-bottom: 3vh;
 }
-.AdminDetailInvoice_modal-header button {
+.AdminDetailInvoiceBanHang_modal-header button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -34,12 +34,12 @@
     background-color: transparent;
     cursor: pointer;
 }
-.AdminDetailInvoice_modal_Btn_Change{
+.AdminDetailInvoiceBanHang_modal_Btn_Change{
     margin-top: 6vh;
     display: flex;
     justify-content: space-around;
 }
-.AdminDetailInvoice_modal_Btn_Change_Cancel{
+.AdminDetailInvoiceBanHang_modal_Btn_Change_Cancel{
     width: 10vw;
     height: 4vh;
     text-align: center;
@@ -49,7 +49,7 @@
     border-width: 0;
     border-radius: 10px;
 }
-.AdminDetailInvoice_modal_Btn_Change_Confirm{
+.AdminDetailInvoiceBanHang_modal_Btn_Change_Confirm{
     width: 10vw;
     height: 4vh;
     text-align: center;
@@ -65,7 +65,7 @@ button:hover{
     cursor: pointer;
 }
 
-.AdminDetailInvoice_Bottom{
+.AdminDetailInvoiceBanHang_Bottom{
     position: relative;
     height: 70vh;
     width: 70vw;
@@ -77,18 +77,18 @@ button:hover{
 
     text-align: center;
 }
-.AdminDetailInvoice_Detail_Content_Date{
+.AdminDetailInvoiceBanHang_Detail_Content_Date{
     display: flex;
     margin-left: 10vw;
 }
-.AdminDetailInvoice_Detail_Content_LabelDay{
+.AdminDetailInvoiceBanHang_Detail_Content_LabelDay{
     color:black;
     display:inline;
 
     font-size: 16px;
     font-weight: 500;
 }
-.AdminDetailInvoice_Detail_Content_Calendar{
+.AdminDetailInvoiceBanHang_Detail_Content_Calendar{
     background-color: transparent;
     border: none;
     font-size: 16px;
@@ -96,25 +96,25 @@ button:hover{
     display:inline;
     margin-left: 2vw;
 }
-.AdminDetailInvoice_Detail{
+.AdminDetailInvoiceBanHang_Detail{
     /* padding-top: 10px; */
     height: fit-content;
 }
-.AdminDetailInvoice_CustomerInf_Label{
+.AdminDetailInvoiceBanHang_CustomerInf_Label{
     display: inline;
     font-weight: 500;
     width: fit-content;
 }
-.AdminDetailInvoice_Detail_Content_Customer{
+.AdminDetailInvoiceBanHang_Detail_Content_Customer{
     margin-left: 5vw;
 }
-.AdminDetailInvoice_Detail_ProductInf_Label{
+.AdminDetailInvoiceBanHang_Detail_ProductInf_Label{
     display: flex;
     margin-left: 10vw;
     margin-bottom: 2vw;
     font-weight: 500;
 }
-.AdminDetailInvoice_ProductList{
+.AdminDetailInvoiceBanHang_ProductList{
     width: 80vw;
     max-width: 80vw;
     
@@ -122,20 +122,20 @@ button:hover{
     /* padding-top: 10px; */
     overflow: auto;
 }
-.AdminDetailInvoice_ProductInf{
+.AdminDetailInvoiceBanHang_ProductInf{
     display: flex;
     flex-direction: row;
     margin-left: 7vw;
     margin-top: 2vh;
 }
-.AdminDetailInvoice_ProductInf td{
-    width: 9.5vw;
+.AdminDetailInvoiceBanHang_ProductInf td{
+    width: 13.5vw;
     line-height: 4vh;
     max-height: 4vh;
     text-align: center;
 
-    max-width: 9.5vw;
-    min-width: 9.5vw;
+    max-width: 13.5vw;
+    min-width: 13.5vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */

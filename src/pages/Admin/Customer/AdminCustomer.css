@@ -97,22 +97,23 @@ table{
     color: #fff;
 }
 .AdminCustomer-information-detail-wrapper td{
-    width: 14.6vw;
+    width: 14.05vw;
     line-height: 6vh;
+    padding-right: 1.3vw;
+    padding-bottom: 5px;
     text-align: center;
 
-    max-width: 14.6vw;
-    min-width: 14.6vw;
+    max-width: 14.05vw;
+    min-width: 14.05vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-    padding: 0 0.4vw;
 }
 .AdminCustomer-information-detail-wrapper .btn_deleteCustomer{
-    width: 2vw;
+    width: 1vw;
     text-align: center;
-    max-width: 2vw;
-    min-width: 2vw;
+    max-width: 1vw;
+    min-width: 1vw;
     display: none;
 
     z-index: 9998;

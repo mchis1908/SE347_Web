@@ -4,6 +4,7 @@ import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailInvoice from './ModalDetailInvoice/AdminDetailInvoice';
+import AdminDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/AdminDetailInvoiceBanHang';
 import Axios from "axios";
 
 function AdminInvoice(props) {
@@ -23,8 +24,11 @@ function AdminInvoice(props) {
     getHoaDon();
   }, [])
 const [isOpen, setIsOpen] = useState(false);
+const [hoadon, setMaHoaDon] = useState(['']);
 
-const openPopup = () => {
+const openPopup = (mahoadon) => {
+  setMaHoaDon(mahoadon);
+  console.log('a',hoadon)
   setIsOpen(true);
 };
 
@@ -64,7 +68,7 @@ const handleClick = () => {
             <table className="AdminInvoice-information">
                 <tr className="AdminInvoice-information-header">
                         <th>Mã hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Chủ sở hữu <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Khách hàng <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Số lượng sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Loại hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
@@ -74,7 +78,7 @@ const handleClick = () => {
                   {
                     hoadons.map(hoadons => {
                           return (
-                                  <tr className='AdminInvoice-information-detail' onClick={openPopup}>
+                                  <tr className='AdminInvoice-information-detail' onClick={() => openPopup(hoadons)}>
                                       <div className='AdminInvoice-information-detail-wrapper'>
                                           <td>{hoadons.MAHOADON}</td>
                                           <td>{hoadons.SDT}</td>
@@ -88,14 +92,24 @@ const handleClick = () => {
                       })
                   }
                 </div>
-                {isOpen &&
+                {isOpen && hoadon.LOAI==='Ký gửi' &&
                   <AdminDetailInvoice
-                    title="Chi tiết hóa đơn"
+                    title="CHI TIẾT HÓA ĐƠN KÝ GỬI"
                     onClose={closePopup}
+                    data={hoadon}
                   >
                     {props.children}
                   </AdminDetailInvoice>
-                }  
+                }
+                {isOpen && hoadon.LOAI==='Bán hàng' &&
+                  <AdminDetailInvoiceBanHang
+                    title="CHI TIẾT HÓA ĐƠN BÁN HÀNG"
+                    onClose={closePopup}
+                    data={hoadon}
+                  >
+                    {props.children}
+                  </AdminDetailInvoiceBanHang>
+                }   
             </table>
           </div>
       </div>

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import "./AdminRevenue.css";
 import { Icon } from '@iconify/react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import Menu from "../Menu/AdminMenu";
 import Header from '../../../common/Header/Header';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
+import { DatePicker } from 'antd';
+import { toDate } from 'date-fns';
 
 
 function AdminRevenue() {
@@ -56,18 +55,6 @@ function AdminRevenue() {
     responsive: true,
     maintainAspectRatio: false // Tắt tự động điều chỉnh kích thước
   };
-    
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const toggleCalendar = () => {
-    setShowCalendar(!showCalendar);
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setShowCalendar(false);
-  };
   return (
     <div className='AdminRevenue'>
       <Menu/>
@@ -76,29 +63,34 @@ function AdminRevenue() {
         <div className='AdminRevenue_Top'>
           <div className='AdminRevenue_Chart'>
             <div className='AdminRevenue_Chart_Label'>
-            <div className='Chart_Name'>Biểu đồ sản phẩm nhận vào và bán ra</div>
-            <div className='Chart_Date'>
-              <p className='Chart_LabelDay'>Ngày:</p>
-              <button className='Chart_Calendar' onClick={toggleCalendar}>{selectedDate.toLocaleDateString()}</button>
-              {showCalendar && (
-                <Calendar
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
-              )}
-            </div>
+              <div className='Chart_Name'>Biểu đồ sản phẩm nhận vào và bán ra</div>
+              <div className='Chart_Date'>
+                <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Năm:</p>
+                <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="year"/>
+              </div>
             </div>
               <Line data={data1} options={options} />
           </div>
         </div>
 {/* -------------------------------------------------------------- */}
         <div className="AdminRevenue_Bottom">
-          <div className='AdminRevenue_Chart'>
-            <div className='Chart_Name'>Biểu đồ doanh thu theo tháng</div>
+        <div className='AdminRevenue_Chart'>
+            {/* <div className='Chart_Name'>Biểu đồ doanh thu theo tháng</div> */}
+            <div className='AdminRevenue_Chart_Label'>
+              <div className='Chart_Name'>Biểu đồ doanh thu theo tháng</div>
+              <div className='Chart_Date'>
+                <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Năm:</p>
+                <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="year"/>
+              </div>
+            </div>
+            {/* <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="year"/> */}
             <Bar data={data2} options={options} />
           </div>
           <div className='AdminRevenue_ProductPercents'>
-            <div className='ProductPercents_Label'>Biểu đồ hóa đơn</div>
+            <div className='AdminRevenue_ProductPercents_title'>
+              <div className='ProductPercents_Label'>Hóa đơn ngày: </div>
+              <DatePicker style={{width:'8vw',height:'3vh', marginLeft:'1vw'}}/>
+            </div>
             <Doughnut data={data3} options={options} />
           </div>
         </div>

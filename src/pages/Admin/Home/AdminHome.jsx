@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import "./AdminHome.css"
 import { Icon } from '@iconify/react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Link } from 'react-router-dom'
 import { Line } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 
 function AdminHome() {
   const data = {
@@ -130,17 +127,11 @@ function AdminHome() {
       avt:'http://surl.li/ggptd'
     },
 ]
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const toggleCalendar = () => {
-    setShowCalendar(!showCalendar);
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setShowCalendar(false);
-  };
+  const currentYear = new Date().getFullYear();
+  const yearList = [];
+  for (let i = 1900; i <= currentYear; i++) {
+    yearList.push(<option key={i} value={i}>{i}</option>);
+  }
   return (
     <div className='AdminHome'>
       <Menu/>
@@ -183,13 +174,10 @@ function AdminHome() {
             <div className='Chart_Name'>Biểu đồ sản phẩm ký gửi và bán ra</div>
             <div className='Chart_Date'>
               <p className='Chart_LabelDay'>Ngày:</p>
-              <button className='Chart_Calendar' onClick={toggleCalendar}>{selectedDate.toLocaleDateString()}</button>
-              {showCalendar && (
-                <Calendar
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
-              )}
+              <select name="year" style={{width:'10vw', marginLeft:'2vw', color:'#35a2eb', borderColor:'#000', fontSize:'15px'}}>
+                <option value="">Chọn năm </option>
+                {yearList}
+              </select>
             </div>
             </div>
             {/* -------------------------------------------------------------- */}

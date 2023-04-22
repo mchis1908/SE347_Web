@@ -81,9 +81,9 @@ const handleClick = () => {
                                           <td >{sanphams.MASANPHAM}</td>
                                           <td >{sanphams.TENSANPHAM}</td>
                                           <td >{sanphams.LOAI}</td>
-                                          <td >{sanphams.GIA}</td>
+                                          <td >{sanphams.GIANHAN}</td>
                                           <td >{sanphams.TRANGTHAI}</td>
-                                          <td><img style={{heigh:'60px', width:'60px'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
+                                          <td><img style={{maxHeight:'40px', maxWidth:'60px'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
                                           <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
