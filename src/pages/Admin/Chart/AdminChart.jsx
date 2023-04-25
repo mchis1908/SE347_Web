@@ -56,7 +56,7 @@ function AdminChart() {
   return (
     <div className='AdminChart'>
       <Menu/>
-      <Header title="QUẢN LÝ DOANH THU" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="BIỂU ĐỒ" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminChart_main'>
         <div className='AdminChart_Top'>
           <div className='AdminChart_Chart'>

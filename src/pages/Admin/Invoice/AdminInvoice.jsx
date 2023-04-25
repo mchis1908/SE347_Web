@@ -58,7 +58,7 @@ const handleClick = () => {
   return (
     <div className='AdminInvoice'>
       <Menu/>
-      <Header title="QUẢN LÝ HÓA ĐƠN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="QUẢN LÝ HÓA ĐƠN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminInvoice_main'>
         <div className='AdminInvoice_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập hóa đơn cần tìm'/>

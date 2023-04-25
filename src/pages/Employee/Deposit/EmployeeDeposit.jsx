@@ -99,7 +99,7 @@ const [showNotSuccess, setShowNotSuccess] = useState(true);
 return (
   <div className='EmployeeDeposit'>
     <Menu/>
-    <Header title="KÝ GỬI" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+    <Header title="KÝ GỬI" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
     <div className='EmployeeDeposit_main'>
       <div className="EmployeeDeposit_Bottom">
         <div className='EmployeeDeposit_Content'>

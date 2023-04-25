@@ -77,7 +77,7 @@ function EmployeePay() {
   return (
     <div className='EmployeePay'>
       <Menu/>
-      <Header title="THANH TOÁN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="THANH TOÁN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='EmployeePay_main'>
         <div className="EmployeePay_Top">
           <p className='EmployeePay_ProductInf_Label'>Tìm kiếm</p>

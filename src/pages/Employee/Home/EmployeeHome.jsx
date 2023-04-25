@@ -144,7 +144,7 @@ function EmployeeHome() {
   return (
     <div className='EmployeeHome'>
       <Menu/>
-      <Header title="TRANG CHỦ" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="TRANG CHỦ" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='EmployeeHome_main'>
         <div className='EmployeeHome_Overview'>
           <div className='Overview_block1'>

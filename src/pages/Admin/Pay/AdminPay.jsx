@@ -128,7 +128,7 @@ const handleSearch = () => {
   return (
     <div className='AdminPay'>
       <Menu/>
-      <Header title="THANH TOÁN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="THANH TOÁN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminPay_main'>
         <div className="AdminPay_Top">
           <input className='AdminPay_ProductInf_Input' id='searchkey' value={searchkey} placeholder='Nhập mã sản phẩm' onChange={(e)=> setSearchKey(e.target.value)}></input>

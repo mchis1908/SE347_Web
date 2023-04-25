@@ -140,7 +140,7 @@ function AdminHome() {
   return (
     <div className='AdminHome'>
       <Menu/>
-      <Header title="TRANG CHỦ" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="TRANG CHỦ" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminHome_main'>
         <div className='AdminHome_Overview'>
         <div className='Overview_block1'>

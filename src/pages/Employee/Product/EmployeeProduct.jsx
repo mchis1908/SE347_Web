@@ -134,7 +134,7 @@ const handleClick = () => {
   return (
     <div className='EmployeeProduct'>
       <Menu/>
-      <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='EmployeeProduct_main'>
         <div className='EmployeeProduct_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập sản phẩm cần tìm'/>

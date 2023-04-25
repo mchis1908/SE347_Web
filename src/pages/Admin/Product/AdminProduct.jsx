@@ -55,7 +55,7 @@ const handleClick = () => {
   return (
     <div className='AdminProduct'>
       <Menu/>
-      <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' masp='Huỳnh Minh Chí'/>
+      <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminProduct_main'>
         <div className='AdminProduct_searchbar'>
           <input className="search-area" type="text" placeholder='Nhập sản phẩm cần tìm'/>
