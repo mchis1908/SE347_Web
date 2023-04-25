@@ -67,15 +67,21 @@ const handleConfirm = () => {
   const answer = window.confirm("Bạn có chắc chắn tạo hóa đơn",);
   if (answer) {
     const randommahoadon = cryptoRandomString({ length: 16 });
-    Axios.post('http://localhost:8000/v1/hoadon/themhoadon', 
-    {
-      MAHOADON: randommahoadon,
-      SDT: khachhang,
-      SOLUONG: sanphams.length,
-      LOAI: loaihoadon,
-      TRANGTHAI: trangthaiHD,
-      NGAYTAODON: currentDate.toLocaleString()
-    })
+    try{
+      Axios.post('http://localhost:8000/v1/hoadon/themhoadon', 
+      {
+        MAHOADON: randommahoadon,
+        SDT: khachhang,
+        SOLUONG: sanphams.length,
+        LOAI: loaihoadon,
+        TRANGTHAI: trangthaiHD,
+        NGAYTAODON: currentDate.toLocaleString()
+      })
+    }
+    catch{
+        alert('Số điện thoại trùng')
+        return
+    }
     Axios.patch('http://localhost:8000/v1/sanpham/updatesanphambymahd/'+'001d30009ff71de813521e7b', 
     {
       MAHOADONKG: randommahoadon

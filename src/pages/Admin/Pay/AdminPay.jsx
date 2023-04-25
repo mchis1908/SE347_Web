@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./AdminPay.css"
 import { Icon } from '@iconify/react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import cryptoRandomString from 'crypto-random-string';
@@ -74,7 +72,7 @@ const handleConfirm = () => {
       const idproduct= sanphams.MASANPHAM;
       Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+idproduct, 
       {
-        TRANGTHAI: 'Đã Bán',
+        TRANGTHAI: 'Đã bán',
         HOAHONG: gianhan*hoahong,
         TIENKHACHNHAN: gianhan-gianhan*hoahong,
         MAHOADONBH: randommahoadon
@@ -109,6 +107,11 @@ const handleSearch = () => {
     const sanphammoi = response.data;
     if(sanphammoi.length === 0) {
       alert('Không có sản phẩm này')
+      return
+    }
+    else
+    if(sanphammoi.TRANGTHAI === 'Đã bán' || sanphammoi.TRANGTHAI === 'Đã trả lại') {
+      alert('Sản phẩm đã được bán hoặc đã trả lại cho khách ký gửi')
       return
     }
     else{

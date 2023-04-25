@@ -55,7 +55,6 @@ const getSANPHAM = async () => {
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Khách hàng: </p>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons[0].SDT}</p>
               </div>
-              {/* <p className='AdminDetailInvoiceBanHang_Detail_ProductInf_Label'>Sản phẩm:</p> */}
               <div className='AdminDetailInvoiceBanHang_Detail_Content_Date'>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Mã hóa đơn: </p>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons[0].MAHOADON}</p>
@@ -94,8 +93,7 @@ const getSANPHAM = async () => {
           {/* -------------------------------------------------------------- */}
         </div>
         <div className='AdminDetailInvoiceBanHang_modal_Btn_Change'>
-            <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
-            <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Confirm'>In barcode sản phẩm</button>
+            <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Cancel' onClick={props.onClose}>Thoát</button>
         </div>
       </div>
     </div>

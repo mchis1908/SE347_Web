@@ -1,27 +1,26 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import './AdminStaff.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
+import Axios from "axios";
 import AdminDetailStaff from './ModalDetailStaff/AdminDetailStaff';
 
 function AdminStaff(props) {
-  const staffs = [
-    {
-        name: 'Huỳnh Minh Chí',
-        madon: '0756982',
-        mail:'20521130@gmail.com',
-        phone:'0376488361',
-        sl: 5
-    },
-    {
-      name: 'Huỳnh Minh Chí',
-      madon: '0756982',
-      mail:'20521130@gmail.com',
-      phone:'0376488361',
-      sl: 5
-  },
-]
+  let [nhanviens, setNhanVien] = useState([])
+  const getNV = async () => {
+      try {
+          const res = await Axios.get('http://localhost:8000/v1/nhanvien/getnhanvien')
+          setNhanVien(res.data);
+          nhanviens=res.data;
+      }
+      catch (error) {
+          console.log(error.message)
+      }
+  }
+  useEffect(() => {
+    getNV();
+  }, [])
 const [isOpen, setIsOpen] = useState(false);
 
 const openPopup = () => {
@@ -32,7 +31,7 @@ const closePopup = () => {
   setIsOpen(false);
 };
 const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(staffs)
+const [data,setData]= useState(nhanviens)
 const [initialData,setInitialData]= useState(data)
 console.log('data',data)
 
@@ -74,15 +73,15 @@ const handleClick = () => {
                 </tr>
                 <div className='AdminStaff_detail_infor'>
                   {
-                    data.map(data => {
+                    nhanviens.map(nhanviens => {
                           return (
                                   <tr className='AdminStaff-information-detail' onClick={openPopup}>
                                       <div className='AdminStaff-information-detail-wrapper' >
-                                          <td className='team-name'>{data.name}</td>
-                                          <td className='stadium-name'>{data.phone}</td>
-                                          <td className=''>{data.mail}</td>
-                                          <td className=''>{data.sl}</td>
-                                          <td className=''>{data.madon}</td>
+                                          <td className='team-name'>{nhanviens.HOTEN}</td>
+                                          <td className='stadium-name'>{nhanviens.SDT}</td>
+                                          <td className=''>{nhanviens.EMAIL}</td>
+                                          <td className=''>{nhanviens.LUONGCOBAN}</td>
+                                          <td className=''>{nhanviens.LUONGTHEOGIO}</td>
                                           <td className='btn_deleteStaff'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>

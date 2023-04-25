@@ -1,38 +1,26 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import './AdminAccount.css'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailAccount from './ModalDetailAccount/AdminDetailAccount';
+import Axios from "axios";
 
 function AdminAccount(props) {
-  const accounts = [
-  {
-      name: 'Huỳnh Minh Chí',
-      account: 'chi1223',
-      password:'ewitueiwơ',
-  },
-  {
-    name: 'Huỳnh Minh Chí',
-    account: 'chi1223',
-    password:'ewitueiwơ',
-  },
-  {
-    name: 'Huỳnh Minh Chí',
-    account: 'chi1223',
-    password:'ewitueiwơ',
-  },
-  {
-    name: 'Huỳnh Minh Chí',
-    account: 'chi1223',
-    password:'ewitueiwơ',
-  },
-  {
-    name: 'Huỳnh Minh Chí',
-    account: 'chi1223',
-    password:'ewitueiwơ',
-  },
-]
+  let [accounts, setTaiKhoan] = useState([])
+  const getTK = async () => {
+      try {
+          const res = await Axios.get('http://localhost:8000/v1/taikhoan/gettaikhoan')
+          setTaiKhoan(res.data);
+          accounts=res.data;
+      }
+      catch (error) {
+          console.log(error.message)
+      }
+  }
+  useEffect(() => {
+    getTK();
+  }, [])
 const [isOpen, setIsOpen] = useState(false);
 
 const openPopup = () => {
@@ -82,13 +70,14 @@ const handleClick = () => {
                 </tr>
                 <div className='AdminAccount_detail_infor'>
                   {
-                    data.map(data => {
+                    accounts.map(accounts => {
+                      if(accounts.PHANQUYEN=== 'employee')
                           return (
                                   <tr className='AdminAccount-information-detail' onClick={openPopup}>
                                       <div className='AdminAccount-information-detail-wrapper'>
-                                          <td className='team-name'>{data.name}</td>
-                                          <td className=''>{data.account}</td>
-                                          <td className='stadium-name'>{data.password}</td>
+                                          <td className='stadium-name'>{accounts.TENNV}</td>
+                                          <td className='team-name'>{accounts.TENTAIKHOAN}</td>
+                                          <td className=''>{accounts.MATKHAU}</td>
                                           <td className='btn_deleteAccount'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>

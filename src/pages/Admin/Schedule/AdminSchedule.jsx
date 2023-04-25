@@ -78,7 +78,7 @@ const [data,setData]= useState(accounts)
   return (
     <div className='AdminSchedule'>
       <Menu/>
-      <Header title="QUẢN LÝ TÀI KHOẢN" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
+      <Header title="LỊCH LÀM VIỆC" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
       <div className='AdminSchedule_main'>
         <div className='AdminSchedule_searchbar'>
           <label>Chọn thời gian:</label>

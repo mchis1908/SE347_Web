@@ -3,9 +3,14 @@ import "./AdminHome.css"
 import { Icon } from '@iconify/react';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Line } from 'react-chartjs-2';
+import { DatePicker } from 'antd';
 
+// function AdminHome({ isAuthenticated }) {
+//   if (!isAuthenticated) {
+//     return <Navigate to="/" />;
+//   }
 function AdminHome() {
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August', 'September', 'October', 'November', 'December'],
@@ -24,7 +29,7 @@ function AdminHome() {
       },
     ],
   };
-  
+  console.log('user',localStorage.getItem('user'))
   const options = {
     responsive: true,
     maintainAspectRatio: false // Tắt tự động điều chỉnh kích thước
@@ -143,28 +148,28 @@ function AdminHome() {
               <Icon icon="fluent-mdl2:product-variant" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Sản phẩm đã nhận hôm nay</p>
+            <p className='Block_bottom' style={{color:'#517dff'}}>Sản phẩm đã nhận hôm nay</p>
           </div>
           <div className='Overview_block2'>
             <div className='Block_top'>
               <Icon icon="la:file-invoice-dollar" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Số hóa đơn ký gửi hôm nay</p>
+            <p className='Block_bottom' style={{color:'#ff333f'}}>Số hóa đơn ký gửi hôm nay</p>
           </div>
           <div className='Overview_block3'>
             <div className='Block_top'>
               <Icon icon="clarity:employee-group-line" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Nhân viên của cửa hàng</p>
+            <p className='Block_bottom' style={{color:'#ff9533'}}>Nhân viên của cửa hàng</p>
           </div>
           <div className='Overview_block4'>
             <div className='Block_top'>
               <Icon icon="la:file-invoice-dollar" />
               <span className='Quantity'>30</span>
             </div>
-            <p className='Block_bottom'>Số hóa đơn bán hàng hôm nay</p>
+            <p className='Block_bottom' style={{color:'#30d559'}}>Số hóa đơn bán hàng hôm nay</p>
           </div>
         </div>
 {/* -------------------------------------------------------------- */}
@@ -173,11 +178,8 @@ function AdminHome() {
             <div className='AdminHome_Chart_Label'>
             <div className='Chart_Name'>Biểu đồ sản phẩm ký gửi và bán ra</div>
             <div className='Chart_Date'>
-              <p className='Chart_LabelDay'>Ngày:</p>
-              <select name="year" style={{width:'10vw', marginLeft:'2vw', color:'#35a2eb', borderColor:'#000', fontSize:'15px'}}>
-                <option value="">Chọn năm </option>
-                {yearList}
-              </select>
+              <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Tháng:</p>
+              <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="month"/>
             </div>
             </div>
             {/* -------------------------------------------------------------- */}

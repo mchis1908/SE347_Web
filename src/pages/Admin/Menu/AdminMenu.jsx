@@ -53,7 +53,7 @@ function AdminMenu() {
         </Link>
 
         {/* --------------------------------------- */}
-        <Link to='/admin/revenue'>
+        <Link to='/admin/chart'>
             <div className='sidebar_item'>
                 <Icon icon="mdi:report-bell-curve-cumulative" />
                 <span>Biểu đồ</span>
@@ -71,12 +71,12 @@ function AdminMenu() {
                 <span>Chấm Công</span>
             </div>
         </Link>
-        {/* <Link to='/admin/report'>
+        <Link to='/admin/report'>
             <div className='sidebar_item'>
                 <Icon icon="la:file-invoice-dollar" />
                 <span>Báo Cáo</span>
             </div>
-        </Link> */}
+        </Link>
         <Link to='/admin/account'>
             <div className='sidebar_item'>
                 <Icon icon="material-symbols:settings-account-box-outline" />

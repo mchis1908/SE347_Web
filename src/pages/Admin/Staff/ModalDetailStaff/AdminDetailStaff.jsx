@@ -1,7 +1,67 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Axios from "axios";
 import './AdminDetailStaff.css'
 
 function AdminDetailStaff(props) {
+  const [tennv, setTenNV] = useState()
+  const [sdtnv, setSDTNV] = useState()
+  const [emailnv, setEmailNV] = useState()
+  const [luongcb, setLuongCB] = useState()
+  const [luongtheogio, setLuongTheoGio] = useState()
+  const [taikhoan, setTaiKhoan] = useState()
+  const [matkhau, setMatKhau] = useState()
+  const [phanquyen, setPhanQuyen] = useState('employee')
+  const handelConfirm = async ()=>{
+    if (document.getElementById('tennv').value === ''
+    || document.getElementById('sdtnv').value === ''
+    || document.getElementById('emailnv').value === ''
+    || document.getElementById('luongcb').value === ''
+    || document.getElementById('luongtheogio').value === ''
+    || document.getElementById('taikhoan').value === ''
+    || document.getElementById('matkhau').value === '') {
+      alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      return
+    }
+    try {
+      const responseArr = await Promise.all([
+        Axios.post('http://localhost:8000/v1/nhanvien/themnhanvien', {
+          HOTEN: tennv,
+          SDT: sdtnv,
+          EMAIL: emailnv,
+          LUONGCOBAN: luongcb,
+          LUONGTHEOGIO: luongtheogio
+        }),
+        Axios.post('http://localhost:8000/v1/taikhoan/dangky', {
+          TENTAIKHOAN: taikhoan,
+          MATKHAU: matkhau,
+          PHANQUYEN: phanquyen,
+          TENNV: tennv,
+          SDT: sdtnv
+        })
+      ]);
+    
+      const response1 = responseArr[0];
+      const response2 = responseArr[1];
+    
+      if (response1.status === 200 && response2.status === 200) {
+        alert('Tạo nhân viên và tài khoản thành công')
+        window.location.reload()
+      } else {
+        alert('Đã xảy ra lỗi khi thêm nhân viên');
+        return
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 502) {
+          Axios.delete('http://localhost:8000/v1/taikhoan/deletetaikhoan/'+ sdtnv)
+          alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
+      } else if (error.response && error.response.status === 501) {
+          Axios.delete('http://localhost:8000/v1/nhanvien/deletenhanvien/'+ sdtnv)
+          alert('Tên tài khoản đã tồn tại. Vui lòng nhập tên khác');
+      } else {
+        alert('Đã xảy ra lỗi khi thêm nhân viên');
+      }
+    }
+  }
   return (
     <div className="AdminDetailStaff">
       <div className="AdminDetailStaff_modal">
@@ -21,18 +81,18 @@ function AdminDetailStaff(props) {
             <p className='Label_PropStaff'>Mật khẩu:</p>
           </div>
           <div className='AdminDetailStaff_modal-body-inf_input'>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập tên nhân viên'></input>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập số điện thoại nhân viên'></input>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập số email nhân viên'></input>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập lương cơ bản'></input>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập lương theo giờ'></input>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập tài khoản'></input>
-            <input className='Input_PropStaff' type='text' placeholder='Nhập mật khẩu'></input>
+            <input className='Input_PropStaff' id='tennv' type='text' placeholder='Nhập tên nhân viên' onChange={(e) => setTenNV(e.target.value)}></input>
+            <input className='Input_PropStaff' id='sdtnv' type='text' placeholder='Nhập số điện thoại nhân viên' onChange={(e) => setSDTNV(e.target.value)}></input>
+            <input className='Input_PropStaff' id='emailnv' type='text' placeholder='Nhập số email nhân viên' onChange={(e) => setEmailNV(e.target.value)}></input>
+            <input className='Input_PropStaff' id='luongcb' type='number' placeholder='Nhập lương cơ bản' onChange={(e) => setLuongCB(e.target.value)}></input>
+            <input className='Input_PropStaff' id='luongtheogio' type='number' placeholder='Nhập lương theo giờ' onChange={(e) => setLuongTheoGio(e.target.value)}></input>
+            <input className='Input_PropStaff' id='taikhoan' type='text' placeholder='Nhập tài khoản' onChange={(e) => setTaiKhoan(e.target.value)}></input>
+            <input className='Input_PropStaff' id='matkhau' type='text' placeholder='Nhập mật khẩu' onChange={(e) => setMatKhau(e.target.value)}></input>
           </div>
         </div>
         <div className='AdminDetailStaff_modal_Btn_Change'>
             <button className='AdminDetailStaff_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
-            <button className='AdminDetailStaff_modal_Btn_Change_Confirm' onClick={props.onClose}>Xác nhận</button>
+            <button className='AdminDetailStaff_modal_Btn_Change_Confirm' onClick={handelConfirm}>Xác nhận</button>
         </div>
       </div>
     </div>

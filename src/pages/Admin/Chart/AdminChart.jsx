@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import "./AdminRevenue.css";
+import "./AdminChart.css";
 import { Icon } from '@iconify/react';
 import Menu from "../Menu/AdminMenu";
 import Header from '../../../common/Header/Header';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import { DatePicker } from 'antd';
-import { toDate } from 'date-fns';
 
-
-function AdminRevenue() {
+function AdminChart() {
   const data1 = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August', 'September', 'October', 'November', 'December'],
     datasets: [
@@ -41,7 +39,7 @@ function AdminRevenue() {
   const data3 = {
     labels: ['Bán hàng', 'Ký gửi'],
     datasets: [{
-      label: 'Hóa đơn',
+      label: 'Số hóa đơn',
       data: [300, 50],
       backgroundColor: [
         'rgb(249, 175, 94,0.54)',
@@ -56,27 +54,27 @@ function AdminRevenue() {
     maintainAspectRatio: false // Tắt tự động điều chỉnh kích thước
   };
   return (
-    <div className='AdminRevenue'>
+    <div className='AdminChart'>
       <Menu/>
       <Header title="QUẢN LÝ DOANH THU" avt='http://surl.li/ggptd' name='Huỳnh Minh Chí'/>
-      <div className='AdminRevenue_main'>
-        <div className='AdminRevenue_Top'>
-          <div className='AdminRevenue_Chart'>
-            <div className='AdminRevenue_Chart_Label'>
+      <div className='AdminChart_main'>
+        <div className='AdminChart_Top'>
+          <div className='AdminChart_Chart'>
+            <div className='AdminChart_Chart_Label'>
               <div className='Chart_Name'>Biểu đồ sản phẩm nhận vào và bán ra</div>
               <div className='Chart_Date'>
-                <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Năm:</p>
-                <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="year"/>
+                <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Tháng:</p>
+                <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="month"/>
               </div>
             </div>
               <Line data={data1} options={options} />
           </div>
         </div>
 {/* -------------------------------------------------------------- */}
-        <div className="AdminRevenue_Bottom">
-        <div className='AdminRevenue_Chart'>
+        <div className="AdminChart_Bottom">
+        <div className='AdminChart_Chart'>
             {/* <div className='Chart_Name'>Biểu đồ doanh thu theo tháng</div> */}
-            <div className='AdminRevenue_Chart_Label'>
+            <div className='AdminChart_Chart_Label'>
               <div className='Chart_Name'>Biểu đồ doanh thu theo tháng</div>
               <div className='Chart_Date'>
                 <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Năm:</p>
@@ -86,9 +84,9 @@ function AdminRevenue() {
             {/* <DatePicker style={{width:'10vw',height:'3vh', marginLeft:'2vw'}} picker="year"/> */}
             <Bar data={data2} options={options} />
           </div>
-          <div className='AdminRevenue_ProductPercents'>
-            <div className='AdminRevenue_ProductPercents_title'>
-              <div className='ProductPercents_Label'>Hóa đơn ngày: </div>
+          <div className='AdminChart_ProductPercents'>
+            <div className='AdminChart_ProductPercents_title'>
+              <div className='ProductPercents_Label'>Số hóa đơn ngày: </div>
               <DatePicker style={{width:'8vw',height:'3vh', marginLeft:'1vw'}}/>
             </div>
             <Doughnut data={data3} options={options} />
@@ -99,4 +97,4 @@ function AdminRevenue() {
   )
 }
 
-export default AdminRevenue
+export default AdminChart

@@ -34,7 +34,6 @@ function AdminDetailDeposit(props) {
       alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
       return
     }
-    // const tienkhachnhan =gianhan- (gianhan * thamso[0].GIATRITHAMSO);
     const tienkhachnhan =0;
     const fd = new FormData()
     fd.append('MASANPHAM', cryptoRandomString({ length: 16 }))
@@ -49,7 +48,6 @@ function AdminDetailDeposit(props) {
     fd.append('HINHANH', hinhanhsp)
     Axios.post('http://localhost:8000/v1/sanpham/themsanpham', fd)
     window.location.reload()
-    // props.onClose()
   }
   return (
     <div className="AdminDetailDeposit">

@@ -10,7 +10,6 @@ const SignIn = () => {
     let data = []
     const navigate = useNavigate()
 
-
     const fetchApi = async (key) => {
         try {
             const res = await axios.get('http://localhost:8000/v1/taikhoan/search/' + key);
@@ -26,12 +25,14 @@ const SignIn = () => {
         if (document.getElementById('account').value === data.TENTAIKHOAN &&
             document.getElementById('password').value === data.MATKHAU &&
             data.PHANQUYEN === 'admin') {
-            navigate('/admin/home')
+                localStorage.setItem('user', document.getElementById('account').value);
+                navigate('/admin/home')
         }
         else if (document.getElementById('account').value === data.TENTAIKHOAN &&
             document.getElementById('password').value === data.MATKHAU &&
             data.PHANQUYEN === 'employee') {
-            navigate('/employee/home')
+                localStorage.setItem('user', document.getElementById('account').value)
+                navigate('/employee/home')
         }
         else {
             alert('Tài khoản hoặc mật khẩu không chính xác')
