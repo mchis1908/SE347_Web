@@ -122,7 +122,7 @@ const handleConfirm = async () => {
     }
     window.alert('Hóa đơn đã được tạo thành công')
     setSanPham([]);
-    // window.location.reload();
+    window.location.reload();
   }
   
 };
