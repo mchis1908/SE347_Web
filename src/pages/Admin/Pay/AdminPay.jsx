@@ -30,7 +30,6 @@ let [thamso, setThamSo] = useState([])
           const res = await Axios.get('http://localhost:8000/v1/thamso/getthamso/hoahongcho1sp')
           setThamSo(res.data);
           thamso=res.data;
-          console.log(thamso);
       }
       catch (error) {
           console.log(error.message)
@@ -43,9 +42,9 @@ useEffect(() => {
 }, [])
 
 let [sanphams, setSanPham] = useState([])
-
 const currentDate = new Date();
-const handleConfirm = () => {
+
+const handleConfirm = async () => {
   if (document.getElementById('sdtkhachhang').value === '') {
       alert('Vui lòng nhập thông tin khách hàng')
       return
@@ -82,9 +81,48 @@ const handleConfirm = () => {
     {
       LANDENGANNHAT: currentDate.toLocaleString()
     })
+    // ---------Xử lý sản phẩm NGÀY---------
+    // ---------Xử lý sản phẩm THÁNG---------
+    const formatNgay = currentDate.toLocaleString().replaceAll('/', '-').substring(9);
+    const formatThang = currentDate.toLocaleString().replaceAll('/', '-').substring(12);
+    // console.log(formatNgay)
+    try {
+      const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgay/' + formatNgay);
+      const bcn = response.data;
+      const response1 = await Axios.get('http://localhost:8000/v1/baocaospthang/getBaoCaoSPThang/' + formatThang);
+      const bct = response1.data;
+      const res = await Axios.patch(
+        'http://localhost:8000/v1/baocaospngay/updateBaoCaoSPNgay/' + formatNgay,
+        {
+          SLSANPHAMBAN: bcn.SLSANPHAMBAN + sanphams.length,
+        }
+      );
+      Axios.patch(
+        'http://localhost:8000/v1/baocaospthang/updateBaoCaoSPThang/' + formatThang,
+        {
+          SLSANPHAMBAN: bct.SLSANPHAMBAN + sanphams.length,
+        }
+      );
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        Axios.post('http://localhost:8000/v1/baocaospngay/themBaoCaoSPNgay/', {
+          THOIGIAN: formatNgay,
+          SLSANPHAMNHAN: '0',
+          SLSANPHAMBAN: sanphams.length,
+        });
+        Axios.post('http://localhost:8000/v1/baocaospthang/themBaoCaoSPThang/', {
+          THOIGIAN: formatThang,
+          SLSANPHAMNHAN: '0',
+          SLSANPHAMBAN: sanphams.length,
+        });
+        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
+      } else {
+        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
+      }
+    }
     window.alert('Hóa đơn đã được tạo thành công')
     setSanPham([]);
-    window.location.reload();
+    // window.location.reload();
   }
   
 };

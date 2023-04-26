@@ -55,7 +55,7 @@ const [showNotSuccess, setShowNotSuccess] = useState(true);
 const [showSuccess, setShowSuccess] = useState(false);
 
 const currentDate = new Date();
-const handleConfirm = () => {
+const handleConfirm = async () => {
   if (document.getElementById('sdtkhachhang').value === '') {
       alert('Vui lòng nhập thông tin khách hàng')
       return
@@ -90,6 +90,45 @@ const handleConfirm = () => {
     {
       LANDENGANNHAT: currentDate.toLocaleString()
     })
+    // ---------Xử lý sản phẩm NGÀY---------
+    // ---------Xử lý sản phẩm THÁNG---------
+    const formatNgay = currentDate.toLocaleString().replaceAll('/', '-').substring(9);
+    const formatThang = currentDate.toLocaleString().replaceAll('/', '-').substring(12);
+    // console.log(formatNgay)
+    try {
+      const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgay/' + formatNgay);
+      const bcn = response.data;
+      const response1 = await Axios.get('http://localhost:8000/v1/baocaospthang/getBaoCaoSPThang/' + formatThang);
+      const bct = response1.data;
+      const res = await Axios.patch(
+        'http://localhost:8000/v1/baocaospngay/updateBaoCaoSPNgay/' + formatNgay,
+        {
+          SLSANPHAMNHAN: bcn.SLSANPHAMNHAN + sanphams.length,
+        }
+      );
+      Axios.patch(
+        'http://localhost:8000/v1/baocaospthang/updateBaoCaoSPThang/' + formatThang,
+        {
+          SLSANPHAMNHAN: bct.SLSANPHAMNHAN + sanphams.length,
+        }
+      );
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        Axios.post('http://localhost:8000/v1/baocaospngay/themBaoCaoSPNgay/', {
+          THOIGIAN: formatNgay,
+          SLSANPHAMBAN: 0,
+          SLSANPHAMNHAN: sanphams.length,
+        });
+        Axios.post('http://localhost:8000/v1/baocaospthang/themBaoCaoSPThang/', {
+          THOIGIAN: formatThang,
+          SLSANPHAMBAN: 0,
+          SLSANPHAMNHAN: sanphams.length,
+        });
+        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
+      } else {
+        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
+      }
+    }
     window.alert('Hóa đơn đã được tạo thành công')
     setShowNotSuccess(false);
     setShowSuccess(true);

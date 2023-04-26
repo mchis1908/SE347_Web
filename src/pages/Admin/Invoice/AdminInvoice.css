@@ -80,16 +80,16 @@ table{
     border-spacing: 0;
 }
 .AdminInvoice-information-header th{
-    width: 15.3vw;
+    width: 12.55vw;
     line-height: 6vh;
     text-align: center;
 }
 .AdminInvoice_detail_infor{
-    padding-top: 6vh;
+    padding-top: 8.8vh;
 }
 .AdminInvoice-information-detail{
     width: 100%;
-    padding-top: 2vh;
+    /* padding-top: 2vh; */
     display: block;
 }
 .AdminInvoice-information-detail :hover{
@@ -98,14 +98,14 @@ table{
     color: #fff;
 }
 .AdminInvoice-information-detail-wrapper td{
-    width: 14.05vw;
+    width: 11.3vw;
     line-height: 6vh;
     padding-right: 1.3vw;
     padding-bottom: 5px;
     text-align: center;
 
-    min-width: 14.05vw;
-    max-width: 14.05vw;
+    min-width: 11.3vw;
+    max-width: 11.3vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */

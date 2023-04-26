@@ -39,7 +39,9 @@ function AdminDetailInvoice(props) {
     }
   };
   const currentDate = new Date();
-  const handleConfirm = () => {
+
+  let [sanphamdaban, setSanPhamDaBan] = useState([])
+  const handleConfirm = async () => {
     if(props.data.TRANGTHAI==='Đã thanh toán') 
     {
       alert('Hóa đơn đã được thanh toán rồi')
@@ -54,11 +56,39 @@ function AdminDetailInvoice(props) {
             TRANGTHAI: 'Đã trả lại'
           })
         }
+        else 
+        sanphamdaban.push(sanphams[i])
       }
+      console.log(sanphamdaban)
       Axios.patch('http://localhost:8000/v1/hoadon/updatehoadon/'+ props.data.MAHOADON,{
         TRANGTHAI: 'Đã thanh toán',
         NGAYTHANHTOAN: currentDate.toLocaleString()
       })
+      // ---------Xử lý doanh thu tháng---------
+    const formatThang = currentDate.toLocaleString().replaceAll('/', '-').substring(12);
+    // console.log(formatNgay)
+    try {
+      const response1 = await Axios.get('http://localhost:8000/v1/baocaodtthang/getBaoCaoDTThang/' + formatThang);
+      const bct = response1.data;
+      const res = await Axios.patch(
+        'http://localhost:8000/v1/baocaodtthang/updateBaoCaoDTThang/' + formatThang,
+        {
+          DOANHTHU: bct.DOANHTHU + total[1],
+          SANPHAM: [...bct.SANPHAM, ...sanphamdaban]
+        }
+      );
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        Axios.post('http://localhost:8000/v1/baocaodtthang/themBaoCaoDTThang/', {
+          THOIGIAN: formatThang,
+          DOANHTHU: total[1],
+          SANPHAM: sanphamdaban,
+        });
+        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
+      } else {
+        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
+      }
+    }
       window.location.reload()
     }
   };

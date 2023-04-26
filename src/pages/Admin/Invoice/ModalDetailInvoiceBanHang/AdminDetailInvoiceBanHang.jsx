@@ -20,8 +20,6 @@ const getSANPHAM = async () => {
           const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon/'+ props.data.MAHOADON)
           setHoaDon(res.data);
           hoadons=res.data;
-          console.log('a',hoadons[0])
-
       }
       catch (error) {
           console.log(error.message)

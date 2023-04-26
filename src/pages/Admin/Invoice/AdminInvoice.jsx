@@ -28,7 +28,6 @@ const [hoadon, setMaHoaDon] = useState(['']);
 
 const openPopup = (mahoadon) => {
   setMaHoaDon(mahoadon);
-  console.log('a',hoadon)
   setIsOpen(true);
 };
 
@@ -67,11 +66,12 @@ const handleClick = () => {
           <div >
             <table className="AdminInvoice-information">
                 <tr className="AdminInvoice-information-header">
-                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Khách hàng <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số lượng sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Loại hóa đơn <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Khách hàng <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số lượng sản phẩm<span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Loại hóa đơn <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Ngày tạo đơn <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Trạng thái <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminInvoice_detail_infor'>
@@ -84,6 +84,7 @@ const handleClick = () => {
                                           <td>{hoadons.SDT}</td>
                                           <td>{hoadons.SOLUONG}</td>
                                           <td>{hoadons.LOAI}</td>
+                                          <td>{hoadons.NGAYTAODON}</td>
                                           <td>{hoadons.TRANGTHAI}</td>
                                           <td className='btn_deleteInvoice'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>

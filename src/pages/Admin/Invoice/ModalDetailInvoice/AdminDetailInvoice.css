@@ -49,7 +49,7 @@
     justify-content: center;
     align-items: center;
 
-    text-align: center;
+    /* text-align: center; */
 }
 .AdminDetailInvoice_Detail_Content_Date{
     display: flex;
@@ -62,6 +62,7 @@
 
     font-size: 16px;
     font-weight: 500;
+    width: 10vw;
 }
 .AdminDetailInvoice_Detail_Content_Calendar{
     background-color: transparent;
@@ -81,7 +82,7 @@
     width: fit-content;
 }
 .AdminDetailInvoice_Detail_Content_Customer{
-    margin-left: 5vw;
+    margin-left: 2vw;
 }
 .AdminDetailInvoice_Detail_ProductInf_Label{
     display: flex;
