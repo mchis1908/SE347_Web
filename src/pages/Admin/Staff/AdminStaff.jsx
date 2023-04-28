@@ -5,6 +5,7 @@ import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import Axios from "axios";
 import AdminDetailStaff from './ModalDetailStaff/AdminDetailStaff';
+import AdminAddStaff from './ModalAddStaff/ModalDetailStaff/AdminAddStaff';
 
 function AdminStaff(props) {
   let [nhanviens, setNhanVien] = useState([])
@@ -22,18 +23,26 @@ function AdminStaff(props) {
     getNV();
   }, [])
 const [isOpen, setIsOpen] = useState(false);
-
 const openPopup = () => {
   setIsOpen(true);
 };
-
 const closePopup = () => {
   setIsOpen(false);
+};
+
+const [isOpen1, setIsOpen1] = useState(false);
+const [nhanvien, setMaNhanVien] = useState(['']);
+
+const openPopup1 = (nhanviens) => {
+  setMaNhanVien(nhanviens);
+  setIsOpen1(true);
+};
+const closePopup1 = () => {
+  setIsOpen1(false);
 };
 const [isSorted, setIsSorted] = useState(false);
 const [data,setData]= useState(nhanviens)
 const [initialData,setInitialData]= useState(data)
-console.log('data',data)
 
 const sortByName = () => {
   const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
@@ -75,7 +84,7 @@ const handleClick = () => {
                   {
                     nhanviens.map(nhanviens => {
                           return (
-                                  <tr className='AdminStaff-information-detail' onClick={openPopup}>
+                                  <tr className='AdminStaff-information-detail' onClick={() => openPopup1(nhanviens)}>
                                       <div className='AdminStaff-information-detail-wrapper' >
                                           <td className='team-name'>{nhanviens.HOTEN}</td>
                                           <td className='stadium-name'>{nhanviens.SDT}</td>
@@ -90,9 +99,18 @@ const handleClick = () => {
                   }
                 </div>
                 {isOpen &&
-                  <AdminDetailStaff
+                  <AdminAddStaff
                     title="Thông tin nhân viên"
                     onClose={closePopup}
+                  >
+                    {props.children}
+                  </AdminAddStaff>
+                }
+                {isOpen1 &&
+                  <AdminDetailStaff
+                    title="Thông tin nhân viên"
+                    onClose={closePopup1}
+                    data={nhanvien}
                   >
                     {props.children}
                   </AdminDetailStaff>

@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './AdminDetailInvoice.css'
 import Axios from "axios";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 function AdminDetailInvoice(props) {
+  const handlePrint = () => {
+    const input = document.getElementById('my-html');
+  html2canvas(input).then((canvas) => {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({
+      orientation: 'landscape', // Thiết lập chiều ngang
+      unit: 'mm', // Thiết lập đơn vị đo
+      format: 'a2', // Thiết lập kích thước trang in
+    });
+    pdf.addImage(imgData, 'PNG', 0, 0);
+    pdf.save('my-pdf.pdf');
+  });
+  };
+
   let [sanphams, setSanPham] = useState([])
   const getSANPHAM = async () => {
     try {
@@ -48,7 +64,7 @@ function AdminDetailInvoice(props) {
       alert('Hóa đơn đã được thanh toán rồi')
       return
     }
-    const answer = window.confirm("Xác nhận thanh toán cho khách hàng.",);
+    const answer = window.confirm("Bạn có chắc chắn thanh toán hóa đơn cho khách hàng không.",);
     if (answer) {
       for(let i = 0; i < sanphams.length; i++) {
         if(sanphams[i].TRANGTHAI==='Chưa bán')
@@ -94,13 +110,13 @@ function AdminDetailInvoice(props) {
     }
   };
   return (
-    <div className="AdminDetailInvoice">
-      <div className="AdminDetailInvoice_modal">
+    <div className="AdminDetailInvoice" >
+      <div className="AdminDetailInvoice_modal" >
         <div className="AdminDetailInvoice_modal-header">
           <h3>{props.title}</h3>
           <button onClick={props.onClose}>X</button>
         </div>
-        <div className="AdminDetailInvoice_Bottom">
+        <div className="AdminDetailInvoice_Bottom" id="my-html">
             <div className='AdminDetailInvoice_Detail'>
               <div className='AdminDetailInvoice_Detail_Content_Date'>
                 <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Ngày lập hóa đơn: </p>
@@ -162,7 +178,7 @@ function AdminDetailInvoice(props) {
         </div>
         <div className='AdminDetailInvoice_modal_Btn_Change'>
             <button className='AdminDetailInvoice_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
-            <button className='AdminDetailInvoice_modal_Btn_Change_PrintBarcode'>In barcode sản phẩm</button>
+            <button className='AdminDetailInvoice_modal_Btn_Change_PrintBarcode' onClick={handlePrint}>In barcode sản phẩm</button>
             <button className='AdminDetailInvoice_modal_Btn_Change_Confirm' onClick={handleConfirm}>Thanh toán cho khách</button>
         </div>
       </div>

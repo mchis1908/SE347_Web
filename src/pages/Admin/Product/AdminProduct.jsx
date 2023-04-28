@@ -24,8 +24,10 @@ function AdminProduct(props) {
   }, [])
 
 const [isOpen, setIsOpen] = useState(false);
+const [sanpham, setMaSanPham] = useState(['']);
 
-const openPopup = () => {
+const openPopup = (sanphams) => {
+  setMaSanPham(sanphams);
   setIsOpen(true);
 };
 
@@ -76,7 +78,7 @@ const handleClick = () => {
                   {
                     sanphams.map(sanphams => {
                           return (
-                                  <tr className='AdminProduct-information-detail' onClick={openPopup}>
+                                  <tr className='AdminProduct-information-detail' onClick={() => openPopup(sanphams)}>
                                       <div className='AdminProduct-information-detail-wrapper'>
                                           <td >{sanphams.MASANPHAM}</td>
                                           <td >{sanphams.TENSANPHAM}</td>
@@ -91,10 +93,22 @@ const handleClick = () => {
                       })
                   }
                 </div>
-                {isOpen &&
+                {isOpen && sanpham.TRANGTHAI==='Đã bán' &&
                   <AdminDetailProduct
                     title="Chỉnh sửa sản phẩm"
                     onClose={closePopup}
+                    data={sanpham}
+                    db={true}
+                  >
+                    {props.children}
+                  </AdminDetailProduct>
+                }
+                {isOpen && sanpham.TRANGTHAI==='Chưa bán' &&
+                  <AdminDetailProduct
+                    title="Chỉnh sửa sản phẩm"
+                    onClose={closePopup}
+                    data={sanpham}
+                    db={false}
                   >
                     {props.children}
                   </AdminDetailProduct>

@@ -55,12 +55,16 @@
 }
 .AdminCustomer-information{
     width: 80vw;
-    height: 82vh;
-    overflow: auto;
+    height: 80vh;
+    overflow: hidden;
     background-color: #fff;
     
     margin-left: 4vw;
     border-radius: 10px;
+    margin-bottom: 2vh;
+}
+.AdminCustomer-information:hover{
+    overflow: auto;
 }
 .AdminCustomer-information{
     display: block;

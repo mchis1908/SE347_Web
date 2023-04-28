@@ -1,4 +1,4 @@
-.AdminDetailStaff {
+.AdminAddStaff {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,30 +10,30 @@
     justify-content: center;
     align-items: center;
   }
-.AdminDetailStaff_modal {
+.AdminAddStaff_modal {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 55vw;
-    height: 55vh;
+    height: 65vh;
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
     position: relative;
 }
-.AdminDetailStaff_modal-body {
+.AdminAddStaff_modal-body {
     display: flex;
     justify-content: center;
     align-items: center;
 
     text-align: center;
 }
-.AdminDetailStaff_modal-header{
+.AdminAddStaff_modal-header{
     text-align: center;
     margin-bottom: 3vh;
 }
-.AdminDetailStaff_modal-header button {
+.AdminAddStaff_modal-header button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -41,17 +41,17 @@
     background-color: transparent;
     cursor: pointer;
 }
-.AdminDetailStaff_modal-body-inf_label{
+.AdminAddStaff_modal-body-inf_label{
     display: block;
 }
 .Label_PropStaff+ .Label_PropStaff{
     margin-top: 22px;
 }
-.AdminDetailStaff_modal-body-inf_input{
+.AdminAddStaff_modal-body-inf_input{
     display: flex;
     flex-direction: column;
 }
-.AdminDetailStaff_modal-body-inf_label+ .AdminDetailStaff_modal-body-inf_input{
+.AdminAddStaff_modal-body-inf_label+ .AdminAddStaff_modal-body-inf_input{
     margin-left: 25px;
 }
 .Input_PropStaff{
@@ -62,12 +62,12 @@
 .Input_PropStaff+ .Input_PropStaff{
     margin-top: 15px;
 }
-.AdminDetailStaff_modal_Btn_Change{
+.AdminAddStaff_modal_Btn_Change{
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
 }
-.AdminDetailStaff_modal_Btn_Change_Cancel{
+.AdminAddStaff_modal_Btn_Change_Cancel{
     width: 10vw;
     height: 4vh;
     text-align: center;
@@ -77,7 +77,7 @@
     border-width: 0;
     border-radius: 10px;
 }
-.AdminDetailStaff_modal_Btn_Change_Confirm{
+.AdminAddStaff_modal_Btn_Change_Confirm{
     width: 10vw;
     height: 4vh;
     text-align: center;

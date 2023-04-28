@@ -72,11 +72,15 @@
     width: 80vw;
     height: fit-content;
     max-height: 78vh;
-    overflow: auto;
+    /* overflow: auto; */
+    overflow: hidden;
     background-color: #fff;
     display: block;
     
     border-radius: 10px;
+}
+.AdminSchedule-information-table:hover{
+    overflow: auto;
 }
 .AdminSchedule-information-header{
     width: 80vw;
@@ -113,9 +117,6 @@
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
     padding: 0 0.4vw;
-}
-.AdminSchedule_detail_infor{
-
 }
 /* td{
     border: solid 1px #000;

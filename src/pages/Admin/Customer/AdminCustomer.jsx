@@ -6,11 +6,9 @@ import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import AdminDetailCustomer from './ModalDetailCustomer/AdminDetailCustomer';
 import Axios from "axios";
-
-
+import AdminAddCustomer from './ModalAddCustomer/AdminAddCustomer';
 
 function AdminCustomer(props) {
-  
   let [khachhangs, setKhachHang] = useState([])
   const getSANPHAM = async () => {
       try {
@@ -26,15 +24,26 @@ function AdminCustomer(props) {
   useEffect(() => {
     getSANPHAM();
   }, [])
-const [isOpen, setIsOpen] = useState(false);
 
+const [isOpen, setIsOpen] = useState(false);
 const openPopup = () => {
   setIsOpen(true);
 };
-
 const closePopup = () => {
   setIsOpen(false);
 };
+
+const [isOpen1, setIsOpen1] = useState(false);
+const [khachhang, setMaKhachHang] = useState(['']);
+
+const openPopup1 = (khachhangs) => {
+  setMaKhachHang(khachhangs);
+  setIsOpen1(true);
+};
+const closePopup1 = () => {
+  setIsOpen1(false);
+};
+
 const [isSorted, setIsSorted] = useState(false);
 const [data,setData]= useState(khachhangs)
 const [initialData,setInitialData]= useState(data)
@@ -79,7 +88,7 @@ const handleClick = () => {
                   {
                     khachhangs.map(khachhangs => {
                           return (
-                                  <tr className='AdminCustomer-information-detail' onClick={openPopup}>
+                                  <tr className='AdminCustomer-information-detail' onClick={() => openPopup1(khachhangs)}>
                                       <div className='AdminCustomer-information-detail-wrapper'>
                                           <td>{khachhangs.HOTEN}</td>
                                           <td>{khachhangs.SDT}</td>
@@ -94,9 +103,18 @@ const handleClick = () => {
                   }
                 </div>
                 {isOpen &&
-                  <AdminDetailCustomer
+                  <AdminAddCustomer
                     title="Thông tin khách hàng"
                     onClose={closePopup}
+                  >
+                    {props.children}
+                  </AdminAddCustomer>
+                }
+                {isOpen1 &&
+                  <AdminDetailCustomer
+                    title="Chỉnh sửa thông tin khách hàng"
+                    onClose={closePopup1}
+                    data={khachhang}
                   >
                     {props.children}
                   </AdminDetailCustomer>

@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react';
 import AdminDetailInvoice from './ModalDetailInvoice/AdminDetailInvoice';
 import AdminDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/AdminDetailInvoiceBanHang';
 import Axios from "axios";
+import Barcode from '../../../common/Barcode/Barcode';
 
 function AdminInvoice(props) {
   let [hoadons, setHoaDon] = useState([])
@@ -81,6 +82,7 @@ const handleClick = () => {
                                   <tr className='AdminInvoice-information-detail' onClick={() => openPopup(hoadons)}>
                                       <div className='AdminInvoice-information-detail-wrapper'>
                                           <td>{hoadons.MAHOADON}</td>
+                                          {/* <td><Barcode style={{width:'5vw'}} value={hoadons.MAHOADON} /></td> */}
                                           <td>{hoadons.SDT}</td>
                                           <td>{hoadons.SOLUONG}</td>
                                           <td>{hoadons.LOAI}</td>

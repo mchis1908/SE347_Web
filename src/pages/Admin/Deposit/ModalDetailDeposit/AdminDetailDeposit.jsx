@@ -25,7 +25,6 @@ function AdminDetailDeposit(props) {
   setShowImage(true)
   setSelectedFile(imageURL)
   setHinhAnhSP(e.target.files[0])
-  console.log('anh',hinhanhsp)
   }
   const submitHandler = ()=>{
     if (document.getElementById('tensanpham').value === ''
@@ -65,7 +64,28 @@ function AdminDetailDeposit(props) {
           </div>
           <div className='AdminDetailDeposit_modal-body-inf_input'>
             <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' onChange={(e) => setTenSanPham(e.target.value)}></input>
-            <input className='Input_PropDeposit' id='loaisanpham' type='text' placeholder='Chọn loại sản phẩm' onChange={(e) => setLoai(e.target.value)}></input>
+            {/* <input className='Input_PropDeposit' id='loaisanpham' type='text' placeholder='Chọn loại sản phẩm' onChange={(e) => setLoai(e.target.value)}></input> */}
+            <select className='Input_PropDeposit' style={{height:'3.5vh', width:'20.5vw', borderWidth:'2px'}} id='loaisanpham' 
+              placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
+              <optgroup label="Áo">
+                <option value="Áo thun">Áo thun</option>
+                <option value="Áo sơ mi">Áo sơ mi</option>
+              </optgroup>
+              <optgroup label="Áo khoác">
+                <option value="Hoodie">Hoodie</option>
+                <option value="sJacketp2">Jacket</option>
+              </optgroup>
+              <optgroup label="Quần">
+                <option value="Quần jean">Quần jean</option>
+                <option value="Quần short">Quần short</option>
+                <option value="Quần tây">Quần tây</option>
+                <option value="Quần ống loe">Quần ống loe</option>
+              </optgroup>
+              <optgroup label="Váy">
+                <option value="Chân váy">Chân váy</option>
+                <option value="Đầm">Đầm</option>
+              </optgroup>
+            </select>
             <input className='Input_PropDeposit' id='giasanpham' type='number' placeholder='Nhập giá sản phẩm' 
             onChange={(e) => setGiaNhan(e.target.value)}></input>
           </div>

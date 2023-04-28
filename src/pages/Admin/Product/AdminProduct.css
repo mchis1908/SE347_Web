@@ -56,15 +56,16 @@
 .AdminProduct-information{
     width: 80vw;
     height: 80vh;
-    overflow: auto;
+    overflow: hidden;
     background-color: #fff;
     
     margin-left: 4vw;
     border-radius: 10px;
     margin-bottom: 2vh;
-}
-.AdminProduct-information{
     display: block;
+}
+.AdminInvoice-information:hover{
+    overflow: auto;
 }
 .AdminProduct-information-header{
     width: 80vw;

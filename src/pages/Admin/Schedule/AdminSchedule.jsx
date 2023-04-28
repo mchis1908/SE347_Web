@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react';
 import Axios from "axios";
 import { DatePicker } from 'antd';
 import moment from 'moment';
+import Barcode from '../../../common/Barcode/Barcode';
 
 function AdminSchedule(props) {
   let [nhanviens, setNhanVien] = useState([])
@@ -201,6 +202,7 @@ function AdminSchedule(props) {
                   ))}
                 </div>
             </table>
+            {/* <Barcode value="cmxcaamnczzc1321" /> */}
           </div>
       </div>
     </div>
