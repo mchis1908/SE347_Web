@@ -42,7 +42,9 @@ useEffect(() => {
 }, [])
 
 let [sanphams, setSanPham] = useState([])
+
 const currentDate = new Date();
+const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
 
 const handleConfirm = async () => {
   if (document.getElementById('sdtkhachhang').value === '') {
@@ -63,7 +65,7 @@ const handleConfirm = async () => {
       SOLUONG: sanphams.length,
       LOAI: loaihoadon,
       TRANGTHAI: trangthaiHD,
-      NGAYTAODON: currentDate.toLocaleString()
+      NGAYTAODON: currentDate.toLocaleString('en-AU', options)
     })
     sanphams.map(sanphams =>{
       const gianhan= sanphams.GIANHAN;
@@ -79,12 +81,12 @@ const handleConfirm = async () => {
     })
     Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
     {
-      LANDENGANNHAT: currentDate.toLocaleString()
+      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options)
     })
     // ---------Xử lý sản phẩm NGÀY---------
     // ---------Xử lý sản phẩm THÁNG---------
-    const formatNgay = currentDate.toLocaleString().replaceAll('/', '-').substring(9);
-    const formatThang = currentDate.toLocaleString().replaceAll('/', '-').substring(12);
+    const formatNgay = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(0,10);
+    const formatThang = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(3,10);
     // console.log(formatNgay)
     try {
       const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgay/' + formatNgay);
@@ -182,7 +184,7 @@ const handleSearch = () => {
                 id='sdtkhachhang'
                 options={khachhangs}
                 style={{marginLeft:'4vw', width:'30vw'}}
-                getOptionLabel={(option) => option.SDT}
+                getOptionLabel={(option) => `${option.SDT} - ${option.HOTEN}`}
                 renderInput={(params) => <TextField {...params} label="Khách Hàng" size="small" />}
                 onSelect={(e)=> {setSDTKhachHang(e.target.value)}}
               />

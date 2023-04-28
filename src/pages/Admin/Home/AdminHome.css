@@ -159,7 +159,8 @@
 .CustomerRecent_Name{
     flex:3;
     margin-left: 20px;
-    max-width: 6.5vw;
+    width: 9vw;
+    max-width: 9vw;
 
     text-align: center;
     margin-top: 7px;
@@ -170,7 +171,7 @@
 }
 .CustomerRecent_Phone{
     margin-top: 7px;
-    margin-right: 5px;
+    margin-left: 2vw;
 }
 .CustomerRecent_ViewMore{
     margin-top: 10px;

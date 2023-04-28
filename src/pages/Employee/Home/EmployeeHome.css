@@ -127,7 +127,7 @@
     display:inline;
 
 }
-.EmployeeHome_CustomerRecent{
+/* .EmployeeHome_CustomerRecent{
     padding: 20px;
 }
 .CustomerRecent_Label{
@@ -164,9 +164,9 @@
     margin-top: 7px;
 
     white-space: nowrap;
-    overflow: hidden; /* ẩn phần vượt quá khung */
-    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-}
+    overflow: hidden;
+    text-overflow: ellipsis;
+} */
 .CustomerRecent_Phone{
     margin-top: 7px;
     margin-right: 5px;

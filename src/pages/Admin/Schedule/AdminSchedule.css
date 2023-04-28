@@ -59,17 +59,24 @@
     cursor:pointer;
 }
 .AdminSchedule-information{
+    background-color: #EDEDED;
     width: 80vw;
-    height: 80vh;
-    overflow: auto;
-    background-color: #fff;
+    height: 78vh;
+    display: flex;
     
     margin-left: 4vw;
+    margin-top: 2vh;
     margin-bottom: 2vh;
-    border-radius: 10px;
 }
-.AdminSchedule-information{
+.AdminSchedule-information-table{
+    width: 80vw;
+    height: fit-content;
+    max-height: 78vh;
+    overflow: auto;
+    background-color: #fff;
     display: block;
+    
+    border-radius: 10px;
 }
 .AdminSchedule-information-header{
     width: 80vw;
@@ -106,6 +113,9 @@
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
     padding: 0 0.4vw;
+}
+.AdminSchedule_detail_infor{
+
 }
 /* td{
     border: solid 1px #000;

@@ -38,8 +38,9 @@ function AdminDetailInvoice(props) {
       total[2]+=sanphams[i].TIENKHACHNHAN;
     }
   };
-  const currentDate = new Date();
 
+  const currentDate = new Date();
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
   let [sanphamdaban, setSanPhamDaBan] = useState([])
   const handleConfirm = async () => {
     if(props.data.TRANGTHAI==='Đã thanh toán') 
@@ -62,10 +63,10 @@ function AdminDetailInvoice(props) {
       console.log(sanphamdaban)
       Axios.patch('http://localhost:8000/v1/hoadon/updatehoadon/'+ props.data.MAHOADON,{
         TRANGTHAI: 'Đã thanh toán',
-        NGAYTHANHTOAN: currentDate.toLocaleString()
+        NGAYTHANHTOAN: currentDate.toLocaleString('en-AU', options)
       })
       // ---------Xử lý doanh thu tháng---------
-    const formatThang = currentDate.toLocaleString().replaceAll('/', '-').substring(12);
+    const formatThang = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(3,10);
     // console.log(formatNgay)
     try {
       const response1 = await Axios.get('http://localhost:8000/v1/baocaodtthang/getBaoCaoDTThang/' + formatThang);

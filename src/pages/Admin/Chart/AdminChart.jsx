@@ -9,16 +9,15 @@ import { DatePicker } from 'antd';
 import Axios from "axios";
 
 function AdminChart() {
-  const today = moment().format('DD-M-YYYY');
+  const today = moment().format('DD-MM-YYYY');
   const today1 = moment().format('YYYY');
-  // console.log(today1)
-  const today2 = moment().format('M-YYYY');
-  // console.log(today2)
-  const [ngay, setNgay] = useState(moment().format('DD-M-YYYY'))
+  const today2 = moment().format('MM-YYYY');
+  const [ngay, setNgay] = useState(moment().format('DD-MM-YYYY'))
   const [namdt, setNamDT] = useState(moment().format('YYYY'))
-  const [thangsp, setThangSP] = useState(moment().format('M-YYYY'))
-  const [dayinmonth, setDayInMonth] = useState(moment(thangsp, 'M-YYYY').daysInMonth())
-  const data1 = {
+  const [thangsp, setThangSP] = useState(moment().format('MM-YYYY'))
+  const [dayinmonth, setDayInMonth] = useState(moment(thangsp, 'MM-YYYY').daysInMonth())
+  // console.log('n',dayinmonth)
+  const [data1, setData1] = useState({
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August', 'September', 'October', 'November', 'December'],
     datasets: [
       {
@@ -34,7 +33,70 @@ function AdminChart() {
         backgroundColor: 'rgb(255, 119, 119, 0.5)',
       },
     ],
-  };
+  });
+
+  const getdata1 = async () => {
+    const arr = Array.from({ length: parseInt(dayinmonth) }, (_, index) => index+1);
+    const arr1 = Array(parseInt(dayinmonth)).fill(0);
+    const arr2 = Array(parseInt(dayinmonth)).fill(0);
+    try {
+      const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgaybyMMYY/' + today2);
+      const bcn = response.data;
+      for (let i = 0; i< bcn.length; i++) {
+        let str= bcn[i].THOIGIAN.split("-")[0];
+        arr1[parseInt(str)-1]=bcn[i].SLSANPHAMNHAN;
+        arr2[parseInt(str)-1]=bcn[i].SLSANPHAMBAN;
+      }
+      const newData = {
+        labels: arr,
+        datasets: [
+          {
+            label: 'Sản phẩm bán được',
+            data: arr1,
+            borderColor: 'rgba(6, 170, 171)',
+            backgroundColor: 'rgba(6, 170, 171, 0.5)',
+          },
+          {
+            label: 'Sản phẩm nhận ký gửi',
+            data: arr2,
+            borderColor: 'rgb(255, 119, 119)',
+            backgroundColor: 'rgb(255, 119, 119, 0.5)',
+          },
+        ],
+      };
+      setData1(newData);
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        await Axios.post('http://localhost:8000/v1/baocaospngay/themBaoCaoSPNgay/', {
+          THOIGIAN: today,
+          SLSANPHAMNHAN: 0,
+          SLSANPHAMBAN: 0,
+        });
+        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
+        const newData = {
+          labels: arr,
+          datasets: [
+            {
+              label: 'Sản phẩm bán được',
+              data: arr1,
+              borderColor: 'rgba(6, 170, 171)',
+              backgroundColor: 'rgba(6, 170, 171, 0.5)',
+            },
+            {
+              label: 'Sản phẩm nhận ký gửi',
+              data: arr2,
+              borderColor: 'rgb(255, 119, 119)',
+              backgroundColor: 'rgb(255, 119, 119, 0.5)',
+            },
+          ],
+        };
+        setData1(newData);
+      } else {
+        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
+      }
+    }
+  }
+
   const [data2, setData2] = useState({
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August', 'September', 'October', 'November', 'December'],
     datasets: [
@@ -47,7 +109,7 @@ function AdminChart() {
       }
     ]
   });
-  console.log('chi1',data2)
+
   const getdata2 = async () => {
     try {
       const response = await Axios.get('http://localhost:8000/v1/baocaodtthang/getBaoCaoDTThangbyyear/' + today1);
@@ -154,6 +216,47 @@ function AdminChart() {
     }
   }
 
+  const handleSPThang = async (dateString) => {
+    if (dateString !== '') {
+      
+      try {
+        const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgaybyMMYY/' + dateString);
+        const bcn = response.data;
+        const arr = Array.from({ length: parseInt(dayinmonth) }, (_, index) => index+1);
+        const arr1 = Array(parseInt(dayinmonth)).fill(0);
+        const arr2 = Array(parseInt(dayinmonth)).fill(0);
+        for (let i = 0; i< bcn.length; i++) {
+          let str= bcn[i].THOIGIAN.split("-")[0];
+          arr1[parseInt(str)-1]=bcn[i].SLSANPHAMNHAN;
+          arr2[parseInt(str)-1]=bcn[i].SLSANPHAMBAN;
+        }
+        const newData = {
+          labels: arr,
+          datasets: [
+            {
+              label: 'Sản phẩm bán được',
+              data: arr1,
+              borderColor: 'rgba(6, 170, 171)',
+              backgroundColor: 'rgba(6, 170, 171, 0.5)',
+            },
+            {
+              label: 'Sản phẩm nhận ký gửi',
+              data: arr2,
+              borderColor: 'rgb(255, 119, 119)',
+              backgroundColor: 'rgb(255, 119, 119, 0.5)',
+            },
+          ],
+        };
+        setData1(newData);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+            alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+            setNgay(today)
+        }
+      }
+    }
+  };
+
   const handleSPNgay = async (dateString) => {
     if (dateString !== '') {
       try {
@@ -178,8 +281,8 @@ function AdminChart() {
           setData3(newData);
       } catch (error) {
           if (error.response && error.response.status === 404) {
-              alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
-              setNgay(today)
+            alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+            setNgay(today)
           }
       }
     }
@@ -210,13 +313,13 @@ function AdminChart() {
         };
         if(myArray === [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) {
           alert('Chưa có dữ liệu. Vui lòng chọn năm khác.');
-          window.location.reload();
+          // window.location.reload();
         }
         setData2(newData);
         } catch (error) {
           if (error.response && error.response.status === 404) {
-              alert('Chưa có dữ liệu. Vui lòng chọn năm khác.');
-              window.location.reload();
+            alert('Chưa có dữ liệu. Vui lòng chọn năm khác.');
+            // window.location.reload();
           }
       }
     }
@@ -231,10 +334,16 @@ function AdminChart() {
 
     if (namdt) {
       handleDTThang(namdt);
-  } else {
-      getdata2();
-  }
-  }, [ngay, namdt]);
+    } else {
+        getdata2();
+    }
+
+    if (thangsp) {
+      handleSPThang(thangsp);
+    } else {
+        getdata1();
+    }
+  }, [ngay, namdt, thangsp]);
 
   const options = {
     responsive: true,
@@ -253,16 +362,16 @@ function AdminChart() {
                 <p className='Chart_LabelDay' style={{color:'#35a2eb'}}>Tháng:</p>
                 <DatePicker
                   style={{ width: '8vw', height: '3vh', marginLeft: '1vw' }}
-                  format="M-YYYY"
+                  format="MM-YYYY"
                   picker='month'
                   allowClear={true}
                   defaultValue={moment()}
-                  value={thangsp ? moment(thangsp, 'M-YYYY') : null}
+                  value={thangsp ? moment(thangsp, 'MM-YYYY') : null}
                   onChange={(date, dateString) => {
                     setThangSP(dateString);
-                    setDayInMonth(moment(dateString, 'M-YYYY').daysInMonth())
-                    console.log('Tháng:', dateString);
-                    console.log('Tháng có:', dayinmonth);
+                    const numOfDays = moment(dateString, 'MM-YYYY').daysInMonth();
+                    setDayInMonth(numOfDays);
+                    handleSPThang(dateString);
                   }}
                 />
               </div>
@@ -300,10 +409,10 @@ function AdminChart() {
               <div className='ProductPercents_Label'>Số sản phẩm ngày: </div>
               <DatePicker
                 style={{ width: '8vw', height: '3vh', marginLeft: '1vw' }}
-                format="DD-M-YYYY"
+                format="DD-MM-YYYY"
                 allowClear={true}
                 defaultValue={moment()}
-                value={ngay ? moment(ngay, 'DD-M-YYYY') : null}
+                value={ngay ? moment(ngay, 'DD-MM-YYYY') : null}
                 onChange={(date, dateString) => {
                   setNgay(dateString);
                   console.log('Ngày:', dateString);
