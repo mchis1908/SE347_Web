@@ -41,21 +41,21 @@ const getSANPHAM = async () => {
       <div className="AdminDetailInvoiceBanHang_modal">
         <div className="AdminDetailInvoiceBanHang_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
+          <button className='button-exit' onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailInvoiceBanHang_Bottom">
             <div className='AdminDetailInvoiceBanHang_Detail'>
               <div className='AdminDetailInvoiceBanHang_Detail_Content_Date'>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Ngày lập hóa đơn: </p>
-                <p className='AdminDetailInvoiceBanHang_Detail_Content_Calendar'>{hoadons[0].NGAYTAODON}</p>
+                <p className='AdminDetailInvoiceBanHang_Detail_Content_Calendar'>{hoadons.NGAYTAODON}</p>
               </div>
               <div className='AdminDetailInvoiceBanHang_Detail_Content_Date'>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Khách hàng: </p>
-                <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons[0].SDT}</p>
+                <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons.SDT}</p>
               </div>
               <div className='AdminDetailInvoiceBanHang_Detail_Content_Date'>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Mã hóa đơn: </p>
-                <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons[0].MAHOADON}</p>
+                <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons.MAHOADON}</p>
               </div>
               <div className='AdminDetailInvoiceBanHang_ProductInf'>
                 <td style={{fontWeight:'500'}}>Hình ảnh</td>

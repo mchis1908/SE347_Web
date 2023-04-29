@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
+import { useReactToPrint } from 'react-to-print';
 import './AdminDetailInvoice.css'
 import Axios from "axios";
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 function AdminDetailInvoice(props) {
-  const handlePrint = () => {
-    const input = document.getElementById('my-html');
-  html2canvas(input).then((canvas) => {
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF({
-      orientation: 'landscape', // Thiết lập chiều ngang
-      unit: 'mm', // Thiết lập đơn vị đo
-      format: 'a2', // Thiết lập kích thước trang in
-    });
-    pdf.addImage(imgData, 'PNG', 0, 0);
-    pdf.save('my-pdf.pdf');
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
   });
-  };
 
   let [sanphams, setSanPham] = useState([])
   const getSANPHAM = async () => {
@@ -64,7 +54,7 @@ function AdminDetailInvoice(props) {
       alert('Hóa đơn đã được thanh toán rồi')
       return
     }
-    const answer = window.confirm("Bạn có chắc chắn thanh toán hóa đơn cho khách hàng không.",);
+    const answer = window.confirm("Bạn có chắc chắn trả tiền cho khách hàng. Cửa hàng sẽ nhận được hoa hồng cho từng sản phẩm đã bán. Vui lòng xác nhận với khách hàng lại một lần nữa",);
     if (answer) {
       for(let i = 0; i < sanphams.length; i++) {
         if(sanphams[i].TRANGTHAI==='Chưa bán')
@@ -114,25 +104,26 @@ function AdminDetailInvoice(props) {
       <div className="AdminDetailInvoice_modal" >
         <div className="AdminDetailInvoice_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
+          <button className='button-exit' onClick={props.onClose}>X</button>
         </div>
-        <div className="AdminDetailInvoice_Bottom" id="my-html">
+        <div className="AdminDetailInvoice_Bottom">
+          <div ref={componentRef}>
             <div className='AdminDetailInvoice_Detail'>
               <div className='AdminDetailInvoice_Detail_Content_Date'>
                 <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Ngày lập hóa đơn: </p>
-                <p className='AdminDetailInvoice_Detail_Content_Calendar'>{hoadons[0].NGAYTAODON}</p>
+                <p className='AdminDetailInvoice_Detail_Content_Calendar'>{hoadons.NGAYTAODON}</p>
               </div>
               <div className='AdminDetailInvoice_Detail_Content_Date'>
                 <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Ngày thanh toán: </p>
-                <p className='AdminDetailInvoice_Detail_Content_Calendar'>{hoadons[0].NGAYTHANHTOAN}</p>
+                <p className='AdminDetailInvoice_Detail_Content_Calendar'>{hoadons.NGAYTHANHTOAN}</p>
               </div>
               <div className='AdminDetailInvoice_Detail_Content_Date'>
                 <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Khách hàng: </p>
-                <p className='AdminDetailInvoice_Detail_Content_Customer'>{hoadons[0].SDT}</p>
+                <p className='AdminDetailInvoice_Detail_Content_Customer'>{hoadons.SDT}</p>
               </div>
               <div className='AdminDetailInvoice_Detail_Content_Date'>
                 <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Mã hóa đơn:</p>
-                <p className='AdminDetailInvoice_Detail_Content_Customer'>{hoadons[0].MAHOADON}</p>
+                <p className='AdminDetailInvoice_Detail_Content_Customer'>{hoadons.MAHOADON}</p>
               </div>
               <div className='AdminDetailInvoice_ProductInf'>
                 <td style={{fontWeight:'500', fontSize:'16px'}}>Hình ảnh</td>
@@ -143,7 +134,7 @@ function AdminDetailInvoice(props) {
                 <td style={{fontWeight:'500', fontSize:'16px'}}>Hoa hồng</td>
                 <td style={{fontWeight:'500', fontSize:'16px'}}>Số tiền nhận</td>
               </div>
-            <div className='AdminDetailInvoice_ProductList'>
+            <div className='AdminDetailInvoice_ProductList' >
               {
                 sanphams.map((sanphams,index) => {
                     return (
@@ -174,13 +165,16 @@ function AdminDetailInvoice(props) {
                 <td style={{fontWeight:'500', fontSize:'16px'}}>{total[2]}</td>
               </div>     
             </div> 
+            </div>
           {/* -------------------------------------------------------------- */}
-        </div>
-        <div className='AdminDetailInvoice_modal_Btn_Change'>
+          <div className='AdminDetailInvoice_modal_Btn_Change'>
             <button className='AdminDetailInvoice_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
-            <button className='AdminDetailInvoice_modal_Btn_Change_PrintBarcode' onClick={handlePrint}>In barcode sản phẩm</button>
-            <button className='AdminDetailInvoice_modal_Btn_Change_Confirm' onClick={handleConfirm}>Thanh toán cho khách</button>
+            <button className='AdminDetailInvoice_modal_Btn_Change_PrintInvoice' onClick={handlePrint}>In hóa đơn</button>
+            {/* <button className='AdminDetailInvoice_modal_Btn_Change_PrintBarcode' onClick={handlePrint}>In barcode sản phẩm</button> */}
+            <button className='AdminDetailInvoice_modal_Btn_Change_Confirm' onClick={handleConfirm} style={{display: props.db ? 'none' : 'block'}}>Thanh toán cho khách</button>
+          </div>
         </div>
+        
       </div>
     </div>
   )

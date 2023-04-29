@@ -100,6 +100,7 @@ const handleClick = () => {
                     title="CHI TIẾT HÓA ĐƠN KÝ GỬI"
                     onClose={closePopup}
                     data={hoadon}
+                    db={false}
                   >
                     {props.children}
                   </AdminDetailInvoice>

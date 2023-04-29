@@ -64,7 +64,7 @@
     margin-bottom: 2vh;
     display: block;
 }
-.AdminInvoice-information:hover{
+.AdminProduct-information:hover{
     overflow: auto;
 }
 .AdminProduct-information-header{

@@ -8,6 +8,8 @@ import cryptoRandomString from 'crypto-random-string';
 import {Autocomplete}  from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Axios from "axios";
+import AdminDepositPrintBarcode from './ModalPrintBarcode/AdminDepositPrintBarcode';
+import AdminDetailInvoice from '../Invoice/ModalDetailInvoice/AdminDetailInvoice';
 
 function AdminDeposit(props) {
 const [khachhang, setSDTKhachHang] = useState()
@@ -43,19 +45,19 @@ useEffect(() => {
 }, [])
 
 const [isOpen, setIsOpen] = useState(false);
-
 const openPopup = () => {
   setIsOpen(true);
 };
-
 const closePopup = () => {
   setIsOpen(false);
 };
+
 const [showNotSuccess, setShowNotSuccess] = useState(true);
 const [showSuccess, setShowSuccess] = useState(false);
 
 const currentDate = new Date();
 const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+const [firsthd, setFirsthd] = useState()
 const handleConfirm = async () => {
   if (document.getElementById('sdtkhachhang').value === '') {
       alert('Vui lòng nhập thông tin khách hàng')
@@ -66,8 +68,9 @@ const handleConfirm = async () => {
     return
   }
   const answer = window.confirm("Bạn có chắc chắn tạo hóa đơn",);
+  const randommahoadon = cryptoRandomString({ length: 16 });
+  setFirsthd(randommahoadon);
   if (answer) {
-    const randommahoadon = cryptoRandomString({ length: 16 });
     try{
       Axios.post('http://localhost:8000/v1/hoadon/themhoadon', 
       {
@@ -147,14 +150,37 @@ const handleCancel = () => {
   else{
     const answer = window.confirm("Bạn có chắc chắn hủy tạo hóa đơn. Tất cả sản phẩm trong đơn sẽ bị xóa.",);
     if (answer) {
-      Axios.delete('http://localhost:8000/v1/sanpham/deletesanphambymahd/'+'001d30009ff71de813521e7b')
+      Axios.delete('http://localhost:8000/v1/sanpham/deletesanphambymahdkg/'+'001d30009ff71de813521e7b')
       setShowNotSuccess(true);
       setShowSuccess(false);
       window.location.reload()
     }
   }
- 
 };
+
+const [isOpen1, setIsOpen1] = useState(false);
+const [allsanpham, setAllSanPham] = useState([''])
+const openPopup1 = async() => {
+  console.log(firsthd)
+  const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanphambymakygui/'+ firsthd)
+  setAllSanPham(res.data);
+  setIsOpen1(true);
+};
+const closePopup1 = () => {
+  setIsOpen1(false);
+};
+
+const [isOpen2, setIsOpen2] = useState(false);
+const [hoadon, setMaHoaDon] = useState([''])
+const openPopup2 = async() => {
+  const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon/'+ firsthd)
+  setMaHoaDon(res.data);
+  setIsOpen2(true); 
+};
+const closePopup2 = () => {
+  setIsOpen2(false);
+};
+
 const calculateTotal = () => {
   let total =0;
   for(let i = 0; i < sanphams.length; i++) {
@@ -221,8 +247,27 @@ return (
             <div className='AdminDeposit_btnChange'>
               {showSuccess && (
                 <>
-                  <button className='AdminDeposit_btnPrintProduct'>In barcode sản phẩm</button>
-                  <button className='AdminDeposit_btnPrintInvoice'>In hóa đơn khách hàng</button>
+                  <button className='AdminDeposit_btnPrintProduct' onClick={openPopup1}>In barcode sản phẩm</button>
+                  {isOpen1 && 
+                    <AdminDepositPrintBarcode
+                      title="In Barcode Sản Phẩm"
+                      onClose={closePopup1}
+                      data={allsanpham}
+                      db={true}
+                    >
+                      {props.children}
+                    </AdminDepositPrintBarcode>
+                  }
+                  <button className='AdminDeposit_btnPrintInvoice' onClick={openPopup2}>In hóa đơn khách hàng</button>
+                  {isOpen2 &&
+                    <AdminDetailInvoice
+                      title="Thêm sản phẩm"
+                      onClose={closePopup2}
+                      data={hoadon}
+                    >
+                      {props.children}
+                    </AdminDetailInvoice>
+                  }
                   <button className='AdminDeposit_btnComplete' onClick={handleComplete}>Hoàn tất</button>
                 </>
               )}
@@ -239,6 +284,16 @@ return (
                     </AdminDetailDeposit>
                   }
                   <button className='AdminDeposit_btnConfirm' onClick={handleConfirm}>Xác nhận tạo hóa đơn</button>
+                  {/* <button className='AdminDeposit_btnConfirm' onClick={openPopup1}>test</button>
+                  {isOpen1 && 
+                    <AdminDepositPrintBarcode
+                      title="In Barcode Sản Phẩm"
+                      onClose={closePopup1}
+                      data={allsanpham}
+                    >
+                      {props.children}
+                    </AdminDepositPrintBarcode>
+                  } */}
                 </>
               )}
             </div>

@@ -26,13 +26,21 @@
     text-align: center;
     margin-bottom: 3vh;
 }
-.AdminDetailInvoiceBanHang_modal-header button {
+.AdminDetailInvoiceBanHang_modal-header .button-exit {
     position: absolute;
     top: 10px;
     right: 10px;
     border: none;
-    background-color: transparent;
+    background-color: #977555;
+    color:white;
     cursor: pointer;
+    height: 30px;
+    width: 30px;
+
+    border-radius: 10px;
+}
+.AdminDetailInvoiceBanHang_modal-header .button-exit:hover {
+    background-color: #FF5C5C;
 }
 .AdminDetailInvoiceBanHang_modal_Btn_Change{
     margin-top: 6vh;

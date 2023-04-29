@@ -69,13 +69,13 @@ const handleConfirm = async () => {
     })
     sanphams.map(sanphams =>{
       const gianhan= sanphams.GIANHAN;
-      const hoahong= thamso[0].GIATRITHAMSO;
+      const hoahong= Math.round(gianhan * thamso[0].GIATRITHAMSO);
       const idproduct= sanphams.MASANPHAM;
       Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+idproduct, 
       {
         TRANGTHAI: 'Đã bán',
-        HOAHONG: gianhan*hoahong,
-        TIENKHACHNHAN: gianhan-gianhan*hoahong,
+        HOAHONG: hoahong,
+        TIENKHACHNHAN: gianhan-hoahong,
         MAHOADONBH: randommahoadon
       })
     })

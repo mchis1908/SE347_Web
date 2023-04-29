@@ -1,0 +1,105 @@
+.AdminDepositPrintBarcode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.AdminDepositPrintBarcode_modal {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 80vw;
+    height: 90vh;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    position: relative;
+}
+.AdminDepositPrintBarcode_modal-body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2vw;
+    overflow: visible !important;
+}
+.AdminDepositPrintBarcode_modal-header{
+    text-align: center;
+    margin-bottom: 3vh;
+}
+.AdminDepositPrintBarcode_modal-header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 2vw;
+    border: none;
+    cursor: pointer;
+    color:rgb(65, 81, 81)
+}
+.AdminDepositPrintBarcode_inf{
+    height: fit-content;
+    min-height: 65vh;
+    background-color: #fff;
+    
+    margin-bottom: 2vh;
+}
+.AdminDepositPrintBarcode_modal-body-header th{
+    width: fit-content;
+    line-height: 5vh;
+    text-align: center;
+    max-width: 25vw;
+    min-width: 25vw;
+}
+.AdminDepositPrintBarcode-information-detail{
+    display: block;
+}
+.AdminDepositPrintBarcode_modal-body-inf{
+    flex-direction: column;
+}
+.AdminDepositPrintBarcode_modal-body-inf td{
+    width: fit-content;
+    text-align: center;
+
+    max-width: 25vw;
+    min-width: 25vw;
+}
+.AdminDepositPrintBarcode_modal_Btn_Change{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+.AdminDepositPrintBarcode_modal_Btn_Change_Cancel{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#152737 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.AdminDepositPrintBarcode_modal_Btn_Change_Confirm{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#249a42 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+button:hover{
+    background-color:#977555 ;
+    color: #fff;
+    cursor: pointer;
+}
+
+.AdminDepositPrintBarcode th , .AdminDepositPrintBarcode td{
+    border: 1px solid #000;
+}

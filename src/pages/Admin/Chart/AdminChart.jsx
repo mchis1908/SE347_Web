@@ -274,7 +274,7 @@ function AdminChart() {
                   hoverOffset: 4
               }]
           };
-          if(bcn.SLSANPHAMNHAN===0 || bcn.SLSANPHAMBAN===0) {
+          if(bcn.SLSANPHAMNHAN===0 && bcn.SLSANPHAMBAN===0) {
             alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
             setNgay(today)
           }
