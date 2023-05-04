@@ -20,6 +20,7 @@ import EmployeePay from './pages/Employee/Pay/EmployeePay';
 import EmployeeProduct from './pages/Employee/Product/EmployeeProduct';
 import EmployeeCustomer from './pages/Employee/Customer/EmployeeCustomer';
 import EmployeeInvoice from './pages/Employee/Invoice/EmployeeInvoice';
+import AdminReport from './pages/Admin/Report/AdminReport';
 
 function App() {
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,7 +41,7 @@ function App() {
         <Route exact path="/admin/chart" element={<AdminChart/>}/>
         <Route exact path="/admin/account" element={<AdminAccount/>}/>
         <Route exact path="/admin/schedule" element={<AdminSchedule/>}/>
-        <Route exact path="/admin/report" element={<AdminAccount/>}/>
+        <Route exact path="/admin/report" element={<AdminReport/>}/>
         {/* -----Employee----- */}
         <Route exact path="/employee/home" element={<EmployeeHome/>}/>
         <Route exact path="/employee/customer" element={<EmployeeCustomer/>}/>

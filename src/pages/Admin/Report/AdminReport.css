@@ -1,0 +1,16 @@
+.AdminReport_main{
+    position: absolute;
+    top : 8vh;
+    left : 12vw;
+    width : 88vw;
+    height : 100vh;
+    background-color: #EDEDED;
+    color: rgb(0, 0, 0);
+}
+
+.AdminReport_information{
+    position: absolute;
+    width : 88vw;
+    height : 92vh;
+    background-color: #EDEDED;
+}
