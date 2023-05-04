@@ -4,7 +4,7 @@ import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import Axios from "axios";
-import { DatePicker } from 'antd';
+import { Alert, DatePicker } from 'antd';
 import moment from 'moment';
 import Barcode from '../../../common/Barcode/Barcode';
 
@@ -25,7 +25,22 @@ function AdminSchedule(props) {
       const res = await Axios.get('http://localhost:8000/v1/thoigianlamviec/getThoiGianLamViecbyTG/'+ moment().format('MM-YYYY'))
       setThoiGianLamViec(res.data[0].LAMVIEC);
     } catch (error) {
-      console.log(error.message)
+      const newData = [];
+      for (let i = 0; i < dayInMonth; i++) {
+        const arr = tableData.map((item) => {
+            return {
+              gio: item.gio[i]||0, // Lấy giá trị thứ i trong mảng gio
+              sdt: item.sdt,
+            };
+        });
+        newData.push(arr);
+      }
+      console.log('a',newData)
+      Axios.post('http://localhost:8000/v1/thoigianlamviec/themThoiGianLamViec/', {
+        THOIGIAN: thang,
+        LAMVIEC: newData
+      });
+      window.location.reload()
     }
   }
   const [thang, setThang] = useState(moment().format('MM-YYYY'))
@@ -68,7 +83,7 @@ function AdminSchedule(props) {
     }
     let s=0;
     for(let i = 0; i < tableData.length; i++) {
-      s+=data.gio[i]||0;
+      s += Number(data.gio[i]) || 0;
     }
     return s;
   };
@@ -100,7 +115,7 @@ function AdminSchedule(props) {
     setGioLamViec(sdt, index, newValue, setTableData);
   };
 
-  const handleSave = () => {
+  const handleSave = async() => {
     const newData = [];
     for (let i = 0; i < dayInMonth; i++) {
       const arr = tableData.map((item) => {
@@ -112,10 +127,11 @@ function AdminSchedule(props) {
       newData.push(arr);
     }
     console.log('a',newData)
-    Axios.post('http://localhost:8000/v1/thoigianlamviec/themThoiGianLamViec/', {
-      THOIGIAN: thang,
+    console.log('a',thang)
+    await Axios.patch('http://localhost:8000/v1/thoigianlamviec/updateThoiGianLamViec/' + thang , {
       LAMVIEC: newData
     });
+    alert('Lưu thay đổi thành công')
   };
   // Tạo mảng dữ liệu cho bảng
   const createTableData = (thoigianlamviec) => {
@@ -151,8 +167,6 @@ function AdminSchedule(props) {
     }catch (error) {
       if (error.response && error.response.status === 404) {
         setThoiGianLamViec([]);
-        // alert('Chưa có dữ liệu. Vui lòng chọn thời gian khác.');
-        // window.location.reload();
       }
     }
     }
