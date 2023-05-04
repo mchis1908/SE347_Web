@@ -10,6 +10,7 @@ import Barcode from '../../../common/Barcode/Barcode';
 
 function AdminInvoice(props) {
   let [hoadons, setHoaDon] = useState([])
+  const [searchkey, setSearchKey] = useState('')
   const getHoaDon = async () => {
       try {
           const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon')
@@ -22,8 +23,9 @@ function AdminInvoice(props) {
       }
   }
   useEffect(() => {
-    getHoaDon();
-  }, [])
+    if(searchkey) handleSearch(searchkey)
+    else getHoaDon();
+  }, [searchkey])
 const [isOpen, setIsOpen] = useState(false);
 const [hoadon, setMaHoaDon] = useState(['']);
 
@@ -55,14 +57,21 @@ const handleClick = () => {
     sortByName();
   }
 };
+const handleSearch = async(sk) => {
+  if(sk!=='')
+  {
+      const res = await Axios.get('http://localhost:8000/v1/hoadon/searchhoadon/'+ sk)
+      setHoaDon(res.data);
+  }
+};
   return (
     <div className='AdminInvoice'>
       <Menu/>
       <Header title="QUẢN LÝ HÓA ĐƠN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminInvoice_main'>
         <div className='AdminInvoice_searchbar'>
-          <input className="search-area" type="text" placeholder='Nhập hóa đơn cần tìm'/>
-          <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <input className="search-area" type="text" placeholder='Nhập khách hàng hoặc mã hóa đơn cần tìm' onChange={(e)=> setSearchKey(e.target.value)}/>
+          {/* <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span> */}
         </div>
           <div >
             <table className="AdminInvoice-information">
@@ -78,12 +87,14 @@ const handleClick = () => {
                 <div className='AdminInvoice_detail_infor'>
                   {
                     hoadons.map(hoadons => {
+                      const arr = hoadons.SDT.split('-');
+                      const result = arr[1];
                           return (
                                   <tr className='AdminInvoice-information-detail' onClick={() => openPopup(hoadons)}>
                                       <div className='AdminInvoice-information-detail-wrapper'>
                                           <td>{hoadons.MAHOADON}</td>
                                           {/* <td><Barcode style={{width:'5vw'}} value={hoadons.MAHOADON} /></td> */}
-                                          <td>{hoadons.SDT}</td>
+                                          <td>{result}</td>
                                           <td>{hoadons.SOLUONG}</td>
                                           <td>{hoadons.LOAI}</td>
                                           <td>{hoadons.NGAYTAODON}</td>

@@ -18,47 +18,58 @@ function AdminAccount(props) {
           console.log(error.message)
       }
   }
+  const [searchkey, setSearchKey] = useState('')
+
   useEffect(() => {
-    getTK();
-  }, [])
-const [isOpen, setIsOpen] = useState(false);
+    if(searchkey) handleSearch(searchkey)
+    else getTK();
+  }, [searchkey])
 
-const openPopup = () => {
-  setIsOpen(true);
-};
+  const handleSearch = async(sk) => {
+    if(sk!=='')
+    {
+      const res = await Axios.get('http://localhost:8000/v1/taikhoan/searchtaikhoan/'+ sk)
+      setTaiKhoan(res.data);
+    }
+  };
 
-const closePopup = () => {
-  setIsOpen(false);
-};
-const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(accounts)
-const [initialData,setInitialData]= useState(data)
-console.log('data',data)
+  const [isOpen, setIsOpen] = useState(false);
 
-const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-  setData(sortedData);
-  setIsSorted(true);
-};
-const resetData = () => {
-  setData(initialData);
-  setIsSorted(false);
-};
-const handleClick = () => {
-  if (isSorted) {
-    resetData();
-  } else {
-    sortByName();
-  }
-};
+  const openPopup = () => {
+    setIsOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsOpen(false);
+  };
+  const [isSorted, setIsSorted] = useState(false);
+  const [data,setData]= useState(accounts)
+  const [initialData,setInitialData]= useState(data)
+  console.log('data',data)
+
+  const sortByName = () => {
+    const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+    setData(sortedData);
+    setIsSorted(true);
+  };
+  const resetData = () => {
+    setData(initialData);
+    setIsSorted(false);
+  };
+  const handleClick = () => {
+    if (isSorted) {
+      resetData();
+    } else {
+      sortByName();
+    }
+  };
   return (
     <div className='AdminAccount'>
       <Menu/>
       <Header title="QUẢN LÝ TÀI KHOẢN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminAccount_main'>
         <div className='AdminAccount_searchbar'>
-          <input className="search-area" type="text" placeholder='Nhập tài khoản cần tìm'/>
-          <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <input className="search-area" type="text" placeholder='Nhập tên tài khoản hoặc nhân viên cần tìm' onChange={(e)=> setSearchKey(e.target.value)}/>
         </div>
           <div >
             <table className="AdminAccount-information">

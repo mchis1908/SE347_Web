@@ -11,7 +11,7 @@ function AdminDetailDeposit(props) {
   const [masp, setMaSanPham] = useState()
   const [tensp, setTenSanPham] = useState()
   const [mahoadon, setMaHoaDon] = useState('001d30009ff71de813521e7b')
-  const [loai, setLoai] = useState()
+  const [loai, setLoai] = useState('Áo thun')
   const [trangthai, setTrangThai] = useState('Chưa bán')
   const [gianhan, setGiaNhan] = useState()
   const [hinhanhsp, setHinhAnhSP] = useState()
@@ -68,7 +68,7 @@ function AdminDetailDeposit(props) {
             <select className='Input_PropDeposit' style={{height:'3.5vh', width:'20.5vw', borderWidth:'2px'}} id='loaisanpham' 
               placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
               <optgroup label="Áo">
-                <option value="Áo thun">Áo thun</option>
+                <option value="Áo thun" selected>Áo thun</option>
                 <option value="Áo sơ mi">Áo sơ mi</option>
               </optgroup>
               <optgroup label="Áo khoác">

@@ -10,7 +10,7 @@
 .AdminAccount_searchbar{
     width: 95%;
     height: 8vh;
-    padding-top: 2vh;
+    padding: 1vh 0;
 
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
 .search-area{
     width: 50vw;
     height: 5vh;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px;
     padding-left: 2vw;
     border-style: none;
     font-size: 15px;
@@ -55,12 +55,12 @@
 }
 .AdminAccount-information{
     width: 80vw;
-    height: 80vh;
+    height: 78vh;
     overflow: auto;
     background-color: #fff;
     
     margin-left: 4vw;
-    margin-bottom: 2vh;
+    margin-bottom: 4vh;
     border-radius: 10px;
 }
 .AdminAccount-information{
@@ -81,16 +81,15 @@ table{
 }
 .AdminAccount-information-header th{
     width: 25.4vw;
-    line-height: 6vh;
+    line-height: 5vh;
     text-align: center;
 
 }
 .AdminAccount_detail_infor{
-    padding-top: 7vh;
+    padding-top: 8vh;
 }
 .AdminAccount-information-detail{
     width: 100%;
-    padding-top: 2vh;
     display: block;
 }
 .AdminAccount-information-detail :hover{
@@ -100,7 +99,7 @@ table{
 }
 .AdminAccount-information-detail-wrapper td{
     width: 24.15vw;
-    line-height: 6vh;
+    line-height: 5vh;
     padding-right: 1.3vw;
     padding-bottom: 5px;
     text-align: center;
