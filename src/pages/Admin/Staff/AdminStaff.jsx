@@ -19,55 +19,64 @@ function AdminStaff(props) {
           console.log(error.message)
       }
   }
+  const [searchkey, setSearchKey] = useState('')
+
   useEffect(() => {
-    getNV();
-  }, [])
-const [isOpen, setIsOpen] = useState(false);
-const openPopup = () => {
-  setIsOpen(true);
-};
-const closePopup = () => {
-  setIsOpen(false);
-};
+    if(searchkey) handleSearch(searchkey)
+    else getNV();
+  }, [searchkey])
+  const handleSearch = async(sk) => {
+    if(sk!=='')
+    {
+      const res = await Axios.get('http://localhost:8000/v1/nhanvien/searchnhanvien/'+ sk)
+      setNhanVien(res.data);
+    }
+  };
+  const [isOpen, setIsOpen] = useState(false);
+  const openPopup = () => {
+    setIsOpen(true);
+  };
+  const closePopup = () => {
+    setIsOpen(false);
+  };
 
-const [isOpen1, setIsOpen1] = useState(false);
-const [nhanvien, setMaNhanVien] = useState(['']);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [nhanvien, setMaNhanVien] = useState(['']);
 
-const openPopup1 = (nhanviens) => {
-  setMaNhanVien(nhanviens);
-  setIsOpen1(true);
-};
-const closePopup1 = () => {
-  setIsOpen1(false);
-};
-const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(nhanviens)
-const [initialData,setInitialData]= useState(data)
+  const openPopup1 = (nhanviens) => {
+    setMaNhanVien(nhanviens);
+    setIsOpen1(true);
+  };
+  const closePopup1 = () => {
+    setIsOpen1(false);
+  };
+  const [isSorted, setIsSorted] = useState(false);
+  const [data,setData]= useState(nhanviens)
+  const [initialData,setInitialData]= useState(data)
 
-const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-  setData(sortedData);
-  setIsSorted(true);
-};
-const resetData = () => {
-  setData(initialData);
-  setIsSorted(false);
-};
-const handleClick = () => {
-  if (isSorted) {
-    resetData();
-  } else {
-    sortByName();
-  }
-};
+  const sortByName = () => {
+    const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+    setData(sortedData);
+    setIsSorted(true);
+  };
+  const resetData = () => {
+    setData(initialData);
+    setIsSorted(false);
+  };
+  const handleClick = () => {
+    if (isSorted) {
+      resetData();
+    } else {
+      sortByName();
+    }
+  };
   return (
     <div className='AdminStaff'>
       <Menu/>
       <Header title="QUẢN LÝ NHÂN VIÊN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminStaff_main'>
         <div className='AdminStaff_searchbar'>
-          <input className="search-area" type="text" placeholder='Nhập nhân viên cần tìm'/>
-          <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <input className="search-area" type="text" placeholder='Nhập thông tin nhân viên cần tìm' onChange={(e)=> setSearchKey(e.target.value)}/>
           <button className='AdminStaff_btn_create' onClick={openPopup}>Thêm nhân viên +</button>
         </div>
           <div >

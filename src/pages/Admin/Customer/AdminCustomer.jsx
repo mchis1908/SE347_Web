@@ -10,7 +10,8 @@ import AdminAddCustomer from './ModalAddCustomer/AdminAddCustomer';
 
 function AdminCustomer(props) {
   let [khachhangs, setKhachHang] = useState([])
-  const getSANPHAM = async () => {
+  const [searchkey, setSearchKey] = useState('')
+  const getkhachhang = async () => {
       try {
           const res = await Axios.get('http://localhost:8000/v1/khachhang/getkhachhang')
           setKhachHang(res.data);
@@ -22,8 +23,9 @@ function AdminCustomer(props) {
       }
   }
   useEffect(() => {
-    getSANPHAM();
-  }, [])
+    if(searchkey) handleSearch(searchkey)
+    else getkhachhang();
+  }, [searchkey])
 
 const [isOpen, setIsOpen] = useState(false);
 const openPopup = () => {
@@ -64,14 +66,20 @@ const handleClick = () => {
     sortByName();
   }
 };
+const handleSearch = async(sk) => {
+  if(sk!=='')
+  {
+    const res = await Axios.get('http://localhost:8000/v1/khachhang/searchkhachhang/'+ sk)
+    setKhachHang(res.data);
+  }
+};
   return (
     <div className='AdminCustomer'>
       <Menu />
       <Header title="QUẢN LÝ KHÁCH HÀNG" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminCustomer_main'>
         <div className='AdminCustomer_searchbar'>
-          <input className="search-area" type="text" placeholder='Nhập khách hàng cần tìm'/>
-          <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <input className="search-area" type="text" placeholder='Nhập số điện thoại hoặc tên khách hàng cần tìm' onChange={(e)=> setSearchKey(e.target.value)}/>
           <button className='AdminCustomer_btn_create' onClick={openPopup}>Thêm khách hàng +</button>
         </div>
           <div >

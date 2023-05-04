@@ -19,9 +19,11 @@ function AdminProduct(props) {
           console.log(error.message)
       }
   }
+  const [searchkey, setSearchKey] = useState('')
   useEffect(() => {
-    getSANPHAM();
-  }, [])
+    if(searchkey) handleSearch(searchkey)
+    else getSANPHAM();
+  }, [searchkey])
 
 const [isOpen, setIsOpen] = useState(false);
 const [sanpham, setMaSanPham] = useState(['']);
@@ -54,14 +56,20 @@ const handleClick = () => {
     sortByName();
   }
 };
+const handleSearch = async(sk) => {
+  if(sk!=='')
+  {
+    const res = await Axios.get('http://localhost:8000/v1/sanpham/searchsanpham/'+ sk)
+    setSanPham(res.data);
+  }
+};
   return (
     <div className='AdminProduct'>
       <Menu/>
       <Header title="QUẢN LÝ SẢN PHẨM" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='AdminProduct_main'>
         <div className='AdminProduct_searchbar'>
-          <input className="search-area" type="text" placeholder='Nhập sản phẩm cần tìm'/>
-          <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
+          <input className="search-area" type="text" placeholder='Nhập thông tin sản phẩm cần tìm' onChange={(e)=> setSearchKey(e.target.value)}/>
         </div>
           <div >
             <table className="AdminProduct-information">

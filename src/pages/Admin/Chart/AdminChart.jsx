@@ -249,10 +249,7 @@ function AdminChart() {
         };
         setData1(newData);
       } catch (error) {
-        // if (error.response && error.response.status === 404) {
-        //     alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
-        //     setNgay(today)
-        // }
+        
       }
     }
   };
