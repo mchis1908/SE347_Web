@@ -16,6 +16,7 @@ function AdminReport() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const hoadons=['1','2','3','4']
     return (
       <div className='AdminReport'>
         <Menu/>
@@ -34,13 +35,25 @@ function AdminReport() {
                         <TabPanel value="1">
                             <div>
                                 <table>
-                                    <tr style={{display:'block', }}>
-                                        <th style={{border:'solid 1px #000', width:'10vw'}}>1</th>
-                                        <th style={{border:'solid 1px #000', width:'10vw'}}>2</th>
-                                        <th style={{border:'solid 1px #000', width:'10vw'}}>3</th>
-                                        <th style={{border:'solid 1px #000', width:'10vw'}}>4</th>
-                                        <th style={{border:'solid 1px #000', width:'10vw'}}>4</th>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>STT</th>
+                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>Mã Sản Phẩm</th>
+                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>Mã Hóa Đơn</th>
+                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>Hoa Hồng</th>
                                     </tr>
+                                    <div>
+                                    {
+                                        hoadons.map(hoadons => {
+                                        return (
+                                            <tr style={{display:'flex', flexDirection:'row' }}>
+                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>1</td>
+                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>123456</td>
+                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>456789</td>
+                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>300000</td>
+                                            </tr>
+                                        )})
+                                    }
+                                    </div>
                                 </table>
                             </div>
                         </TabPanel>
