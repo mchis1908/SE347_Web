@@ -54,11 +54,79 @@ function AdminReport() {
                                         )})
                                     }
                                     </div>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>Tổng:</td>
+                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}></td>
+                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}></td>
+                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>100000</td>
+                                    </tr>
                                 </table>
                             </div>
                         </TabPanel>
-                        <TabPanel value="2">Item Two</TabPanel>
-                        <TabPanel value="3">Item Three</TabPanel>
+                        <TabPanel value="2">
+                            <div>
+                                <table>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>STT</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Tên nhân viên</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Lương theo giờ</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Lương cơ bản</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Số giờ làm việc</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Tổng lương</th>
+                                    </tr>
+                                    <div>
+                                    {
+                                        hoadons.map(hoadons => {
+                                        return (
+                                            <tr style={{display:'flex', flexDirection:'row' }}>
+                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>1</td>
+                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>123456</td>
+                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>456789</td>
+                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>456789</td>
+                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>456789</td>
+                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>300000</td>
+                                            </tr>
+                                        )})
+                                    }
+                                    </div>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>Tổng:</td>
+                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
+                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
+                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
+                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
+                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>100000</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </TabPanel>
+                        <TabPanel value="3">
+                            <div>
+                                <table>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>STT</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Mã Sản Phẩm</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Mã Hóa Đơn Ký gửi</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Khách Hàng</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Ngày Ký Gửi</th>
+                                    </tr>
+                                    <div>
+                                    {
+                                        hoadons.map(hoadons => {
+                                        return (
+                                            <tr style={{display:'flex', flexDirection:'row' }}>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>1</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>123456</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>456789</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>456789</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>300000</td>
+                                            </tr>
+                                        )})
+                                    }
+                                    </div>
+                                </table>
+                            </div>
+                        </TabPanel>
                     </TabContext>
                 </Box>
                 <Button style={{left : '1210px', background: '#18884F', color: '#FFFFFF'}}>
