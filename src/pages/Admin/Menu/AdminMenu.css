@@ -54,4 +54,7 @@
     font-size: 25px;
     vertical-align: middle;
 }
+.active-link {
+    color: rgb(185, 39, 39);
+}
   

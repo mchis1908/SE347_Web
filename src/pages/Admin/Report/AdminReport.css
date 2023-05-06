@@ -3,7 +3,7 @@
     top : 8vh;
     left : 12vw;
     width : 88vw;
-    height : 100vh;
+    height : fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
 }
@@ -13,4 +13,37 @@
     width : 88vw;
     height : 92vh;
     background-color: #EDEDED;
+    max-width: 88vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.AdminReport_tab{
+    margin: 4vh 2vw 2vh 2vw;
+    width: 84vw;
+    height: 80vh;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.AdminReport_tab_inf{
+    padding: 2vh 1vw;
+}
+.AdminReport_tab_inf button {
+    border: none;
+    border-radius: 10px;
+    width: 10vw;
+    height: 3.5vh;
+}
+.AdminReport_tab_btn{
+    background-color: rgba(131, 131, 131, 0.2);
+    color:rgb(0, 0, 0)
+}
+.AdminReport_tab_btn:hover{
+    background-color: #152737;
+    color: #ffffff;
+}
+.AdminReport_tab a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

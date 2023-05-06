@@ -4,7 +4,7 @@ import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import Axios from "axios";
-import { Alert, DatePicker } from 'antd';
+import {DatePicker } from 'antd';
 import moment from 'moment';
 import Barcode from '../../../common/Barcode/Barcode';
 
@@ -77,13 +77,12 @@ function AdminSchedule(props) {
     return data.gio[index] || 0;
   };
   const gettglamviec = (sdt) => {
-    const data = tableData.find((item) => item.sdt === sdt);
-    if (!data) {
-      return 0;
-    }
     let s=0;
-    for(let i = 0; i < tableData.length; i++) {
-      s += Number(data.gio[i]) || 0;
+    const data = tableData.find((item) => item.sdt === sdt);
+    if (data) {
+      for(let i = 0; i < tableData.length; i++) {
+        s += Number(data.gio[i]) || 0;
+      }
     }
     return s;
   };
@@ -126,11 +125,33 @@ function AdminSchedule(props) {
       });
       newData.push(arr);
     }
-    console.log('a',newData)
-    console.log('a',thang)
+    const luong = []; // tạo một mảng rỗng
+    for (let i = 0; i < sdtList.length; i++) {
+      let s = 0;
+      const data = tableData.find((item) => item.sdt === sdtList[i]);
+      if (data) {
+        for (let j = 0; j < tableData.length; j++) {
+          s += Number(data.gio[j]) || 0;
+        }
+      }
+      luong.push({ sdt: sdtList[i], gio: s }); // thêm một mảng con chứa sdtList[i] và s vào mảng luong
+    }
     await Axios.patch('http://localhost:8000/v1/thoigianlamviec/updateThoiGianLamViec/' + thang , {
       LAMVIEC: newData
     });
+    try{
+      await Axios.patch('http://localhost:8000/v1/luong/updateLuong/' + thang , {
+        LAMVIEC: luong
+      });
+    }catch(error){
+      if (error.response && error.response.status === 500) {
+        console.log('luong',luong);
+        await Axios.post('http://localhost:8000/v1/luong/themLuong/', {
+          THOIGIAN: thang,
+          LAMVIEC: luong
+        });
+      }
+    }
     alert('Lưu thay đổi thành công')
   };
   // Tạo mảng dữ liệu cho bảng

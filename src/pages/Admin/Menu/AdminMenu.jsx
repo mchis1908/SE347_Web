@@ -1,9 +1,8 @@
 import React from 'react'
 import "./AdminMenu.css";
 import logo from "../../../Images/logo.png";
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { useNavigate } from 'react-router-dom'
 
 function AdminMenu() {
   return (
@@ -20,7 +19,6 @@ function AdminMenu() {
                 <span >Trang Chủ</span>
             </div>
         </Link>
-        
         <Link to='/admin/deposit'>
             <div className='sidebar_item'>
                 <Icon icon="ic:outline-shopping-cart-checkout" />
