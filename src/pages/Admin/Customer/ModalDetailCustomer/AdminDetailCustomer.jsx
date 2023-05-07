@@ -24,7 +24,7 @@ function AdminDetailCustomer(props) {
             HOTEN: tenkh,
             SDT: sdt,
             EMAIL: email,
-            LANDENGANNHAT: currentDate.toLocaleString('en-AU', options),
+            LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-'),
           })
       } catch (error) {
         if (error.response && error.response.status === 502) {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
-import { NavLink } from 'react-router-dom';
 import './AdminReport.css'
 import { Button, DatePicker } from 'antd'
+import moment from 'moment';
 import Axios from "axios";
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -16,97 +16,223 @@ function AdminReport() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const hoadons=['1','2','3','4']
+    const [thang, setThang] = useState(moment().format('MM-YYYY'))
+    let [hoadons, setHoaDon] = useState([]);
+    let [sum, setSum] = useState(0);
+    let [giaban, setGiaBan] = useState(0);
+    let [sanphams, setSanPham] = useState([]);
+    const getSanPham = async () => {
+        if(hoadons.length===0) return
+        try {
+            const requests = hoadons.map((hoadon) => {
+                return Axios.get(`http://localhost:8000/v1/sanpham/getsanphambymabanhang/${hoadon.MAHOADON}`);
+            });
+            const responses = await Promise.all(requests);
+            const allSanPham = responses.map((res) => res.data).flat();
+            setSanPham(allSanPham);
+        } catch (error) {
+          console.log(error.message);
+        }
+    };
+    useEffect(() => {
+        if(thang)
+        {
+            const fetchData = async () => {
+                try {
+                    const res = await Axios.get(`http://localhost:8000/v1/hoadon/gethoadonbanhangbytg/${thang}`);
+                    setHoaDon(res.data);
+                } catch (error) {
+                    if (error.response && error.response.status === 404) {
+                        alert('Chưa có dữ liệu của tháng này')
+                        setSanPham([])
+                    }
+                }
+            };
+            fetchData();
+        }
+    }, [thang]);
+      
+    useEffect(() => {
+        getSanPham();
+    }, [hoadons]);
+
+    useEffect(() => {
+        setGiaBan(sanphams.reduce((total, sp) => total + sp.GIANHAN, 0));
+        setSum(sanphams.reduce((total, sp) => total + sp.HOAHONG, 0));
+    }, [sanphams]);
+    //   ------------------------------------------TAB2--------------------------
+    const [thang1, setThang1] = useState(moment().format('MM-YYYY'))
+    let [luong, setLuong] = useState([]);
+    let [nhanviens, setNhanVien] = useState([]);
+    let [tongluong, settongluong] = useState(0);
+    const getNhanVien = async () => {
+        if(luong.length===0) return
+        try {
+            const requests = luong.map((luong) => {
+                return Axios.get(`http://localhost:8000/v1/nhanvien/getnhanvienbysdt/${luong.sdt}`);
+            });
+            const responses = await Promise.all(requests);
+            const allNhanVien = responses.map((res) => res.data).flat();
+            setNhanVien(allNhanVien);
+            console.log(allNhanVien);
+        } catch (error) {
+          console.log(error.message);
+        }
+    };
+    useEffect(() => {
+        if(thang1)
+        {
+            const fetchData = async () => {
+                try {
+                    const res = await Axios.get(`http://localhost:8000/v1/luong/getLuongbyTG/${thang1}`);
+                    setLuong(res.data[0].LAMVIEC);
+                } catch (error) {
+                    if (error.response && error.response.status === 404) {
+                        alert('Chưa có dữ liệu của tháng này')
+                        setSanPham([])
+                    }
+                }
+            };
+            fetchData();
+        }
+    }, [thang1]);
+
+    useEffect(() => {
+        getNhanVien();
+    }, [luong]);
+    useEffect(() => {
+        settongluong(sanphams.reduce((total, sp) => total + sp.GIANHAN, 0));
+    }, [sanphams]);
     return (
       <div className='AdminReport'>
         <Menu/>
         <Header title="BÁO CÁO" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
         <div className='AdminReport_main'>
             <div className='AdminReport_information'>
-                <Box sx={{ width: '84vw', typography: 'body1', margin:'2vh 2vw', background:'#fff' }}>
+                <Box sx={{ width: '84vw', typography: 'body1', margin:'4vh 2vw', background:'#fff' }}>
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
                             <Tab label="Doanh Thu Sản Phẩm" value="1" />
                             <Tab label="Bảng Lương" value="2" />
-                            <Tab label="Sản Phẩm Quá Hạn" value="3" />
+                            <Tab label="Hóa Đơn Chưa Nhận Tiền" value="3" />
                         </TabList>
                         </Box>
                         <TabPanel value="1">
-                            <div>
-                                <table>
-                                    <tr style={{display:'flex', flexDirection:'row' }}>
-                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>STT</th>
-                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>Mã Sản Phẩm</th>
-                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>Mã Hóa Đơn</th>
-                                        <th style={{border:'solid 1px #000', width:'20vw', fontSize:'14px'}}>Hoa Hồng</th>
-                                    </tr>
-                                    <div>
-                                    {
-                                        hoadons.map(hoadons => {
-                                        return (
-                                            <tr style={{display:'flex', flexDirection:'row' }}>
-                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>1</td>
-                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>123456</td>
-                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>456789</td>
-                                                <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>300000</td>
-                                            </tr>
-                                        )})
-                                    }
-                                    </div>
-                                    <tr style={{display:'flex', flexDirection:'row' }}>
-                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>Tổng:</td>
-                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}></td>
-                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}></td>
-                                        <td style={{border:'solid 1px #000', width:'20vw', fontSize:'14px', textAlign:'center'}}>100000</td>
-                                    </tr>
-                                </table>
+                            <div style={{display:'flex', flexDirection:'row',alignItems: 'center' }}>
+                                <h4>Chọn tháng:</h4>
+                                <DatePicker
+                                    style={{ width: '10vw', marginLeft: '1vw'}}
+                                    format="MM-YYYY"
+                                    picker='month'
+                                    allowClear={true}
+                                    defaultValue={moment()}
+                                    value={thang ? moment(thang, 'MM-YYYY') : null}
+                                    onChange={(date, dateString) => {
+                                        setThang(dateString);
+                                    }}
+                                    inputReadOnly={true}
+                                />
                             </div>
-                        </TabPanel>
-                        <TabPanel value="2">
-                            <div>
-                                <table>
-                                    <tr style={{display:'flex', flexDirection:'row' }}>
-                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>STT</th>
-                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Tên nhân viên</th>
-                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Lương theo giờ</th>
-                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Lương cơ bản</th>
-                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Số giờ làm việc</th>
-                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Tổng lương</th>
-                                    </tr>
-                                    <div>
-                                    {
-                                        hoadons.map(hoadons => {
-                                        return (
-                                            <tr style={{display:'flex', flexDirection:'row' }}>
-                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>1</td>
-                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>123456</td>
-                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>456789</td>
-                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>456789</td>
-                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>456789</td>
-                                                <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>300000</td>
-                                            </tr>
-                                        )})
-                                    }
-                                    </div>
-                                    <tr style={{display:'flex', flexDirection:'row' }}>
-                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>Tổng:</td>
-                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
-                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
-                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
-                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></td>
-                                        <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>100000</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </TabPanel>
-                        <TabPanel value="3">
                             <div>
                                 <table>
                                     <tr style={{display:'flex', flexDirection:'row' }}>
                                         <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>STT</th>
                                         <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Mã Sản Phẩm</th>
-                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Mã Hóa Đơn Ký gửi</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Mã Hóa Đơn Ký Gửi</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Giá Bán</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Doanh Thu</th>
+                                    </tr>
+                                    <div>
+                                    {
+                                        sanphams.map((sanphams,index) => {
+                                        return (
+                                            <tr style={{display:'flex', flexDirection:'row' }}>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{index+1}</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{sanphams.MASANPHAM}</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{sanphams.MAHOADONKG}</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                <td style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{sanphams.HOAHONG.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                            </tr>
+                                        )})
+                                    }
+                                    </div>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>Tổng:</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}></th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}></th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{giaban.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px', textAlign:'center'}}>{sum.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </TabPanel>
+                        <TabPanel value="2">
+                            <div style={{display:'flex', flexDirection:'row',alignItems: 'center' }}>
+                                <h4>Chọn tháng:</h4>
+                                <DatePicker
+                                    style={{ width: '10vw', marginLeft: '1vw'}}
+                                    format="MM-YYYY"
+                                    picker='month'
+                                    allowClear={true}
+                                    defaultValue={moment()}
+                                    value={thang1 ? moment(thang1, 'MM-YYYY') : null}
+                                    onChange={(date, dateString) => {
+                                        setThang1(dateString);
+                                    }}
+                                    inputReadOnly={true}
+                                />
+                            </div>
+                            <div>
+                                <table>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>STT</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Tên nhân viên</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Số giờ làm việc</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Lương theo giờ</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Lương cơ bản</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px'}}>Tổng lương</th>
+                                    </tr>
+                                    <div>
+                                    {
+                                        luong.map((lv,index) =>{
+                                            const luongnhan = lv.gio * (nhanviens[index] && nhanviens[index].LUONGTHEOGIO || 0)+ (nhanviens[index] && nhanviens[index].LUONGCOBAN || 0);
+                                            return (
+                                                <tr style={{display:'flex', flexDirection:'row' }}>
+                                                    <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{index+1}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{lv.sdt}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{lv.gio}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{nhanviens[index] && nhanviens[index].LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{nhanviens[index] && nhanviens[index].LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{luongnhan.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                </tr>
+                                            )})
+                                    }
+                                    </div>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>Tổng:</th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}></th>
+                                        <th style={{border:'solid 1px #000', width:'13.3vw', fontSize:'14px', textAlign:'center'}}>{
+                                            luong.reduce((acc, lv, index) => {
+                                                const luongnhan = lv.gio * (nhanviens[index] && nhanviens[index].LUONGTHEOGIO)+ (nhanviens[index] && nhanviens[index].LUONGCOBAN || 0);
+                                                return (acc + luongnhan);
+                                            }, 0).toLocaleString('vi-VN')
+                                        }</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </TabPanel>
+                        <TabPanel value="3">
+                            <h4>Hóa đơn chưa nhận tiền trong vòng 60 ngày:</h4>
+                            <div>
+                                <table>
+                                    <tr style={{display:'flex', flexDirection:'row' }}>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>STT</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Mã Hóa Đơn</th>
+                                        <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Số Lượng Sản Phẩm</th>
                                         <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Khách Hàng</th>
                                         <th style={{border:'solid 1px #000', width:'16vw', fontSize:'14px'}}>Ngày Ký Gửi</th>
                                     </tr>

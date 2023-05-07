@@ -28,6 +28,7 @@
 .AdminDeposit_CustomerInf{
     display: flex;
     max-height: 5vh;
+    align-items: center;
 }
 .AdminDeposit_Detail{
     padding-top: 20px;

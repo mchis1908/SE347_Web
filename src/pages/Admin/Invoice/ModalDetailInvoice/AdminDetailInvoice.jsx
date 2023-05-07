@@ -69,7 +69,7 @@ function AdminDetailInvoice(props) {
       console.log(sanphamdaban)
       Axios.patch('http://localhost:8000/v1/hoadon/updatehoadon/'+ props.data.MAHOADON,{
         TRANGTHAI: 'Đã thanh toán',
-        NGAYTHANHTOAN: currentDate.toLocaleString('en-AU', options)
+        NGAYTHANHTOAN: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
       })
       // ---------Xử lý doanh thu tháng---------
     const formatThang = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(3,10);
@@ -144,9 +144,9 @@ function AdminDetailInvoice(props) {
                         <td style={{fontSize:'16px'}}>{index+1}</td>
                         <td style={{fontSize:'16px'}}>{sanphams.TENSANPHAM}</td>
                         <td style={{fontSize:'16px'}}>{sanphams.TRANGTHAI}</td>
-                        <td style={{fontSize:'16px'}}>{sanphams.GIANHAN}</td>
-                        <td style={{fontSize:'16px'}}>{sanphams.HOAHONG}</td>
-                        <td style={{fontSize:'16px'}}>{sanphams.TIENKHACHNHAN}</td>
+                        <td style={{fontSize:'16px'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                        <td style={{fontSize:'16px'}}>{sanphams.HOAHONG.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                        <td style={{fontSize:'16px'}}>{sanphams.TIENKHACHNHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                       </div>
                     )
                 })
@@ -160,9 +160,9 @@ function AdminDetailInvoice(props) {
                 {
                   calculateTotal()
                 }
-                <td style={{fontWeight:'500', fontSize:'16px'}}>{total[0]}</td>
-                <td style={{fontWeight:'500', fontSize:'16px'}}>{total[1]}</td>
-                <td style={{fontWeight:'500', fontSize:'16px'}}>{total[2]}</td>
+                <td style={{fontWeight:'500', fontSize:'16px'}}>{total[0].toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                <td style={{fontWeight:'500', fontSize:'16px'}}>{total[1].toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                <td style={{fontWeight:'500', fontSize:'16px'}}>{total[2].toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
               </div>     
             </div> 
             </div>

@@ -34,7 +34,7 @@ function AdminDepositPrintBarcode(props) {
                           <td style={{maxWidth:'8vw',minWidth:'8vw', width:'fitContent'}}>{index+1}</td>
                           <td>{sp.TENSANPHAM}</td>
                           <td><Barcode value={sp.MASANPHAM} height={20} width={1}/></td>
-                          <td style={{maxWidth:'15vw',minWidth:'15vw',width:'fitContent'}}>{sp.GIANHAN}</td>
+                          <td style={{maxWidth:'15vw',minWidth:'15vw',width:'fitContent'}}>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                         </div>
                       </tr>
                     )

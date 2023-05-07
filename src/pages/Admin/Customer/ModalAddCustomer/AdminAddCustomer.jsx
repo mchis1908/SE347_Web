@@ -23,7 +23,7 @@ function AdminAddCustomer(props) {
             HOTEN: tenkh,
             SDT: sdt,
             EMAIL: email,
-            LANDENGANNHAT: currentDate.toLocaleString('en-AU', options),
+            LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-'),
             SODONKYGUI: 0
           })
       } catch (error) {

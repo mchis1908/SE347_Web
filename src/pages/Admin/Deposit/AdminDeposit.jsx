@@ -79,7 +79,7 @@ const handleConfirm = async () => {
         SOLUONG: sanphams.length,
         LOAI: loaihoadon,
         TRANGTHAI: trangthaiHD,
-        NGAYTAODON: currentDate.toLocaleString('en-AU', options)
+        NGAYTAODON: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
       })
     }
     catch{
@@ -92,7 +92,7 @@ const handleConfirm = async () => {
     })
     Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
     {
-      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options)
+      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
     })
     // ---------Xử lý sản phẩm NGÀY---------
     // ---------Xử lý sản phẩm THÁNG---------
@@ -228,7 +228,7 @@ return (
                         <td>{sanphams.TENSANPHAM}</td>
                         <td>{sanphams.LOAI}</td>
                         <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
-                        <td>{sanphams.GIANHAN}</td>
+                        <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                         <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                       </div>
                     )
@@ -242,7 +242,7 @@ return (
               <td></td>                    
               <td></td>
               <td>Tổng tiền: </td>
-              <td>{calculateTotal()}</td>
+              <td>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
             </div>
             <div className='AdminDeposit_btnChange'>
               {showSuccess && (

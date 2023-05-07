@@ -65,7 +65,7 @@ const handleConfirm = async () => {
       SOLUONG: sanphams.length,
       LOAI: loaihoadon,
       TRANGTHAI: trangthaiHD,
-      NGAYTAODON: currentDate.toLocaleString('en-AU', options)
+      NGAYTAODON: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
     })
     sanphams.map(sanphams =>{
       const gianhan= sanphams.GIANHAN;
@@ -81,7 +81,7 @@ const handleConfirm = async () => {
     })
     Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
     {
-      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options)
+      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
     })
     // ---------Xử lý sản phẩm NGÀY---------
     // ---------Xử lý sản phẩm THÁNG---------

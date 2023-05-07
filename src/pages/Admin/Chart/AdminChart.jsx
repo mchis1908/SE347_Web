@@ -368,7 +368,7 @@ function AdminChart() {
                     setThangSP(dateString);
                     const numOfDays = moment(dateString, 'MM-YYYY').daysInMonth();
                     setDayInMonth(numOfDays);
-                    handleSPThang(dateString);
+                    // handleSPThang(dateString);
                   }}
                 />
               </div>
@@ -393,8 +393,7 @@ function AdminChart() {
                   value={namdt ? moment(namdt, 'YYYY') : null}
                   onChange={(date, dateString) => {
                     setNamDT(dateString);
-                    console.log('Năm:', dateString);
-                    handleDTThang(dateString);
+                    // handleDTThang(dateString);
                   }}
                 />
               </div>
@@ -412,8 +411,7 @@ function AdminChart() {
                 value={ngay ? moment(ngay, 'DD-MM-YYYY') : null}
                 onChange={(date, dateString) => {
                   setNgay(dateString);
-                  console.log('Ngày:', dateString);
-                  handleSPNgay(dateString);
+                  // handleSPNgay(dateString);
                 }}
               />
             </div>

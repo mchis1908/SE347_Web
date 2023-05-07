@@ -237,7 +237,7 @@ function AdminHome() {
                     setThangSP(dateString);
                     const numOfDays = moment(dateString, 'MM-YYYY').daysInMonth();
                     setDayInMonth(numOfDays);
-                    handleSPThang(dateString);
+                    // handleSPThang(dateString);
                   }}
                 />
               </div>

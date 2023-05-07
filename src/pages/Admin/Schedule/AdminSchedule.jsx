@@ -25,22 +25,7 @@ function AdminSchedule(props) {
       const res = await Axios.get('http://localhost:8000/v1/thoigianlamviec/getThoiGianLamViecbyTG/'+ moment().format('MM-YYYY'))
       setThoiGianLamViec(res.data[0].LAMVIEC);
     } catch (error) {
-      const newData = [];
-      for (let i = 0; i < dayInMonth; i++) {
-        const arr = tableData.map((item) => {
-            return {
-              gio: item.gio[i]||0, // Lấy giá trị thứ i trong mảng gio
-              sdt: item.sdt,
-            };
-        });
-        newData.push(arr);
-      }
-      console.log('a',newData)
-      Axios.post('http://localhost:8000/v1/thoigianlamviec/themThoiGianLamViec/', {
-        THOIGIAN: thang,
-        LAMVIEC: newData
-      });
-      window.location.reload()
+      
     }
   }
   const [thang, setThang] = useState(moment().format('MM-YYYY'))
@@ -136,9 +121,29 @@ function AdminSchedule(props) {
       }
       luong.push({ sdt: sdtList[i], gio: s }); // thêm một mảng con chứa sdtList[i] và s vào mảng luong
     }
-    await Axios.patch('http://localhost:8000/v1/thoigianlamviec/updateThoiGianLamViec/' + thang , {
-      LAMVIEC: newData
-    });
+    try{
+      await Axios.patch('http://localhost:8000/v1/thoigianlamviec/updateThoiGianLamViec/' + thang , {
+        LAMVIEC: newData
+      });
+    }catch(error){
+      if (error.response && error.response.status === 500) {
+        const newData = [];
+        for (let i = 0; i < dayInMonth; i++) {
+          const arr = tableData.map((item) => {
+              return {
+                gio: item.gio[i]||0, // Lấy giá trị thứ i trong mảng gio
+                sdt: item.sdt,
+              };
+          });
+          newData.push(arr);
+        }
+        console.log('a',newData)
+        Axios.post('http://localhost:8000/v1/thoigianlamviec/themThoiGianLamViec/', {
+          THOIGIAN: thang,
+          LAMVIEC: newData
+        });
+      }
+    }
     try{
       await Axios.patch('http://localhost:8000/v1/luong/updateLuong/' + thang , {
         LAMVIEC: luong
