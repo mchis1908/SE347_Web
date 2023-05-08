@@ -93,8 +93,7 @@ const handleSearch = async(sk) => {
                                           <td >{sanphams.LOAI}</td>
                                           <td >{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                                           <td >{sanphams.TRANGTHAI}</td>
-                                          <td><img style={{maxHeight:'40px', maxWidth:'60px'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
-                                          <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
+                                          <td><img style={{maxHeight:'40px'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
                                       </div>
                                   </tr>
                           )

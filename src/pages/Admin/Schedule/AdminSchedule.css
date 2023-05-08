@@ -18,45 +18,16 @@
     font-size: 17px;
     font-family: 'Times New Roman', Times, serif;
 }
-.AdminSchedule_searchbar_search-area{
-    width: 20vw;
-    height: 5vh;
-    padding-right: 20px;
-    margin-left: 2vw;
-    border-style: none;
+.AdminSchedule_searchbutton{
+    background-color: #152737 ;
+    color: #EDEDED;
+    font-size: 14px;
+    border-width: 0;
     border-radius: 10px;
-    background-color: white;
-    text-align: center;
-    font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
 }
-.search-btn{
-    font-size: 30px;
-    border-radius: 0 20px 20px 0;
-    border-width: 0;
-    background-color: white;
-    display: inline;
-    height: 5.2vh;
-    margin-left: 1px;
-}
-.bg-search-btn :active{
-    background-color: #152737;
-    color:white;
-}
-.AdminSchedule_btn_create{
-    width: 10vw;
-    height: 5vh;
-    margin-left: 10vh;
-    background-color: #152737;
-    color: white;
-    font-weight: bold;
-    border-radius: 15px;
-    border-width: 0;
-}
-.AdminSchedule_btn_create:hover{
-    background-color: #fe4880;
-    color: white;
-    cursor:pointer;
+.AdminSchedule_searchbutton:hover{
+    background-color: #fe4880 ;
+    color: #EDEDED;
 }
 .AdminSchedule-information{
     background-color: #EDEDED;
@@ -91,11 +62,6 @@
     max-width: 80vw;
 
 }
-/* table{
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-} */
 .AdminSchedule-information-detail-wrapper th{
     width: 5vw;
     line-height: 6vh;
@@ -118,6 +84,3 @@
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
     padding: 0 0.4vw;
 }
-/* td{
-    border: solid 1px #000;
-}  */

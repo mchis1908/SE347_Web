@@ -84,7 +84,7 @@ table{
     border-spacing: 0;
 }
 .AdminCustomer-information-header th{
-    width: 15vw;
+    width: 15.45vw;
     line-height: 6vh;
     text-align: center;
 }
@@ -102,33 +102,15 @@ table{
     color: #fff;
 }
 .AdminCustomer-information-detail-wrapper td{
-    width: 13.8vw;
+    width: 14.2vw;
     line-height: 5vh;
     padding-right: 1.3vw;
     padding-bottom: 5px;
     text-align: center;
 
-    max-width: 13.8vw;
-    min-width: 13.8vw;
+    max-width: 14.2vw;
+    min-width: 14.2vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-}
-.AdminCustomer-information-detail-wrapper .btn_deleteCustomer{
-    width: 1vw;
-    text-align: center;
-    max-width: 1vw;
-    min-width: 1vw;
-    display: none;
-
-    z-index: 9998;
-}
-.AdminCustomer-information-detail-wrapper .btn_deleteCustomer:hover{
-    color: white;
-}
-/* th,td{
-    border: 1px solid #ccc;
-} */
-.AdminCustomer-information-detail:hover .btn_deleteCustomer {
-    display: table-cell;
 }

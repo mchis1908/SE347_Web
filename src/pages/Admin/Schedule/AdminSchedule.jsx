@@ -215,7 +215,7 @@ function AdminSchedule(props) {
             value={thang ? moment(thang, 'MM-YYYY') : null}
             onChange={handleDateChange}
           />
-          <button style={{width:'7vw', height:'4vh', marginLeft:'8vw', backgroundColor:'orange', border:'0', color:'white'}} onClick={handleSave}>Lưu bảng</button>
+          <button className='AdminSchedule_searchbutton' style={{width:'7vw', height:'4vh', marginLeft:'8vw'}} onClick={handleSave}>Lưu bảng</button>
         </div>
           <div className="AdminSchedule-information">
             <table className="AdminSchedule-information-table">

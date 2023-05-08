@@ -99,7 +99,6 @@ const handleSearch = async(sk) => {
                                           <td>{hoadons.LOAI}</td>
                                           <td>{hoadons.NGAYTAODON}</td>
                                           <td>{hoadons.TRANGTHAI}</td>
-                                          <td className='btn_deleteInvoice'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
                           )

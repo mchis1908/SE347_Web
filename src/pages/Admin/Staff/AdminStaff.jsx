@@ -100,7 +100,6 @@ function AdminStaff(props) {
                                           <td className=''>{nhanviens.EMAIL}</td>
                                           <td className=''>{nhanviens.LUONGCOBAN}</td>
                                           <td className=''>{nhanviens.LUONGTHEOGIO}</td>
-                                          <td className='btn_deleteStaff'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
                           )

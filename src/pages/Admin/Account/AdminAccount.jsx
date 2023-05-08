@@ -89,7 +89,6 @@ function AdminAccount(props) {
                                           <td className='stadium-name'>{accounts.TENNV}</td>
                                           <td className='team-name'>{accounts.TENTAIKHOAN}</td>
                                           <td className=''>{accounts.MATKHAU}</td>
-                                          <td className='btn_deleteAccount'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
                           )

@@ -43,10 +43,11 @@ useEffect(() => {
   getSANPHAM();
   getKH();
 }, [])
-
+const [sp, setsp] = useState();
 const [isOpen, setIsOpen] = useState(false);
-const openPopup = () => {
+const openPopup = (sph) => {
   setIsOpen(true);
+  setsp(sph)
 };
 const closePopup = () => {
   setIsOpen(false);
@@ -220,16 +221,24 @@ return (
               </div>
             <div className='AdminDeposit_ProductList'>
               {
-                sanphams.map((sanphams,index) => {
+                sanphams.map((sp,index) => {
                     return (
-                      <div className='AdminDeposit_ProductInf'>
+                      <div className='AdminDeposit_ProductInf' onClick={(e)=>openPopup(sp)}>
+                      {/* {isOpen &&
+                        <AdminDetailDeposit
+                          title="Thông tin sản phẩm"
+                          onClose={closePopup}
+                          data={sp}
+                        >
+                          {props.children}
+                        </AdminDetailDeposit>
+                      } */}
                         <td></td>                    
                         <td>{index+1}</td>
-                        <td>{sanphams.TENSANPHAM}</td>
-                        <td>{sanphams.LOAI}</td>
-                        <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
-                        <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                        <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
+                        <td>{sp.TENSANPHAM}</td>
+                        <td>{sp.LOAI}</td>
+                        <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
+                        <td>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                       </div>
                     )
                 })
@@ -274,11 +283,12 @@ return (
               {showNotSuccess && (
                 <>
                   <button className='AdminDeposit_btnCancel' onClick={handleCancel}>Hủy</button>
-                  <button className='AdminDeposit_btnAddProduct' onClick={openPopup}>Thêm sản phẩm</button>
+                  <button className='AdminDeposit_btnAddProduct' onClick={(e)=>openPopup('')}>Thêm sản phẩm</button>
                   {isOpen &&
                     <AdminDetailDeposit
-                      title="Thêm sản phẩm"
+                      title="Thông tin sản phẩm"
                       onClose={closePopup}
+                      data={sp}
                     >
                       {props.children}
                     </AdminDetailDeposit>

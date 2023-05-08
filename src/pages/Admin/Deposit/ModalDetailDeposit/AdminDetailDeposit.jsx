@@ -5,26 +5,25 @@ import Axios from "axios";
 import cryptoRandomString from 'crypto-random-string';
 
 function AdminDetailDeposit(props) {
-  
   const [showImage, setShowImage] = useState(false)
   const [selectedFile, setSelectedFile] = useState([])
   const [masp, setMaSanPham] = useState()
-  const [tensp, setTenSanPham] = useState()
+  const [tensp, setTenSanPham] = useState(props.data && props.data.TENSANPHAM ? props.data.TENSANPHAM : '')
   const [mahoadon, setMaHoaDon] = useState('001d30009ff71de813521e7b')
-  const [loai, setLoai] = useState('Áo thun')
+  const [loai, setLoai] = useState(props.data && props.data.LOAI ? props.data.LOAI : 'Áo thun')
   const [trangthai, setTrangThai] = useState('Chưa bán')
-  const [gianhan, setGiaNhan] = useState()
-  const [hinhanhsp, setHinhAnhSP] = useState()
+  const [gianhan, setGiaNhan] = useState(props.data && props.data.GIANHAN ? props.data.GIANHAN : '')
+  const [hinhanhsp, setHinhAnhSP] = useState(props.data && props.data.HINHANH ? props.data.HINHANH : '')
 
   const onSelectedFile = (e) => {
-  const selectedFiles = e.target.files;
-  const selectedFileArrays = Array.from(selectedFiles);
-  const imageURL = selectedFileArrays.map((file) => {
-    return URL.createObjectURL(file)
-  })
-  setShowImage(true)
-  setSelectedFile(imageURL)
-  setHinhAnhSP(e.target.files[0])
+    const selectedFiles = e.target.files;
+    const selectedFileArrays = Array.from(selectedFiles);
+    const imageURL = selectedFileArrays.map((file) => {
+      return URL.createObjectURL(file)
+    })
+    setShowImage(true)
+    setSelectedFile(imageURL)
+    setHinhAnhSP(e.target.files[0])
   }
   const submitHandler = ()=>{
     if (document.getElementById('tensanpham').value === ''
@@ -45,7 +44,24 @@ function AdminDetailDeposit(props) {
     fd.append('TIENKHACHNHAN', tienkhachnhan)
     fd.append('HOAHONG', tienkhachnhan)
     fd.append('HINHANH', hinhanhsp)
-    Axios.post('http://localhost:8000/v1/sanpham/themsanpham', fd)
+    if(props.data){
+      Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+ props.data.MASANPHAM, {
+      TENSANPHAM: tensp,
+      LOAI: loai,
+      GIANHAN: gianhan,
+      HINHANH: hinhanhsp
+    })
+    console.log('a',hinhanhsp)
+    } 
+    else Axios.post('http://localhost:8000/v1/sanpham/themsanpham', fd)
+    // window.location.reload()
+  }
+  const handleDelete = ()=>{
+    const answer= window.confirm('Bạn có chắc chắn xóa sản phẩm này khỏi hóa đơn ký gửi')
+    if(answer)
+    {
+      Axios.delete('http://localhost:8000/v1/sanpham/deletesanphambymasp/'+props.data.MASANPHAM)
+    }
     window.location.reload()
   }
   return (
@@ -63,7 +79,7 @@ function AdminDetailDeposit(props) {
             <p className='Label_PropDeposit'>Giá sản phẩm:</p>
           </div>
           <div className='AdminDetailDeposit_modal-body-inf_input'>
-            <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' onChange={(e) => setTenSanPham(e.target.value)}></input>
+            <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' value={tensp} onChange={(e) => setTenSanPham(e.target.value)}></input>
             {/* <input className='Input_PropDeposit' id='loaisanpham' type='text' placeholder='Chọn loại sản phẩm' onChange={(e) => setLoai(e.target.value)}></input> */}
             <select className='Input_PropDeposit' style={{height:'3.5vh', width:'20.5vw', borderWidth:'2px'}} id='loaisanpham' 
               placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
@@ -86,7 +102,7 @@ function AdminDetailDeposit(props) {
                 <option value="Đầm">Đầm</option>
               </optgroup>
             </select>
-            <input className='Input_PropDeposit' id='giasanpham' type='number' placeholder='Nhập giá sản phẩm' 
+            <input className='Input_PropDeposit' id='giasanpham' type='number' placeholder='Nhập giá sản phẩm' value={gianhan}
             onChange={(e) => setGiaNhan(e.target.value)}></input>
           </div>
           <div className='AdminDetailDeposit_modal-body-inf_image'>
@@ -111,6 +127,7 @@ function AdminDetailDeposit(props) {
         </div>
         <div className='AdminDetailDeposit_modal_Btn_Change'>
             <button className='AdminDetailDeposit_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
+            <button className='AdminDetailDeposit_modal_Btn_Change_Delete' style={{ display: props.data ? 'block' : 'none' }} onClick={handleDelete}>Xóa sản phẩm</button>
             <button className='AdminDetailDeposit_modal_Btn_Change_Confirm' onClick={submitHandler}>Xác nhận</button>
         </div>
       </div>

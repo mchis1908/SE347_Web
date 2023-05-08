@@ -81,7 +81,7 @@ table{
     border-spacing: 0;
 }
 .AdminInvoice-information-header th{
-    width: 12.55vw;
+    width: 12.85vw;
     line-height: 5vh;
     text-align: center;
 }
@@ -99,33 +99,15 @@ table{
     color: #fff;
 }
 .AdminInvoice-information-detail-wrapper td{
-    width: 11.3vw;
+    width: 11.6vw;
     line-height: 5vh;
     padding-right: 1.3vw;
     padding-bottom: 5px;
     text-align: center;
 
-    min-width: 11.3vw;
-    max-width: 11.3vw;
+    min-width: 11.6vw;
+    max-width: 11.6vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-}
-.AdminInvoice-information-detail-wrapper .btn_deleteInvoice{
-    width: 1vw;
-    text-align: center;
-    max-width: 1vw;
-    min-width: 1vw;
-    display: none;
-
-    z-index: 9998;
-}
-.AdminInvoice-information-detail-wrapper .btn_deleteInvoice:hover{
-    color: white;
-}
-/* th,td{
-    border: 1px solid #ccc;
-} */
-.AdminInvoice-information-detail:hover .btn_deleteInvoice {
-    display: table-cell;
 }

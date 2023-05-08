@@ -103,7 +103,6 @@ const handleSearch = async(sk) => {
                                           <td>{khachhangs.EMAIL}</td>
                                           <td>{khachhangs.LANDENGANNHAT}</td>
                                           <td>{khachhangs.SODONKYGUI}</td>
-                                          <td className='btn_deleteCustomer'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
                                       </div>
                                   </tr>
                           )
