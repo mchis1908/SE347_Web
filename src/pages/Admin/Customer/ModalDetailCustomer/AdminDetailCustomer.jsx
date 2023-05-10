@@ -36,6 +36,15 @@ function AdminDetailCustomer(props) {
       window.location.reload();
     }
   }
+  const handleDelete = async ()=>{
+    const answer= window.confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')
+    if(answer)
+    {
+      Axios.delete('http://localhost:8000/v1/khachhang/deletekhachhang/'+ sdtfirst)
+      alert('Đã xóa khách hàng thành công')
+      window.location.reload();
+    }
+  }
   return (
     <div className="AdminDetailCustomer">
       <div className="AdminDetailCustomer_modal">
@@ -60,6 +69,7 @@ function AdminDetailCustomer(props) {
         </div>
         <div className='AdminDetailCustomer_modal_Btn_Change'>
             <button className='AdminDetailCustomer_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
+            <button className='AdminDetailCustomer_modal_Btn_Change_Delete' onClick={handleDelete}>Xóa khách hàng</button>
             <button className='AdminDetailCustomer_modal_Btn_Change_Confirm' onClick={handelConfirm}>Xác nhận</button>
         </div>
       </div>
