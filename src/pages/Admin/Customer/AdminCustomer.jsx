@@ -45,25 +45,17 @@ const openPopup1 = (khachhangs) => {
 const closePopup1 = () => {
   setIsOpen1(false);
 };
-
-const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(khachhangs)
-const [initialData,setInitialData]= useState(data)
-
-const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-  setData(sortedData);
-  setIsSorted(true);
-};
-const resetData = () => {
-  setData(initialData);
-  setIsSorted(false);
-};
-const handleClick = () => {
-  if (isSorted) {
-    resetData();
+const [sortOrder, setSortOrder] = useState('ASC');
+const handleClick = (type) => {
+  const sortedData = [...khachhangs].sort((a, b) => {
+      return a[type].localeCompare(b[type]);
+  });
+  if (sortOrder === 'ASC') {
+    setSortOrder('DESC');
+    setKhachHang(sortedData.reverse());
   } else {
-    sortByName();
+    setSortOrder('ASC');
+    setKhachHang(sortedData);
   }
 };
 const handleSearch = async(sk) => {
@@ -85,11 +77,10 @@ const handleSearch = async(sk) => {
           <div >
             <table className="AdminCustomer-information">
                 <tr className="AdminCustomer-information-header">
-                        <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Hóa đơn gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số đơn hàng ký gửi <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('HOTEN')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('SDT')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('EMAIL')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Hóa đơn gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('LANDENGANNHAT')} icon="ph:sort-ascending-bold" /></span></th>
                         <hr/>
                 </tr>
                 <div className='AdminCustomer_detail_infor'>
@@ -102,7 +93,6 @@ const handleSearch = async(sk) => {
                                           <td>{khachhangs.SDT}</td>
                                           <td>{khachhangs.EMAIL}</td>
                                           <td>{khachhangs.LANDENGANNHAT}</td>
-                                          <td>{khachhangs.SODONKYGUI}</td>
                                       </div>
                                   </tr>
                           )

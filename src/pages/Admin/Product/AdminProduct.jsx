@@ -36,24 +36,22 @@ const openPopup = (sanphams) => {
 const closePopup = () => {
   setIsOpen(false);
 };
-const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(sanphams)
-const [initialData,setInitialData]= useState(data)
+const [sortOrder, setSortOrder] = useState('ASC');
+const handleClick = (type) => {
+  const sortedData = [...sanphams].sort((a, b) => {
+    if (type === 'GIANHAN') {
+      return a[type] - b[type];
+    } else {
+      return a[type].localeCompare(b[type]);
+    }
+  });
 
-const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.masp.localeCompare(b.masp));
-  setData(sortedData);
-  setIsSorted(true);
-};
-const resetData = () => {
-  setData(initialData);
-  setIsSorted(false);
-};
-const handleClick = () => {
-  if (isSorted) {
-    resetData();
+  if (sortOrder === 'ASC') {
+    setSortOrder('DESC');
+    setSanPham(sortedData.reverse());
   } else {
-    sortByName();
+    setSortOrder('ASC');
+    setSanPham(sortedData);
   }
 };
 const handleSearch = async(sk) => {
@@ -74,12 +72,12 @@ const handleSearch = async(sk) => {
           <div >
             <table className="AdminProduct-information">
                 <tr className="AdminProduct-information-header">
-                        <th>Mã sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Tên sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Loại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Giá bán <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Hình ảnh <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Mã sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('MASANPHAM')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Tên sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TENSANPHAM')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Loại <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('LOAI')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Giá bán <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('GIANHAN')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TRANGTHAI')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Hình ảnh <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('MASANPHAM')} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminProduct_detail_infor'>
@@ -92,8 +90,9 @@ const handleSearch = async(sk) => {
                                           <td >{sanphams.TENSANPHAM}</td>
                                           <td >{sanphams.LOAI}</td>
                                           <td >{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                          <td >{sanphams.TRANGTHAI}</td>
-                                          <td><img style={{maxHeight:'40px'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
+                                          <td ><p className={sanphams.TRANGTHAI === 'Đã bán' ? 'green-text' : 'red-text'} style={{border:'1px solid', width:'6vw', height:'4vh', marginLeft:'3vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{sanphams.TRANGTHAI}</p></td>
+                                          {/* <td style={{display:'flex', alignItems:'center', justifyContent:'center'}}><img style={{width:'50px', height:'40px',verticalAlign:'middle'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td> */}
+                                          <td><img style={{maxHeight:'40px',width:'50px', verticalAlign:'middle'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
                                       </div>
                                   </tr>
                           )

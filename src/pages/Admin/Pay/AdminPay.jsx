@@ -7,6 +7,8 @@ import cryptoRandomString from 'crypto-random-string';
 import {Autocomplete}  from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Axios from "axios";
+import { Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 function AdminPay(props) {
 const [khachhang, setSDTKhachHang] = useState()
@@ -164,7 +166,12 @@ const handleSearch = () => {
   });
   
 };
-
+const handleDelete = (sp) => {
+  const answer=window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi hóa đơn?')
+  if(!answer) return;
+  const updatedSanPhams = sanphams.filter(item => item !== sp);
+  setSanPham(updatedSanPhams);
+};
   return (
     <div className='AdminPay'>
       <Menu/>
@@ -201,16 +208,16 @@ const handleSearch = () => {
               </div>
             <div className='AdminPay_ProductList'>
               {
-                sanphams.map((sanphams,index) => {
+                sanphams.map((sp,index) => {
                     return (
                       <div className='AdminPay_ProductInf'>
                         <td></td>                    
                         <td>{index+1}</td>
-                        <td>{sanphams.TENSANPHAM}</td>
-                        <td>{sanphams.LOAI}</td>
-                        <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
-                        <td>{sanphams.GIANHAN}</td>
-                        <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
+                        <td>{sp.TENSANPHAM}</td>
+                        <td>{sp.LOAI}</td>
+                        <td style={{display:'flex', alignItems:'center', justifyContent:'center'}}><img style={{width:'50px', height:'40px',verticalAlign:'middle'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
+                        <td>{sp.GIANHAN}</td>
+                        <td style={{display:'flex', alignItems:'center', justifyContent:'center'}} className='btn_deleteProduct'><Button type="primary" icon={<DeleteOutlined />} onClick={()=> handleDelete(sp)} size='16px'/></td>
                       </div>
                     )
                 })

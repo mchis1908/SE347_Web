@@ -175,8 +175,8 @@ function AdminReport() {
                                                 <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{index+1}</td>
                                                 <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sanphams.MASANPHAM}</td>
                                                 <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sanphams.MAHOADONKG}</td>
-                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sanphams.HOAHONG.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sanphams.HOAHONG.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                                             </tr>
                                         )})
                                     }
@@ -185,8 +185,8 @@ function AdminReport() {
                                         <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>Tổng:</th>
                                         <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}></th>
                                         <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}></th>
-                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{giaban.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
-                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sum.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
+                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{giaban.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
+                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sum.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
                                     </tr>
                                 </table>
                             </div>
@@ -225,10 +225,10 @@ function AdminReport() {
                                                 <tr style={{display:'flex', flexDirection:'row' }}>
                                                     <td style={{border:'solid 1px #000', width:'8vw', fontSize:'14px', textAlign:'center'}}>{index+1}</td>
                                                     <td style={{border:'solid 1px #000', width:'18vw', fontSize:'14px', textAlign:'center'}}>{nhanviens[index] && nhanviens[index].HOTEN}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}>{lv.gio}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}>{nhanviens[index] && nhanviens[index].LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}>{nhanviens[index] && nhanviens[index].LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}>{luongnhan.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{lv.gio}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{nhanviens[index] && nhanviens[index].LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{nhanviens[index] && nhanviens[index].LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{luongnhan.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
                                                 </tr>
                                             )})
                                     }
@@ -239,7 +239,7 @@ function AdminReport() {
                                         <th style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}></th>
                                         <th style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}></th>
                                         <th style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}></th>
-                                        <th style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'center'}}>{
+                                        <th style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{
                                             luong.reduce((acc, lv, index) => {
                                                 const luongnhan = lv.gio * (nhanviens[index] && nhanviens[index].LUONGTHEOGIO)+ (nhanviens[index] && nhanviens[index].LUONGCOBAN || 0);
                                                 return (acc + luongnhan);

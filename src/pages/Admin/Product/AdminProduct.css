@@ -112,3 +112,9 @@ table{
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
     padding-bottom: 5px;
 }
+.red-text {
+    color: red;
+}
+.green-text {
+    color: green;
+}

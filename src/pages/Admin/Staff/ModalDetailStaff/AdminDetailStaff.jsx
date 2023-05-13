@@ -40,6 +40,16 @@ function AdminDetailStaff(props) {
       window.location.reload();
     }
   }
+  const handleDelete = async ()=>{
+    const answer= window.confirm('Bạn có chắc chắn muốn xóa nhân viên này không. Nếu đồng ý, thông tin nhân viên và tài khoản của nhân viên cũng sẽ bị xóa.')
+    if(answer)
+    {
+      Axios.delete('http://localhost:8000/v1/nhanvien/deletenhanvien/' + sdtfirst)
+      Axios.delete('http://localhost:8000/v1/taikhoan/deletetaikhoan/' + sdtfirst)
+      alert('Đã xóa nhân viên thành công')
+      window.location.reload();
+    }
+  }
   return (
     <div className="AdminDetailStaff">
       <div className="AdminDetailStaff_modal">
@@ -66,6 +76,7 @@ function AdminDetailStaff(props) {
         </div>
         <div className='AdminDetailStaff_modal_Btn_Change'>
             <button className='AdminDetailStaff_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
+            <button className='AdminDetailStaff_modal_Btn_Change_Delete' onClick={handleDelete}>Xóa nhân viên</button>
             <button className='AdminDetailStaff_modal_Btn_Change_Confirm' onClick={handelConfirm}>Xác nhận</button>
         </div>
       </div>

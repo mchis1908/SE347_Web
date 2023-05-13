@@ -110,17 +110,6 @@ function AdminSchedule(props) {
       });
       newData.push(arr);
     }
-    const luong = []; // tạo một mảng rỗng
-    for (let i = 0; i < sdtList.length; i++) {
-      let s = 0;
-      const data = tableData.find((item) => item.sdt === sdtList[i]);
-      if (data) {
-        for (let j = 0; j < tableData.length; j++) {
-          s += Number(data.gio[j]) || 0;
-        }
-      }
-      luong.push({ sdt: sdtList[i], gio: s }); // thêm một mảng con chứa sdtList[i] và s vào mảng luong
-    }
     try{
       await Axios.patch('http://localhost:8000/v1/thoigianlamviec/updateThoiGianLamViec/' + thang , {
         LAMVIEC: newData
@@ -143,6 +132,17 @@ function AdminSchedule(props) {
           LAMVIEC: newData
         });
       }
+    }
+    const luong = []; // tạo một mảng rỗng
+    for (let i = 0; i < sdtList.length; i++) {
+      let s = 0;
+      const data = tableData.find((item) => item.sdt === sdtList[i]);
+      if (data) {
+        for (let j = 0; j < tableData.length; j++) {
+          s += Number(data.gio[j]) || 0;
+        }
+      }
+      luong.push({ sdt: sdtList[i], gio: s }); // thêm một mảng con chứa sdtList[i] và s vào mảng luong
     }
     try{
       await Axios.patch('http://localhost:8000/v1/luong/updateLuong/' + thang , {

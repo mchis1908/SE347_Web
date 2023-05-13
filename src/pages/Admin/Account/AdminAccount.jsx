@@ -34,33 +34,27 @@ function AdminAccount(props) {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+  const [inftaikhoan, setInfTaiKhoan] = useState(['']);
 
-  const openPopup = () => {
+  const openPopup = (tk) => {
+    setInfTaiKhoan(tk);
     setIsOpen(true);
   };
 
   const closePopup = () => {
     setIsOpen(false);
   };
-  const [isSorted, setIsSorted] = useState(false);
-  const [data,setData]= useState(accounts)
-  const [initialData,setInitialData]= useState(data)
-  console.log('data',data)
-
-  const sortByName = () => {
-    const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-    setData(sortedData);
-    setIsSorted(true);
-  };
-  const resetData = () => {
-    setData(initialData);
-    setIsSorted(false);
-  };
-  const handleClick = () => {
-    if (isSorted) {
-      resetData();
+  const [sortOrder, setSortOrder] = useState('ASC');
+  const handleClick = (type) => {
+    const sortedData = [...accounts].sort((a, b) => {
+      return a[type].localeCompare(b[type]);
+    });
+    if (sortOrder === 'ASC') {
+      setSortOrder('DESC');
+      setTaiKhoan(sortedData.reverse());
     } else {
-      sortByName();
+      setSortOrder('ASC');
+      setTaiKhoan(sortedData);
     }
   };
   return (
@@ -74,9 +68,9 @@ function AdminAccount(props) {
           <div >
             <table className="AdminAccount-information">
                 <tr className="AdminAccount-information-header">
-                        <th>Tên nhân viên <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Tài khoản <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Mật khẩu <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Tên nhân viên <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TENNV')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Tài khoản <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TENTAIKHOAN')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Mật khẩu <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('MATKHAU')} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminAccount_detail_infor'>
@@ -84,7 +78,7 @@ function AdminAccount(props) {
                     accounts.map(accounts => {
                       if(accounts.PHANQUYEN=== 'employee')
                           return (
-                                  <tr className='AdminAccount-information-detail' onClick={openPopup}>
+                                  <tr className='AdminAccount-information-detail' onClick={() => openPopup(accounts)}>
                                       <div className='AdminAccount-information-detail-wrapper'>
                                           <td className='stadium-name'>{accounts.TENNV}</td>
                                           <td className='team-name'>{accounts.TENTAIKHOAN}</td>
@@ -99,6 +93,7 @@ function AdminAccount(props) {
                   <AdminDetailAccount
                     title="Thông tin tài khoản"
                     onClose={closePopup}
+                    data={inftaikhoan}
                   >
                     {props.children}
                   </AdminDetailAccount>

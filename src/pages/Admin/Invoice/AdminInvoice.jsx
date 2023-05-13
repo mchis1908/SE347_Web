@@ -37,24 +37,24 @@ const openPopup = (mahoadon) => {
 const closePopup = () => {
   setIsOpen(false);
 };
-const [isSorted, setIsSorted] = useState(false);
-const [data,setData]= useState(hoadons)
-const [initialData,setInitialData]= useState(data)
+const [sortOrder, setSortOrder] = useState('ASC');
+const handleClick = (type) => {
+  const sortedData = [...hoadons].sort((a, b) => {
+    if (type === 'SOLUONG') {
+      return a[type] - b[type];
+    } else if (type === 'SDT') {
+      return a.SDT.split('-')[1].localeCompare(b.SDT.split('-')[1]);
+    } else {
+      return a[type].localeCompare(b[type]);
+    }
+  });
 
-const sortByName = () => {
-  const sortedData = [...data].sort((a, b) => a.MAHOADON.localeCompare(b.MAHOADON));
-  setData(sortedData);
-  setIsSorted(true);
-};
-const resetData = () => {
-  setData(initialData);
-  setIsSorted(false);
-};
-const handleClick = () => {
-  if (isSorted) {
-    resetData();
+  if (sortOrder === 'ASC') {
+    setSortOrder('DESC');
+    setHoaDon(sortedData.reverse());
   } else {
-    sortByName();
+    setSortOrder('ASC');
+    setHoaDon(sortedData);
   }
 };
 const handleSearch = async(sk) => {
@@ -76,12 +76,12 @@ const handleSearch = async(sk) => {
           <div >
             <table className="AdminInvoice-information">
                 <tr className="AdminInvoice-information-header">
-                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Khách hàng <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số lượng sản phẩm<span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Loại hóa đơn <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Ngày tạo đơn <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Trạng thái <span><Icon style={{paddingLeft:'10px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Mã hóa đơn <span><Icon style={{paddingLeft:'10px'}} onClick={() => handleClick('MAHOADON')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Khách hàng <span><Icon style={{paddingLeft:'10px'}} onClick={() => handleClick('SDT')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số lượng sản phẩm<span><Icon style={{paddingLeft:'10px'}} onClick={() => handleClick('SOLUONG')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Ngày tạo đơn <span><Icon style={{paddingLeft:'10px'}} onClick={() => handleClick('NGAYTAODON')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Loại hóa đơn <span><Icon style={{paddingLeft:'10px'}} onClick={() => handleClick('LOAI')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Trạng thái <span><Icon style={{paddingLeft:'10px'}} onClick={() => handleClick('TRANGTHAI')} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
                 <div className='AdminInvoice_detail_infor'>
@@ -96,9 +96,9 @@ const handleSearch = async(sk) => {
                                           {/* <td><Barcode style={{width:'5vw'}} value={hoadons.MAHOADON} /></td> */}
                                           <td>{result}</td>
                                           <td>{hoadons.SOLUONG}</td>
-                                          <td>{hoadons.LOAI}</td>
                                           <td>{hoadons.NGAYTAODON}</td>
-                                          <td>{hoadons.TRANGTHAI}</td>
+                                          <td><p className={hoadons.LOAI === 'Bán hàng' ? 'orange-text' : 'pink-text'} style={{border:'1px solid', width:'6vw', height:'4vh', marginLeft:'3vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{hoadons.LOAI}</p></td>
+                                          <td><p className={hoadons.TRANGTHAI === 'Đã thanh toán' ? 'green-text' : 'red-text'} style={{border:'1px solid', width:'9vw', height:'4vh', marginLeft:'1.5vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{hoadons.TRANGTHAI}</p></td>
                                       </div>
                                   </tr>
                           )

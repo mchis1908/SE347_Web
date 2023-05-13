@@ -111,3 +111,15 @@ table{
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
 }
+.red-text {
+    color: red;
+}
+.green-text {
+    color: green;
+}
+.pink-text {
+    color: #393eff;
+}
+.orange-text {
+    color: #fba011;
+}

@@ -50,24 +50,22 @@ function AdminStaff(props) {
   const closePopup1 = () => {
     setIsOpen1(false);
   };
-  const [isSorted, setIsSorted] = useState(false);
-  const [data,setData]= useState(nhanviens)
-  const [initialData,setInitialData]= useState(data)
+  const [sortOrder, setSortOrder] = useState('ASC');
+  const handleClick = (type) => {
+    const sortedData = [...nhanviens].sort((a, b) => {
+      if (type === 'LUONGCOBAN'|| type === 'LUONGTHEOGIO') {
+        return a[type] - b[type];
+      } else {
+        return a[type].localeCompare(b[type]);
+      }
+    });
 
-  const sortByName = () => {
-    const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
-    setData(sortedData);
-    setIsSorted(true);
-  };
-  const resetData = () => {
-    setData(initialData);
-    setIsSorted(false);
-  };
-  const handleClick = () => {
-    if (isSorted) {
-      resetData();
+    if (sortOrder === 'ASC') {
+      setSortOrder('DESC');
+      setNhanVien(sortedData.reverse());
     } else {
-      sortByName();
+      setSortOrder('ASC');
+      setNhanVien(sortedData);
     }
   };
   return (
@@ -82,28 +80,28 @@ function AdminStaff(props) {
           <div >
             <table className="AdminStaff-information">
                 <tr className="AdminStaff-information-header">
-                        <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span> </th>
-                        <th>Lương cơ bản <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Lương theo giờ</th>
-                <hr/>
+                  <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('HOTEN')} icon="ph:sort-ascending-bold" /></span></th>
+                  <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('SDT')} icon="ph:sort-ascending-bold" /></span></th>
+                  <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('EMAIL')} icon="ph:sort-ascending-bold" /></span> </th>
+                  <th>Lương cơ bản <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('LUONGCOBAN')} icon="ph:sort-ascending-bold" /></span></th>
+                  <th>Lương theo giờ <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('LUONGTHEOGIO')} icon="ph:sort-ascending-bold" /></span></th>
+                  <hr/>
                 </tr>
                 <div className='AdminStaff_detail_infor'>
                   {
                     nhanviens.map(nhanviens => {
-                          return (
-                                  <tr className='AdminStaff-information-detail' onClick={() => openPopup1(nhanviens)}>
-                                      <div className='AdminStaff-information-detail-wrapper' >
-                                          <td className='team-name'>{nhanviens.HOTEN}</td>
-                                          <td className='stadium-name'>{nhanviens.SDT}</td>
-                                          <td className=''>{nhanviens.EMAIL}</td>
-                                          <td className=''>{nhanviens.LUONGCOBAN}</td>
-                                          <td className=''>{nhanviens.LUONGTHEOGIO}</td>
-                                      </div>
-                                  </tr>
-                          )
-                      })
+                      return (
+                        <tr className='AdminStaff-information-detail' onClick={() => openPopup1(nhanviens)}>
+                            <div className='AdminStaff-information-detail-wrapper' >
+                                <td>{nhanviens.HOTEN}</td>
+                                <td>{nhanviens.SDT}</td>
+                                <td>{nhanviens.EMAIL}</td>
+                                <td>{nhanviens.LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                <td>{nhanviens.LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                            </div>
+                        </tr>
+                      )
+                    })
                   }
                 </div>
                 {isOpen &&
