@@ -54,7 +54,7 @@ function AdminDetailDeposit(props) {
     console.log('a',hinhanhsp)
     } 
     else Axios.post('http://localhost:8000/v1/sanpham/themsanpham', fd)
-    // window.location.reload()
+    window.location.reload()
   }
   const handleDelete = ()=>{
     const answer= window.confirm('Bạn có chắc chắn xóa sản phẩm này khỏi hóa đơn ký gửi')

@@ -79,8 +79,8 @@ function AdminHome() {
       const bcn = response.data;
       for (let i = 0; i< bcn.length; i++) {
         let str= bcn[i].THOIGIAN.split("-")[0];
-        arr1[parseInt(str)-1]=bcn[i].SLSANPHAMNHAN;
-        arr2[parseInt(str)-1]=bcn[i].SLSANPHAMBAN;
+        arr1[parseInt(str)-1]=bcn[i].SLSANPHAMBAN;
+        arr2[parseInt(str)-1]=bcn[i].SLSANPHAMNHAN;
       }
       const newData = {
         labels: arr,
@@ -142,8 +142,8 @@ function AdminHome() {
         const arr2 = Array(parseInt(dayinmonth)).fill(0);
         for (let i = 0; i< bcn.length; i++) {
           let str= bcn[i].THOIGIAN.split("-")[0];
-          arr1[parseInt(str)-1]=bcn[i].SLSANPHAMNHAN;
-          arr2[parseInt(str)-1]=bcn[i].SLSANPHAMBAN;
+          arr1[parseInt(str)-1]=bcn[i].SLSANPHAMBAN;
+          arr2[parseInt(str)-1]=bcn[i].SLSANPHAMNHAN;
         }
         const newData = {
           labels: arr,
