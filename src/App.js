@@ -14,7 +14,6 @@ import AdminChart from './pages/Admin/Chart/AdminChart';
 import AdminAccount from './pages/Admin/Account/AdminAccount';
 import AdminSchedule from './pages/Admin/Schedule/AdminSchedule';
 // ------------------------------------------------------
-import EmployeeHome from './pages/Employee/Home/EmployeeHome';
 import EmployeeDeposit from './pages/Employee/Deposit/EmployeeDeposit';
 import EmployeePay from './pages/Employee/Pay/EmployeePay';
 import EmployeeProduct from './pages/Employee/Product/EmployeeProduct';
@@ -43,7 +42,7 @@ function App() {
         <Route exact path="/admin/schedule" element={<AdminSchedule/>}/>
         <Route exact path="/admin/report" element={<AdminReport/>}/>
         {/* -----Employee----- */}
-        <Route exact path="/employee/home" element={<EmployeeHome/>}/>
+        <Route exact path="/employee/home" element={<AdminHome/>}/>
         <Route exact path="/employee/customer" element={<EmployeeCustomer/>}/>
         <Route exact path="/employee/product" element={<EmployeeProduct/>}/>
         <Route exact path="/employee/invoice" element={<EmployeeInvoice/>}/>
