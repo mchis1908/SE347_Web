@@ -4,11 +4,29 @@ import { Icon } from '@iconify/react';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Link, Navigate } from 'react-router-dom'
-import { Line } from 'react-chartjs-2';
 import { DatePicker } from 'antd';
 import moment from 'moment';
 import Axios from "axios";
-
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 // function AdminHome({ isAuthenticated }) {
 //   if (!isAuthenticated) {
 //     return <Navigate to="/" />;

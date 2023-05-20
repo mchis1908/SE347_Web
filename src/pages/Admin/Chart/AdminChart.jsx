@@ -4,9 +4,32 @@ import { Icon } from '@iconify/react';
 import moment from 'moment';
 import Menu from "../Menu/AdminMenu";
 import Header from '../../../common/Header/Header';
-import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import { DatePicker } from 'antd';
 import Axios from "axios";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  ArcElement,
+} from 'chart.js';
+import { Line, Bar, Doughnut } from 'react-chartjs-2';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  ArcElement,
+);
 
 function AdminChart() {
   const today = moment().format('DD-MM-YYYY');
