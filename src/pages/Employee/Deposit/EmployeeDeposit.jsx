@@ -1,194 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./EmployeeDeposit.css"
 import { Icon } from '@iconify/react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import Menu from "../Menu/EmployeeMenu"
 import Header from '../../../common/Header/Header'
-import EmployeeDetailDeposit from './ModalDetailDeposit/EmployeeDetailDeposit';
-import cryptoRandomString from 'crypto-random-string';
-import {Autocomplete}  from "@mui/material";
-import TextField from "@mui/material/TextField";
-import Axios from "axios";
-import EmployeeDepositPrintBarcode from './ModalPrintBarcode/EmployeeDepositPrintBarcode';
-import EmployeeDetailInvoice from '../Invoice/ModalDetailInvoice/EmployeeDetailInvoice';
+import EmployeeAddProduct from '../Product/ModalDetailProduct/EmployeeDetailProduct';
 
 function EmployeeDeposit(props) {
-const [khachhang, setSDTKhachHang] = useState()
-const [loaihoadon, setLoaiHoaDon] = useState('Ký gửi')
-const [trangthaiHD, setTrangThaiHD] = useState('Chưa thanh toán')
-let [khachhangs, setKhachHang] = useState([])
-const getKH = async () => {
-    try {
-        const res = await Axios.get('http://localhost:8000/v1/khachhang/getkhachhang')
-        setKhachHang(res.data);
-        khachhangs=res.data;
-    }
-    catch (error) {
-        console.log(error.message)
-    }
-}
-
-let [sanphams, setSanPham] = useState([])
-const getSANPHAM = async () => {
-    try {
-        const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanphambymakygui/'+'001d30009ff71de813521e7b')
-        setSanPham(res.data);
-        sanphams=res.data;
-    }
-    catch (error) {
-        console.log(error.message)
-    }
-}
-
-useEffect(() => {
-  getSANPHAM();
-  getKH();
-}, [])
-const [sp, setsp] = useState();
+  const products = [
+    {
+      id: '1',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '2',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '3',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '4',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '5',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '6',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '7',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '8',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '9',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+]
 const [isOpen, setIsOpen] = useState(false);
-const openPopup = (sph) => {
+
+const openPopup = () => {
   setIsOpen(true);
-  setsp(sph)
 };
+
 const closePopup = () => {
   setIsOpen(false);
 };
+const [showCalendar, setShowCalendar] = useState(false);
+const [selectedDate, setSelectedDate] = useState(new Date());
 
+const toggleCalendar = () => {
+  setShowCalendar(!showCalendar);
+};
+
+const handleDateChange = (date) => {
+  setSelectedDate(date);
+  setShowCalendar(false);
+};
 const [showNotSuccess, setShowNotSuccess] = useState(true);
-const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-const currentDate = new Date();
-const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-const [firsthd, setFirsthd] = useState()
-const handleConfirm = async () => {
-  if (document.getElementById('sdtkhachhang').value === '') {
-      alert('Vui lòng nhập thông tin khách hàng')
-      return
-  }
-  if (sanphams.length === 0) {
-    alert('Hiện chưa có sản phẩm nào')
-    return
-  }
-  const answer = window.confirm("Bạn có chắc chắn tạo hóa đơn",);
-  const randommahoadon = cryptoRandomString({ length: 16 });
-  setFirsthd(randommahoadon);
-  if (answer) {
-    try{
-      Axios.post('http://localhost:8000/v1/hoadon/themhoadon', 
-      {
-        MAHOADON: randommahoadon,
-        SDT: khachhang,
-        SOLUONG: sanphams.length,
-        LOAI: loaihoadon,
-        TRANGTHAI: trangthaiHD,
-        NGAYTAODON: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
-      })
-    }
-    catch{
-        alert('Số điện thoại trùng')
-        return
-    }
-    Axios.patch('http://localhost:8000/v1/sanpham/updatesanphambymahd/'+'001d30009ff71de813521e7b', 
-    {
-      MAHOADONKG: randommahoadon
-    })
-    Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
-    {
-      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
-    })
-    // ---------Xử lý sản phẩm NGÀY---------
-    // ---------Xử lý sản phẩm THÁNG---------
-    const formatNgay = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(0,10);
-    const formatThang = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(3,10);
-    // console.log(formatNgay)
-    try {
-      const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgay/' + formatNgay);
-      const bcn = response.data;
-      const response1 = await Axios.get('http://localhost:8000/v1/baocaospthang/getBaoCaoSPThang/' + formatThang);
-      const bct = response1.data;
-      const res = await Axios.patch(
-        'http://localhost:8000/v1/baocaospngay/updateBaoCaoSPNgay/' + formatNgay,
-        {
-          SLSANPHAMNHAN: bcn.SLSANPHAMNHAN + sanphams.length,
-        }
-      );
-      Axios.patch(
-        'http://localhost:8000/v1/baocaospthang/updateBaoCaoSPThang/' + formatThang,
-        {
-          SLSANPHAMNHAN: bct.SLSANPHAMNHAN + sanphams.length,
-        }
-      );
-    } catch (error) {
-      if (error.response && error.response.status === 404) {
-        Axios.post('http://localhost:8000/v1/baocaospngay/themBaoCaoSPNgay/', {
-          THOIGIAN: formatNgay,
-          SLSANPHAMBAN: 0,
-          SLSANPHAMNHAN: sanphams.length,
-        });
-        Axios.post('http://localhost:8000/v1/baocaospthang/themBaoCaoSPThang/', {
-          THOIGIAN: formatThang,
-          SLSANPHAMBAN: 0,
-          SLSANPHAMNHAN: sanphams.length,
-        });
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
-      }
-    }
-    window.alert('Hóa đơn đã được tạo thành công')
+  const handleConfirm = () => {
     setShowNotSuccess(false);
     setShowSuccess(true);
-  }
-  
-};
+  };
 
-const handleComplete = () => {
-  setShowNotSuccess(true);
-  setShowSuccess(false);
-  window.location.reload()
-};
-const handleCancel = () => {
-  if(sanphams.length=== 0) window.alert('Chưa có sản phẩm nào');
-  else{
-    const answer = window.confirm("Bạn có chắc chắn hủy tạo hóa đơn. Tất cả sản phẩm trong đơn sẽ bị xóa.",);
-    if (answer) {
-      Axios.delete('http://localhost:8000/v1/sanpham/deletesanphambymahdkg/'+'001d30009ff71de813521e7b')
-      setShowNotSuccess(true);
-      setShowSuccess(false);
-      window.location.reload()
-    }
-  }
-};
-
-const [isOpen1, setIsOpen1] = useState(false);
-const [allsanpham, setAllSanPham] = useState([''])
-const openPopup1 = async() => {
-  console.log(firsthd)
-  const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanphambymakygui/'+ firsthd)
-  setAllSanPham(res.data);
-  setIsOpen1(true);
-};
-const closePopup1 = () => {
-  setIsOpen1(false);
-};
-
-const [isOpen2, setIsOpen2] = useState(false);
-const [hoadon, setMaHoaDon] = useState([''])
-const openPopup2 = async() => {
-  const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon/'+ firsthd)
-  setMaHoaDon(res.data);
-  setIsOpen2(true); 
-};
-const closePopup2 = () => {
-  setIsOpen2(false);
-};
-
-const calculateTotal = () => {
-  let total =0;
-  for(let i = 0; i < sanphams.length; i++) {
-    total+=sanphams[i].GIANHAN;
-  }
-  return total;
-};
+  const handleCancel = () => {
+    setShowNotSuccess(true);
+    setShowSuccess(false);
+  };
 return (
   <div className='EmployeeDeposit'>
     <Menu/>
@@ -196,114 +103,65 @@ return (
     <div className='EmployeeDeposit_main'>
       <div className="EmployeeDeposit_Bottom">
         <div className='EmployeeDeposit_Content'>
+          <div className='Content_Date'>
+            <p className='Content_LabelDay'>Ngày lập hóa đơn:</p>
+            <button className='Content_Calendar' onClick={toggleCalendar}>{selectedDate.toLocaleDateString()}</button>
+            {showCalendar && (
+              <Calendar
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            )}
+          </div>
           <div className='EmployeeDeposit_Detail'>
             <div className='EmployeeDeposit_CustomerInf'>
-              <p className='ProductInf_Label'>Khách hàng:</p>
-              <Autocomplete
-                disablePortal
-                id='sdtkhachhang'
-                options={khachhangs}
-                style={{marginLeft:'4vw', width:'30vw'}}
-                getOptionLabel={(option) => `${option.SDT} - ${option.HOTEN}`}
-                renderInput={(params) => <TextField {...params} label="Khách Hàng" size="small" />}
-                onSelect={(e)=> {setSDTKhachHang(e.target.value)}}
-              />
+                <p className='EmployeeDeposit_CustomerInf_Label'>Khách hàng</p>
+                <input className='EmployeeDeposit_CustomerInf_Input' placeholder='Nhập số điện thoại khách hàng'></input>
             </div>
             <p className='ProductInf_Label'>Sản phẩm:</p>
-              <div className='EmployeeDeposit_ProductInf'>
-                <td></td>                    
-                <td>STT</td>
-                <td>Tên sản phẩm</td>
-                <td>Loại</td>
-                <td>Hình ảnh</td>
-                <td>Giá</td>
-                <td className='btn_deleteProduct'></td>
-              </div>
             <div className='EmployeeDeposit_ProductList'>
               {
-                sanphams.map((sp,index) => {
-                    return (
-                      <div className='EmployeeDeposit_ProductInf' onClick={(e)=>openPopup(sp)}>
-                      {/* {isOpen &&
-                        <EmployeeDetailDeposit
-                          title="Thông tin sản phẩm"
-                          onClose={closePopup}
-                          data={sp}
-                        >
-                          {props.children}
-                        </EmployeeDetailDeposit>
-                      } */}
-                        <td></td>                    
-                        <td>{index+1}</td>
-                        <td>{sp.TENSANPHAM}</td>
-                        <td>{sp.LOAI}</td>
-                        <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
-                        <td>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                      </div>
-                    )
-                })
+                products.map(products => {
+                      return (
+                        <div className='EmployeeDeposit_ProductInf'>
+                          <td></td>                    
+                          <td>{products.id}</td>
+                          <td>{products.label}</td>
+                          <td><img style={{width:'50px', height:'40px'}} src={products.img}/></td>
+                          <td>{products.cost}</td>
+                          <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
+                        </div>
+                      )
+                  })
               }
             </div>
-            <hr/>
             <div className='EmployeeDeposit_ProductInf'>
-              <td>Số lượng:</td>               
-              <td>{sanphams.length}</td>                    
-              <td></td>                    
+              <td>Tổng:</td>               
+              <td>{products.length}</td>                    
               <td></td>
-              <td>Tổng tiền: </td>
-              <td>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+              <td></td>
+              <td>2.000.000</td>
             </div>
             <div className='EmployeeDeposit_btnChange'>
               {showSuccess && (
                 <>
-                  <button className='EmployeeDeposit_btnPrintProduct' onClick={openPopup1}>In barcode sản phẩm</button>
-                  {isOpen1 && 
-                    <EmployeeDepositPrintBarcode
-                      title="In Barcode Sản Phẩm"
-                      onClose={closePopup1}
-                      data={allsanpham}
-                      db={true}
-                    >
-                      {props.children}
-                    </EmployeeDepositPrintBarcode>
-                  }
-                  <button className='EmployeeDeposit_btnPrintInvoice' onClick={openPopup2}>In hóa đơn khách hàng</button>
-                  {isOpen2 &&
-                    <EmployeeDetailInvoice
-                      title="Thêm sản phẩm"
-                      onClose={closePopup2}
-                      data={hoadon}
-                    >
-                      {props.children}
-                    </EmployeeDetailInvoice>
-                  }
-                  <button className='EmployeeDeposit_btnComplete' onClick={handleComplete}>Hoàn tất</button>
+                  <button className='EmployeeDeposit_btnCancel' onClick={handleCancel}>Hủy</button>
+                  <button className='EmployeeDeposit_btnPrintProduct'>In barcode sản phẩm</button>
+                  <button className='EmployeeDeposit_btnPrintInvoice'>In hóa đơn khách hàng</button>
                 </>
               )}
               {showNotSuccess && (
                 <>
-                  <button className='EmployeeDeposit_btnCancel' onClick={handleCancel}>Hủy</button>
-                  <button className='EmployeeDeposit_btnAddProduct' onClick={(e)=>openPopup('')}>Thêm sản phẩm</button>
+                  <button className='EmployeeDeposit_btnAddProduct' onClick={openPopup}>Thêm sản phẩm</button>
                   {isOpen &&
-                    <EmployeeDetailDeposit
-                      title="Thông tin sản phẩm"
+                    <EmployeeAddProduct
+                      title="Thêm sản phẩm"
                       onClose={closePopup}
-                      data={sp}
                     >
                       {props.children}
-                    </EmployeeDetailDeposit>
+                    </EmployeeAddProduct>
                   }
                   <button className='EmployeeDeposit_btnConfirm' onClick={handleConfirm}>Xác nhận tạo hóa đơn</button>
-                  {/* <button className='EmployeeDeposit_btnConfirm' onClick={openPopup1}>test</button>
-                  {isOpen1 && 
-                    <EmployeeDepositPrintBarcode
-                      title="In Barcode Sản Phẩm"
-                      onClose={closePopup1}
-                      data={allsanpham}
-                    >
-                      {props.children}
-                    </EmployeeDepositPrintBarcode>
-                  } */}
                 </>
               )}
             </div>

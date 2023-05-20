@@ -55,17 +55,16 @@
 }
 .EmployeeProduct-information{
     width: 80vw;
-    height: 78vh;
-    overflow: hidden;
+    height: 80vh;
+    overflow: auto;
     background-color: #fff;
     
     margin-left: 4vw;
     border-radius: 10px;
-    margin-bottom: 4vh;
-    display: block;
+    margin-bottom: 2vh;
 }
-.EmployeeProduct-information:hover{
-    overflow: auto;
+.EmployeeProduct-information{
+    display: block;
 }
 .EmployeeProduct-information-header{
     width: 80vw;
@@ -81,8 +80,8 @@ table{
     border-spacing: 0;
 }
 .EmployeeProduct-information-header th{
-    width: 12.85vw;
-    line-height: 5vh;
+    width: 12.55vw;
+    line-height: 6vh;
     text-align: center;
 }
 .EmployeeProduct_detail_infor{
@@ -90,7 +89,7 @@ table{
 }
 .EmployeeProduct-information-detail{
     width: 100%;
-    padding-top: 1vh;
+    padding-top: 2vh;
     display: block;
 }
 .EmployeeProduct-information-detail :hover{
@@ -99,22 +98,14 @@ table{
     color: #fff;
 }
 .EmployeeProduct-information-detail-wrapper td{
-    width: 11.6vw;
-    line-height: 3vh;
+    width: 11.85vw;
+    line-height: 6vh;
     text-align: center;
-    padding-right: 1.3vw;
-    min-height: 3vh;
 
-    max-width: 11.6vw;
-    min-width: 11.6vw;
+    max-width: 11.85vw;
+    min-width: 11.85vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-    padding-bottom: 5px;
-}
-.red-text {
-    color: red;
-}
-.green-text {
-    color: green;
+    padding: 0 0.4vw;
 }

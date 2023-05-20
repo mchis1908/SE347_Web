@@ -1,67 +1,70 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState} from 'react'
 import './EmployeeCustomer.css'
+import ReactTable from 'react-table';
+// import 'react-table/react-table.css';
 import Menu from "../Menu/EmployeeMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import EmployeeDetailCustomer from './ModalDetailCustomer/EmployeeDetailCustomer';
-import Axios from "axios";
-import EmployeeAddCustomer from './ModalAddCustomer/EmployeeAddCustomer';
 
 function EmployeeCustomer(props) {
-  let [khachhangs, setKhachHang] = useState([])
-  const [searchkey, setSearchKey] = useState('')
-  const getkhachhang = async () => {
-      try {
-          const res = await Axios.get('http://localhost:8000/v1/khachhang/getkhachhang')
-          setKhachHang(res.data);
-          khachhangs=res.data;
-          console.log(khachhangs);
-      }
-      catch (error) {
-          console.log(error.message)
-      }
-  }
-  useEffect(() => {
-    if(searchkey) handleSearch(searchkey)
-    else getkhachhang();
-  }, [searchkey])
-
+  const customers = [
+    {
+      name: 'Yaaaaaaaaaaaaaaa',
+      mail:'20521130@gmail.com',
+      phone:'0376488361',
+      recent:'30/03/2023',
+      cost:'3.000',
+    },
+    {
+      name: 'Minh Chí',
+      mail:'20521130@gmail.com',
+      phone:'0376488362',
+      recent:'30/03/2023',
+      cost:'3.000',
+    },
+    {
+      name: 'Ronaldo',
+      mail:'20521130@gmail.com',
+      phone:'0376488367',
+      recent:'30/03/2023',
+      cost:'3.000',
+    },
+    {
+      name: 'Messi',
+      mail:'20521130@gmail.com',
+      phone:'0376488368',
+      recent:'30/03/2023',
+      cost:'3.000',
+    },
+]
 const [isOpen, setIsOpen] = useState(false);
+
 const openPopup = () => {
   setIsOpen(true);
 };
+
 const closePopup = () => {
   setIsOpen(false);
 };
+const [isSorted, setIsSorted] = useState(false);
+const [data,setData]= useState(customers)
+const [initialData,setInitialData]= useState(data)
 
-const [isOpen1, setIsOpen1] = useState(false);
-const [khachhang, setMaKhachHang] = useState(['']);
-
-const openPopup1 = (khachhangs) => {
-  setMaKhachHang(khachhangs);
-  setIsOpen1(true);
+const sortByName = () => {
+  const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  setData(sortedData);
+  setIsSorted(true);
 };
-const closePopup1 = () => {
-  setIsOpen1(false);
+const resetData = () => {
+  setData(initialData);
+  setIsSorted(false);
 };
-const [sortOrder, setSortOrder] = useState('ASC');
-const handleClick = (type) => {
-  const sortedData = [...khachhangs].sort((a, b) => {
-      return a[type].localeCompare(b[type]);
-  });
-  if (sortOrder === 'ASC') {
-    setSortOrder('DESC');
-    setKhachHang(sortedData.reverse());
+const handleClick = () => {
+  if (isSorted) {
+    resetData();
   } else {
-    setSortOrder('ASC');
-    setKhachHang(sortedData);
-  }
-};
-const handleSearch = async(sk) => {
-  if(sk!=='')
-  {
-    const res = await Axios.get('http://localhost:8000/v1/khachhang/searchkhachhang/'+ sk)
-    setKhachHang(res.data);
+    sortByName();
   }
 };
   return (
@@ -70,28 +73,31 @@ const handleSearch = async(sk) => {
       <Header title="QUẢN LÝ KHÁCH HÀNG" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='EmployeeCustomer_main'>
         <div className='EmployeeCustomer_searchbar'>
-          <input className="search-area" type="text" placeholder='Nhập số điện thoại hoặc tên khách hàng cần tìm' onChange={(e)=> setSearchKey(e.target.value)}/>
+          <input className="search-area" type="text" placeholder='Nhập khách hàng cần tìm'/>
+          <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span>
           <button className='EmployeeCustomer_btn_create' onClick={openPopup}>Thêm khách hàng +</button>
         </div>
           <div >
             <table className="EmployeeCustomer-information">
                 <tr className="EmployeeCustomer-information-header">
-                        <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('HOTEN')} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('SDT')} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('EMAIL')} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Hóa đơn gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('LANDENGANNHAT')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Lần đến gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
+                        <th>Số đơn hàng ký gửi <span><Icon style={{paddingLeft:'20px'}} onClick={handleClick} icon="ph:sort-ascending-bold" /></span></th>
                         <hr/>
                 </tr>
                 <div className='EmployeeCustomer_detail_infor'>
                   {
-                    khachhangs.map(khachhangs => {
+                    data.map(data => {
                           return (
-                                  <tr className='EmployeeCustomer-information-detail' onClick={() => openPopup1(khachhangs)}>
+                                  <tr className='EmployeeCustomer-information-detail' onClick={openPopup}>
                                       <div className='EmployeeCustomer-information-detail-wrapper'>
-                                          <td>{khachhangs.HOTEN}</td>
-                                          <td>{khachhangs.SDT}</td>
-                                          <td>{khachhangs.EMAIL}</td>
-                                          <td>{khachhangs.LANDENGANNHAT}</td>
+                                          <td>{data.name}</td>
+                                          <td>{data.phone}</td>
+                                          <td>{data.mail}</td>
+                                          <td>{data.recent}</td>
+                                          <td>{data.cost}</td>
                                       </div>
                                   </tr>
                           )
@@ -99,18 +105,9 @@ const handleSearch = async(sk) => {
                   }
                 </div>
                 {isOpen &&
-                  <EmployeeAddCustomer
+                  <EmployeeDetailCustomer
                     title="Thông tin khách hàng"
                     onClose={closePopup}
-                  >
-                    {props.children}
-                  </EmployeeAddCustomer>
-                }
-                {isOpen1 &&
-                  <EmployeeDetailCustomer
-                    title="Chỉnh sửa thông tin khách hàng"
-                    onClose={closePopup1}
-                    data={khachhang}
                   >
                     {props.children}
                   </EmployeeDetailCustomer>

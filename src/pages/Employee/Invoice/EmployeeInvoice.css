@@ -55,17 +55,16 @@
 }
 .EmployeeInvoice-information{
     width: 80vw;
-    height: 78vh;
-    overflow: hidden;
+    height: 80vh;
+    overflow: auto;
     background-color: #fff;
     
     margin-left: 4vw;
     border-radius: 10px;
-    margin-bottom: 4vh;
-    display: block;
+    margin-bottom: 2vh;
 }
-.EmployeeInvoice-information:hover{
-    overflow: auto;
+.EmployeeInvoice-information{
+    display: block;
 }
 .EmployeeInvoice-information-header{
     width: 80vw;
@@ -81,16 +80,16 @@ table{
     border-spacing: 0;
 }
 .EmployeeInvoice-information-header th{
-    width: 12.85vw;
-    line-height: 5vh;
+    width: 15.3vw;
+    line-height: 6vh;
     text-align: center;
 }
 .EmployeeInvoice_detail_infor{
-    padding-top: 7vh;
+    padding-top: 6vh;
 }
 .EmployeeInvoice-information-detail{
     width: 100%;
-    /* padding-top: 2vh; */
+    padding-top: 2vh;
     display: block;
 }
 .EmployeeInvoice-information-detail :hover{
@@ -99,27 +98,18 @@ table{
     color: #fff;
 }
 .EmployeeInvoice-information-detail-wrapper td{
-    width: 11.6vw;
-    line-height: 5vh;
-    padding-right: 1.3vw;
-    padding-bottom: 5px;
+    width: 14.5vw;
+    line-height: 6vh;
     text-align: center;
 
-    min-width: 11.6vw;
-    max-width: 11.6vw;
+    min-width: 14.5vw;
+    max-width: 14.5vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
+    padding: 0 0.4vw;
 }
-.red-text {
-    color: red;
-}
-.green-text {
-    color: green;
-}
-.pink-text {
-    color: #393eff;
-}
-.orange-text {
-    color: #fba011;
-}
+
+/* th,td{
+    border: 1px solid #ccc;
+} */

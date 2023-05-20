@@ -1,246 +1,139 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./EmployeePay.css"
 import { Icon } from '@iconify/react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import Menu from "../Menu/EmployeeMenu"
 import Header from '../../../common/Header/Header'
-import cryptoRandomString from 'crypto-random-string';
-import {Autocomplete}  from "@mui/material";
-import TextField from "@mui/material/TextField";
-import Axios from "axios";
-import { Button } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
 
-function EmployeePay(props) {
-const [khachhang, setSDTKhachHang] = useState()
-const [loaihoadon, setLoaiHoaDon] = useState('Bán hàng')
-const [trangthaiHD, setTrangThaiHD] = useState('Đã thanh toán')
-let [khachhangs, setKhachHang] = useState([])
-const getKH = async () => {
-    try {
-        const res = await Axios.get('http://localhost:8000/v1/khachhang/getkhachhang')
-        setKhachHang(res.data);
-        khachhangs=res.data;
-    }
-    catch (error) {
-        console.log(error.message)
-    }
-}
-
-let [thamso, setThamSo] = useState([])
-  const getThamSo = async () => {
-      try {
-          const res = await Axios.get('http://localhost:8000/v1/thamso/getthamso/hoahongcho1sp')
-          setThamSo(res.data);
-          thamso=res.data;
-      }
-      catch (error) {
-          console.log(error.message)
-      }
-  }
-
-useEffect(() => {
-  getKH();
-  getThamSo();
-}, [])
-
-let [sanphams, setSanPham] = useState([])
-
-const currentDate = new Date();
-const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-
-const handleConfirm = async () => {
-  if (document.getElementById('sdtkhachhang').value === '') {
-      alert('Vui lòng nhập thông tin khách hàng')
-      return
-  }
-  if (sanphams.length === 0) {
-    alert('Hiện chưa có sản phẩm nào')
-    return
-  }
-  const answer = window.confirm("Bạn có chắc chắn tạo hóa đơn",);
-  if (answer) {
-    const randommahoadon = cryptoRandomString({ length: 16 });
-    Axios.post('http://localhost:8000/v1/hoadon/themhoadon', 
+function EmployeePay() {
+  const products = [
     {
-      MAHOADON: randommahoadon,
-      SDT: khachhang,
-      SOLUONG: sanphams.length,
-      LOAI: loaihoadon,
-      TRANGTHAI: trangthaiHD,
-      NGAYTAODON: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
-    })
-    sanphams.map(sanphams =>{
-      const gianhan= sanphams.GIANHAN;
-      const hoahong= Math.round(gianhan * thamso[0].GIATRITHAMSO);
-      const idproduct= sanphams.MASANPHAM;
-      Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+idproduct, 
-      {
-        TRANGTHAI: 'Đã bán',
-        HOAHONG: hoahong,
-        TIENKHACHNHAN: gianhan-hoahong,
-        MAHOADONBH: randommahoadon
-      })
-    })
-    Axios.patch('http://localhost:8000/v1/khachhang/updatekhachhang/'+ khachhang, 
+      id: '1',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
     {
-      LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
-    })
-    // ---------Xử lý sản phẩm NGÀY---------
-    // ---------Xử lý sản phẩm THÁNG---------
-    const formatNgay = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(0,10);
-    const formatThang = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(3,10);
-    // console.log(formatNgay)
-    try {
-      const response = await Axios.get('http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgay/' + formatNgay);
-      const bcn = response.data;
-      const response1 = await Axios.get('http://localhost:8000/v1/baocaospthang/getBaoCaoSPThang/' + formatThang);
-      const bct = response1.data;
-      const res = await Axios.patch(
-        'http://localhost:8000/v1/baocaospngay/updateBaoCaoSPNgay/' + formatNgay,
-        {
-          SLSANPHAMBAN: bcn.SLSANPHAMBAN + sanphams.length,
-        }
-      );
-      Axios.patch(
-        'http://localhost:8000/v1/baocaospthang/updateBaoCaoSPThang/' + formatThang,
-        {
-          SLSANPHAMBAN: bct.SLSANPHAMBAN + sanphams.length,
-        }
-      );
-    } catch (error) {
-      if (error.response && error.response.status === 404) {
-        Axios.post('http://localhost:8000/v1/baocaospngay/themBaoCaoSPNgay/', {
-          THOIGIAN: formatNgay,
-          SLSANPHAMNHAN: '0',
-          SLSANPHAMBAN: sanphams.length,
-        });
-        Axios.post('http://localhost:8000/v1/baocaospthang/themBaoCaoSPThang/', {
-          THOIGIAN: formatThang,
-          SLSANPHAMNHAN: '0',
-          SLSANPHAMBAN: sanphams.length,
-        });
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
-      }
-    }
-    window.alert('Hóa đơn đã được tạo thành công')
-    setSanPham([]);
-    window.location.reload();
-  }
-  
-};
-const calculateTotal = () => {
-  let total =0;
-  for(let i = 0; i < sanphams.length; i++) {
-    total+=sanphams[i].GIANHAN;
-  }
-  return total;
-  
-};
-const [searchkey, setSearchKey] = useState()
-const handleSearch = () => {
-  if (document.getElementById('searchkey').length === 0) {
-      alert('Vui lòng nhập mã sản phẩm')
-      return
-  }
-  Axios.get('http://localhost:8000/v1/sanpham/getsanpham/'+searchkey)
-  .then(function (response) {
-    const sanphammoi = response.data;
-    if(sanphammoi.length === 0) {
-      alert('Không có sản phẩm này')
-      return
-    }
-    else
-    if(sanphammoi.TRANGTHAI === 'Đã bán' || sanphammoi.TRANGTHAI === 'Đã trả lại') {
-      alert('Sản phẩm đã được bán hoặc đã trả lại cho khách ký gửi')
-      return
-    }
-    else{
-      setSanPham([...sanphams, sanphammoi]);
-      setSearchKey('');
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  
-};
-const handleDelete = (sp) => {
-  const answer=window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi hóa đơn?')
-  if(!answer) return;
-  const updatedSanPhams = sanphams.filter(item => item !== sp);
-  setSanPham(updatedSanPhams);
-};
+      id: '2',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '3',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '4',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '5',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '6',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '7',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '8',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+    {
+      id: '9',
+      label:'Quần jean',
+      cost:'100.000',
+      img:'http://surl.li/ggptd',
+    },
+]
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const toggleCalendar = () => {
+    setShowCalendar(!showCalendar);
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setShowCalendar(false);
+  };
   return (
     <div className='EmployeePay'>
       <Menu/>
       <Header title="THANH TOÁN" avt='http://surl.li/ggptd' name={localStorage.getItem('user')}/>
       <div className='EmployeePay_main'>
         <div className="EmployeePay_Top">
-          <input className='EmployeePay_ProductInf_Input' id='searchkey' value={searchkey} placeholder='Nhập mã sản phẩm' onChange={(e)=> setSearchKey(e.target.value)}></input>
-          <Icon className='EmployeePay_ProductInf_SearchBtn' icon="ic:baseline-search" onClick={(e) => {handleSearch()}}/>
+          <p className='EmployeePay_ProductInf_Label'>Tìm kiếm</p>
+          <input className='EmployeePay_ProductInf_Input' placeholder='Nhập mã sản phẩm'></input>
+          <Icon className='EmployeePay_ProductInf_SearchBtn' icon="ic:baseline-search" />
         </div>
         <div className="EmployeePay_Bottom">
-        <div className='EmployeePay_Content'>
-          <div className='EmployeePay_Detail'>
-            <div className='EmployeePay_CustomerInf'>
-              <p className='ProductInf_Label'>Khách hàng:</p>
-              <Autocomplete
-                disablePortal
-                id='sdtkhachhang'
-                options={khachhangs}
-                style={{marginLeft:'4vw', width:'30vw'}}
-                getOptionLabel={(option) => `${option.SDT} - ${option.HOTEN}`}
-                renderInput={(params) => <TextField {...params} label="Khách Hàng" size="small" />}
-                onSelect={(e)=> {setSDTKhachHang(e.target.value)}}
-              />
+          <div className='EmployeePay_Content'>
+            <div className='Content_Date'>
+              <p className='Content_LabelDay'>Ngày lập hóa đơn:</p>
+              <button className='Content_Calendar' onClick={toggleCalendar}>{selectedDate.toLocaleDateString()}</button>
+              {showCalendar && (
+                <Calendar
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                />
+              )}
             </div>
-            <p className='ProductInf_Label'>Sản phẩm:</p>
-              <div className='EmployeePay_ProductInf'>
-                <td></td>                    
-                <td>STT</td>
-                <td>Tên sản phẩm</td>
-                <td>Loại</td>
-                <td>Hình ảnh</td>
-                <td>Giá</td>
-                <td className='btn_deleteProduct'></td>
+            <div className='EmployeePay_Detail'>
+              <div className='EmployeePay_CustomerInf'>
+                  <p className='EmployeePay_CustomerInf_Label'>Khách hàng</p>
+                  <input className='EmployeePay_CustomerInf_Input' placeholder='Nhập số điện thoại khách hàng'></input>
               </div>
-            <div className='EmployeePay_ProductList'>
-              {
-                sanphams.map((sp,index) => {
-                    return (
-                      <div className='EmployeePay_ProductInf'>
-                        <td></td>                    
-                        <td>{index+1}</td>
-                        <td>{sp.TENSANPHAM}</td>
-                        <td>{sp.LOAI}</td>
-                        <td style={{display:'flex', alignItems:'center', justifyContent:'center'}}><img style={{width:'50px', height:'40px',verticalAlign:'middle'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
-                        <td>{sp.GIANHAN}</td>
-                        <td style={{display:'flex', alignItems:'center', justifyContent:'center'}} className='btn_deleteProduct'><Button type="primary" icon={<DeleteOutlined />} onClick={()=> handleDelete(sp)} size='16px'/></td>
-                      </div>
-                    )
-                })
-              }
-            </div>
-            <hr/>
-            <div className='EmployeePay_ProductInf'>
-              <td>Số lượng:</td>               
-              <td>{sanphams.length}</td>                    
-              <td></td>                    
-              <td></td>
-              <td>Tổng tiền: </td>
-              <td>{calculateTotal()}</td>
-            </div>
-            <div className='EmployeePay_btnChange'>
-              <button className='EmployeePay_btnConfirm' onClick={handleConfirm}>Xác nhận tạo hóa đơn</button>
-            </div>
-            
-          </div> 
+              <p className='ProductInf_Label'>Sản phẩm:</p>
+              <div className='EmployeePay_ProductList'>
+                {
+                  products.map(products => {
+                        return (
+                          <div className='EmployeePay_ProductInf'>
+                            <td></td>                    
+                            <td>{products.id}</td>
+                            <td>{products.label}</td>
+                            <td><img style={{width:'50px', height:'40px'}} src={products.img}/></td>
+                            <td>{products.cost}</td>
+                            <td className='btn_deleteProduct'><Icon icon="solar:trash-bin-trash-bold" color="#ff333f" /></td>
+                          </div>
+                        )
+                    })
+                }
+              </div>
+              <div className='EmployeePay_ProductInf'>
+                <td>Tổng:</td>                    
+                <td>{products.length}</td>                    
+                <td></td>
+                <td></td>
+                <td>2.000.000</td>
+              </div>
+              <div className='EmployeePay_btnChange'>
+                <button className='EmployeePay_btnPay'>Thanh toán</button>
+              </div>
+              
+            </div> 
+          </div>
+          {/* -------------------------------------------------------------- */}
+          
         </div>
-        {/* -------------------------------------------------------------- */}
-        
-      </div>
       </div>
     </div>
   )

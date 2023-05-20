@@ -99,7 +99,6 @@
 .Chart_Name{
     display: inline-block;
     font-weight: 500;
-    color: rgba(53, 162, 235, 1);
 }
 .Chart_Date{
     padding-right: auto;
@@ -128,7 +127,7 @@
     display:inline;
 
 }
-.EmployeeHome_CustomerRecent{
+/* .EmployeeHome_CustomerRecent{
     padding: 20px;
 }
 .CustomerRecent_Label{
@@ -159,19 +158,18 @@
 .CustomerRecent_Name{
     flex:3;
     margin-left: 20px;
-    width: 9vw;
-    max-width: 9vw;
+    max-width: 6.5vw;
 
     text-align: center;
     margin-top: 7px;
 
     white-space: nowrap;
-    overflow: hidden; /* ẩn phần vượt quá khung */
-    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-}
+    overflow: hidden;
+    text-overflow: ellipsis;
+} */
 .CustomerRecent_Phone{
     margin-top: 7px;
-    margin-left: 2vw;
+    margin-right: 5px;
 }
 .CustomerRecent_ViewMore{
     margin-top: 10px;
