@@ -13,13 +13,13 @@ import AdminPay from './pages/Admin/Pay/AdminPay';
 import AdminChart from './pages/Admin/Chart/AdminChart';
 import AdminAccount from './pages/Admin/Account/AdminAccount';
 import AdminSchedule from './pages/Admin/Schedule/AdminSchedule';
+import AdminReport from './pages/Admin/Report/AdminReport';
 // ------------------------------------------------------
 import EmployeeDeposit from './pages/Employee/Deposit/EmployeeDeposit';
 import EmployeePay from './pages/Employee/Pay/EmployeePay';
 import EmployeeProduct from './pages/Employee/Product/EmployeeProduct';
 import EmployeeCustomer from './pages/Employee/Customer/EmployeeCustomer';
 import EmployeeInvoice from './pages/Employee/Invoice/EmployeeInvoice';
-import AdminReport from './pages/Admin/Report/AdminReport';
 
 function App() {
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
