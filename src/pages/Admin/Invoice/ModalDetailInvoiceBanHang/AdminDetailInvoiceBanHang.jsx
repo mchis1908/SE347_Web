@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AdminDetailInvoiceBanHang.css'
 import Axios from "axios";
+import Barcode from '../../../../common/Barcode/Barcode';
 
 function AdminDetailInvoiceBanHang(props) {
 let [sanphams, setSanPham] = useState([])
@@ -53,9 +54,9 @@ const getSANPHAM = async () => {
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Khách hàng: </p>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons.SDT}</p>
               </div>
-              <div className='AdminDetailInvoiceBanHang_Detail_Content_Date'>
-                <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Mã hóa đơn: </p>
-                <p className='AdminDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons.MAHOADON}</p>
+              <div className='AdminDetailInvoiceBanHang_Detail_Content_Date1'>
+                <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay1'>Mã hóa đơn: </p>
+                <Barcode value={hoadons.MAHOADON} height={20} width={1} fontSize={16}/>
               </div>
               <div className='AdminDetailInvoiceBanHang_ProductInf'>
                 <td style={{fontWeight:'500'}}>Hình ảnh</td>
@@ -92,6 +93,7 @@ const getSANPHAM = async () => {
         </div>
         <div className='AdminDetailInvoiceBanHang_modal_Btn_Change'>
             <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Cancel' onClick={props.onClose}>Thoát</button>
+            <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Confirm' onClick={props.onClose}>In hóa đơn</button>
         </div>
       </div>
     </div>

@@ -60,6 +60,12 @@
     margin-left: 10vw;
     max-height: 5vh;
 }
+.AdminDetailInvoice_Detail_Content_Date1{
+    display: flex;
+    margin-left: 10vw;
+    max-height: 5vh;
+    margin-bottom: 4vh;
+}
 .AdminDetailInvoice_Detail_Content_LabelDay{
     color:black;
     display:inline;
@@ -67,6 +73,15 @@
     font-size: 16px;
     font-weight: 500;
     min-width: 10vw;
+    width: fit-content;
+}
+.AdminDetailInvoice_Detail_Content_LabelDay1{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 11.5vw;
     width: fit-content;
 }
 .AdminDetailInvoice_Detail_Content_Calendar{

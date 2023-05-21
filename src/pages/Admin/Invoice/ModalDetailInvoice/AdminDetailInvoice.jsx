@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef  } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import './AdminDetailInvoice.css'
 import Axios from "axios";
+import Barcode from '../../../../common/Barcode/Barcode';
 
 function AdminDetailInvoice(props) {
   const componentRef = useRef();
@@ -121,9 +122,9 @@ function AdminDetailInvoice(props) {
                 <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Khách hàng: </p>
                 <p className='AdminDetailInvoice_Detail_Content_Customer'>{hoadons.SDT}</p>
               </div>
-              <div className='AdminDetailInvoice_Detail_Content_Date'>
-                <p className='AdminDetailInvoice_Detail_Content_LabelDay'>Mã hóa đơn:</p>
-                <p className='AdminDetailInvoice_Detail_Content_Customer'>{hoadons.MAHOADON}</p>
+              <div className='AdminDetailInvoice_Detail_Content_Date1'>
+                <p className='AdminDetailInvoice_Detail_Content_LabelDay1'>Mã hóa đơn:</p>
+                <Barcode value={hoadons.MAHOADON} height={20} width={1} fontSize={16}/>
               </div>
               <div className='AdminDetailInvoice_ProductInf'>
                 <td style={{fontWeight:'500', fontSize:'16px'}}>Hình ảnh</td>

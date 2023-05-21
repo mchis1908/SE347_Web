@@ -1,14 +1,16 @@
 import React, { useRef, useEffect } from 'react';
 import JsBarcode from 'jsbarcode';
 
-const Barcode = ({ value, height, width }) => {
+const Barcode = ({ value, height, width, fontSize }) => {
   const canvasRef = useRef(null);
+
   useEffect(() => {
     JsBarcode(canvasRef.current, value, {
       height: height,
-      width: width
+      width: width,
+      fontSize: fontSize // Sử dụng cỡ chữ được chuyền vào từ props
     });
-  }, [value, height, width]);
+  }, [value, height, width, fontSize]);
 
   return (
     <div>
