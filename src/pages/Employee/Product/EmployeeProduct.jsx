@@ -75,8 +75,8 @@ const handleSearch = async(sk) => {
                         <th>Mã sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('MASANPHAM')} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Tên sản phẩm <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TENSANPHAM')} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Loại <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('LOAI')} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Giá bán <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('GIANHAN')} icon="ph:sort-ascending-bold" /></span></th>
-                        <th>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TRANGTHAI')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th style={{textAlign:'end',maxWidth: '10.6vw',minWidth: '10.6vw'}}>Giá bán <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('GIANHAN')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th style={{maxWidth: '16.6vw',minWidth: '16.6vw'}}>Trạng thái <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('TRANGTHAI')} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Hình ảnh <span><Icon style={{paddingLeft:'20px'}} onClick={() => handleClick('MASANPHAM')} icon="ph:sort-ascending-bold" /></span></th>
                 <hr/>
                 </tr>
@@ -89,9 +89,8 @@ const handleSearch = async(sk) => {
                                           <td >{sanphams.MASANPHAM}</td>
                                           <td >{sanphams.TENSANPHAM}</td>
                                           <td >{sanphams.LOAI}</td>
-                                          <td >{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                          <td ><p className={sanphams.TRANGTHAI === 'Đã bán' ? 'green-text' : 'red-text'} style={{border:'1px solid', width:'6vw', height:'4vh', marginLeft:'3vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{sanphams.TRANGTHAI}</p></td>
-                                          {/* <td style={{display:'flex', alignItems:'center', justifyContent:'center'}}><img style={{width:'50px', height:'40px',verticalAlign:'middle'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td> */}
+                                          <td style={{textAlign:'end',maxWidth: '8.6vw',minWidth: '8.6vw'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
+                                          <td style={{maxWidth: '15.3vw',minWidth: '15.3vw'}}><p className={sanphams.TRANGTHAI === 'Đã bán' ? 'green-text' : 'red-text'} style={{border:'1px solid', width:'11.5vw', height:'4vh', marginLeft:'3vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{sanphams.TRANGTHAI}</p></td>
                                           <td><img style={{maxHeight:'40px',width:'50px', verticalAlign:'middle'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
                                       </div>
                                   </tr>

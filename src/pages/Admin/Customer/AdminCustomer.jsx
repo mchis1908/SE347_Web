@@ -88,8 +88,8 @@ const handleSearch = async(sk) => {
                     khachhangs.map(khachhangs => {
                           return (
                                   <tr className='AdminCustomer-information-detail' onClick={() => openPopup1(khachhangs)}>
-                                      <div className='AdminCustomer-information-detail-wrapper'>
-                                          <td>{khachhangs.HOTEN}</td>
+                                      <div className='AdminCustomer-information-detail-wrapper' >
+                                          <td style={{textAlign:'start', paddingLeft:'1vw'}}>{khachhangs.HOTEN}</td>
                                           <td>{khachhangs.SDT}</td>
                                           <td>{khachhangs.EMAIL}</td>
                                           <td>{khachhangs.LANDENGANNHAT}</td>

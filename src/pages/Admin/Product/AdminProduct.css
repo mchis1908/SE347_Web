@@ -118,3 +118,6 @@ table{
 .green-text {
     color: green;
 }
+/* th,td{
+    border: 1px solid #ccc;
+} */

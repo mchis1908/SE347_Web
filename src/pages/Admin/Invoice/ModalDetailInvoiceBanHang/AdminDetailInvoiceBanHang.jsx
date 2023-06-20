@@ -75,7 +75,7 @@ const getSANPHAM = async () => {
                         <td>{index+1}</td>
                         <td>{sanphams.TENSANPHAM}</td>
                         <td>{sanphams.TRANGTHAI}</td>
-                        <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                        <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                       </div>
                     )
                 })
@@ -86,7 +86,7 @@ const getSANPHAM = async () => {
                 <td style={{fontWeight:'500'}}>{sanphams.length}</td>                    
                 <td></td>
                 <td style={{fontWeight:'500'}}>Tổng tiền:</td>
-                <td style={{fontWeight:'500'}}>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                <td style={{fontWeight:'500'}}>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
               </div>     
             </div> 
           {/* -------------------------------------------------------------- */}

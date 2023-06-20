@@ -66,7 +66,7 @@ function AdminMenu() {
         <Link to='/admin/schedule'>
             <div className='sidebar_item'>
                 <Icon icon="material-symbols:home-work-outline-rounded" />
-                <span>Chấm Công</span>
+                <span>Giờ Làm Việc</span>
             </div>
         </Link>
         <Link to='/admin/report'>

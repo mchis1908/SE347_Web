@@ -92,10 +92,10 @@ const handleSearch = async(sk) => {
                           return (
                                   <tr className='EmployeeInvoice-information-detail' onClick={() => openPopup(hoadons)}>
                                       <div className='EmployeeInvoice-information-detail-wrapper'>
-                                          <td>{hoadons.MAHOADON}</td>
+                                      <td>{hoadons.MAHOADON}</td>
                                           {/* <td><Barcode style={{width:'5vw'}} value={hoadons.MAHOADON} /></td> */}
-                                          <td>{result}</td>
-                                          <td>{hoadons.SOLUONG}</td>
+                                          <td style={{textAlign:'start', paddingLeft:'20px'}}>{result}</td>
+                                          <td style={{minWidth: '10.6vw',maxWidth: '10.6vw'}}>{hoadons.SOLUONG}</td>
                                           <td>{hoadons.NGAYTAODON}</td>
                                           <td><p className={hoadons.LOAI === 'Bán hàng' ? 'orange-text' : 'pink-text'} style={{border:'1px solid', width:'6vw', height:'4vh', marginLeft:'3vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{hoadons.LOAI}</p></td>
                                           <td><p className={hoadons.TRANGTHAI === 'Đã thanh toán' ? 'green-text' : 'red-text'} style={{border:'1px solid', width:'9vw', height:'4vh', marginLeft:'1.5vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{hoadons.TRANGTHAI}</p></td>

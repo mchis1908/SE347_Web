@@ -77,7 +77,7 @@ const handleSearch = async(sk) => {
           <div >
             <table className="EmployeeCustomer-information">
                 <tr className="EmployeeCustomer-information-header">
-                        <th>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('HOTEN')} icon="ph:sort-ascending-bold" /></span></th>
+                        <th style={{textAlign:'start', paddingLeft:'4vw'}}>Họ và tên <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('HOTEN')} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Số điện thoại <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('SDT')} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Email <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('EMAIL')} icon="ph:sort-ascending-bold" /></span></th>
                         <th>Hóa đơn gần nhất <span><Icon style={{paddingLeft:'20px'}} onClick={()=> handleClick('LANDENGANNHAT')} icon="ph:sort-ascending-bold" /></span></th>
@@ -89,10 +89,10 @@ const handleSearch = async(sk) => {
                           return (
                                   <tr className='EmployeeCustomer-information-detail' onClick={() => openPopup1(khachhangs)}>
                                       <div className='EmployeeCustomer-information-detail-wrapper'>
-                                          <td>{khachhangs.HOTEN}</td>
-                                          <td>{khachhangs.SDT}</td>
-                                          <td>{khachhangs.EMAIL}</td>
-                                          <td>{khachhangs.LANDENGANNHAT}</td>
+                                        <td style={{textAlign:'start', paddingLeft:'4vw'}}>{khachhangs.HOTEN}</td>
+                                        <td>{khachhangs.SDT}</td>
+                                        <td>{khachhangs.EMAIL}</td> 
+                                        <td>{khachhangs.LANDENGANNHAT}</td>
                                       </div>
                                   </tr>
                           )

@@ -238,7 +238,7 @@ return (
                         <td>{sp.TENSANPHAM}</td>
                         <td>{sp.LOAI}</td>
                         <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
-                        <td>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                        <td>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                       </div>
                     )
                 })
@@ -251,7 +251,7 @@ return (
               <td></td>                    
               <td></td>
               <td>Tổng tiền: </td>
-              <td>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+              <td>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
             </div>
             <div className='EmployeeDeposit_btnChange'>
               {showSuccess && (

@@ -216,7 +216,7 @@ const handleDelete = (sp) => {
                         <td>{sp.TENSANPHAM}</td>
                         <td>{sp.LOAI}</td>
                         <td style={{display:'flex', alignItems:'center', justifyContent:'center'}}><img style={{width:'50px', height:'40px',verticalAlign:'middle'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
-                        <td>{sp.GIANHAN}</td>
+                        <td>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                         <td style={{display:'flex', alignItems:'center', justifyContent:'center'}} className='btn_deleteProduct'><Button type="primary" icon={<DeleteOutlined />} onClick={()=> handleDelete(sp)} size='16px'/></td>
                       </div>
                     )

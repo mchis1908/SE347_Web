@@ -190,6 +190,9 @@ function AdminReport() {
                                     </tr>
                                 </table>
                             </div>
+                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}}>
+                                Xuất báo cáo
+                            </Button>
                         </TabPanel>
                         <TabPanel value="2">
                             <div style={{display:'flex', flexDirection:'row',alignItems: 'center' }}>
@@ -248,6 +251,9 @@ function AdminReport() {
                                     </tr>
                                 </table>
                             </div>
+                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}}>
+                                Xuất báo cáo
+                            </Button>
                         </TabPanel>
                         <TabPanel value="3">
                             <h4>Hóa đơn chưa nhận tiền trong vòng 60 ngày:</h4>
@@ -279,12 +285,13 @@ function AdminReport() {
                                     </div>
                                 </table>
                             </div>
+                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}}>
+                                Xuất báo cáo
+                            </Button>
                         </TabPanel>
                     </TabContext>
                 </Box>
-                <Button style={{left : '1210px', background: '#18884F', color: '#FFFFFF'}}>
-                    Xuất báo cáo
-                </Button>
+                
             </div>
         </div>
       </div>
