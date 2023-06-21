@@ -10,6 +10,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import CommonUtils from './utils/CommonUtils'
 
 function AdminReport() {
     const [value, setValue] = React.useState('1');
@@ -127,6 +128,75 @@ function AdminReport() {
     useEffect(() => {
         getHoaDon1();
     }, []);
+
+    // Export Doanh Thu
+    let arrayDoanhThuExported = []
+    let doanhthuE1 = 0
+    let doanhthuE2 = 0
+    sanphams.forEach((sp,index) => {
+        doanhthuE1+=sp.GIANHAN
+        doanhthuE2+=sp.HOAHONG
+        let doanhthureport = {}
+        doanhthureport["STT"] = index+1
+        doanhthureport["Mã sản phẩm"] = sp.MASANPHAM
+        doanhthureport["Mã hóa đơn"] = sp.MAHOADONKG
+        doanhthureport["Giá nhận"] = sp.GIANHAN
+        doanhthureport["Hoa hồng"] = sp.HOAHONG
+
+        arrayDoanhThuExported.push(doanhthureport)
+    })
+    let x = {}
+    x["Giá nhận"]=doanhthuE1
+    x["Hoa hồng"]=doanhthuE2
+    x["STT"]="Tổng:"
+    arrayDoanhThuExported.push(x)
+    const handleOnClickExport = async() =>{
+        await CommonUtils.exportExcel(arrayDoanhThuExported,"Doanh Thu","Doanh Thu Tháng "+ thang)
+    }
+
+    // Export Doanh Thu
+    let arrayBangLuongExport = []
+    let tongluongE = 0
+    luong.forEach((lv,index) => {
+        const luongnhan = lv.gio * (nhanviens[index] && nhanviens[index].LUONGTHEOGIO || 0)+ (nhanviens[index] && nhanviens[index].LUONGCOBAN || 0);
+        tongluongE+=luongnhan;
+        let luongreport = {}
+        luongreport["STT"] = index+1
+        luongreport["Tên nhân viên"] = nhanviens[index] && nhanviens[index].HOTEN
+        luongreport["Số giờ làm việc"] = lv.gio
+        luongreport["Lương theo giờ"] = nhanviens[index] && nhanviens[index].LUONGTHEOGIO
+        luongreport["Lương cơ bản"] = nhanviens[index] && nhanviens[index].LUONGCOBAN
+        luongreport["Tổng lương"] = luongnhan
+
+        arrayBangLuongExport.push(luongreport)
+    })
+    let y = {}
+    y["Tổng lương"]=tongluongE
+    y["STT"]="Tổng:"
+    arrayBangLuongExport.push(y)
+
+    const handleOnClickExport1 = async() =>{
+        await CommonUtils.exportExcel(arrayBangLuongExport,"Bảng Lương","Bảng Lương Tháng "+ thang)
+    }
+
+    // Export Hóa đơn
+    let arrayHoaDonExport = []
+    hoadon1.forEach((hd,index) => {
+        const arr = hd.SDT.split('-');
+        const result = arr[1];
+        let luongreport = {}
+        luongreport["STT"] = index+1
+        luongreport["Mã sản phẩm"] = hd.MAHOADON
+        luongreport["Mã sản phẩm"] = hd.SOLUONG
+        luongreport["Mã hóa đơn"] = result
+        luongreport["Giá nhận"] = hd.NGAYTAODON
+
+        arrayHoaDonExport.push(luongreport)
+    })
+    
+    const handleOnClickExport2 = async() =>{
+        await CommonUtils.exportExcel(arrayHoaDonExport,"Hóa đơn quá 60 ngày","Hóa đơn chưa nhận tiền trong vòng 60 ngày kể từ "+moment().format('DD-MM-YYYY'))
+    }
     return (
       <div className='AdminReport'>
         <Menu/>
@@ -175,8 +245,8 @@ function AdminReport() {
                                                 <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{index+1}</td>
                                                 <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sanphams.MASANPHAM}</td>
                                                 <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>{sanphams.MAHOADONKG}</td>
-                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sanphams.HOAHONG.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
+                                                <td style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sanphams.HOAHONG.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                                             </tr>
                                         )})
                                     }
@@ -185,12 +255,12 @@ function AdminReport() {
                                         <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}>Tổng:</th>
                                         <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}></th>
                                         <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'center'}}></th>
-                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{giaban.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
-                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sum.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</th>
+                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{giaban.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</th>
+                                        <th style={{border:'solid 1px #000', width:'15.8vw', fontSize:'14px', textAlign:'right'}}>{sum.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</th>
                                     </tr>
                                 </table>
                             </div>
-                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}}>
+                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}} onClick={handleOnClickExport}>
                                 Xuất báo cáo
                             </Button>
                         </TabPanel>
@@ -229,9 +299,9 @@ function AdminReport() {
                                                     <td style={{border:'solid 1px #000', width:'8vw', fontSize:'14px', textAlign:'center'}}>{index+1}</td>
                                                     <td style={{border:'solid 1px #000', width:'18vw', fontSize:'14px', textAlign:'center'}}>{nhanviens[index] && nhanviens[index].HOTEN}</td>
                                                     <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{lv.gio}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{nhanviens[index] && nhanviens[index].LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{nhanviens[index] && nhanviens[index].LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{luongnhan.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{nhanviens[index] && nhanviens[index].LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{nhanviens[index] && nhanviens[index].LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
+                                                    <td style={{border:'solid 1px #000', width:'13vw', fontSize:'14px', textAlign:'right'}}>{luongnhan.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                                                 </tr>
                                             )})
                                     }
@@ -247,11 +317,11 @@ function AdminReport() {
                                                 const luongnhan = lv.gio * (nhanviens[index] && nhanviens[index].LUONGTHEOGIO)+ (nhanviens[index] && nhanviens[index].LUONGCOBAN || 0);
                                                 return (acc + luongnhan);
                                             }, 0).toLocaleString('vi-VN')
-                                        }</th>
+                                        }đ</th>
                                     </tr>
                                 </table>
                             </div>
-                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}}>
+                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}} onClick={handleOnClickExport1}>
                                 Xuất báo cáo
                             </Button>
                         </TabPanel>
@@ -285,7 +355,7 @@ function AdminReport() {
                                     </div>
                                 </table>
                             </div>
-                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}}>
+                            <Button style={{background: '#18884F', color: '#FFFFFF', marginTop:'20px'}} onClick={handleOnClickExport2}>
                                 Xuất báo cáo
                             </Button>
                         </TabPanel>
