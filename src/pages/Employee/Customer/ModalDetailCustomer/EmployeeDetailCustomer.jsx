@@ -69,7 +69,7 @@ function EmployeeDetailCustomer(props) {
         </div>
         <div className='EmployeeDetailCustomer_modal_Btn_Change'>
             <button className='EmployeeDetailCustomer_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
-            <button className='EmployeeDetailCustomer_modal_Btn_Change_Delete' onClick={handleDelete}>Xóa khách hàng</button>
+            {/* <button className='EmployeeDetailCustomer_modal_Btn_Change_Delete' onClick={handleDelete}>Xóa khách hàng</button> */}
             <button className='EmployeeDetailCustomer_modal_Btn_Change_Confirm' onClick={handelConfirm}>Xác nhận</button>
         </div>
       </div>

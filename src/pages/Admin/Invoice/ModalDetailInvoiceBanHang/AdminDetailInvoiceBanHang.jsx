@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './AdminDetailInvoiceBanHang.css'
 import Axios from "axios";
 import Barcode from '../../../../common/Barcode/Barcode';
+import { useReactToPrint } from 'react-to-print';
 
 function AdminDetailInvoiceBanHang(props) {
-let [sanphams, setSanPham] = useState([])
-const getSANPHAM = async () => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  
+  let [sanphams, setSanPham] = useState([])
+  const getSANPHAM = async () => {
     try {
         const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanphambymabanhang/'+ props.data.MAHOADON)
         setSanPham(res.data);
@@ -45,7 +51,8 @@ const getSANPHAM = async () => {
           <button className='button-exit' onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailInvoiceBanHang_Bottom">
-            <div className='AdminDetailInvoiceBanHang_Detail'>
+          <div ref={componentRef}>
+          <div className='AdminDetailInvoiceBanHang_Detail'>
               <div className='AdminDetailInvoiceBanHang_Detail_Content_Date'>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_LabelDay'>Ngày lập hóa đơn: </p>
                 <p className='AdminDetailInvoiceBanHang_Detail_Content_Calendar'>{hoadons.NGAYTAODON}</p>
@@ -74,7 +81,7 @@ const getSANPHAM = async () => {
                         <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
                         <td>{index+1}</td>
                         <td>{sanphams.TENSANPHAM}</td>
-                        <td>{sanphams.TRANGTHAI}</td>
+                        <td>{sanphams.MAHOADONKG}</td>
                         <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                       </div>
                     )
@@ -89,11 +96,12 @@ const getSANPHAM = async () => {
                 <td style={{fontWeight:'500'}}>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
               </div>     
             </div> 
+          </div>
           {/* -------------------------------------------------------------- */}
         </div>
         <div className='AdminDetailInvoiceBanHang_modal_Btn_Change'>
             <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Cancel' onClick={props.onClose}>Thoát</button>
-            <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Confirm' onClick={props.onClose}>In hóa đơn</button>
+            <button className='AdminDetailInvoiceBanHang_modal_Btn_Change_Confirm' onClick={handlePrint}>In hóa đơn</button>
         </div>
       </div>
     </div>

@@ -230,7 +230,7 @@ const handleDelete = (sp) => {
               <td></td>                    
               <td></td>
               <td>Tổng tiền: </td>
-              <td>{calculateTotal()}</td>
+              <td>{calculateTotal()}đ</td>
             </div>
             <div className='EmployeePay_btnChange'>
               <button className='EmployeePay_btnConfirm' onClick={handleConfirm}>Xác nhận tạo hóa đơn</button>

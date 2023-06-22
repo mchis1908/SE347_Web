@@ -89,6 +89,13 @@ button:hover{
     display: flex;
     margin-left: 10vw;
 }
+.EmployeeDetailInvoiceBanHang_Detail_Content_Date1{
+    display: flex;
+    margin-left: 10vw;
+    max-height: 5vh;
+    margin-bottom: 4vh;
+    margin-top: 1vh;
+}
 .EmployeeDetailInvoiceBanHang_Detail_Content_LabelDay{
     color:black;
     display:inline;
@@ -96,6 +103,15 @@ button:hover{
     font-size: 16px;
     font-weight: 500;
     width: 10vw;
+}
+.EmployeeDetailInvoiceBanHang_Detail_Content_LabelDay1{
+    color:black;
+    display:inline;
+
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 11.5vw;
+    width: fit-content;
 }
 .EmployeeDetailInvoiceBanHang_Detail_Content_Calendar{
     background-color: transparent;

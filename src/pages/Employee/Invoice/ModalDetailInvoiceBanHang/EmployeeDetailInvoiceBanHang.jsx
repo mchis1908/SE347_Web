@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './EmployeeDetailInvoiceBanHang.css'
 import Axios from "axios";
+import { useReactToPrint } from 'react-to-print';
+import Barcode from '../../../../common/Barcode/Barcode';
 
 function EmployeeDetailInvoiceBanHang(props) {
-let [sanphams, setSanPham] = useState([])
-const getSANPHAM = async () => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  let [sanphams, setSanPham] = useState([])
+  const getSANPHAM = async () => {
     try {
         const res = await Axios.get('http://localhost:8000/v1/sanpham/getsanphambymabanhang/'+ props.data.MAHOADON)
         setSanPham(res.data);
@@ -44,6 +50,7 @@ const getSANPHAM = async () => {
           <button className='button-exit' onClick={props.onClose}>X</button>
         </div>
         <div className="EmployeeDetailInvoiceBanHang_Bottom">
+          <div ref={componentRef}>
             <div className='EmployeeDetailInvoiceBanHang_Detail'>
               <div className='EmployeeDetailInvoiceBanHang_Detail_Content_Date'>
                 <p className='EmployeeDetailInvoiceBanHang_Detail_Content_LabelDay'>Ngày lập hóa đơn: </p>
@@ -53,9 +60,10 @@ const getSANPHAM = async () => {
                 <p className='EmployeeDetailInvoiceBanHang_Detail_Content_LabelDay'>Khách hàng: </p>
                 <p className='EmployeeDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons.SDT}</p>
               </div>
-              <div className='EmployeeDetailInvoiceBanHang_Detail_Content_Date'>
-                <p className='EmployeeDetailInvoiceBanHang_Detail_Content_LabelDay'>Mã hóa đơn: </p>
-                <p className='EmployeeDetailInvoiceBanHang_Detail_Content_Customer'>{hoadons.MAHOADON}</p>
+              <div className='EmployeeDetailInvoiceBanHang_Detail_Content_Date1'>
+                <p className='EmployeeDetailInvoiceBanHang_Detail_Content_LabelDay1'>Mã hóa đơn: </p>
+                <Barcode value={hoadons.MAHOADON} height={20} width={1} fontSize={16}/>
+
               </div>
               <div className='EmployeeDetailInvoiceBanHang_ProductInf'>
                 <td style={{fontWeight:'500'}}>Hình ảnh</td>
@@ -73,8 +81,8 @@ const getSANPHAM = async () => {
                         <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
                         <td>{index+1}</td>
                         <td>{sanphams.TENSANPHAM}</td>
-                        <td>{sanphams.TRANGTHAI}</td>
-                        <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                        <td>{sanphams.MAHOADONKG}</td>
+                        <td>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                       </div>
                     )
                 })
@@ -85,13 +93,17 @@ const getSANPHAM = async () => {
                 <td style={{fontWeight:'500'}}>{sanphams.length}</td>                    
                 <td></td>
                 <td style={{fontWeight:'500'}}>Tổng tiền:</td>
-                <td style={{fontWeight:'500'}}>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                <td style={{fontWeight:'500'}}>{calculateTotal().toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
               </div>     
             </div> 
+          </div>
+
+            
           {/* -------------------------------------------------------------- */}
         </div>
         <div className='EmployeeDetailInvoiceBanHang_modal_Btn_Change'>
             <button className='EmployeeDetailInvoiceBanHang_modal_Btn_Change_Cancel' onClick={props.onClose}>Thoát</button>
+            <button className='EmployeeDetailInvoiceBanHang_modal_Btn_Change_Confirm' onClick={handlePrint}>In hóa đơn</button>
         </div>
       </div>
     </div>

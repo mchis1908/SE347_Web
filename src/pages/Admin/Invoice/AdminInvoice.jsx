@@ -6,7 +6,6 @@ import { Icon } from '@iconify/react';
 import AdminDetailInvoice from './ModalDetailInvoice/AdminDetailInvoice';
 import AdminDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/AdminDetailInvoiceBanHang';
 import Axios from "axios";
-import Barcode from '../../../common/Barcode/Barcode';
 
 function AdminInvoice(props) {
   let [hoadons, setHoaDon] = useState([])

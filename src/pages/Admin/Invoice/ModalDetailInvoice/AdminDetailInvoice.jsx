@@ -166,7 +166,7 @@ function AdminDetailInvoice(props) {
                 <td style={{fontWeight:'500', fontSize:'16px'}}>{total[2].toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
               </div>     
             </div> 
-            </div>
+          </div>
           {/* -------------------------------------------------------------- */}
           <div className='AdminDetailInvoice_modal_Btn_Change'>
             <button className='AdminDetailInvoice_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
