@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef  } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import './EmployeeDetailInvoice.css'
 import Axios from "axios";
+import { message } from 'antd';
 
 function EmployeeDetailInvoice(props) {
   const componentRef = useRef();
@@ -51,7 +52,8 @@ function EmployeeDetailInvoice(props) {
   const handleConfirm = async () => {
     if(props.data.TRANGTHAI==='Đã thanh toán') 
     {
-      alert('Hóa đơn đã được thanh toán rồi')
+      // alert('Hóa đơn đã được thanh toán rồi')
+      message.error('Hóa đơn đã được thanh toán rồi')
       return
     }
     const answer = window.confirm("Bạn có chắc chắn trả tiền cho khách hàng. Cửa hàng sẽ nhận được hoa hồng cho từng sản phẩm đã bán. Vui lòng xác nhận với khách hàng lại một lần nữa",);

@@ -7,7 +7,7 @@ import cryptoRandomString from 'crypto-random-string';
 import {Autocomplete}  from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Axios from "axios";
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 
 function EmployeePay(props) {
@@ -50,11 +50,13 @@ const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-di
 
 const handleConfirm = async () => {
   if (document.getElementById('sdtkhachhang').value === '') {
-      alert('Vui lòng nhập thông tin khách hàng')
+      // alert('Vui lòng nhập thông tin khách hàng')
+      message.error('Vui lòng nhập thông tin khách hàng')
       return
   }
   if (sanphams.length === 0) {
-    alert('Hiện chưa có sản phẩm nào')
+    // alert('Hiện chưa có sản phẩm nào')
+    message.warning('Hiện chưa có sản phẩm nào')
     return
   }
   const answer = window.confirm("Bạn có chắc chắn tạo hóa đơn",);
@@ -124,7 +126,8 @@ const handleConfirm = async () => {
         console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
-    window.alert('Hóa đơn đã được tạo thành công')
+    // window.alert('Hóa đơn đã được tạo thành công')
+    message.success('Hóa đơn đã được tạo thành công')
     setSanPham([]);
     window.location.reload();
   }
@@ -141,19 +144,22 @@ const calculateTotal = () => {
 const [searchkey, setSearchKey] = useState()
 const handleSearch = () => {
   if (document.getElementById('searchkey').length === 0) {
-      alert('Vui lòng nhập mã sản phẩm')
+      // alert('Vui lòng nhập mã sản phẩm')
+      message.warning('Vui lòng nhập mã sản phẩm')
       return
   }
   Axios.get('http://localhost:8000/v1/sanpham/getsanpham/'+searchkey)
   .then(function (response) {
     const sanphammoi = response.data;
     if(sanphammoi.length === 0) {
-      alert('Không có sản phẩm này')
+      // alert('Không có sản phẩm này')
+      message.error('Không có sản phẩm này')
       return
     }
     else
     if(sanphammoi.TRANGTHAI === 'Đã bán' || sanphammoi.TRANGTHAI === 'Đã trả lại') {
-      alert('Sản phẩm đã được bán hoặc đã trả lại cho khách ký gửi')
+      // alert('Sản phẩm đã được bán hoặc đã trả lại cho khách ký gửi')
+      message.error('Sản phẩm đã được bán hoặc đã trả lại cho khách ký gửi')
       return
     }
     else{

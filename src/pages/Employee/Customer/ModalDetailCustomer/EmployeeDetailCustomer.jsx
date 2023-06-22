@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 import './EmployeeDetailCustomer.css'
+import { message } from 'antd';
 
 function EmployeeDetailCustomer(props) {
   const [tenkh, setTenKH] = useState(props.data.HOTEN)
@@ -13,7 +14,8 @@ function EmployeeDetailCustomer(props) {
     if (document.getElementById('tenkh').value === ''
     || document.getElementById('sdt').value === ''
     || document.getElementById('email').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      // alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      message.error('Vui lòng nhập đầy đủ thông tin khách hàng')
       return
     }
     const answer= window.confirm('Bạn có chắc chắn muốn sửa thông tin của khách hàng này không')
@@ -28,11 +30,13 @@ function EmployeeDetailCustomer(props) {
           })
       } catch (error) {
         if (error.response && error.response.status === 502) {
-            alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
-            return
+            // alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
+          message.error('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác')
+          return
         }
       }
-      alert('Đã thay đổi thông tin khách hàng thành công')
+      message.success('Đã thay đổi thông tin khách hàng thành công')
+      // alert('Đã thay đổi thông tin khách hàng thành công')
       window.location.reload();
     }
   }
@@ -41,7 +45,8 @@ function EmployeeDetailCustomer(props) {
     if(answer)
     {
       Axios.delete('http://localhost:8000/v1/khachhang/deletekhachhang/'+ sdtfirst)
-      alert('Đã xóa khách hàng thành công')
+      // alert('Đã xóa khách hàng thành công')
+      message.success('Đã xóa khách hàng thành công')
       window.location.reload();
     }
   }

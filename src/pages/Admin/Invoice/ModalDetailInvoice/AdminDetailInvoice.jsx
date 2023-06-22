@@ -3,6 +3,7 @@ import { useReactToPrint } from 'react-to-print';
 import './AdminDetailInvoice.css'
 import Axios from "axios";
 import Barcode from '../../../../common/Barcode/Barcode';
+import {message } from 'antd';
 
 function AdminDetailInvoice(props) {
   const componentRef = useRef();
@@ -52,7 +53,8 @@ function AdminDetailInvoice(props) {
   const handleConfirm = async () => {
     if(props.data.TRANGTHAI==='Đã thanh toán') 
     {
-      alert('Hóa đơn đã được thanh toán rồi')
+      // alert('Hóa đơn đã được thanh toán rồi')
+      message.warning('Hóa đơn đã được thanh toán rồi')
       return
     }
     const answer = window.confirm("Bạn có chắc chắn trả tiền cho khách hàng. Cửa hàng sẽ nhận được hoa hồng cho từng sản phẩm đã bán. Vui lòng xác nhận với khách hàng lại một lần nữa",);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import './AdminReport.css'
-import { Button, DatePicker } from 'antd'
+import { Button, DatePicker,message } from 'antd'
 import moment from 'moment';
 import Axios from "axios";
 import Box from '@mui/material/Box';
@@ -44,7 +44,8 @@ function AdminReport() {
                     setHoaDon(res.data);
                 } catch (error) {
                     if (error.response && error.response.status === 404) {
-                        alert('Chưa có dữ liệu của tháng này')
+                        // alert('Chưa có dữ liệu của tháng này')
+                        message.warning('Chưa có dữ liệu của tháng này')
                         setSanPham([])
                     }
                 }
@@ -89,7 +90,8 @@ function AdminReport() {
                     setLuong(res.data[0].LAMVIEC);
                 } catch (error) {
                     if (error.response && error.response.status === 404) {
-                        alert('Chưa có dữ liệu của tháng này')
+                        // alert('Chưa có dữ liệu của tháng này')
+                        message.warning('Chưa có dữ liệu của tháng này')
                         setSanPham([])
                     }
                 }

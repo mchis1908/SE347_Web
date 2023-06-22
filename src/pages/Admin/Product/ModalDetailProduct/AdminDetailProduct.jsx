@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 import './AdminDetailProduct.css'
-import { Alert } from 'antd';
+import { message } from 'antd';
 
 function AdminDetailProduct(props) {
   const [tensp, setTenSP] = useState(props.data.TENSANPHAM)
@@ -24,8 +24,9 @@ function AdminDetailProduct(props) {
     if (document.getElementById('tensanpham').value === ''
     || document.getElementById('loaisanpham').value === ''
     || document.getElementById('giasanpham').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
-      return
+      // alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
+    message.error('Vui lòng nhập đầy đủ thông tin sản phẩm')
+    return
     }
     const fd = new FormData()
     fd.append('TENSANPHAM', tensp)
@@ -33,7 +34,7 @@ function AdminDetailProduct(props) {
     fd.append('GIANHAN', gia)
     fd.append('HINHANH', hinhanhsp)
     Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+ props.data.MASANPHAM, fd)
-    Alert('Thay đổi thông tin sản phẩm thành công')
+    message.success('Thay đổi thông tin sản phẩm thành công')
     window.location.reload()
   }
   return (

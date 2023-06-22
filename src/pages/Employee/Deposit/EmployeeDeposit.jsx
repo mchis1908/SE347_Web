@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import Axios from "axios";
 import EmployeeDepositPrintBarcode from './ModalPrintBarcode/EmployeeDepositPrintBarcode';
 import EmployeeDetailInvoice from '../Invoice/ModalDetailInvoice/EmployeeDetailInvoice';
+import { message } from 'antd';
 
 function EmployeeDeposit(props) {
 const [khachhang, setSDTKhachHang] = useState()
@@ -61,11 +62,12 @@ const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-di
 const [firsthd, setFirsthd] = useState()
 const handleConfirm = async () => {
   if (document.getElementById('sdtkhachhang').value === '') {
-      alert('Vui lòng nhập thông tin khách hàng')
+      message.error('Vui lòng nhập đầy đủ thông tin khách hàng')
       return
   }
   if (sanphams.length === 0) {
-    alert('Hiện chưa có sản phẩm nào')
+    // alert('Hiện chưa có sản phẩm nào')
+    message.warning('Hiện chưa có sản phẩm nào')
     return
   }
   const answer = window.confirm("Bạn có chắc chắn tạo hóa đơn",);
@@ -84,8 +86,9 @@ const handleConfirm = async () => {
       })
     }
     catch{
-        alert('Số điện thoại trùng')
-        return
+        // alert('Số điện thoại trùng')
+      message.warning('Số điện thoại trùng')
+      return
     }
     Axios.patch('http://localhost:8000/v1/sanpham/updatesanphambymahd/'+'001d30009ff71de813521e7b', 
     {
@@ -134,7 +137,8 @@ const handleConfirm = async () => {
         console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
-    window.alert('Hóa đơn đã được tạo thành công')
+    // window.alert('Hóa đơn đã được tạo thành công')
+    message.success('Hóa đơn đã được tạo thành công')
     setShowNotSuccess(false);
     setShowSuccess(true);
   }
@@ -147,7 +151,8 @@ const handleComplete = () => {
   window.location.reload()
 };
 const handleCancel = () => {
-  if(sanphams.length=== 0) window.alert('Chưa có sản phẩm nào');
+  if(sanphams.length=== 0)
+  message.warning('Chưa có sản phẩm nào');
   else{
     const answer = window.confirm("Bạn có chắc chắn hủy tạo hóa đơn. Tất cả sản phẩm trong đơn sẽ bị xóa.",);
     if (answer) {

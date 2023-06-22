@@ -3,8 +3,7 @@ import "./SignIn.css"
 import logo from "../../Images/logo.png"
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
-
-
+import { message } from 'antd';
 
 const SignIn = () => {
     let data = []
@@ -19,7 +18,8 @@ const SignIn = () => {
             console.log(error.message)
         }
         if (data === undefined) {
-            alert('Tài khoản hoặc mật khẩu không chính xác')
+            // alert('Tài khoản hoặc mật khẩu không chính xác')
+            message.error('Tài khoản hoặc mật khẩu không chính xác')
             return
         }
         if (document.getElementById('account').value === data.TENTAIKHOAN &&
@@ -35,7 +35,8 @@ const SignIn = () => {
                 navigate('/employee/home')
         }
         else {
-            alert('Tài khoản hoặc mật khẩu không chính xác')
+            message.error('Tài khoản hoặc mật khẩu không chính xác')
+            // alert('Tài khoản hoặc mật khẩu không chính xác')
         }
     }
 

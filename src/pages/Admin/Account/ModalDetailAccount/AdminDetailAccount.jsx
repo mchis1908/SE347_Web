@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import './AdminDetailAccount.css'
 import Axios from "axios";
+import { message } from 'antd';
 
 function AdminDetailAccount(props) {
   const [tennv, setTenNV] = useState(props.data.TENNV)
@@ -10,7 +11,8 @@ function AdminDetailAccount(props) {
     if (document.getElementById('tennv').value === ''
     || document.getElementById('tentk').value === ''
     || document.getElementById('matkhau').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin tài khoản')
+      // alert('Vui lòng nhập đầy đủ thông tin tài khoản')
+      message.warning('Vui lòng nhập đầy đủ thông tin tài khoản')
       return
     }
     const answer= window.confirm('Bạn có chắc chắn muốn sửa thông tin tài khoản này không?')
@@ -24,11 +26,13 @@ function AdminDetailAccount(props) {
           })
       } catch (error) {
         if (error.response && error.response.status === 500) {
-            alert('Tên tài khoản đã tồn tại. Vui lòng nhập tên tài khoản khác');
+            // alert('Tên tài khoản đã tồn tại. Vui lòng nhập tên tài khoản khác');
+            message.error('Tên tài khoản đã tồn tại. Vui lòng nhập tên tài khoản khác')
             return
         }
       }
-      alert('Đã thay đổi thông tin khách hàng thành công')
+      // alert('Đã thay đổi thông tin khách hàng thành công')
+      message.success('Đã thay đổi thông tin khách hàng thành công')
       window.location.reload();
     }
   }

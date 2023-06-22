@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 import './AdminAddStaff.css'
+import { message } from 'antd';
 
 function AdminAddStaff(props) {
   const [tennv, setTenNV] = useState()
@@ -19,7 +20,8 @@ function AdminAddStaff(props) {
     || document.getElementById('luongtheogio').value === ''
     || document.getElementById('taikhoan').value === ''
     || document.getElementById('matkhau').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      // alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      message.error('Vui lòng nhập đầy đủ thông tin nhân viên')
       return
     }
     const answer= window.confirm('Bạn có chắc chắn thêm nhân viên này không')
@@ -47,21 +49,25 @@ function AdminAddStaff(props) {
         const response2 = responseArr[1];
       
         if (response1.status === 200 && response2.status === 200) {
-          alert('Tạo nhân viên và tài khoản thành công')
+          // alert('Tạo nhân viên và tài khoản thành công')
+          message.success('Tạo nhân viên và tài khoản thành công')
           window.location.reload()
         } else {
-          alert('Đã xảy ra lỗi khi thêm nhân viên');
+          message.error('Đã xảy ra lỗi khi thêm nhân viên')
+          // alert('Đã xảy ra lỗi khi thêm nhân viên');
           return
         }
       } catch (error) {
         if (error.response && error.response.status === 502) {
             Axios.delete('http://localhost:8000/v1/taikhoan/deletetaikhoan/'+ sdtnv)
-            alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
-        } else if (error.response && error.response.status === 501) {
+            // alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
+            message.error('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác')
+          } else if (error.response && error.response.status === 501) {
             Axios.delete('http://localhost:8000/v1/nhanvien/deletenhanvien/'+ sdtnv)
-            alert('Tên tài khoản đã tồn tại. Vui lòng nhập tên khác');
+            // alert('Tên tài khoản đã tồn tại. Vui lòng nhập tên khác');
+            message.error('Tên tài khoản đã tồn tại. Vui lòng nhập tên khác')
         } else {
-          alert('Đã xảy ra lỗi khi thêm nhân viên');
+          message.error('Đã xảy ra lỗi khi thêm nhân viên')
         }
       }
     }

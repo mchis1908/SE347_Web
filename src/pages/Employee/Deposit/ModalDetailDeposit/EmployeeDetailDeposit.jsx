@@ -3,6 +3,7 @@ import image from './Group 8.png'
 import './EmployeeDetailDeposit.css'
 import Axios from "axios";
 import cryptoRandomString from 'crypto-random-string';
+import { message } from 'antd';
 
 function EmployeeDetailDeposit(props) {
   const [showImage, setShowImage] = useState(false)
@@ -29,7 +30,8 @@ function EmployeeDetailDeposit(props) {
     if (document.getElementById('tensanpham').value === ''
     || document.getElementById('loaisanpham').value === ''
     || document.getElementById('giasanpham').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
+      // alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
+      message.error('Vui lòng nhập đầy đủ thông tin sản phẩm')
       return
     }
     const tienkhachnhan =0;

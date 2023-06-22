@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 import './AdminDetailStaff.css'
+import { message } from 'antd';
 
 function AdminDetailStaff(props) {
   const [tennv, setTenNV] = useState(props.data.HOTEN)
@@ -15,7 +16,8 @@ function AdminDetailStaff(props) {
     || document.getElementById('emailnv').value === ''
     || document.getElementById('luongcb').value === ''
     || document.getElementById('luongtheogio').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      // alert('Vui lòng nhập đầy đủ thông tin nhân viên')
+      message.error('Vui lòng nhập đầy đủ thông tin nhân viên')
       return
     }
     const answer= window.confirm('Bạn có chắc chắn muốn sửa thông tin của nhân viên này không')
@@ -32,11 +34,13 @@ function AdminDetailStaff(props) {
         })
       } catch (error) {
         if (error.response && error.response.status === 502) {
-            alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
-            return
+            // alert('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác');
+          message.error('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác')
+          return
         } 
       }
-      alert('Đã thay đổi thông tin nhân viên thành công')
+      // alert('Đã thay đổi thông tin nhân viên thành công')
+      message.success('Đã thay đổi thông tin nhân viên thành công')
       window.location.reload();
     }
   }
@@ -46,7 +50,8 @@ function AdminDetailStaff(props) {
     {
       Axios.delete('http://localhost:8000/v1/nhanvien/deletenhanvien/' + sdtfirst)
       Axios.delete('http://localhost:8000/v1/taikhoan/deletetaikhoan/' + sdtfirst)
-      alert('Đã xóa nhân viên thành công')
+      // alert('Đã xóa nhân viên thành công')
+      message.success('Đã xóa nhân viên thành công')
       window.location.reload();
     }
   }

@@ -3,6 +3,7 @@ import image from './Group 8.png'
 import './AdminDetailDeposit.css'
 import Axios from "axios";
 import cryptoRandomString from 'crypto-random-string';
+import {message } from 'antd';
 
 function AdminDetailDeposit(props) {
   const [showImage, setShowImage] = useState(false)
@@ -29,7 +30,8 @@ function AdminDetailDeposit(props) {
     if (document.getElementById('tensanpham').value === ''
     || document.getElementById('loaisanpham').value === ''
     || document.getElementById('giasanpham').value === '') {
-      alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
+      // alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
+      message.warning('Vui lòng nhập đầy đủ thông tin sản phẩm')
       return
     }
     const tienkhachnhan =0;

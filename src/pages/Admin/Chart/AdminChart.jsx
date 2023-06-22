@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import moment from 'moment';
 import Menu from "../Menu/AdminMenu";
 import Header from '../../../common/Header/Header';
-import { DatePicker } from 'antd';
+import { DatePicker, message } from 'antd';
 import Axios from "axios";
 import {
   Chart as ChartJS,
@@ -295,13 +295,15 @@ function AdminChart() {
               }]
           };
           if(bcn.SLSANPHAMNHAN===0 && bcn.SLSANPHAMBAN===0) {
-            alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+            // alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+            message.warning('Chưa có dữ liệu. Vui lòng chọn ngày khác.')
             setNgay(today)
           }
           setData3(newData);
       } catch (error) {
           if (error.response && error.response.status === 404) {
-            alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+            // alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+            message.warning('Chưa có dữ liệu. Vui lòng chọn ngày khác.')
             setNgay(today)
           }
       }
@@ -332,14 +334,15 @@ function AdminChart() {
           ]
         };
         if(myArray === [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) {
-          alert('Chưa có dữ liệu. Vui lòng chọn năm khác.');
+          // alert('Chưa có dữ liệu. Vui lòng chọn năm khác.');
+          message.warning('Chưa có dữ liệu. Vui lòng chọn năm khác.')
           // window.location.reload();
         }
         setData2(newData);
         } catch (error) {
           if (error.response && error.response.status === 404) {
-            alert('Chưa có dữ liệu. Vui lòng chọn năm khác.');
-            // window.location.reload();
+          message.warning('Chưa có dữ liệu. Vui lòng chọn năm khác.')
+          // window.location.reload();
           }
       }
     }

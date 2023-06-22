@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Link, Navigate } from 'react-router-dom'
-import { DatePicker } from 'antd';
+import { DatePicker, message } from 'antd';
 import moment from 'moment';
 import Axios from "axios";
 import {
@@ -183,8 +183,9 @@ function AdminHome() {
         setData1(newData);
       } catch (error) {
         if (error.response && error.response.status === 404) {
-            alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
-            setThangSP(today)
+            // alert('Chưa có dữ liệu. Vui lòng chọn ngày khác.');
+          message.warning('Chưa có dữ liệu. Vui lòng chọn thời gian khác.')
+          setThangSP(today)
         }
       }
     }

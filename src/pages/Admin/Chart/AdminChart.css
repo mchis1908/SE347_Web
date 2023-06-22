@@ -70,7 +70,6 @@
     border: none;
     color: blue;
     font-size: 16px;
-    z-index: 999;
     display:inline;
 }
 .ProductPercents_Label{

@@ -4,9 +4,8 @@ import Menu from "../Menu/AdminMenu"
 import Header from '../../../common/Header/Header'
 import { Icon } from '@iconify/react';
 import Axios from "axios";
-import {DatePicker } from 'antd';
+import {DatePicker, message} from 'antd';
 import moment from 'moment';
-import Barcode from '../../../common/Barcode/Barcode';
 
 function AdminSchedule(props) {
   let [nhanviens, setNhanVien] = useState([])
@@ -157,7 +156,8 @@ function AdminSchedule(props) {
         });
       }
     }
-    alert('Lưu thay đổi thành công')
+    // alert('Lưu thay đổi thành công')
+    message.success('Lưu thay đổi thành công')
   };
   // Tạo mảng dữ liệu cho bảng
   const createTableData = (thoigianlamviec) => {
