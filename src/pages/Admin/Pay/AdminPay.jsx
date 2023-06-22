@@ -191,7 +191,7 @@ const handleDelete = (sp) => {
         <div className='AdminPay_Content'>
           <div className='AdminPay_Detail'>
             <div className='AdminPay_CustomerInf'>
-              <p className='ProductInf_Label'>Khách hàng:</p>
+              <p className='ProductInf_Label' style={{fontWeight:600}}>Khách hàng:</p>
               <Autocomplete
                 disablePortal
                 id='sdtkhachhang'
@@ -202,8 +202,8 @@ const handleDelete = (sp) => {
                 onSelect={(e)=> {setSDTKhachHang(e.target.value)}}
               />
             </div>
-            <p className='ProductInf_Label'>Sản phẩm:</p>
-              <div className='AdminPay_ProductInf'>
+            <p className='ProductInf_Label' style={{fontWeight:600}}>Sản phẩm:</p>
+              <div className='AdminPay_ProductInf' style={{fontWeight:600}}>
                 <td></td>                    
                 <td>STT</td>
                 <td>Tên sản phẩm</td>
@@ -230,7 +230,7 @@ const handleDelete = (sp) => {
               }
             </div>
             <hr/>
-            <div className='AdminPay_ProductInf'>
+            <div className='AdminPay_ProductInf' style={{fontWeight:600}}>
               <td>Số lượng:</td>               
               <td>{sanphams.length}</td>                    
               <td></td>                    

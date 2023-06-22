@@ -203,7 +203,7 @@ return (
         <div className='EmployeeDeposit_Content'>
           <div className='EmployeeDeposit_Detail'>
             <div className='EmployeeDeposit_CustomerInf'>
-              <p className='ProductInf_Label'>Khách hàng:</p>
+              <p className='ProductInf_Label' style={{fontWeight:600}}>Khách hàng:</p>
               <Autocomplete
                 disablePortal
                 id='sdtkhachhang'
@@ -214,8 +214,8 @@ return (
                 onSelect={(e)=> {setSDTKhachHang(e.target.value)}}
               />
             </div>
-            <p className='ProductInf_Label'>Sản phẩm:</p>
-              <div className='EmployeeDeposit_ProductInf'>
+            <p className='ProductInf_Label' style={{fontWeight:600}}>Sản phẩm:</p>
+              <div className='EmployeeDeposit_ProductInf' style={{fontWeight:600}}>
                 <td></td>                    
                 <td>STT</td>
                 <td>Tên sản phẩm</td>
@@ -250,7 +250,7 @@ return (
               }
             </div>
             <hr/>
-            <div className='EmployeeDeposit_ProductInf'>
+            <div className='EmployeeDeposit_ProductInf' style={{fontWeight:600}}>
               <td>Số lượng:</td>               
               <td>{sanphams.length}</td>                    
               <td></td>                    

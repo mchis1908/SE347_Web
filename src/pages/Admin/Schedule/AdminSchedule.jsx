@@ -220,7 +220,7 @@ function AdminSchedule(props) {
           <div className="AdminSchedule-information">
             <table className="AdminSchedule-information-table">
                 <tr className='AdminSchedule-information-detail' >
-                    <div className='AdminSchedule-information-detail-wrapper'>
+                    <div className='AdminSchedule-information-detail-wrapper' style={{fontWeight:600}}>
                         <td style={{maxWidth:'15vw', minWidth:'15vw', border: 'solid #000', borderWidth:'0 1px 1px 0'}}>Nhân viên\Ngày</td>
                         {tdItems.map((item, index) => (
                           <td style={{minWidth:'10vw', border: 'solid #000', borderWidth:'0 1px 1px 0'}}>{index+1}</td>
@@ -228,10 +228,10 @@ function AdminSchedule(props) {
                         <td style={{maxWidth:'15vw', minWidth:'15vw', border: 'solid #000', borderWidth:'0 1px 1px 0'}}>Tổng số giờ</td>
                     </div>
                 </tr>
-                <div className='AdminSchedule_detail_infor'>
+                <div className='AdminSchedule_detail_infor' style={{fontWeight:600}}>
                   {sdtList.map((sdt) => (
                     <tr className='AdminSchedule-information-detail-wrapper'>
-                      <td style={{maxWidth:'15vw', minWidth:'15vw', border: 'solid #000', borderWidth:'0 1px 1px 0'}}>{sdt}</td>
+                      <td style={{maxWidth:'15vw', minWidth:'15vw', border: 'solid #000', borderWidth:'0 1px 1px 0', fontWeight:600}}>{sdt}</td>
                         {tdItems.map((item, index) => (
                             <td style={{minWidth:'10vw', border: 'solid #000', borderWidth:'0 1px 1px 0'}}>
                               <input style={{width:'4vw'}} value={getGioLamViec(sdt,index)} onChange={(event)=> handleInputChange(event,sdt,index)}/>
