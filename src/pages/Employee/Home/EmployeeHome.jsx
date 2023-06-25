@@ -233,7 +233,7 @@ function EmployeeHome() {
           <div className='Overview_block4'>
             <div className='Block_top'>
               <Icon icon="la:file-invoice-dollar" />
-              <span className='Quantity'>30</span>
+              <span className='Quantity'>8</span>
             </div>
             <p className='Block_bottom' style={{color:'#30d559'}}>Số lượng khách hôm nay</p>
           </div>
