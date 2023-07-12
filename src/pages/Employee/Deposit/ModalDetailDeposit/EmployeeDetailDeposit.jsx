@@ -110,9 +110,9 @@ function EmployeeDetailDeposit(props) {
           <div className='EmployeeDetailDeposit_modal-body-inf_image'>
             <div className='add_logo_clb'>
               {showImage ? selectedFile.map((imageURL) => {
-                return <img style={{width: '13vw', height: '20vh', borderRadius: '5px'}}
+                return <img style={{width: '13vw', height: '20vh', borderRadius: '5px', 'objectFit':'cover'}}
                   src={imageURL} alt='' />
-              }) : <img style={{width: '13vw', height: '20vh', backgroundColor:'#152737', borderRadius: '5px'}}
+              }) : <img style={{width: '13vw', height: '20vh', backgroundColor:'#152737', borderRadius: '5px', 'objectFit':'cover'}}
                 src={image} alt='' />
               }
               <label className='EmployeeDetailDeposit_modal_Btn_AddImg'>

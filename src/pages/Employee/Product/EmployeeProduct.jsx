@@ -91,7 +91,7 @@ const handleSearch = async(sk) => {
                                           <td >{sanphams.LOAI}</td>
                                           <td style={{textAlign:'end',maxWidth: '8.6vw',minWidth: '8.6vw'}}>{sanphams.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                                           <td style={{maxWidth: '15.3vw',minWidth: '15.3vw'}}><p className={sanphams.TRANGTHAI === 'Đã bán' ? 'green-text' : 'red-text'} style={{border:'1px solid', width:'11.5vw', height:'4vh', marginLeft:'3vw', display:'flex', alignItems:'center', justifyContent:'center'}}>{sanphams.TRANGTHAI}</p></td>
-                                          <td><img style={{maxHeight:'40px',width:'50px', verticalAlign:'middle'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
+                                          <td><img style={{maxHeight:'40px',width:'50px', verticalAlign:'middle','objectFit':'cover'}} src={'http://localhost:8000/'+sanphams.HINHANH}/></td>
                                       </div>
                                   </tr>
                           )

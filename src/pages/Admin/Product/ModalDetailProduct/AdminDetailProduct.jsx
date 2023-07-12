@@ -88,7 +88,7 @@ function AdminDetailProduct(props) {
               {showImage ? selectedFile.map((imageURL) => {
                 return <img style={{width: '13vw', height: '20vh', borderRadius: '5px'}}
                   src={imageURL} alt='' />
-              }) : <img style={{width: '13vw', height: '20vh', backgroundColor:'#152737', borderRadius: '5px'}}
+              }) : <img style={{width: '13vw', height: '20vh', backgroundColor:'#152737', borderRadius: '5px', 'objectFit':'cover', 'objectFit':'cover'}}
                 src={'http://localhost:8000/'+hinhanhsp} alt='' />
               }
               <label className='AdminDetailDeposit_modal_Btn_AddImg'>

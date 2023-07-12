@@ -142,7 +142,7 @@ function EmployeeDetailInvoice(props) {
                     return (
                       <div className='EmployeeDetailInvoice_ProductInf'>
                         {/* <td></td>                     */}
-                        <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
+                        <td><img style={{width:'50px', height:'40px', 'objectFit':'cover'}} src={"http://localhost:8000/"+sanphams.HINHANH}/></td>
                         <td style={{fontSize:'16px'}}>{index+1}</td>
                         <td style={{fontSize:'16px'}}>{sanphams.TENSANPHAM}</td>
                         <td style={{fontSize:'16px'}}>{sanphams.TRANGTHAI}</td>

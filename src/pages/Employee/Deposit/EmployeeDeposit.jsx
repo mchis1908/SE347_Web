@@ -242,7 +242,7 @@ return (
                         <td>{index+1}</td>
                         <td>{sp.TENSANPHAM}</td>
                         <td>{sp.LOAI}</td>
-                        <td><img style={{width:'50px', height:'40px'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
+                        <td><img style={{width:'50px', height:'40px', 'objectFit':'cover'}} src={"http://localhost:8000/"+sp.HINHANH}/></td>
                         <td>{sp.GIANHAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                       </div>
                     )
