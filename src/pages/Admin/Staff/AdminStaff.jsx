@@ -96,8 +96,8 @@ function AdminStaff(props) {
                                 <td>{nhanviens.HOTEN}</td>
                                 <td>{nhanviens.SDT}</td>
                                 <td>{nhanviens.EMAIL}</td>
-                                <td>{nhanviens.LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
-                                <td>{nhanviens.LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}</td>
+                                <td>{nhanviens.LUONGCOBAN.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
+                                <td>{nhanviens.LUONGTHEOGIO.toLocaleString('vi-VN', { maximumFractionDigits: 3 })}đ</td>
                             </div>
                         </tr>
                       )
