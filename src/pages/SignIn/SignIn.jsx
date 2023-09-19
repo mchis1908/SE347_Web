@@ -23,16 +23,10 @@ const SignIn = () => {
             return
         }
         if (document.getElementById('account').value === data.TENTAIKHOAN &&
-            document.getElementById('password').value === data.MATKHAU &&
-            data.PHANQUYEN === 'admin') {
-                localStorage.setItem('user', document.getElementById('account').value);
-                navigate('/admin/home')
-        }
-        else if (document.getElementById('account').value === data.TENTAIKHOAN &&
-            document.getElementById('password').value === data.MATKHAU &&
-            data.PHANQUYEN === 'employee') {
-                localStorage.setItem('user', document.getElementById('account').value)
-                navigate('/employee/home')
+            document.getElementById('password').value === data.MATKHAU ) {
+            localStorage.setItem('user', document.getElementById('account').value);
+            localStorage.setItem('role', data.PHANQUYEN);
+            navigate('/home')
         }
         else {
             message.error('Tài khoản hoặc mật khẩu không chính xác')

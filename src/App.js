@@ -31,17 +31,17 @@ function App() {
         <Route exact path="/" element={<SignIn/>} />
         {/* -----Admin----- */}
         {/* <Route exact path="/admin/home" element={<AdminHome isAuthenticated={isAuthenticated}/>} /> */}
-        <Route exact path="/admin/home" element={<AdminHome/>} />
-        <Route exact path="/admin/customer" element={<AdminCustomer/>}/>
-        <Route exact path="/admin/product" element={<AdminProduct/>}/>
-        <Route exact path="/admin/invoice" element={<AdminInvoice/>}/>
-        <Route exact path="/admin/staff" element={<AdminStaff/>}/>
-        <Route exact path="/admin/deposit" element={<AdminDeposit/>}/>
-        <Route exact path="/admin/pay" element={<AdminPay/>}/>
-        <Route exact path="/admin/chart" element={<AdminChart/>}/>
-        <Route exact path="/admin/account" element={<AdminAccount/>}/>
-        <Route exact path="/admin/schedule" element={<AdminSchedule/>}/>
-        <Route exact path="/admin/report" element={<AdminReport/>}/>
+        <Route exact path="/home" element={<AdminHome/>} />
+        <Route exact path="/customer" element={<AdminCustomer/>}/>
+        <Route exact path="/product" element={<AdminProduct/>}/>
+        <Route exact path="/invoice" element={<AdminInvoice/>}/>
+        <Route exact path="/staff" element={<AdminStaff/>}/>
+        <Route exact path="/deposit" element={<AdminDeposit/>}/>
+        <Route exact path="/pay" element={<AdminPay/>}/>
+        <Route exact path="/chart" element={<AdminChart/>}/>
+        <Route exact path="/account" element={<AdminAccount/>}/>
+        <Route exact path="/schedule" element={<AdminSchedule/>}/>
+        <Route exact path="/report" element={<AdminReport/>}/>
         {/* -----Employee----- */}
         <Route exact path="/employee/home" element={<EmployeeHome/>}/>
         <Route exact path="/employee/customer" element={<EmployeeCustomer/>}/>
