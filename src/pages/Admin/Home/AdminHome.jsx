@@ -281,7 +281,7 @@ function AdminHome() {
                     })
                 }
               </div>
-            <Link to='/admin/customer'>
+            <Link to='/customer'>
               <div className='CustomerRecent_ViewMore'>Xem thêm <Icon icon="ic:round-read-more" color="#878787" /></div>
             </Link>
           </div>
