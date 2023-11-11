@@ -1,16 +1,16 @@
 .AdminHome_main{
     position: absolute;
-    top: 8vh;
+    top: 60px;
     left: 12vw;
     width: 88vw;
     height: fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
+    height: calc( 100% - 60px);
 }
 .AdminHome_Overview{
     margin-left: 5vw;
     width: 88%;
-    height: 20vh;
     padding-top: 2vh;
 
     display: flex;
@@ -176,7 +176,6 @@
     margin-left: 2vw;
 }
 .CustomerRecent_ViewMore{
-    margin-top: 10px;
     text-align: center;
     font-size: 14px;
     color: #878787;

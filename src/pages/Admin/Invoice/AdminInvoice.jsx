@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './AdminInvoice.css';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
-import { Icon } from '@iconify/react';
 import AdminDetailInvoice from './ModalDetailInvoice/AdminDetailInvoice';
 import AdminDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/AdminDetailInvoiceBanHang';
 import Axios from 'axios';
@@ -80,67 +79,42 @@ function AdminInvoice(props) {
         <div>
           <table className="AdminInvoice-information">
             <tr className="AdminInvoice-information-header">
-              <th>
-                Mã hóa đơn{' '}
+              <th class="col">
+                Mã hóa đơn
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '10px' }}
-                    onClick={() => handleClick('MAHOADON')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MAHOADON')}></i>
                 </span>
               </th>
-              <th>
-                Khách hàng{' '}
+              <th class="col">
+                Khách hàng
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '10px' }}
-                    onClick={() => handleClick('SDT')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
                 </span>
               </th>
-              <th>
+              <th class="col">
                 Số lượng sản phẩm
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '10px' }}
-                    onClick={() => handleClick('SOLUONG')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SOLUONG')}></i>
                 </span>
               </th>
-              <th>
-                Ngày tạo đơn{' '}
+              <th class="col">
+                Ngày tạo đơn
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '10px' }}
-                    onClick={() => handleClick('NGAYTAODON')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('NGAYTAODON')}></i>
                 </span>
               </th>
-              <th>
-                Loại hóa đơn{' '}
+              <th class="col">
+                Loại hóa đơn
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '10px' }}
-                    onClick={() => handleClick('LOAI')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LOAI')}></i>
                 </span>
               </th>
-              <th>
-                Trạng thái{' '}
+              <th class="col">
+                Trạng thái
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '10px' }}
-                    onClick={() => handleClick('TRANGTHAI')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TRANGTHAI')}></i>
                 </span>
               </th>
-              <hr />
             </tr>
             <div className="AdminInvoice_detail_infor">
               {hoadons.map((hoadons) => {
@@ -152,16 +126,11 @@ function AdminInvoice(props) {
                     onClick={() => openPopup(hoadons)}
                   >
                     <div className="AdminInvoice-information-detail-wrapper">
-                      <td>{hoadons.MAHOADON}</td>
-                      {/* <td><Barcode style={{width:'5vw'}} value={hoadons.MAHOADON} /></td> */}
-                      <td style={{ textAlign: 'start', paddingLeft: '20px' }}>
-                        {result}
-                      </td>
-                      <td style={{ minWidth: '10.6vw', maxWidth: '10.6vw' }}>
-                        {hoadons.SOLUONG}
-                      </td>
-                      <td>{hoadons.NGAYTAODON}</td>
-                      <td>
+                      <td class="col">{hoadons.MAHOADON}</td>
+                      <td class="col"> {result} </td>
+                      <td class="col">{hoadons.SOLUONG}</td>
+                      <td class="col">{hoadons.NGAYTAODON}</td>
+                      <td class="col">
                         <p
                           className={
                             hoadons.LOAI === 'Bán hàng'
@@ -170,9 +139,7 @@ function AdminInvoice(props) {
                           }
                           style={{
                             border: '1px solid',
-                            width: '6vw',
-                            height: '4vh',
-                            marginLeft: '3vw',
+                            margin: '4px 24px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -181,7 +148,7 @@ function AdminInvoice(props) {
                           {hoadons.LOAI}
                         </p>
                       </td>
-                      <td>
+                      <td class="col">
                         <p
                           className={
                             hoadons.TRANGTHAI === 'Đã thanh toán'
@@ -190,9 +157,7 @@ function AdminInvoice(props) {
                           }
                           style={{
                             border: '1px solid',
-                            width: '9vw',
-                            height: '4vh',
-                            marginLeft: '1.5vw',
+                            margin: '4px 24px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',

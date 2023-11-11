@@ -64,18 +64,24 @@ function AdminDetailStaff(props) {
         </div>
         <div className="AdminDetailStaff_modal-body">
           {props.children}
-          <div className='AdminDetailStaff_modal-body-inf_label'>
+          <div className='d-flex flex-row gap-2'>
             <p className='Label_PropStaff'>Tên nhân viên:</p>
-            <p className='Label_PropStaff'>Số điện thoại:</p>
-            <p className='Label_PropStaff'>Email:</p>
-            <p className='Label_PropStaff'>Lương cơ bản:</p>
-            <p className='Label_PropStaff'>Lương theo giờ:</p>
-          </div>
-          <div className='AdminDetailStaff_modal-body-inf_input'>
             <input className='Input_PropStaff' id='tennv' type='text' value={tennv} placeholder='Nhập tên nhân viên' onChange={(e) => setTenNV(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Số điện thoại:</p>
             <input className='Input_PropStaff' id='sdtnv' type='text' value={sdtnv} placeholder='Nhập số điện thoại nhân viên' onChange={(e) => setSDTNV(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Email:</p>
             <input className='Input_PropStaff' id='emailnv' type='text' value={emailnv} placeholder='Nhập số email nhân viên' onChange={(e) => setEmailNV(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Lương cơ bản:</p>
             <input className='Input_PropStaff' id='luongcb' type='number' value={luongcb} placeholder='Nhập lương cơ bản' onChange={(e) => setLuongCB(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Lương theo giờ:</p>
             <input className='Input_PropStaff' id='luongtheogio' type='number' value={luongtheogio} placeholder='Nhập lương theo giờ' onChange={(e) => setLuongTheoGio(e.target.value)}/>
           </div>
         </div>

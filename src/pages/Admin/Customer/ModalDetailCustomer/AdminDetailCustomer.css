@@ -12,18 +12,18 @@
   }
 .AdminDetailCustomer_modal {
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 55vw;
-    height: 45vh;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 90%;
     overflow: auto;
     position: relative;
 }
 .AdminDetailCustomer_modal-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -44,8 +44,8 @@
 .AdminDetailCustomer_modal-body-inf_label{
     display: block;
 }
-.Label_PropCustomer+ .Label_PropCustomer{
-    margin-top: 22px;
+.Label_PropCustomer{
+    width: 200px;
 }
 .AdminDetailCustomer_modal-body-inf_input{
     display: flex;
@@ -56,11 +56,8 @@
 }
 .Input_PropCustomer{
     width: 24vw;
-    height: 3vh;
+    height: 30px;
     border-radius: 5px;
-}
-.Input_PropCustomer+ .Input_PropCustomer{
-    margin-top: 15px;
 }
 .AdminDetailCustomer_modal_Btn_Change{
     margin-top: 5vh;

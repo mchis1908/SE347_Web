@@ -1,9 +1,5 @@
 .Header{
-    position: absolute;
-    top: 0;
-    left: 12vw;
-    height: 8vh;
-    width: 88vw;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     overflow-x: hidden;
@@ -14,10 +10,8 @@
     text-align: center;
 }
 .Header_title{
-    margin-left: 31vw;
     font-weight: bold;
     font-size: 24px;
-    width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,24 +19,24 @@
 }
 .Header_account{
     display: flex;
-    max-width: 20vw;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap:8px;
+    padding: 0 12px;
 }
 .Header_account_Avatar{
     border-radius: 100%;
 
-    height: 5vh;
-    width: 2.5vw;
-    max-width: 3vw;
-    margin-right: 20px;
-    margin-top: 10px;
-    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
     object-fit: cover
 }
 .Header_account_name{
     margin-top: 20px;
     font-weight: 500;
     white-space: nowrap;
-    overflow: hidden; /* ẩn phần vượt quá khung */
-    text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
-    /* text-align: center; */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

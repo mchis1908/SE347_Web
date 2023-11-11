@@ -46,42 +46,51 @@ function AdminDetailProduct(props) {
         </div>
         <div className="AdminDetailProduct_modal-body">
           {props.children}
-          <div className='AdminDetailProduct_modal-body-inf_label'>
-            <p className='Label_PropProduct'>Mã hóa đơn ký gửi:</p>
-            <p className='Label_PropProduct'>Mã hóa đơn bán hàng:</p>
-            <p className='Label_PropProduct'>Mã sản phẩm:</p>
-            <p className='Label_PropProduct'>Tên sản phẩm:</p>
-            <p className='Label_PropProduct'>Loại sản phẩm:</p>
-            <p className='Label_PropProduct'>Giá sản phẩm:</p>
-          </div>
-          <div className='AdminDetailProduct_modal-body-inf_input'>
-            <input className='Input_PropProduct' id='mahdkg'  type='text' value={props.data.MAHOADONKG} disabled/>  
-            <input className='Input_PropProduct' id='mahdbh' type='text' value={props.data.MAHOADONBH} disabled/>  
-            <input className='Input_PropProduct' id='masp' type='text' value={props.data.MASANPHAM} disabled/>  
-            <input className='Input_PropProduct' id='tensp' type='text' value={tensp} placeholder='Nhập tên sản phẩm' onChange={(e) => setTenSP(e.target.value)} disabled={props.db}/>
-            {/* <input className='Input_PropProduct' id='loai' type='text' value={loai} placeholder='Chọn loại sản phẩm' onChange={(e) => setLoai(e.target.value)} disabled={props.db}/> */}
-            <select className='Input_PropDeposit' style={{height:'3.8vh', width:'20.5vw', borderWidth:'2px', margin:'2vh 0'}} id='loaisanpham' disabled={props.db}
-              placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
-              <optgroup label="Áo">
-                <option value="Áo thun">Áo thun</option>
-                <option value="Áo sơ mi">Áo sơ mi</option>
-              </optgroup>
-              <optgroup label="Áo khoác">
-                <option value="Hoodie">Hoodie</option>
-                <option value="sJacketp2">Jacket</option>
-              </optgroup>
-              <optgroup label="Quần">
-                <option value="Quần jean">Quần jean</option>
-                <option value="Quần short">Quần short</option>
-                <option value="Quần tây">Quần tây</option>
-                <option value="Quần ống loe">Quần ống loe</option>
-              </optgroup>
-              <optgroup label="Váy">
-                <option value="Chân váy">Chân váy</option>
-                <option value="Đầm">Đầm</option>
-              </optgroup>
-            </select>
-            <input className='Input_PropProduct' id='gia' type='text' value={gia} placeholder='Nhập giá sản phẩm' onChange={(e) => setGia(e.target.value)} disabled={props.db}/>
+          <div className='d-flex flex-column'>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropProduct'>Mã hóa đơn ký gửi:</p>
+              <input className='Input_PropProduct' id='mahdkg'  type='text' value={props.data.MAHOADONKG} disabled/>  
+            </div>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropProduct'>Mã hóa đơn bán hàng:</p>
+              <input className='Input_PropProduct' id='mahdbh' type='text' value={props.data.MAHOADONBH} disabled/>  
+            </div>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropProduct'>Mã sản phẩm:</p>
+              <input className='Input_PropProduct' id='masp' type='text' value={props.data.MASANPHAM} disabled/>  
+            </div>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropProduct'>Tên sản phẩm:</p>
+              <input className='Input_PropProduct' id='tensp' type='text' value={tensp} placeholder='Nhập tên sản phẩm' onChange={(e) => setTenSP(e.target.value)} disabled={props.db}/>
+            </div>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropProduct'>Loại sản phẩm:</p>
+              <select className='Input_PropDeposit' style={{height:'30px', width:'20vw', borderWidth:'2px'}} id='loaisanpham' disabled={props.db}
+                placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
+                <optgroup label="Áo">
+                  <option value="Áo thun">Áo thun</option>
+                  <option value="Áo sơ mi">Áo sơ mi</option>
+                </optgroup>
+                <optgroup label="Áo khoác">
+                  <option value="Hoodie">Hoodie</option>
+                  <option value="sJacketp2">Jacket</option>
+                </optgroup>
+                <optgroup label="Quần">
+                  <option value="Quần jean">Quần jean</option>
+                  <option value="Quần short">Quần short</option>
+                  <option value="Quần tây">Quần tây</option>
+                  <option value="Quần ống loe">Quần ống loe</option>
+                </optgroup>
+                <optgroup label="Váy">
+                  <option value="Chân váy">Chân váy</option>
+                  <option value="Đầm">Đầm</option>
+                </optgroup>
+              </select>
+            </div>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropProduct'>Giá sản phẩm:</p>
+              <input className='Input_PropProduct' id='gia' type='text' value={gia} placeholder='Nhập giá sản phẩm' onChange={(e) => setGia(e.target.value)} disabled={props.db}/>
+            </div>
           </div>
           <div className='AdminDetailDeposit_modal-body-inf_image'>
             <div className='add_logo_clb'>
@@ -98,6 +107,7 @@ function AdminDetailProduct(props) {
                   type='file'
                   accept='image/png , image/jpg'
                   onChange={(e) => onSelectedFile(e)}
+                  disabled
                 />
               </label>
             </div>

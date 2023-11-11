@@ -1,11 +1,12 @@
 .AdminAccount_main{
     position: absolute;
-    top: 8vh;
+    top: 60px;
     left: 12vw;
     width: 88vw;
     height: fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
+    height: calc( 100% - 60px);
 }
 .AdminAccount_searchbar{
     width: 95%;
@@ -71,8 +72,8 @@
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
-
-    /* display: none; */
+    display: flex;
+    flex-direction: row;
 }
 table{
     width: 100%;
@@ -86,7 +87,7 @@ table{
 
 }
 .AdminAccount_detail_infor{
-    padding-top: 8vh;
+    padding-top: 32px;
 }
 .AdminAccount-information-detail{
     width: 100%;
@@ -97,15 +98,15 @@ table{
     cursor: pointer;
     color: #fff;
 }
+.AdminAccount-information-detail-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 8px;
+}
 .AdminAccount-information-detail-wrapper td{
-    width: 24.55vw;
-    line-height: 5vh;
-    padding-right: 1.3vw;
-    padding-bottom: 5px;
     text-align: center;
-
-    min-width: 24.55vw;
-    max-width: 24.55vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */

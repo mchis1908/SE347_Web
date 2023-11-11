@@ -1,11 +1,12 @@
 .AdminStaff_main{
     position: absolute;
-    top: 8vh;
+    top: 60px;
     left: 12vw;
     width: 88vw;
     height: fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
+    height: calc( 100% - 60px);
 }
 .AdminStaff_searchbar{
     width: 95%;
@@ -71,7 +72,8 @@
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
-
+    display: flex;
+    flex-direction: row;
     /* display: none; */
 }
 table{
@@ -85,7 +87,7 @@ table{
     text-align: center;
 }
 .AdminStaff_detail_infor{
-    padding-top: 7vh;
+    padding-top: 32px;
 }
 .AdminStaff-information-detail{
     width: 100%;
@@ -97,15 +99,15 @@ table{
     cursor: pointer;
     color: #fff;
 }
+.AdminStaff-information-detail-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
 .AdminStaff-information-detail-wrapper td{
-    width: 14.25vw;
-    line-height: 5vh;
-    padding-right: 1.3vw;
-    padding-bottom: 5px;
     text-align: center;
-
-    min-width: 14.25vw;
-    max-width: 14.25vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './AdminDeposit.css';
-import { Icon } from '@iconify/react';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
 import AdminDetailDeposit from './ModalDetailDeposit/AdminDetailDeposit';

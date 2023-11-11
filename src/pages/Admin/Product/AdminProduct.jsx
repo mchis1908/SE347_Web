@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './AdminProduct.css';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
-import { Icon } from '@iconify/react';
 import AdminDetailProduct from './ModalDetailProduct/AdminDetailProduct';
 import Axios from 'axios';
 
@@ -79,70 +78,46 @@ function AdminProduct(props) {
         <div>
           <table className="AdminProduct-information">
             <tr className="AdminProduct-information-header">
-              <th>
-                Mã sản phẩm{' '}
+              <th className='col'>
+                Mã sản phẩm
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('MASANPHAM')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MASANPHAM')}></i>
                 </span>
               </th>
-              <th>
-                Tên sản phẩm{' '}
+              <th className='col'>
+                Tên sản phẩm
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('TENSANPHAM')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENSANPHAM')}></i>
                 </span>
               </th>
-              <th>
-                Loại{' '}
+              <th className='col'>
+                Loại
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('LOAI')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LOAI')}></i>
                 </span>
               </th>
-              <th
+              <th className='col'
                 style={{
                   textAlign: 'end',
                   maxWidth: '10.6vw',
                   minWidth: '10.6vw',
                 }}
               >
-                Giá bán{' '}
+                Giá bán
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('GIANHAN')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('GIANHAN')}></i>
                 </span>
               </th>
-              <th style={{ maxWidth: '16.6vw', minWidth: '16.6vw' }}>
-                Trạng thái{' '}
+              <th className='col' style={{ maxWidth: '16.6vw', minWidth: '16.6vw' }}>
+                Trạng thái
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('TRANGTHAI')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TRANGTHAI')}></i>
                 </span>
               </th>
-              <th>
-                Hình ảnh{' '}
+              <th className='col'>
+                Hình ảnh
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('MASANPHAM')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MASANPHAM')}></i>
                 </span>
               </th>
               <hr />
@@ -155,22 +130,16 @@ function AdminProduct(props) {
                     onClick={() => openPopup(sanphams)}
                   >
                     <div className="AdminProduct-information-detail-wrapper">
-                      <td>{sanphams.MASANPHAM}</td>
-                      <td>{sanphams.TENSANPHAM}</td>
-                      <td>{sanphams.LOAI}</td>
-                      <td
-                        style={{
-                          textAlign: 'end',
-                          maxWidth: '8.6vw',
-                          minWidth: '8.6vw',
-                        }}
-                      >
+                      <td className='col'>{sanphams.MASANPHAM}</td>
+                      <td className='col'>{sanphams.TENSANPHAM}</td>
+                      <td className='col'>{sanphams.LOAI}</td>
+                      <td className='col'>
                         {sanphams.GIANHAN.toLocaleString('vi-VN', {
                           maximumFractionDigits: 3,
                         })}
                         đ
                       </td>
-                      <td style={{ maxWidth: '15.3vw', minWidth: '15.3vw' }}>
+                      <td className='col'>
                         <p
                           className={
                             sanphams.TRANGTHAI === 'Đã bán'
@@ -179,9 +148,8 @@ function AdminProduct(props) {
                           }
                           style={{
                             border: '1px solid',
-                            width: '11.5vw',
                             height: '4vh',
-                            marginLeft: '3vw',
+                            margin: '8px 24px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -190,7 +158,7 @@ function AdminProduct(props) {
                           {sanphams.TRANGTHAI}
                         </p>
                       </td>
-                      <td>
+                      <td className='col'>
                         <img
                           style={{
                             maxHeight: '40px',
@@ -199,6 +167,7 @@ function AdminProduct(props) {
                             objectFit: 'cover',
                           }}
                           src={'http://localhost:8000/' + sanphams.HINHANH}
+                          alt="img"
                         />
                       </td>
                     </div>

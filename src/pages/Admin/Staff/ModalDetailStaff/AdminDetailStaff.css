@@ -12,11 +12,11 @@
   }
 .AdminDetailStaff_modal {
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 55vw;
-    height: 55vh;
+    max-height: 90vh;
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
@@ -24,6 +24,7 @@
 }
 .AdminDetailStaff_modal-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -44,8 +45,9 @@
 .AdminDetailStaff_modal-body-inf_label{
     display: block;
 }
-.Label_PropStaff+ .Label_PropStaff{
-    margin-top: 22px;
+.Label_PropStaff{
+    width: 200px;
+    text-align: start;
 }
 .AdminDetailStaff_modal-body-inf_input{
     display: flex;
@@ -56,7 +58,8 @@
 }
 .Input_PropStaff{
     width: 24vw;
-    height: 3vh;
+    height: 30px;
+    height: 30px;
     border-radius: 5px;
 }
 .Input_PropStaff+ .Input_PropStaff{

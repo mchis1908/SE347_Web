@@ -12,15 +12,16 @@
   }
 .AdminDetailInvoice_modal {
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     width: 83vw;
-    min-height: 80vh;
+    min-height: 83vh;
     /* height: 95vh; */
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
     position: relative;
+    padding: 8px;
 }
 .AdminDetailInvoice_modal:hover{
     overflow: auto;

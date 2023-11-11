@@ -1,11 +1,12 @@
 .AdminSchedule_main{
     position: absolute;
-    top: 8vh;
+    top: 60px;
     left: 12vw;
     width: 88vw;
     height: fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
+    height: calc( 100% - 60px);
 }
 .AdminSchedule_searchbar{
     width: 95%;

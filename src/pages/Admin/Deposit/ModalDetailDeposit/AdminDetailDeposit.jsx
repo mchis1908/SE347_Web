@@ -75,37 +75,39 @@ function AdminDetailDeposit(props) {
         </div>
         <div className="AdminDetailDeposit_modal-body">
           {props.children}
-          <div className='AdminDetailDeposit_modal-body-inf_label'>
-            <p className='Label_PropDeposit'>Tên sản phẩm:</p>
-            <p className='Label_PropDeposit'>Loại sản phẩm:</p>
-            <p className='Label_PropDeposit'>Giá sản phẩm:</p>
-          </div>
-          <div className='AdminDetailDeposit_modal-body-inf_input'>
-            <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' value={tensp} onChange={(e) => setTenSanPham(e.target.value)}></input>
-            {/* <input className='Input_PropDeposit' id='loaisanpham' type='text' placeholder='Chọn loại sản phẩm' onChange={(e) => setLoai(e.target.value)}></input> */}
-            <select className='Input_PropDeposit' style={{height:'3.5vh', width:'20.5vw', borderWidth:'2px'}} id='loaisanpham' 
-              placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
-              <optgroup label="Áo">
-                <option value="Áo thun" selected>Áo thun</option>
-                <option value="Áo sơ mi">Áo sơ mi</option>
-              </optgroup>
-              <optgroup label="Áo khoác">
-                <option value="Hoodie">Hoodie</option>
-                <option value="sJacketp2">Jacket</option>
-              </optgroup>
-              <optgroup label="Quần">
-                <option value="Quần jean">Quần jean</option>
-                <option value="Quần short">Quần short</option>
-                <option value="Quần tây">Quần tây</option>
-                <option value="Quần ống loe">Quần ống loe</option>
-              </optgroup>
-              <optgroup label="Váy">
-                <option value="Chân váy">Chân váy</option>
-                <option value="Đầm">Đầm</option>
-              </optgroup>
-            </select>
-            <input className='Input_PropDeposit' id='giasanpham' type='number' placeholder='Nhập giá sản phẩm' value={gianhan}
-            onChange={(e) => setGiaNhan(e.target.value)}></input>
+          <div className='d-flex flex-column gap-2 m-2'>
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropDeposit'>Tên sản phẩm:</p>
+              <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' value={tensp} onChange={(e) => setTenSanPham(e.target.value)}></input>
+            </div> 
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropDeposit'>Loại sản phẩm:</p>
+              <select className='Input_PropDeposit' style={{height:'30px', width:'20vw', borderWidth:'2px'}} id='loaisanpham' 
+                placeholder='Chọn loại sản phẩm' value={loai} onChange={(e) => setLoai(e.target.value)}>
+                <optgroup label="Áo">
+                  <option value="Áo thun" selected>Áo thun</option>
+                  <option value="Áo sơ mi">Áo sơ mi</option>
+                </optgroup>
+                <optgroup label="Áo khoác">
+                  <option value="Hoodie">Hoodie</option>
+                  <option value="sJacketp2">Jacket</option>
+                </optgroup>
+                <optgroup label="Quần">
+                  <option value="Quần jean">Quần jean</option>
+                  <option value="Quần short">Quần short</option>
+                  <option value="Quần tây">Quần tây</option>
+                  <option value="Quần ống loe">Quần ống loe</option>
+                </optgroup>
+                <optgroup label="Váy">
+                  <option value="Chân váy">Chân váy</option>
+                  <option value="Đầm">Đầm</option>
+                </optgroup>
+              </select>
+            </div> 
+            <div className='d-flex flex-row gap-2'>
+              <p className='Label_PropDeposit'>Giá sản phẩm:</p>
+              <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' value={tensp} onChange={(e) => setTenSanPham(e.target.value)}></input>
+            </div>
           </div>
           <div className='AdminDetailDeposit_modal-body-inf_image'>
             <div className='add_logo_clb'>

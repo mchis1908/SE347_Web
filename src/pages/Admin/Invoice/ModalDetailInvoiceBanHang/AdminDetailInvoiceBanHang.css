@@ -12,7 +12,7 @@
   }
 .AdminDetailInvoiceBanHang_modal {
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     width: 83vw;
     min-height: 80vh;
@@ -21,6 +21,7 @@
     max-height: 100%;
     overflow: hidden;
     position: relative;
+    padding: 8px;
 }
 .AdminDetailInvoiceBanHang_modal:hover{
     overflow: auto;

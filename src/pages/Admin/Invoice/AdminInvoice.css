@@ -1,11 +1,12 @@
 .AdminInvoice_main{
     position: absolute;
-    top: 8vh;
+    top: 60px;
     left: 12vw;
     width: 88vw;
     height: fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
+    height: calc( 100% - 60px);
 }
 .AdminInvoice_searchbar{
     width: 95%;
@@ -68,12 +69,12 @@
     overflow: auto;
 }
 .AdminInvoice-information-header{
-    width: 80vw;
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
-
-    /* display: none; */
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
 }
 table{
     width: 100%;
@@ -81,12 +82,11 @@ table{
     border-spacing: 0;
 }
 .AdminInvoice-information-header th{
-    width: 12.85vw;
     line-height: 5vh;
     text-align: center;
 }
 .AdminInvoice_detail_infor{
-    padding-top: 7vh;
+    padding-top: 40px;
 }
 .AdminInvoice-information-detail{
     width: 100%;
@@ -98,15 +98,15 @@ table{
     cursor: pointer;
     color: #fff;
 }
+.AdminInvoice-information-detail-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .AdminInvoice-information-detail-wrapper td{
-    width: 11.6vw;
     line-height: 5vh;
-    padding-right: 1.3vw;
-    padding-bottom: 5px;
     text-align: center;
 
-    min-width: 11.6vw;
-    max-width: 11.6vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */

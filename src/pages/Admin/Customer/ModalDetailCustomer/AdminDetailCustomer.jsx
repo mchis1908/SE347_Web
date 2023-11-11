@@ -56,16 +56,20 @@ function AdminDetailCustomer(props) {
         </div>
         <div className="AdminDetailCustomer_modal-body">
           {props.children}
-          <div className='AdminDetailCustomer_modal-body-inf_label'>
+          <div className='d-flex flex-row g-2'>
             <p className='Label_PropCustomer'>Tên khách hàng:</p>
-            <p className='Label_PropCustomer'>Số điện thoại:</p>
-            <p className='Label_PropCustomer'>Email:</p>
-            <p className='Label_PropCustomer'>Hóa đơn gần nhất:</p>
-          </div>
-          <div className='AdminDetailCustomer_modal-body-inf_input'>
             <input className='Input_PropCustomer' id='tenkh' type='text' value={tenkh} placeholder='Nhập tên khách hàng' onChange={(e) => setTenKH(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row g-2'>
+            <p className='Label_PropCustomer'>Số điện thoại:</p>
             <input className='Input_PropCustomer' id='sdt' type='text' value={sdt} placeholder='Nhập số điện thoại khách hàng' onChange={(e) => setSDT(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row g-2'>
+            <p className='Label_PropCustomer'>Email:</p>
             <input className='Input_PropCustomer' id='email' type='text' value={email} placeholder='Nhập email khách hàng' onChange={(e) => setEmail(e.target.value)}/>
+          </div>
+          <div className='d-flex flex-row g-2'>
+            <p className='Label_PropCustomer'>Hóa đơn gần nhất:</p>
             <input className='Input_PropCustomer' id='email' type='text' value={props.data.LANDENGANNHAT} placeholder='Nhập hóa đơn gần nhất' onChange={(e) => setEmail(e.target.value)} disabled/>
           </div>
         </div>

@@ -14,28 +14,15 @@ import AdminAccount from './pages/Admin/Account/AdminAccount';
 import AdminSchedule from './pages/Admin/Schedule/AdminSchedule';
 import AdminReport from './pages/Admin/Report/AdminReport';
 import { useSelector } from 'react-redux';
-
+import CustomerHome from './pages/Customer/Home/CustomerHome';
 function App() {
   return (
     <div className="App">
       <Routes>
         {/* <Route exact path="/" element={<SignIn setIsAuthenticated={setIsAuthenticated} />} /> */}
-        <Route exact path="/" element={ useSelector((state)=> state.value.user !== '') ? (
-          <Navigate to="/home" />
-          ) : (
-          <SignIn />
-          )
-          }
-          />
-
-        <Route element={ useSelector((state)=> state.value.user === '') ? (
-          <Navigate to="/" />
-          ) : (
-          <Outlet />
-          )
-          }
-          >
-          <Route exact path="/home" element={<AdminHome />} />
+        <Route exact path="/" element={ useSelector((state)=> state.value.user !== '') ? ( <Navigate to="/home" /> ) : ( <SignIn /> ) } />
+        <Route element={ useSelector((state)=> state.value.user === '') ? ( <Navigate to="/" /> ) : ( <Outlet /> ) }>
+          <Route exact path="/home" element={ useSelector((state)=> state.value.role === 'customer') ? ( <CustomerHome /> ) : ( <AdminHome /> ) }/>
           <Route exact path="/customer" element={<AdminCustomer />} />
           <Route exact path="/product" element={<AdminProduct />} />
           <Route exact path="/invoice" element={<AdminInvoice />} />

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './AdminStaff.css';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
-import { Icon } from '@iconify/react';
 import Axios from 'axios';
 import AdminDetailStaff from './ModalDetailStaff/AdminDetailStaff';
-import AdminAddStaff from './ModalAddStaff/ModalDetailStaff/AdminAddStaff';
+import AdminAddStaff from './ModalAddStaff/AdminAddStaff';
 
 function AdminStaff(props) {
   let [nhanviens, setNhanVien] = useState([]);
@@ -89,54 +88,34 @@ function AdminStaff(props) {
         <div>
           <table className="AdminStaff-information">
             <tr className="AdminStaff-information-header">
-              <th>
+              <th className='col'>
                 Họ và tên{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('HOTEN')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('HOTEN')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Số điện thoại{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('SDT')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Email{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('EMAIL')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('EMAIL')}></i>
                 </span>{' '}
               </th>
-              <th>
+              <th className='col'>
                 Lương cơ bản{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('LUONGCOBAN')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LUONGCOBAN')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Lương theo giờ{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('LUONGTHEOGIO')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LUONGTHEOGIO')}></i>
                 </span>
               </th>
               <hr />
@@ -149,16 +128,16 @@ function AdminStaff(props) {
                     onClick={() => openPopup1(nhanviens)}
                   >
                     <div className="AdminStaff-information-detail-wrapper">
-                      <td>{nhanviens.HOTEN}</td>
-                      <td>{nhanviens.SDT}</td>
-                      <td>{nhanviens.EMAIL}</td>
-                      <td>
+                      <td className='col'>{nhanviens.HOTEN}</td>
+                      <td className='col'>{nhanviens.SDT}</td>
+                      <td className='col'>{nhanviens.EMAIL}</td>
+                      <td className='col'>
                         {nhanviens.LUONGCOBAN.toLocaleString('vi-VN', {
                           maximumFractionDigits: 3,
                         })}
                         đ
                       </td>
-                      <td>
+                      <td className='col'>
                         {nhanviens.LUONGTHEOGIO.toLocaleString('vi-VN', {
                           maximumFractionDigits: 3,
                         })}

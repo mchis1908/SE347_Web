@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './AdminAccount.css';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
-import { Icon } from '@iconify/react';
 import AdminDetailAccount from './ModalDetailAccount/AdminDetailAccount';
 import Axios from 'axios';
 
@@ -75,34 +74,22 @@ function AdminAccount(props) {
         <div>
           <table className="AdminAccount-information">
             <tr className="AdminAccount-information-header">
-              <th>
+              <th className='col'>
                 Tên nhân viên{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('TENNV')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENNV')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Tài khoản{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('TENTAIKHOAN')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENTAIKHOAN')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Mật khẩu{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('MATKHAU')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MATKHAU')}></i>
                 </span>
               </th>
               <hr />
@@ -116,9 +103,9 @@ function AdminAccount(props) {
                       onClick={() => openPopup(accounts)}
                     >
                       <div className="AdminAccount-information-detail-wrapper">
-                        <td className="stadium-name">{accounts.TENNV}</td>
-                        <td className="team-name">{accounts.TENTAIKHOAN}</td>
-                        <td className="">{accounts.MATKHAU}</td>
+                        <td className="col">{accounts.TENNV}</td>
+                        <td className="col">{accounts.TENTAIKHOAN}</td>
+                        <td className="col">{accounts.MATKHAU}</td>
                       </div>
                     </tr>
                   );

@@ -12,7 +12,7 @@
   }
 .AdminDetailProduct_modal {
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 55vw;
@@ -45,8 +45,9 @@
     flex:1;
     display: block;
 }
-.Label_PropProduct+ .Label_PropProduct{
-    margin-top: 22px;
+.Label_PropProduct{
+    width: 200px;
+    text-align: start;
 }
 .AdminDetailProduct_modal-body-inf_input{
     flex:1;
@@ -55,12 +56,10 @@
 }
 .Input_PropProduct{
     width: 20vw;
-    height: 3vh;
+    height: 30px;
     border-radius: 5px;
 }
-.Input_PropProduct+ .Input_PropProduct{
-    margin-top: 15px;
-}
+
 .AdminDetailProduct_modal-body-inf_image{
     flex: 1;
 }

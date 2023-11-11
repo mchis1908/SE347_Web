@@ -72,7 +72,8 @@
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
-
+    display: flex;
+    flex-direction: row;
     /* display: none; */
 }
 table{
@@ -86,7 +87,7 @@ table{
     text-align: center;
 }
 .AdminProduct_detail_infor{
-    padding-top: 7vh;
+    padding-top: 32px;
 }
 .AdminProduct-information-detail{
     width: 100%;
@@ -98,16 +99,14 @@ table{
     cursor: pointer;
     color: #fff;
 }
+.AdminProduct-information-detail-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .AdminProduct-information-detail-wrapper td{
-    width: 11.6vw;
-    line-height: 3vh;
-    text-align: center;
-    padding-right: 1.3vw;
-    min-height: 3vh;
-
-    max-width: 11.6vw;
-    min-width: 11.6vw;
     white-space: nowrap;
+    text-align:center;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
     padding-bottom: 5px;

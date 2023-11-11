@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './AdminChart.css';
-import { Icon } from '@iconify/react';
 import moment from 'moment';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';

@@ -46,16 +46,18 @@ function AdminAddCustomer(props) {
           <h3>{props.title}</h3>
           <button onClick={props.onClose}>X</button>
         </div>
-        <div className="AdminAddCustomer_modal-body">
+        <div className="AdminDetailCustomer_modal-body">
           {props.children}
-          <div className='AdminAddCustomer_modal-body-inf_label'>
+          <div className='d-flex flex-row g-2'>
             <p className='Label_PropCustomer'>Tên khách hàng:</p>
-            <p className='Label_PropCustomer'>Số điện thoại:</p>
-            <p className='Label_PropCustomer'>Email:</p>
-          </div>
-          <div className='AdminAddCustomer_modal-body-inf_input'>
             <input className='Input_PropCustomer' id='tenkh' type='text' placeholder='Nhập tên khách hàng' onChange={(e) => setTenKH(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row g-2'>
+            <p className='Label_PropCustomer'>Số điện thoại:</p>
             <input className='Input_PropCustomer' id='sdt' type='text' placeholder='Nhập số điện thoại khách hàng' onChange={(e) => setSDT(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row g-2'>
+            <p className='Label_PropCustomer'>Email:</p>
             <input className='Input_PropCustomer' id='email' type='text' placeholder='Nhập email khách hàng' onChange={(e) => setEmail(e.target.value)}></input>
           </div>
         </div>

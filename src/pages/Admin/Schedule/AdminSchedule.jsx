@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './AdminSchedule.css';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
-import { Icon } from '@iconify/react';
 import Axios from 'axios';
 import { DatePicker, message } from 'antd';
 import moment from 'moment';

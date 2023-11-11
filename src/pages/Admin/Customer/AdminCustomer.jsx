@@ -3,7 +3,6 @@ import './AdminCustomer.css';
 // import ReactTable from 'react-table';
 import Menu from '../Menu/AdminMenu';
 import Header from '../../../common/Header/Header';
-import { Icon } from '@iconify/react';
 import AdminDetailCustomer from './ModalDetailCustomer/AdminDetailCustomer';
 import Axios from 'axios';
 import AdminAddCustomer from './ModalAddCustomer/AdminAddCustomer';
@@ -86,47 +85,30 @@ function AdminCustomer(props) {
         <div>
           <table className="AdminCustomer-information">
             <tr className="AdminCustomer-information-header">
-              <th>
+              <th className='col'>
                 Họ và tên{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('HOTEN')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('HOTEN')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Số điện thoại{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('SDT')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Email{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('EMAIL')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('EMAIL')}></i>
                 </span>
               </th>
-              <th>
+              <th className='col'>
                 Hóa đơn gần nhất{' '}
                 <span>
-                  <Icon
-                    style={{ paddingLeft: '20px' }}
-                    onClick={() => handleClick('LANDENGANNHAT')}
-                    icon="ph:sort-ascending-bold"
-                  />
+                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LANDENGANNHAT')}></i>
                 </span>
               </th>
-              <hr />
             </tr>
             <div className="AdminCustomer_detail_infor">
               {khachhangs.map((khachhangs) => {
@@ -136,12 +118,12 @@ function AdminCustomer(props) {
                     onClick={() => openPopup1(khachhangs)}
                   >
                     <div className="AdminCustomer-information-detail-wrapper">
-                      <td style={{ textAlign: 'start', paddingLeft: '1vw' }}>
+                      <td className='col' style={{ textAlign: 'start', paddingLeft: '20px' }}>
                         {khachhangs.HOTEN}
                       </td>
-                      <td>{khachhangs.SDT}</td>
-                      <td>{khachhangs.EMAIL}</td>
-                      <td>{khachhangs.LANDENGANNHAT}</td>
+                      <td className='col'>{khachhangs.SDT}</td>
+                      <td className='col'>{khachhangs.EMAIL}</td>
+                      <td className='col'>{khachhangs.LANDENGANNHAT}</td>
                     </div>
                   </tr>
                 );
