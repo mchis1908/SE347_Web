@@ -62,9 +62,6 @@
     height: 30px;
     border-radius: 5px;
 }
-.Input_PropStaff+ .Input_PropStaff{
-    margin-top: 15px;
-}
 .AdminDetailStaff_modal_Btn_Change{
     margin-top: 5vh;
     display: flex;

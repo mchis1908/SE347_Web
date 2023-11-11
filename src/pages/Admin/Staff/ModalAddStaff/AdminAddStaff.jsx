@@ -81,22 +81,32 @@ function AdminAddStaff(props) {
         </div>
         <div className="AdminAddStaff_modal-body">
           {props.children}
-          <div className='AdminAddStaff_modal-body-inf_label'>
+          <div className='d-flex flex-row gap-2'>
             <p className='Label_PropStaff'>Tên nhân viên:</p>
-            <p className='Label_PropStaff'>Số điện thoại:</p>
-            <p className='Label_PropStaff'>Email:</p>
-            <p className='Label_PropStaff'>Lương cơ bản:</p>
-            <p className='Label_PropStaff'>Lương theo giờ:</p>
-            <p className='Label_PropStaff'>Tài khoản:</p>
-            <p className='Label_PropStaff'>Mật khẩu:</p>
-          </div>
-          <div className='AdminAddStaff_modal-body-inf_input'>
             <input className='Input_PropStaff' id='tennv' type='text' placeholder='Nhập tên nhân viên' onChange={(e) => setTenNV(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Số điện thoại:</p>
             <input className='Input_PropStaff' id='sdtnv' type='text' placeholder='Nhập số điện thoại nhân viên' onChange={(e) => setSDTNV(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Email:</p>
             <input className='Input_PropStaff' id='emailnv' type='text' placeholder='Nhập số email nhân viên' onChange={(e) => setEmailNV(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Lương cơ bản:</p>
             <input className='Input_PropStaff' id='luongcb' type='number' placeholder='Nhập lương cơ bản' onChange={(e) => setLuongCB(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Lương theo giờ:</p>
             <input className='Input_PropStaff' id='luongtheogio' type='number' placeholder='Nhập lương theo giờ' onChange={(e) => setLuongTheoGio(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Tài khoản:</p>
             <input className='Input_PropStaff' id='taikhoan' type='text' placeholder='Nhập tài khoản' onChange={(e) => setTaiKhoan(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropStaff'>Mật khẩu:</p>
             <input className='Input_PropStaff' id='matkhau' type='text' placeholder='Nhập mật khẩu' onChange={(e) => setMatKhau(e.target.value)}></input>
           </div>
         </div>

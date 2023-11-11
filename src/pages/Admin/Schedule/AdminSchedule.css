@@ -54,6 +54,12 @@
 .AdminSchedule-information-table:hover{
     overflow: auto;
 }
+
+::-webkit-scrollbar {
+    height: 8px;
+    display: block;
+}
+
 .AdminSchedule-information-header{
     width: 80vw;
     border-radius: 10px 10px 0 0;

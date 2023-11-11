@@ -16,7 +16,7 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
     width: 55vw;
-    height: 45vh;
+    max-height: 90vh;
     max-width: 100%;
     max-height: 100%;
     overflow: auto;
@@ -24,6 +24,7 @@
 }
 .AdminDetailAccount_modal-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -44,8 +45,9 @@
 .AdminDetailAccount_modal-body-inf_label{
     display: block;
 }
-.Label_PropAccount+ .Label_PropAccount{
-    margin-top: 22px;
+.Label_PropAccount{
+    width:200px;
+    text-align: start;
 }
 .AdminDetailAccount_modal-body-inf_input{
     display: flex;
@@ -56,11 +58,8 @@
 }
 .Input_PropAccount{
     width: 24vw;
-    height: 3vh;
+    height: 30px;
     border-radius: 5px;
-}
-.Input_PropAccount+ .Input_PropAccount{
-    margin-top: 15px;
 }
 .AdminDetailAccount_modal_Btn_Change{
     margin-top: 5vh;

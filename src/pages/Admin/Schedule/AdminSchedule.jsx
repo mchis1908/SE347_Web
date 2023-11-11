@@ -313,7 +313,7 @@ function AdminSchedule(props) {
                       }}
                     >
                       <input
-                        style={{ width: '4vw' }}
+                        style={{ width: '60px', height: '30px', borderRadius: '8px', border: '1px solid' }}
                         value={getGioLamViec(sdt, index)}
                         onChange={(event) =>
                           handleInputChange(event, sdt, index)

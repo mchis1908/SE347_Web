@@ -45,14 +45,16 @@ function AdminDetailAccount(props) {
         </div>
         <div className="AdminDetailAccount_modal-body">
           {props.children}
-          <div className='AdminDetailAccount_modal-body-inf_label'>
+          <div className='d-flex flex-row gap-2'>
             <p className='Label_PropAccount'>Tên nhân viên:</p>
-            <p className='Label_PropAccount'>Tài khoản:</p>
-            <p className='Label_PropAccount'>Mật khẩu:</p>
-          </div>
-          <div className='AdminDetailAccount_modal-body-inf_input'>
             <input className='Input_PropAccount' id='tennv' type='text' placeholder='Tên nhân viên' value={tennv} onChange={(e)=> setTenNV(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropAccount'>Tài khoản:</p>
             <input className='Input_PropAccount' id='tentk' type='text' placeholder='Tài khoản' value={tentk} onChange={(e)=> setTenTK(e.target.value)}></input>
+          </div>
+          <div className='d-flex flex-row gap-2'>
+            <p className='Label_PropAccount'>Mật khẩu:</p>
             <input className='Input_PropAccount' id='matkhau' type='text' placeholder='Mật khẩu' value={matkhau} onChange={(e)=> setMatKhau(e.target.value)}></input>
           </div>
         </div>
