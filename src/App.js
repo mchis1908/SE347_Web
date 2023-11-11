@@ -13,43 +13,28 @@ import AdminChart from './pages/Admin/Chart/AdminChart';
 import AdminAccount from './pages/Admin/Account/AdminAccount';
 import AdminSchedule from './pages/Admin/Schedule/AdminSchedule';
 import AdminReport from './pages/Admin/Report/AdminReport';
-// ------------------------------------------------------
-import EmployeeHome from './pages/Employee/Home/EmployeeHome';
-import EmployeeDeposit from './pages/Employee/Deposit/EmployeeDeposit';
-import EmployeePay from './pages/Employee/Pay/EmployeePay';
-import EmployeeProduct from './pages/Employee/Product/EmployeeProduct';
-import EmployeeCustomer from './pages/Employee/Customer/EmployeeCustomer';
-import EmployeeInvoice from './pages/Employee/Invoice/EmployeeInvoice';
 import { useSelector } from 'react-redux';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        {/* <Route exact path="/" element={<SignIn setIsAuthenticated={setIsAuthenticated}/>} /> */}
-        <Route
-          exact
-          path="/"
-          element={
-            useSelector((state) => state.value.user !== '') ? (
-              <Navigate to="/home" />
-            ) : (
-              <SignIn />
-            )
+        {/* <Route exact path="/" element={<SignIn setIsAuthenticated={setIsAuthenticated} />} /> */}
+        <Route exact path="/" element={ useSelector((state)=> state.value.user !== '') ? (
+          <Navigate to="/home" />
+          ) : (
+          <SignIn />
+          )
           }
-        />
+          />
 
-        <Route
-          element={
-            useSelector((state) => state.value.user === '') ? (
-              <Navigate to="/" />
-            ) : (
-              <Outlet />
-            )
+        <Route element={ useSelector((state)=> state.value.user === '') ? (
+          <Navigate to="/" />
+          ) : (
+          <Outlet />
+          )
           }
-        >
-          {/* -----Admin----- */}
-          {/* <Route exact path="/admin/home" element={<AdminHome isAuthenticated={isAuthenticated}/>} /> */}
+          >
           <Route exact path="/home" element={<AdminHome />} />
           <Route exact path="/customer" element={<AdminCustomer />} />
           <Route exact path="/product" element={<AdminProduct />} />
@@ -61,19 +46,6 @@ function App() {
           <Route exact path="/account" element={<AdminAccount />} />
           <Route exact path="/schedule" element={<AdminSchedule />} />
           <Route exact path="/report" element={<AdminReport />} />
-          {/* -----Employee----- */}
-          <Route exact path="/employee/home" element={<EmployeeHome />} />
-          <Route
-            exact
-            path="/employee/customer"
-            element={<EmployeeCustomer />}
-          />
-          <Route exact path="/employee/product" element={<EmployeeProduct />} />
-          <Route exact path="/employee/invoice" element={<EmployeeInvoice />} />
-          <Route exact path="/employee/deposit" element={<EmployeeDeposit />} />
-          <Route exact path="/employee/pay" element={<EmployeePay />} />
-          {/* ------------------------- */}
-          {/* <Route path="/*" element={<Navigate to="/" />} /> */}
         </Route>
       </Routes>
     </div>
