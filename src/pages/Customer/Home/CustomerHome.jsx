@@ -5,11 +5,12 @@ import Menu from '../Menu/CustomerMenu';
 
 function CustomerHome() {
   return (
-    <div class="background-feature d-flex flex-column">
-        <Header/>
-        <div class="d-flex flex-row" style={{height: 'calc( 100vh - 66px)'}}>
-            <Menu class="col-2"/>
-        </div>
+    <div className="AdminHome">
+      <Menu />
+      <Header title="TRANG CHỦ" avt="http://surl.li/ggptd" />
+      <div className="AdminHome_main">
+        a
+      </div>
     </div>
   );
 }
