@@ -18,7 +18,7 @@
 }
 .Overview_block1{
     width: 22%;
-    height: 20vh;
+    padding: 16px;
     background-color: #d6e0ff;
     border-radius: 20px;
     display: flex;
@@ -28,7 +28,7 @@
 }
 .Overview_block2{
     width: 22%;
-    height: 20vh;
+    padding: 16px;
     background-color: #ffd6d9;
     border-radius: 20px;
     display: flex;
@@ -39,7 +39,7 @@
 }
 .Overview_block3{
     width: 22%;
-    height: 20vh;
+    padding: 16px;
     background-color: #ffead6;
     border-radius: 20px;
     display: flex;
@@ -49,7 +49,7 @@
 }
 .Overview_block4{
     width: 22%;
-    height: 20vh;
+    padding: 16px;
     background-color: #d6ffe0;
     border-radius: 20px;
     display: flex;
@@ -60,13 +60,18 @@
 .Block_top .iconify{
     font-size: 40px;
 
-    height: 6vh;
-    width: 6vw;
+    height: 60px;
+    width: 60px;
+    padding-top: 5px;
 }
 .Block_top{
     font-size: 60px;
-    padding: 12px 0 0 30px;
     font-weight:500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap:8px;
 }
 .Block_bottom{
     display: flex;

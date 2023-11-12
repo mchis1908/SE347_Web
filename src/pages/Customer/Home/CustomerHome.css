@@ -1,4 +1,4 @@
-.AdminHome_main{
+.CustomerHome_main{
     position: absolute;
     top: 60px;
     left: 12vw;
@@ -6,5 +6,84 @@
     height: fit-content;
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
-    height: calc( 100% - 60px);
+    min-height: calc( 100% - 60px);
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.event-banner{
+    width: calc( 100% )
+}
+.event-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding:12px;
+    border-radius: 16px;
+    gap:12px;
+}
+.event-item{
+    width:100%;
+}
+
+.input{
+    font-style: normal;
+    font: 400px;
+    border-radius:8px;
+    border: none;
+    padding:8px 16px;
+    outline: 1px solid #EBEBEB;
+    font-size: 14px !important;
+}
+
+.input:focus{
+    outline: 1px solid #0A91AB;
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 24px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+  
+.book-item{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 16px;
+
+    position: relative;
+    overflow:hidden;
+}
+  
+.book-item-text{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    text-align: start;
+    width:100%;
+}
+
+.book-item-text-sale{
+    color:red
+}
+
+.book-item-text-line{
+    text-decoration: line-through;
+}
+  
+.text-bolder{
+    font-weight: 600;
+    font-size:14px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

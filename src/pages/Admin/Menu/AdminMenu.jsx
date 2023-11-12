@@ -62,6 +62,12 @@ function AdminMenu() {
         </Link>
 
         {/* --------------------------------------- */}
+        <Link style={{ display: role === 'admin' ? 'block' : 'none' }} to="/event">
+          <div className={`${ path==='/event' ? 'sidebar-item-selector' : 'sidebar_item' }`}>
+          <i class="bi bi-calendar2-event-fill menu-item-icon"></i>
+            <span>Sự kiện</span>
+          </div>
+        </Link>
         <Link style={{ display: role === 'admin' ? 'block' : 'none' }} to="/chart">
           <div className={`${ path==='/chart' ? 'sidebar-item-selector' : 'sidebar_item' }`}>
             <i class="bi bi-bar-chart-fill menu-item-icon"></i>
@@ -88,7 +94,7 @@ function AdminMenu() {
         </Link>
         <Link style={{ display: role === 'admin' ? 'block' : 'none' }} to="/account">
           <div className={`${ path==='/account' ? 'sidebar-item-selector' : 'sidebar_item' }`}>
-            <i class="bi bi-person-lock menu-item-icon"></i>
+            <i class="bi bi-person-fill-gear menu-item-icon"></i>
             <span>Tài Khoản</span>
           </div>
         </Link>
@@ -97,7 +103,7 @@ function AdminMenu() {
       <div style={{marginBottom:'16px'}}>
         <Link to="/" onClick={handleLogout}>
           <div className="sidebar_item">
-            <i class="bi bi-arrow-left-circle-fill menu-item-icon"></i>
+            <i class="bi bi-box-arrow-left menu-item-icon"></i>
             <span>Đăng xuất</span>
           </div>
         </Link>

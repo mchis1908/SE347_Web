@@ -9,6 +9,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    height: 60px;
 }
 .Header_title{
     font-weight: bold;

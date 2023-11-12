@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './AdminInvoice.css';
-import Menu from '../Menu/AdminMenu';
+import './CustomerInvoice.css';
+import Menu from '../Menu/CustomerMenu';
 import Header from '../../../common/Header/Header';
-import AdminDetailInvoice from './ModalDetailInvoice/AdminDetailInvoice';
-import AdminDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/AdminDetailInvoiceBanHang';
+import CustomerDetailInvoice from './ModalDetailInvoice/CustomerDetailInvoice';
+import CustomerDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/CustomerDetailInvoiceBanHang';
 import Axios from 'axios';
 
-function AdminInvoice(props) {
+function CustomerInvoice(props) {
   let [hoadons, setHoaDon] = useState([]);
   const [searchkey, setSearchKey] = useState('');
   const getHoaDon = async () => {
@@ -63,11 +63,11 @@ function AdminInvoice(props) {
     }
   };
   return (
-    <div className="AdminInvoice">
+    <div className="CustomerInvoice">
       <Menu />
       <Header title="QUẢN LÝ HÓA ĐƠN" avt="http://surl.li/ggptd" />
-      <div className="AdminInvoice_main">
-        <div className="AdminInvoice_searchbar">
+      <div className="CustomerInvoice_main">
+        <div className="CustomerInvoice_searchbar">
           <input
             className="search-area"
             type="text"
@@ -77,8 +77,8 @@ function AdminInvoice(props) {
           {/* <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span> */}
         </div>
         <div>
-          <table className="AdminInvoice-information">
-            <tr className="AdminInvoice-information-header">
+          <table className="CustomerInvoice-information">
+            <tr className="CustomerInvoice-information-header">
               <th class="col">
                 Mã hóa đơn
                 <span>
@@ -116,16 +116,16 @@ function AdminInvoice(props) {
                 </span>
               </th>
             </tr>
-            <div className="AdminInvoice_detail_infor">
+            <div className="CustomerInvoice_detail_infor">
               {hoadons.map((hoadons) => {
                 const arr = hoadons.SDT.split('-');
                 const result = arr[1];
                 return (
                   <tr
-                    className="AdminInvoice-information-detail"
+                    className="CustomerInvoice-information-detail"
                     onClick={() => openPopup(hoadons)}
                   >
-                    <div className="AdminInvoice-information-detail-wrapper">
+                    <div className="CustomerInvoice-information-detail-wrapper">
                       <td class="col">{hoadons.MAHOADON}</td>
                       <td class="col"> {result} </td>
                       <td class="col">{hoadons.SOLUONG}</td>
@@ -168,23 +168,23 @@ function AdminInvoice(props) {
               })}
             </div>
             {isOpen && hoadon.LOAI === 'Ký gửi' && (
-              <AdminDetailInvoice
+              <CustomerDetailInvoice
                 title="CHI TIẾT HÓA ĐƠN KÝ GỬI"
                 onClose={closePopup}
                 data={hoadon}
                 db={false}
               >
                 {props.children}
-              </AdminDetailInvoice>
+              </CustomerDetailInvoice>
             )}
             {isOpen && hoadon.LOAI === 'Bán hàng' && (
-              <AdminDetailInvoiceBanHang
+              <CustomerDetailInvoiceBanHang
                 title="CHI TIẾT HÓA ĐƠN BÁN HÀNG"
                 onClose={closePopup}
                 data={hoadon}
               >
                 {props.children}
-              </AdminDetailInvoiceBanHang>
+              </CustomerDetailInvoiceBanHang>
             )}
           </table>
         </div>
@@ -193,4 +193,4 @@ function AdminInvoice(props) {
   );
 }
 
-export default AdminInvoice;
+export default CustomerInvoice;

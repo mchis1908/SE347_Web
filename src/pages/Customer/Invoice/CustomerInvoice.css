@@ -1,4 +1,4 @@
-.AdminInvoice_main{
+.CustomerInvoice_main{
     position: absolute;
     top: 60px;
     left: 12vw;
@@ -8,7 +8,7 @@
     color: rgb(0, 0, 0);
     height: calc( 100% - 60px);
 }
-.AdminInvoice_searchbar{
+.CustomerInvoice_searchbar{
     width: 95%;
     height: 8vh;
     padding: 1vh 0;
@@ -39,7 +39,7 @@
     background-color: #152737;
     color:white;
 }
-.AdminInvoice_btn_create{
+.CustomerInvoice_btn_create{
     width: 10vw;
     height: 5vh;
     margin-left: 10vh;
@@ -49,12 +49,12 @@
     border-radius: 15px;
     border-width: 0;
 }
-.AdminInvoice_btn_create:hover{
+.CustomerInvoice_btn_create:hover{
     background-color: #fe4880;
     color: white;
     cursor:pointer;
 }
-.AdminInvoice-information{
+.CustomerInvoice-information{
     width: 80vw;
     height: 78vh;
     overflow: hidden;
@@ -65,10 +65,10 @@
     margin-bottom: 4vh;
     display: block;
 }
-.AdminInvoice-information:hover{
+.CustomerInvoice-information:hover{
     overflow: auto;
 }
-.AdminInvoice-information-header{
+.CustomerInvoice-information-header{
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     position: fixed;
@@ -81,32 +81,32 @@ table{
     border-collapse: collapse;
     border-spacing: 0;
 }
-.AdminInvoice-information-header th{
+.CustomerInvoice-information-header th{
     line-height: 5vh;
     text-align: center;
 }
-.AdminInvoice_detail_infor{
+.CustomerInvoice_detail_infor{
     padding-top: 40px;
 }
-.AdminInvoice-information-detail{
+.CustomerInvoice-information-detail{
     width: 100%;
     /* padding-top: 2vh; */
     display: block;
     display: flex;
     flex-direction: column;
 }
-.AdminInvoice-information-detail :hover{
+.CustomerInvoice-information-detail :hover{
     background-color: #152737;
     cursor: pointer;
     color: #fff;
 }
-.AdminInvoice-information-detail-wrapper{
+.CustomerInvoice-information-detail-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
 }
-.AdminInvoice-information-detail-wrapper td{
+.CustomerInvoice-information-detail-wrapper td{
     text-align: center;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */

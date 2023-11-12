@@ -13,7 +13,7 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   display: none;
 }
 
@@ -27,4 +27,77 @@ code {
 ::-webkit-scrollbar-thumb {
   background: #24BE85;
   border-radius: 10px;
+}
+
+.input-search{
+  min-width: 350px;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+.button-solid {
+  padding: 6px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  background: #152737;
+  border-radius: 40px;
+  border: 0;
+}
+
+.button-solid:hover {
+  padding: 6px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  background: #152737;
+  border-radius: 40px;
+}
+
+.button-cancel {
+  padding: 6px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #666666;
+  background: #f5f5f5;
+  backdrop-filter: blur(16px);
+  border-radius: 40px;
+  border: 0;
+}
+
+.button-cancel:hover {
+  padding: 6px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0a0a0a;
+  background: #ebebeb;
+  backdrop-filter: blur(16px);
+  border-radius: 40px;
+  border: 0;
+}
+
+.button-delete {
+  padding: 6px 24px;
+  background: #ff513c;
+  border-width: 0;
+  border-radius: 40px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.button-delete:hover {
+  padding: 6px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  outline: 6px solid rgba(255, 81, 60, 0.16);
+  background-color: #ff513c;
+  border-radius: 40px;
+}
+
+p{
+  margin: 0 !important;
 }

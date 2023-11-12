@@ -15,6 +15,8 @@ import AdminSchedule from './pages/Admin/Schedule/AdminSchedule';
 import AdminReport from './pages/Admin/Report/AdminReport';
 import { useSelector } from 'react-redux';
 import CustomerHome from './pages/Customer/Home/CustomerHome';
+import Event from './pages/Admin/Event/Event';
+import CustomerInvoice from './pages/Customer/Invoice/CustomerInvoice';
 function App() {
   return (
     <div className="App">
@@ -33,6 +35,8 @@ function App() {
           <Route exact path="/account" element={<AdminAccount />} />
           <Route exact path="/schedule" element={<AdminSchedule />} />
           <Route exact path="/report" element={<AdminReport />} />
+          <Route exact path="/event" element={<Event />} />
+          <Route exact path="/customer-invoice" element={<CustomerInvoice />} />
         </Route>
       </Routes>
     </div>

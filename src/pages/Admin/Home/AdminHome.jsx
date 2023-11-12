@@ -276,7 +276,7 @@ function AdminHome() {
           <div className="Overview_block1">
             <div className="Block_top">
               <Icon icon="fluent-mdl2:product-variant" />
-              <span className="Quantity">{sanphamngay.SLSANPHAMNHAN}</span>
+              <p className="Quantity">{sanphamngay.SLSANPHAMNHAN}</p>
             </div>
             <p className="Block_bottom" style={{ color: '#517dff' }}>
               Sản phẩm đã nhận hôm nay
@@ -285,7 +285,7 @@ function AdminHome() {
           <div className="Overview_block2">
             <div className="Block_top">
               <Icon icon="la:file-invoice-dollar" />
-              <span className="Quantity">{sanphamngay.SLSANPHAMBAN}</span>
+              <p className="Quantity">{sanphamngay.SLSANPHAMBAN}</p>
             </div>
             <p className="Block_bottom" style={{ color: '#ff333f' }}>
               Sản phẩm đã bán hôm nay
@@ -294,7 +294,7 @@ function AdminHome() {
           <div className="Overview_block3">
             <div className="Block_top">
               <Icon icon="clarity:employee-group-line" />
-              <span className="Quantity">{nhanviens.length}</span>
+              <p className="Quantity">{nhanviens.length}</p>
             </div>
             <p className="Block_bottom" style={{ color: '#ff9533' }}>
               Nhân viên của cửa hàng
@@ -303,7 +303,7 @@ function AdminHome() {
           <div className="Overview_block4">
             <div className="Block_top">
               <Icon icon="la:file-invoice-dollar" />
-              <span className="Quantity">8</span>
+              <p className="Quantity">8</p>
             </div>
             <p className="Block_bottom" style={{ color: '#30d559' }}>
               Số lượng khách hôm nay
