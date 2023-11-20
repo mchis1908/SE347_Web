@@ -7,6 +7,8 @@
     background-color: #EDEDED;
     color: rgb(0, 0, 0);
     min-height: calc( 100% - 60px);
+    max-height: calc( 100% - 60px);
+    overflow: auto;
     padding: 24px;
 
     display: flex;

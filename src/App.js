@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import CustomerHome from './pages/Customer/Home/CustomerHome';
 import Event from './pages/Admin/Event/Event';
 import CustomerInvoice from './pages/Customer/Invoice/CustomerInvoice';
+import KomunicateChat from './chat';
 function App() {
   return (
     <div className="App">
@@ -39,6 +40,7 @@ function App() {
           <Route exact path="/customer-invoice" element={<CustomerInvoice />} />
         </Route>
       </Routes>
+      <KomunicateChat/>
     </div>
   );
 }
