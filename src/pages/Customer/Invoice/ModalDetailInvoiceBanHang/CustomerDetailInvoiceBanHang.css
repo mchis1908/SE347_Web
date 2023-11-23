@@ -14,14 +14,12 @@
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    width: 83vw;
-    min-height: 80vh;
     /* height: 95vh; */
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
     position: relative;
-    padding: 8px;
+    padding: 16px;
 }
 .CustomerDetailInvoiceBanHang_modal:hover{
     overflow: auto;
@@ -49,24 +47,27 @@
 .CustomerDetailInvoiceBanHang_Bottom{
     position: relative;
     height: auto;
-    width: 70vw;
-    margin: 3vh 0 1vh 1vh;
+    /* width: 70vw; */
     display: flex;
     justify-content: center;
     flex-direction: column;
     /* text-align: center; */
 }
+.CustomerDetailInvoiceBanHang_Detail{
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
 .CustomerDetailInvoiceBanHang_Detail_Content_Date{
     display: flex;
-    margin-left: 10vw;
+    margin-left: 40px;
     max-height: 5vh;
 }
 .CustomerDetailInvoiceBanHang_Detail_Content_Date1{
     display: flex;
-    margin-left: 10vw;
+    margin-left: 40px;
     max-height: 5vh;
     margin-bottom: 4vh;
-    margin-top: 1vh;
 }
 .CustomerDetailInvoiceBanHang_Detail_Content_LabelDay{
     color:black;
@@ -83,7 +84,7 @@
 
     font-size: 16px;
     font-weight: 500;
-    min-width: 11.5vw;
+    min-width: 10vw;
     width: fit-content;
 }
 .CustomerDetailInvoiceBanHang_Detail_Content_Calendar{
@@ -108,19 +109,14 @@
 }
 .CustomerDetailInvoiceBanHang_Detail_ProductInf_Label{
     display: flex;
-    margin-left: 10vw;
-    /* margin-bottom: 20vh; */
     font-weight: 500;
 }
 .CustomerDetailInvoiceBanHang_ProductList{
-    width: 80vw;
-    max-width: 80vw;
     min-height: 25vh;
 }
 .CustomerDetailInvoiceBanHang_ProductInf{
     display: flex;
     flex-direction: row;
-    margin-left: 7vw;
     margin-top: 2vh;
 }
 .CustomerDetailInvoiceBanHang_ProductInf td{
@@ -129,17 +125,20 @@
     max-height: 4vh;
     text-align: center;
 
-    max-width: 12.5vw;
-    min-width: 12.5vw;
+    max-width: 9.5vw;
+    min-width: 9.5vw;
     white-space: nowrap;
     overflow: hidden; /* ẩn phần vượt quá khung */
     text-overflow: ellipsis; /* thay thế phần vượt quá bằng dấu chấm ba chấm */
     padding: 0 0.4vw;
 }
 .CustomerDetailInvoiceBanHang_modal_Btn_Change{
-    margin-top: 6vh;
     display: flex;
-    justify-content: space-around;
+
+    justify-content: space-between;
+    position:relative;
+    margin-left: 15vw;
+    margin-top: 5vh;
 }
 .CustomerDetailInvoiceBanHang_modal_Btn_Change_Cancel{
     width: 10vw;
@@ -157,6 +156,26 @@
     text-align: center;
 
     background-color:#249a42 ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.CustomerDetailInvoiceBanHang_modal_Btn_Change_PrintBarcode{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#364f9b ;
+    color: #fff;
+    border-width: 0;
+    border-radius: 10px;
+}
+.CustomerDetailInvoiceBanHang_modal_Btn_Change_PrintInvoice{
+    width: 10vw;
+    height: 4vh;
+    text-align: center;
+
+    background-color:#105548 ;
     color: #fff;
     border-width: 0;
     border-radius: 10px;

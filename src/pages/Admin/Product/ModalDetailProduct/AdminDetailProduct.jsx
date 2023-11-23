@@ -46,7 +46,7 @@ function AdminDetailProduct(props) {
         </div>
         <div className="AdminDetailProduct_modal-body">
           {props.children}
-          <div className='d-flex flex-column'>
+          <div className='d-flex flex-column gap-3'>
             <div className='d-flex flex-row gap-2'>
               <p className='Label_PropProduct'>Mã hóa đơn ký gửi:</p>
               <input className='Input_PropProduct' id='mahdkg'  type='text' value={props.data.MAHOADONKG} disabled/>  

@@ -173,7 +173,6 @@ function AdminDetailInvoice(props) {
           <div className='AdminDetailInvoice_modal_Btn_Change'>
             <button className='AdminDetailInvoice_modal_Btn_Change_Cancel' onClick={props.onClose}>Hủy bỏ</button>
             <button className='AdminDetailInvoice_modal_Btn_Change_PrintInvoice' onClick={handlePrint}>In hóa đơn</button>
-            {/* <button className='AdminDetailInvoice_modal_Btn_Change_PrintBarcode' onClick={handlePrint}>In barcode sản phẩm</button> */}
             <button className='AdminDetailInvoice_modal_Btn_Change_Confirm' onClick={handleConfirm} style={{display: props.db ? 'none' : 'block'}}>Thanh toán cho khách</button>
           </div>
         </div>

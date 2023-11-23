@@ -34,6 +34,7 @@ const SignIn = () => {
       const user = {
         user: account,
         role: data.PHANQUYEN,
+        sdt: data.SDT
       };
       dispatch(login(user));
       navigate('/home');

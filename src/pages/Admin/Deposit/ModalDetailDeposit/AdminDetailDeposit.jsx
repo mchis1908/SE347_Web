@@ -106,7 +106,7 @@ function AdminDetailDeposit(props) {
             </div> 
             <div className='d-flex flex-row gap-2'>
               <p className='Label_PropDeposit'>Giá sản phẩm:</p>
-              <input className='Input_PropDeposit' id='tensanpham' type='text' placeholder='Nhập tên sản phẩm' value={tensp} onChange={(e) => setTenSanPham(e.target.value)}></input>
+              <input className='Input_PropDeposit' id='giasanpham' type='text' placeholder='Nhập giá sản phẩm' value={gianhan} onChange={(e) => setGiaNhan(e.target.value)}></input>
             </div>
           </div>
           <div className='AdminDetailDeposit_modal-body-inf_image'>

@@ -5,13 +5,16 @@ import Header from '../../../common/Header/Header';
 import CustomerDetailInvoice from './ModalDetailInvoice/CustomerDetailInvoice';
 import CustomerDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/CustomerDetailInvoiceBanHang';
 import Axios from 'axios';
+import { useSelector } from 'react-redux';
 
 function CustomerInvoice(props) {
+  const user = useSelector((state) => state.value.sdt);
+  console.log(user)
   let [hoadons, setHoaDon] = useState([]);
   const [searchkey, setSearchKey] = useState('');
   const getHoaDon = async () => {
     try {
-      const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon');
+      const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadonbykhachhang/' + user);
       setHoaDon(res.data);
       hoadons = res.data;
       console.log(hoadons);
@@ -86,12 +89,6 @@ function CustomerInvoice(props) {
                 </span>
               </th>
               <th class="col">
-                Khách hàng
-                <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
-                </span>
-              </th>
-              <th class="col">
                 Số lượng sản phẩm
                 <span>
                   <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SOLUONG')}></i>
@@ -118,8 +115,6 @@ function CustomerInvoice(props) {
             </tr>
             <div className="CustomerInvoice_detail_infor">
               {hoadons.map((hoadons) => {
-                const arr = hoadons.SDT.split('-');
-                const result = arr[1];
                 return (
                   <tr
                     className="CustomerInvoice-information-detail"
@@ -127,7 +122,6 @@ function CustomerInvoice(props) {
                   >
                     <div className="CustomerInvoice-information-detail-wrapper">
                       <td class="col">{hoadons.MAHOADON}</td>
-                      <td class="col"> {result} </td>
                       <td class="col">{hoadons.SOLUONG}</td>
                       <td class="col">{hoadons.NGAYTAODON}</td>
                       <td class="col" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>

@@ -97,11 +97,6 @@ function CustomerDetailInvoiceBanHang(props) {
               </div>     
             </div> 
           </div>
-          {/* -------------------------------------------------------------- */}
-        </div>
-        <div className='CustomerDetailInvoiceBanHang_modal_Btn_Change'>
-            <button className='CustomerDetailInvoiceBanHang_modal_Btn_Change_Cancel' onClick={props.onClose}>Thoát</button>
-            <button className='CustomerDetailInvoiceBanHang_modal_Btn_Change_Confirm' onClick={handlePrint}>In hóa đơn</button>
         </div>
       </div>
     </div>

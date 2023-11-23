@@ -28,6 +28,13 @@ function AdminAddCustomer(props) {
             LANDENGANNHAT: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-'),
             SODONKYGUI: 0
           })
+          await Axios.post('http://localhost:8000/v1/taikhoan/dangky', {
+            TENTAIKHOAN: sdt,
+            MATKHAU: sdt,
+            PHANQUYEN: "customer",
+            TENNV: tenkh,
+            SDT: sdt
+          })
       } catch (error) {
         if (error.response && error.response.status === 502) {
             message.error('Số điện thoại đã tồn tại. Vui lòng nhập số điện thoại khác')

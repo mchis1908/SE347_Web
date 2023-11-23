@@ -14,14 +14,12 @@
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    width: 83vw;
-    min-height: 83vh;
     /* height: 95vh; */
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
     position: relative;
-    padding: 8px;
+    padding: 16px;
 }
 .AdminDetailInvoice_modal:hover{
     overflow: auto;
@@ -49,21 +47,25 @@
 .AdminDetailInvoice_Bottom{
     position: relative;
     height: auto;
-    width: 70vw;
-    margin: 3vh 0 1vh 1vh;
+    /* width: 70vw; */
     display: flex;
     justify-content: center;
     flex-direction: column;
     /* text-align: center; */
 }
+.AdminDetailInvoice_Detail{
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
 .AdminDetailInvoice_Detail_Content_Date{
     display: flex;
-    margin-left: 10vw;
+    margin-left: 40px;
     max-height: 5vh;
 }
 .AdminDetailInvoice_Detail_Content_Date1{
     display: flex;
-    margin-left: 10vw;
+    margin-left: 40px;
     max-height: 5vh;
     margin-bottom: 4vh;
 }
@@ -82,7 +84,7 @@
 
     font-size: 16px;
     font-weight: 500;
-    min-width: 11.5vw;
+    min-width: 10vw;
     width: fit-content;
 }
 .AdminDetailInvoice_Detail_Content_Calendar{
@@ -97,29 +99,24 @@
     /* padding-top: 10px; */
     height: fit-content;
 }
-.AdminDetailInvoice_CustomerInf_Label{
+.AdminDetailInvoice_AdminInf_Label{
     display: inline;
     font-weight: 500;
     width: fit-content;
 }
-.AdminDetailInvoice_Detail_Content_Customer{
+.AdminDetailInvoice_Detail_Content_Admin{
     margin-left: 2vw;
 }
 .AdminDetailInvoice_Detail_ProductInf_Label{
     display: flex;
-    margin-left: 10vw;
-    /* margin-bottom: 20vh; */
     font-weight: 500;
 }
 .AdminDetailInvoice_ProductList{
-    width: 80vw;
-    max-width: 80vw;
     min-height: 25vh;
 }
 .AdminDetailInvoice_ProductInf{
     display: flex;
     flex-direction: row;
-    margin-left: 7vw;
     margin-top: 2vh;
 }
 .AdminDetailInvoice_ProductInf td{
@@ -140,7 +137,6 @@
 
     justify-content: space-between;
     position:relative;
-    margin-left: 15vw;
     margin-top: 5vh;
 }
 .AdminDetailInvoice_modal_Btn_Change_Cancel{
