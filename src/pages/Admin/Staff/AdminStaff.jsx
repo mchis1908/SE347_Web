@@ -91,31 +91,31 @@ function AdminStaff(props) {
               <th className='col'>
                 Họ và tên{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('HOTEN')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('HOTEN')}></i>
                 </span>
               </th>
               <th className='col'>
                 Số điện thoại{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
                 </span>
               </th>
               <th className='col'>
                 Email{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('EMAIL')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('EMAIL')}></i>
                 </span>{' '}
               </th>
               <th className='col'>
                 Lương cơ bản{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LUONGCOBAN')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LUONGCOBAN')}></i>
                 </span>
               </th>
               <th className='col'>
                 Lương theo giờ{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LUONGTHEOGIO')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LUONGTHEOGIO')}></i>
                 </span>
               </th>
               <hr />

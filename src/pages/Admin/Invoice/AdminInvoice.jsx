@@ -79,40 +79,40 @@ function AdminInvoice(props) {
         <div>
           <table className="AdminInvoice-information">
             <tr className="AdminInvoice-information-header">
-              <th class="col">
+              <th className="col">
                 Mã hóa đơn
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MAHOADON')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MAHOADON')}></i>
                 </span>
               </th>
-              <th class="col">
+              <th className="col">
                 Khách hàng
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SDT')}></i>
                 </span>
               </th>
-              <th class="col">
+              <th className="col">
                 Số lượng sản phẩm
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SOLUONG')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('SOLUONG')}></i>
                 </span>
               </th>
-              <th class="col">
+              <th className="col">
                 Ngày tạo đơn
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('NGAYTAODON')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('NGAYTAODON')}></i>
                 </span>
               </th>
-              <th class="col">
+              <th className="col">
                 Loại hóa đơn
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LOAI')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LOAI')}></i>
                 </span>
               </th>
-              <th class="col">
+              <th className="col">
                 Trạng thái
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TRANGTHAI')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TRANGTHAI')}></i>
                 </span>
               </th>
             </tr>
@@ -126,11 +126,11 @@ function AdminInvoice(props) {
                     onClick={() => openPopup(hoadons)}
                   >
                     <div className="AdminInvoice-information-detail-wrapper">
-                      <td class="col">{hoadons.MAHOADON}</td>
-                      <td class="col"> {result} </td>
-                      <td class="col">{hoadons.SOLUONG}</td>
-                      <td class="col">{hoadons.NGAYTAODON}</td>
-                      <td class="col" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                      <td className="col">{hoadons.MAHOADON}</td>
+                      <td className="col"> {result} </td>
+                      <td className="col">{hoadons.SOLUONG}</td>
+                      <td className="col">{hoadons.NGAYTAODON}</td>
+                      <td className="col" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                         <div
                           className={
                             hoadons.LOAI === 'Bán hàng'
@@ -146,7 +146,7 @@ function AdminInvoice(props) {
                           {hoadons.LOAI}
                         </div>
                       </td>
-                      <td class="col" style={{display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
+                      <td className="col" style={{display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
                         <div
                           className={
                             hoadons.TRANGTHAI === 'Đã thanh toán'

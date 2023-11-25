@@ -81,19 +81,19 @@ function AdminProduct(props) {
               <th className='col'>
                 Mã sản phẩm
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MASANPHAM')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MASANPHAM')}></i>
                 </span>
               </th>
               <th className='col'>
                 Tên sản phẩm
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENSANPHAM')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENSANPHAM')}></i>
                 </span>
               </th>
               <th className='col'>
                 Loại
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LOAI')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('LOAI')}></i>
                 </span>
               </th>
               <th className='col'
@@ -105,19 +105,19 @@ function AdminProduct(props) {
               >
                 Giá bán
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('GIANHAN')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('GIANHAN')}></i>
                 </span>
               </th>
               <th className='col' style={{ maxWidth: '16.6vw', minWidth: '16.6vw' }}>
                 Trạng thái
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TRANGTHAI')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TRANGTHAI')}></i>
                 </span>
               </th>
               <th className='col'>
                 Hình ảnh
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MASANPHAM')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MASANPHAM')}></i>
                 </span>
               </th>
               <hr />

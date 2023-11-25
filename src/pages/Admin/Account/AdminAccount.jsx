@@ -77,19 +77,19 @@ function AdminAccount(props) {
               <th className='col'>
                 Tên nhân viên{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENNV')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENNV')}></i>
                 </span>
               </th>
               <th className='col'>
                 Tài khoản{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENTAIKHOAN')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('TENTAIKHOAN')}></i>
                 </span>
               </th>
               <th className='col'>
                 Mật khẩu{' '}
                 <span>
-                  <i class="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MATKHAU')}></i>
+                  <i className="bi bi-sort-down-alt" style={{ paddingLeft: '10px', fontSize:'18px' }} onClick={() => handleClick('MATKHAU')}></i>
                 </span>
               </th>
               <hr />

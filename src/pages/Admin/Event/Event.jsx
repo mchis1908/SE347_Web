@@ -18,43 +18,43 @@ function Event(props) {
                     <button className='button-solid' data-toggle="modal" data-target="#exampleModalLong">Thêm sự
                         kiện</button>
                 </div>
-                <div class="d-flex justify-content-center align-items-start flex-wrap gap-4"
+                <div className="d-flex justify-content-center align-items-start flex-wrap gap-4"
                     style={{overflow:'auto', padding:'16px 0'}}>
-                    <div class="event-item-container">
-                        <img src={require('../../../Images/event-no-image.png')} class="rounded-top event-image"
+                    <div className="event-item-container">
+                        <img src={require('../../../Images/event-no-image.png')} className="rounded-top event-image"
                             alt="event" />
-                        {/* <img src="@/assets/event/png/event-no-image.png" class="img-fluid rounded-top event-image"
+                        {/* <img src="@/assets/event/png/event-no-image.png" className="img-fluid rounded-top event-image"
                             alt="event" /> */}
-                        <div class="content-event-container">
-                            <p class="event-title">Tên sự kiện</p>
-                            <p class="event-title">Chi tiết sự kiện</p>
+                        <div className="content-event-container">
+                            <p className="event-title">Tên sự kiện</p>
+                            <p className="event-title">Chi tiết sự kiện</p>
                             <p>{ 'Ngày bắt đầu' } - {'Ngày kết thúc'}</p>
                         </div>
-                        <span class="badge text-bg-danger">Upcoming</span>
+                        <span className="badge text-bg-danger">Upcoming</span>
                     </div>
-                    <div class="event-item-container">
-                        <img src={require('../../../Images/event-no-image.png')} class="rounded-top event-image"
+                    <div className="event-item-container">
+                        <img src={require('../../../Images/event-no-image.png')} className="rounded-top event-image"
                             alt="event" />
-                        {/* <img src="@/assets/event/png/event-no-image.png" class="img-fluid rounded-top event-image"
+                        {/* <img src="@/assets/event/png/event-no-image.png" className="img-fluid rounded-top event-image"
                             alt="event" /> */}
-                        <div class="content-event-container">
-                            <p class="event-title">Tên sự kiện</p>
-                            <p class="event-title">Chi tiết sự kiện</p>
+                        <div className="content-event-container">
+                            <p className="event-title">Tên sự kiện</p>
+                            <p className="event-title">Chi tiết sự kiện</p>
                             <p>{ 'Ngày bắt đầu' } - {'Ngày kết thúc'}</p>
                         </div>
-                        <span class="badge text-bg-danger">Upcoming</span>
+                        <span className="badge text-bg-danger">Upcoming</span>
                     </div>
-                    <div class="event-item-container">
-                        <img src={require('../../../Images/event-no-image.png')} class="rounded-top event-image"
+                    <div className="event-item-container">
+                        <img src={require('../../../Images/event-no-image.png')} className="rounded-top event-image"
                             alt="event" />
-                        {/* <img src="@/assets/event/png/event-no-image.png" class="img-fluid rounded-top event-image"
+                        {/* <img src="@/assets/event/png/event-no-image.png" className="img-fluid rounded-top event-image"
                             alt="event" /> */}
-                        <div class="content-event-container">
-                            <p class="event-title">Tên sự kiện</p>
-                            <p class="event-title">Chi tiết sự kiện</p>
+                        <div className="content-event-container">
+                            <p className="event-title">Tên sự kiện</p>
+                            <p className="event-title">Chi tiết sự kiện</p>
                             <p>{ 'Ngày bắt đầu' } - {'Ngày kết thúc'}</p>
                         </div>
-                        <span class="badge text-bg-danger">Upcoming</span>
+                        <span className="badge text-bg-danger">Upcoming</span>
                     </div>
                 </div>
             </div>

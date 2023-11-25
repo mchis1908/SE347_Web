@@ -53,8 +53,8 @@ const SignIn = () => {
       <section className="SignIn">
         <div className="Signbox">
           <div className="title">
-            <img src={logo} alt="300" class="PlanB" />
-            <p class="title">PLAN B</p>
+            <img src={logo} alt="300" className="PlanB" />
+            <p className="title">PLAN B</p>
           </div>
           <div className="content">
             <form>

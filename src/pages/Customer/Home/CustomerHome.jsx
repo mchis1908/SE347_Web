@@ -4,53 +4,35 @@ import Header from '../../../common/Header/Header';
 import Menu from '../Menu/CustomerMenu';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import Axios from 'axios';
 
 function CustomerHome() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const products = [
-    { 
-      tensp:'áo thun',
-      giasp:'100.000',
-      loaisp:'áo',
-      hinhanh:''
-    },
-    { 
-      tensp:'áo thun',
-      giasp:'100.000',
-      loaisp:'áo',
-      hinhanh:''
-    },
-    { 
-      tensp:'áo thun',
-      giasp:'100.000',
-      loaisp:'áo',
-      hinhanh:''
-    },
-    { 
-      tensp:'áo thun',
-      giasp:'100.000',
-      loaisp:'áo',
-      hinhanh:''
-    },
-    { 
-      tensp:'áo thun',
-      giasp:'100.000',
-      loaisp:'áo',
-      hinhanh:''
-    },
-  ];
-  const fixedCurrency = (price) => {
-    // Your logic for formatting the price
-    return price.toFixed(2); // Placeholder example
+  let [sanphams, setSanPham] = useState([]);
+  const [searchkey, setSearchKey] = useState('');
+
+  const getSANPHAM = async () => {
+    try {
+      const res = await Axios.get(
+        'http://localhost:8000/v1/sanpham/getsanphambytrangthai/' + 'Chưa bán/?searchkey='+ searchkey
+      );
+      setSanPham(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
+  useEffect(() => {
+    getSANPHAM();
+  }, [searchkey]);
+
+  useEffect(() => {
+    getSANPHAM();
+  }, []);
+
   const handleInputChange = (e) => {
-    setSearchQuery(e.target.value)
+    setSearchKey(e.target.value)
   }
 
-  const handleClickBookRow = (e) => {
-    setSearchQuery(e.target.value)
-  }
   return (
     <div className="CustomerHome">
       <Menu />
@@ -68,7 +50,7 @@ function CustomerHome() {
             pagination: true,
           }}>
             <SplideSlide data-splide-interval="1500" className="event-item">
-              <div class="event-container">
+              <div className="event-container">
                 <img src={require("../../../Images/banner.png")}
                   style={{width:'100%', height: '220px', objectFit:'contain', borderRadius: '16px'}} alt='img' />
                 {/* <img v-else src="@/assets/event/banner.png"
@@ -78,7 +60,7 @@ function CustomerHome() {
             </SplideSlide>
           </Splide>
         </div>
-        <div class="d-flex flex-column" style={{gap:'24px'}}>
+        <div className="d-flex flex-column" style={{gap:'24px'}}>
           <div className="d-flex flex-row">
             <div className="col d-flex flex-row justify-content-start" style={{ gap: '16px' }}>
               <div className="d-flex justify-content-center align-items-center" style={{ fontWeight: 600, fontSize: '16px', color: '#065471' }}>
@@ -89,35 +71,38 @@ function CustomerHome() {
                 type="text"
                 placeholder="Enter your input"
                 style={{ width: '500px' }}
-                value={searchQuery}
+                value={searchkey}
                 onChange={handleInputChange}
               />
             </div>
           </div>
           <div className="book-container">
-            {products.map((item, index) => (
-              <div className="book-item" key={index} onClick={() => handleClickBookRow(item)}>
-                {item.hinhanh ? (
-                  <img src={item.hinhanh} style={{ height: '100px', objectFit: 'contain', zIndex: 0 }} alt='img'/>
+            {sanphams.length === 0 ? (
+              <p>Không có sản phẩm phù hợp</p>
+            ) : (
+            sanphams.map((item, index) => (
+              <div className="book-item" key={index}>
+                {item.HINHANH ? (
+                  <img src={'http://localhost:8000/' + item.HINHANH} style={{ height: '100px', objectFit: 'contain', zIndex: 0 }} alt='img'/>
                 ) : (
-                  <img src="@/assets/book-page/book-default.png" style={{ height: '100px', objectFit: 'contain', zIndex: 0 }} alt='img'/>
+                  <img src="../../../Images/book-default.png" style={{ height: '100px', objectFit: 'contain', zIndex: 0 }} alt='img'/>
                 )}
                 <div className="d-flex flex-column justify-content-center align-items-center" style={{ gap: '8px', height: '100%' }}>
                   <div className="book-item-text">
                     <p>Tên sản phẩm:</p>
-                    <p>{item.tensp}</p>
+                    <p>{item.TENSANPHAM}</p>
                   </div>
                   <div className="book-item-text">
                     <p>Loại sản phẩm</p>
-                    <p>{item.loaisp}</p>
+                    <p>{item.LOAI}</p>
                   </div>
                   <div className="book-item-text">
                     <p>Giá:</p>
-                    <p>{item.giasp}</p>
+                    <p>{item.GIANHAN.toLocaleString('vi-VN', {maximumFractionDigits: 3})}</p>
                   </div>
                 </div>
               </div> 
-            ))}
+            )))}
           </div>
         </div>
       </div>
