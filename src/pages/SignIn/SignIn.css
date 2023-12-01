@@ -1,6 +1,6 @@
 .SignIn{
     background-color: #152737;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -8,10 +8,20 @@
 }
 
 .SignIn .Signbox{
-    width: 60%;
-    height: 70%;
+    width: 800px;
+    height: 450px;
     background-color: #EBEBEB;
     border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 36px;
+}
+
+.logo{
+    width: 150px;
+    object-fit: contain;
 }
 .SignIn .title{
     height: fit-content;
@@ -25,6 +35,7 @@
 .SignIn .content{
     text-align: center;
     position: relative;
+    width: 100%;
 }
 .SignIn form{
     margin-top: 3vh;
@@ -67,19 +78,18 @@
 .SignIn .form_content input:focus{
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
-.SignIn .content .signin_btn{
+.signin_btn{
     color: white;
     display: inline-block;
-    width: 45%;
+    width: 300px;
     background-color: #152737;
     border-radius: 8px;
     border: none;
-    margin-top: 4.5vh;
-    height: 7vh;
+    margin-top: 24px;
+    height: 40px;
 }
-.SignIn .content .signin_btn:active{
+.signin_btn:hover{
     background-color: #fe4880;
-
 }
 .SignIn  >.nav{
     position: absolute;

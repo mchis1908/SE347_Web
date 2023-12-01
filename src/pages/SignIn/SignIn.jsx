@@ -53,7 +53,7 @@ const SignIn = () => {
       <section className="SignIn">
         <div className="Signbox">
           <div className="title">
-            <img src={logo} alt="300" className="PlanB" />
+            <img src={logo} alt="300" className="logo"/>
             <p className="title">PLAN B</p>
           </div>
           <div className="content">
@@ -77,10 +77,10 @@ const SignIn = () => {
                 />
               </div>
             </form>
-            <button className="signin_btn" onClick={TAIKHOAN}>
-              <h3>Đăng nhập</h3>
-            </button>
           </div>
+          <button className="signin_btn" onClick={TAIKHOAN}>
+            <p style={{margin: 0, fontSize: '20px', fontWeight: 'bold'}}>Đăng nhập</p>
+          </button>
         </div>
       </section>
     </div>

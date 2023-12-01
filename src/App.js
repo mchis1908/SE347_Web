@@ -25,7 +25,20 @@ function App() {
         {/* <Route exact path="/" element={<SignIn setIsAuthenticated={setIsAuthenticated} />} /> */}
         <Route exact path="/" element={ useSelector((state)=> state.value.user !== '') ? ( <Navigate to="/home" /> ) : ( <SignIn /> ) } />
         <Route element={ useSelector((state)=> state.value.user === '') ? ( <Navigate to="/" /> ) : ( <Outlet /> ) }>
-          <Route exact path="/home" element={ useSelector((state)=> state.value.role === 'customer') ? ( <CustomerHome /> ) : ( <AdminHome /> ) }/>
+          <Route exact path="/home" element={
+            useSelector((state) => state.value.role === 'customer') ? (
+                <>
+                  <CustomerHome />
+                  {/* <KomunicateChat /> */}
+                </>
+              ) : (
+                <>
+                  <AdminHome />
+                  {/* <KomunicateChat /> */}
+                </>
+              )
+            }
+          />
           <Route exact path="/customer" element={<AdminCustomer />} />
           <Route exact path="/product" element={<AdminProduct />} />
           <Route exact path="/invoice" element={<AdminInvoice />} />
@@ -37,10 +50,16 @@ function App() {
           <Route exact path="/schedule" element={<AdminSchedule />} />
           <Route exact path="/report" element={<AdminReport />} />
           <Route exact path="/event" element={<Event />} />
-          <Route exact path="/customer-invoice" element={<CustomerInvoice />} />
+          <Route exact path="/customer-invoice" element={
+              <>
+                <CustomerInvoice />
+                {/* <KomunicateChat /> */}
+              </>
+            } 
+          />
         </Route>
       </Routes>
-      <KomunicateChat/>
+      {/* <KomunicateChat /> */}
     </div>
   );
 }

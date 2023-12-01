@@ -8,9 +8,12 @@ class KommunicateChat extends Component {
     componentDidMount() {
         (function(d, m){
             var kommunicateSettings = {
+                "userId": '055667788',
+                "displayName": 'ABC',
+                "authenticationTypeId" : 1,
                 "appId":"2cfbc65b77f505c2ca3913979ba4b8ddf",
                 "popupWidget":true,
-                "automaticChatOpenOnNavigation":true,
+                "automaticChatOpenOnNavigation":false,
                 "voiceInput":true,
                 "voiceInputTimeout": 5,
                 "language": "en-US",
@@ -19,7 +22,8 @@ class KommunicateChat extends Component {
                         "Speak with an Agent",
                         "Book a Demo",
                         "Sample Bots",
-                    ]
+                    ],
+                
             };
             var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
             s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
@@ -27,7 +31,7 @@ class KommunicateChat extends Component {
             window.kommunicate = m; m._globals = kommunicateSettings;
         })(document, window.kommunicate || {});
     }
-render() {
+    render() {
         return (
         <div></div>
         )
