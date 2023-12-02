@@ -9,10 +9,11 @@ class KommunicateChat extends Component {
         (function(d, m){
             var kommunicateSettings = {
                 "userId": '055667788',
-                "displayName": 'ABC',
+                "userName": 'ABC',
                 "authenticationTypeId" : 1,
                 "appId":"2cfbc65b77f505c2ca3913979ba4b8ddf",
                 "popupWidget":true,
+                "attachment": true,
                 "automaticChatOpenOnNavigation":false,
                 "voiceInput":true,
                 "voiceInputTimeout": 5,

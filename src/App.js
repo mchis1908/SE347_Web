@@ -59,7 +59,7 @@ function App() {
           />
         </Route>
       </Routes>
-      {/* <KomunicateChat /> */}
+      <KomunicateChat />
     </div>
   );
 }
