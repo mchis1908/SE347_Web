@@ -40,7 +40,6 @@ function AdminChart() {
   const [dayinmonth, setDayInMonth] = useState(
     moment(thangsp, 'MM-YYYY').daysInMonth()
   );
-  // console.log('n',dayinmonth)
   const [data1, setData1] = useState({
     labels: [
       'January',
@@ -143,7 +142,6 @@ function AdminChart() {
             SLSANPHAMBAN: 0,
           }
         );
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
         const newData = {
           labels: arr,
           datasets: [
@@ -162,8 +160,6 @@ function AdminChart() {
           ],
         };
         setData1(newData);
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
   };
@@ -242,7 +238,6 @@ function AdminChart() {
             SANPHAM: [],
           }
         );
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
         const newData = {
           labels: [
             'January',
@@ -269,8 +264,6 @@ function AdminChart() {
           ],
         };
         setData2(newData);
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
   };
@@ -315,7 +308,6 @@ function AdminChart() {
             SLSANPHAMNHAN: 0,
           }
         );
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
         const newData = {
           labels: ['Nhận', 'Bán'],
           datasets: [
@@ -328,8 +320,6 @@ function AdminChart() {
           ],
         };
         setData3(newData);
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
   };
@@ -412,7 +402,6 @@ function AdminChart() {
   const handleDTThang = async (dateString) => {
     if (dateString !== '') {
       try {
-        // console.log('chi');
         const response = await Axios.get(
           'http://localhost:8000/v1/baocaodtthang/getBaoCaoDTThangbyyear/' +
             dateString

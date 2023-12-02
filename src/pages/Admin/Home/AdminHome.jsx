@@ -32,7 +32,6 @@ ChartJS.register(
 //     return <Navigate to="/" />;
 //   }
 function AdminHome() {
-  console.log('user', localStorage.getItem('user'));
   const today = moment().format('DD-MM-YYYY');
   const today2 = moment().format('MM-YYYY');
   const [thangsp, setThangSP] = useState(moment().format('MM-YYYY'));
@@ -72,10 +71,7 @@ function AdminHome() {
           SLSANPHAMNHAN: 0,
           SLSANPHAMBAN: 0,
         });
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
         window.location.reload();
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
   };
@@ -199,8 +195,6 @@ function AdminHome() {
           ],
         };
         setData1(newData);
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
   };

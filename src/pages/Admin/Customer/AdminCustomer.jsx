@@ -17,7 +17,6 @@ function AdminCustomer(props) {
       );
       setKhachHang(res.data);
       khachhangs = res.data;
-      console.log(khachhangs);
     } catch (error) {
       console.log(error.message);
     }

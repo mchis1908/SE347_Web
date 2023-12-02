@@ -81,7 +81,6 @@ function AdminReport() {
       const responses = await Promise.all(requests);
       const allNhanVien = responses.map((res) => res.data).flat();
       setNhanVien(allNhanVien);
-      console.log(allNhanVien);
     } catch (error) {
       console.log(error.message);
     }

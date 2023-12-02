@@ -14,7 +14,6 @@ function AdminInvoice(props) {
       const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadon');
       setHoaDon(res.data);
       hoadons = res.data;
-      console.log(hoadons);
     } catch (error) {
       console.log(error.message);
     }

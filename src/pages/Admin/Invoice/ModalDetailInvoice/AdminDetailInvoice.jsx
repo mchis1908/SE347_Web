@@ -69,14 +69,12 @@ function AdminDetailInvoice(props) {
         else 
         sanphamdaban.push(sanphams[i])
       }
-      console.log(sanphamdaban)
       Axios.patch('http://localhost:8000/v1/hoadon/updatehoadon/'+ props.data.MAHOADON,{
         TRANGTHAI: 'Đã thanh toán',
         NGAYTHANHTOAN: currentDate.toLocaleString('en-AU', options).replaceAll('/', '-')
       })
       // ---------Xử lý doanh thu tháng---------
     const formatThang = currentDate.toLocaleString('en-AU', options).replaceAll('/', '-').substring(3,10);
-    // console.log(formatNgay)
     try {
       const response1 = await Axios.get('http://localhost:8000/v1/baocaodtthang/getBaoCaoDTThang/' + formatThang);
       const bct = response1.data;
@@ -94,9 +92,6 @@ function AdminDetailInvoice(props) {
           DOANHTHU: total[1],
           SANPHAM: sanphamdaban,
         });
-        console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
-      } else {
-        console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
       }
     }
       window.location.reload()

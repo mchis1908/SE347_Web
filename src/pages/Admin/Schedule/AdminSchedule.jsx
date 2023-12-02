@@ -136,7 +136,6 @@ function AdminSchedule(props) {
           });
           newData.push(arr);
         }
-        console.log('a', newData);
         Axios.post(
           'http://localhost:8000/v1/thoigianlamviec/themThoiGianLamViec/',
           {
@@ -163,7 +162,6 @@ function AdminSchedule(props) {
       });
     } catch (error) {
       if (error.response && error.response.status === 500) {
-        console.log('luong', luong);
         await Axios.post('http://localhost:8000/v1/luong/themLuong/', {
           THOIGIAN: thang,
           LAMVIEC: luong,
@@ -191,7 +189,7 @@ function AdminSchedule(props) {
         newData.push(rowData);
       });
       setTableData(newData);
-    } else console.log(null);
+    }
   };
 
   const handleDateChange = async (date, dateString) => {

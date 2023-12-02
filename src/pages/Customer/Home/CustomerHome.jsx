@@ -8,6 +8,7 @@ import Axios from 'axios';
 
 function CustomerHome() {
   let [sanphams, setSanPham] = useState([]);
+  let [sukiens, setSuKiens] = useState([]);
   const [searchkey, setSearchKey] = useState('');
 
   const getSANPHAM = async () => {
@@ -21,16 +22,36 @@ function CustomerHome() {
     }
   };
 
+  const getSuKien = async () => {
+    try {
+      const res = await Axios.get( 'http://localhost:8000/v1/sukien/GetSuKienChuaDienRa');
+      setSuKiens(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
     getSANPHAM();
   }, [searchkey]);
 
   useEffect(() => {
     getSANPHAM();
+    getSuKien();
   }, []);
 
   const handleInputChange = (e) => {
     setSearchKey(e.target.value)
+  }
+
+  const convertDate = (date) => {
+    const parts = date.split('-');
+    if (parts.length === 3) {
+      const [year, month, day] = parts;
+      return `${day}/${month}/${year}`;
+    } else {
+      return NaN;
+    }
   }
 
   return (
@@ -49,15 +70,23 @@ function CustomerHome() {
             arrows: false,
             pagination: true,
           }}>
-            <SplideSlide data-splide-interval="1500" className="event-item">
+            {sukiens.length === 0 ? (
               <div className="event-container">
-                <img src={require("../../../Images/banner.png")}
-                  style={{width:'100%', height: '220px', objectFit:'contain', borderRadius: '16px'}} alt='img' />
-                {/* <img v-else src="@/assets/event/banner.png"
-                  style={{width:'100%', height: '250px', objectFit:'contain', borderRadius: '16px'}}> */}
-                <p className='text-center' style={{fontWeight:600, fontSize:'20px', color:'#065471'}}>{'Ngày bắt đầu'}-{'Ngày kết thúc'}</p>
+                <p>Không có sự kiên nào diễn ra trong thời gian tới</p>
               </div>
-            </SplideSlide>
+              ) : (
+                sukiens.map((item, index) => (
+                <SplideSlide data-splide-interval="1500" className="event-container">
+                  {
+                    item.HINHANH ? 
+                    <img src={'http://localhost:8000/' + item.HINHANH} style={{width:'100%', height: '220px', objectFit:'contain', borderRadius: '16px'}} alt='img' />
+                    :
+                    <img src={require("../../../Images/banner.png")} style={{width:'100%', height: '220px', objectFit:'contain', borderRadius: '16px'}} alt='img' />
+                  }
+                  <p className='text-center' style={{fontWeight:600, fontSize:'20px', color:'#065471'}}>{convertDate(item.THOIGIANBATDAU)} - {convertDate(item.THOIGIANKETTHUC)}</p>
+                </SplideSlide>
+              )))
+            }
           </Splide>
         </div>
         <div className="d-flex flex-column" style={{gap:'24px'}}>

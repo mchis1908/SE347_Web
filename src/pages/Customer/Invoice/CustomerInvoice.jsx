@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 
 function CustomerInvoice(props) {
   const user = useSelector((state) => state.value.sdt);
-  console.log(user)
   let [hoadons, setHoaDon] = useState([]);
   const [searchkey, setSearchKey] = useState('');
   const getHoaDon = async () => {
@@ -17,7 +16,6 @@ function CustomerInvoice(props) {
       const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadonbykhachhang/' + user);
       setHoaDon(res.data);
       hoadons = res.data;
-      console.log(hoadons);
     } catch (error) {
       console.log(error.message);
     }
@@ -26,6 +24,7 @@ function CustomerInvoice(props) {
     if (searchkey) handleSearch(searchkey);
     else getHoaDon();
   }, [searchkey]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [hoadon, setMaHoaDon] = useState(['']);
 
@@ -57,10 +56,10 @@ function CustomerInvoice(props) {
       setHoaDon(sortedData);
     }
   };
-  const handleSearch = async (sk) => {
-    if (sk !== '') {
+  const handleSearch = async (item) => {
+    if (item !== '') {
       const res = await Axios.get(
-        'http://localhost:8000/v1/hoadon/searchhoadon/' + sk
+        'http://localhost:8000/v1/hoadon/searchhoadonbykhachhang/' + user + '/' + item
       );
       setHoaDon(res.data);
     }
@@ -74,10 +73,9 @@ function CustomerInvoice(props) {
           <input
             className="search-area"
             type="text"
-            placeholder="Nhập khách hàng hoặc mã hóa đơn cần tìm"
+            placeholder="Nhập mã hóa đơn cần tìm"
             onChange={(e) => setSearchKey(e.target.value)}
           />
-          {/* <span className='bg-search-btn'><button className='search-btn'><Icon icon="ic:baseline-search" /></button></span> */}
         </div>
         <div>
           <table className="CustomerInvoice-information">

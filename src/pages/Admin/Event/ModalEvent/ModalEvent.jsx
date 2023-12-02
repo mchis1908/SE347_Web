@@ -11,6 +11,39 @@ function ModalEvent(props) {
     const [endDay, setEndDay] = useState()
     const [hinhanh, setHinhAnh] = useState()
 
+    const handleSave = async () => {
+        if (document.getElementById('tenEvent').value === ''
+        || document.getElementById('mota').value === ''
+        || document.getElementById('endDay').value === ''
+        || document.getElementById('startDay').value === '') {
+            message.warning('Vui lòng nhập đầy đủ thông tin sự kiện')
+            return
+        }
+        const fd = new FormData()
+        fd.append('TIEUDE', tenEvent)
+        fd.append('MOTA', mota)
+        fd.append('THOIGIANBATDAU', startDay)
+        fd.append('THOIGIANKETTHUC', endDay)
+        fd.append('HINHANH', hinhanh)
+
+        if(props.data) updateEvent(fd)
+        else addEvent(fd)
+        window.location.reload()
+    }
+
+    const addEvent = async (fd) => {
+        Axios.post('http://localhost:8000/v1/sukien/themsukien', fd)
+    }
+
+    const updateEvent = async (fd) => {
+        Axios.put('http://localhost:8000/v1/sukien/updatesukien/'+ props.data._id, fd)
+    }
+
+    const deleteEvent = async (fd) => {
+        Axios.delete('http://localhost:8000/v1/sukien/deletesukien'+ props.data._id)
+        window.location.reload()
+    }
+
     useEffect(() => {
         if(props.data){
             setTenEvent(props.data.TIEUDE ? props.data.TIEUDE : '')
@@ -41,9 +74,11 @@ function ModalEvent(props) {
                     <div className='event-detail'>
                         <p className='title'>Hình ảnh:</p>
                         <div className='banner-event' style={{}}>
-                            {selectedFile.length ?
+                            {hinhanh ?
                                 <label className='image-upload' style={{border: '2px solid #000'}}>
-                                    <img style={{width: '100%', height: '100%', borderRadius: '5px', 'objectFit':'contain'}} src={selectedFile} alt='' /> 
+                                    {selectedFile.length ? <img style={{width: '100%', height: '100%', borderRadius: '5px', 'objectFit':'contain'}} src={selectedFile} alt='' />
+                                        : <img style={{width: '100%', height: '100%', borderRadius: '5px', 'objectFit':'contain'}} src={'http://localhost:8000/' + hinhanh} alt=''/>
+                                    }
                                     <input
                                         style={{display: 'none'}}
                                         type='file'
@@ -67,26 +102,26 @@ function ModalEvent(props) {
                     <div className='d-flex flex-column justify-content-center align-items-center gap-2'>
                         <div className='event-detail'>
                             <p className='title'>Tên sự kiện:</p>
-                            <input className='input' value={tenEvent} onChange={(e) => setTenEvent(e.target.value)}/>
+                            <input className='input' id="tenEvent" value={tenEvent} onChange={(e) => setTenEvent(e.target.value)}/>
                         </div>
                         <div className='event-detail'>
                             <p className='title'>Mô tả:</p>
-                            <textarea className='input' value={mota} onChange={(e) => setMoTa(e.target.value)}/>
+                            <textarea className='input' id="mota" value={mota} onChange={(e) => setMoTa(e.target.value)}/>
                         </div>
                         <div className='event-detail'>
                             <p className='title'>Thời gian bắt đầu:</p>
-                            <input className='input' type='date' value={startDay} onChange={(e) => setStartDay(e.target.value)}/>
+                            <input className='input' id="startDay" type='date' value={startDay} onChange={(e) => setStartDay(e.target.value)}/>
                         </div>
                         <div className='event-detail'>
                             <p className='title'>Thời gian kết thúc:</p>
-                            <input className='input' type='date' value={endDay} onChange={(e) => setEndDay(e.target.value)}/>
+                            <input className='input' id="endDay" type='date' value={endDay} onChange={(e) => setEndDay(e.target.value)}/>
                         </div>
                     </div>
                     <div className='d-flex flex-row justify-content-between mt-2'>
-                        {props.data ? <button className='button-delete'>Delete</button> :<p></p>}
+                        {props.data ? <button className='button-delete' onClick={deleteEvent}>Delete</button> :<p></p>}
                         <div className='d-flex flex-row justify-content-end gap-3'>
                             <button className='button-cancel' onClick={props.onClose}>Cancel</button>
-                            <button className='button-solid'>Save</button>
+                            <button className='button-solid' onClick={handleSave}>Save</button>
                         </div>
                     </div>
                 </div>

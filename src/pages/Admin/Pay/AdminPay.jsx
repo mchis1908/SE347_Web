@@ -113,7 +113,6 @@ function AdminPay(props) {
         .toLocaleString('en-AU', options)
         .replaceAll('/', '-')
         .substring(3, 10);
-      // console.log(formatNgay)
       try {
         const response = await Axios.get(
           'http://localhost:8000/v1/baocaospngay/getBaoCaoSPNgay/' + formatNgay
@@ -156,12 +155,8 @@ function AdminPay(props) {
               SLSANPHAMBAN: sanphams.length,
             }
           );
-          console.log('Chưa có báo cáo, hệ thống sẽ tạo báo cáo');
-        } else {
-          console.log('Lỗi khi gửi yêu cầu Axios: ', error.message);
         }
       }
-      // window.alert('Hóa đơn đã được tạo thành công')
       message.success('Hóa đơn đã được tạo thành công');
       setSanPham([]);
       window.location.reload();

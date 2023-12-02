@@ -14,7 +14,6 @@ function AdminProduct(props) {
       );
       setSanPham(res.data);
       sanphams = res.data;
-      console.log(sanphams);
     } catch (error) {
       console.log(error.message);
     }

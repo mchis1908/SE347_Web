@@ -53,7 +53,6 @@ function AdminDetailDeposit(props) {
       GIANHAN: gianhan,
       HINHANH: hinhanhsp
     })
-    console.log('a',hinhanhsp)
     } 
     else Axios.post('http://localhost:8000/v1/sanpham/themsanpham', fd)
     window.location.reload()
