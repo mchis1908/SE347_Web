@@ -13,8 +13,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  display: none;
+  width: 8px;
+  display: block !important;
 }
 
 /* Track */
