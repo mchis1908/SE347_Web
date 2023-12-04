@@ -38,4 +38,4 @@ class KommunicateChat extends Component {
         )
     }
 }
- export default KommunicateChat;
+export default KommunicateChat;

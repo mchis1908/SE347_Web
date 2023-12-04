@@ -29,12 +29,11 @@ function App() {
             useSelector((state) => state.value.role === 'customer') ? (
                 <>
                   <CustomerHome />
-                  {/* <KomunicateChat /> */}
+                  <KomunicateChat />
                 </>
               ) : (
                 <>
                   <AdminHome />
-                  {/* <KomunicateChat /> */}
                 </>
               )
             }
@@ -53,13 +52,13 @@ function App() {
           <Route exact path="/customer-invoice" element={
               <>
                 <CustomerInvoice />
-                {/* <KomunicateChat /> */}
+                <KomunicateChat />
               </>
             } 
           />
         </Route>
       </Routes>
-      <KomunicateChat />
+      {/* <KomunicateChat /> */}
     </div>
   );
 }
