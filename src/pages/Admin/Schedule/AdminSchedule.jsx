@@ -219,7 +219,7 @@ function AdminSchedule(props) {
   return (
     <div className="AdminSchedule">
       <Menu />
-      <Header title="LỊCH LÀM VIỆC" avt="http://surl.li/ggptd" />
+      <Header title="LỊCH LÀM VIỆC"/>
       <div className="AdminSchedule_main">
         <div className="AdminSchedule_searchbar">
           <label>Chọn thời gian:</label>

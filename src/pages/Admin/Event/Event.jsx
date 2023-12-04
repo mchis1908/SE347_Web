@@ -68,7 +68,7 @@ useEffect(() => {
 return (
     <div className="Event">
         <Menu />
-        <Header title="SỰ KIỆN" avt="http://surl.li/ggptd" />
+        <Header title="SỰ KIỆN"/>
         <div className="eventMain">
             <div className='event-content'>
                 <div className='d-flex flex-row justify-content-end w-100 gap-5'>

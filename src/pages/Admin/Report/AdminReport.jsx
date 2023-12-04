@@ -230,7 +230,7 @@ function AdminReport() {
   return (
     <div className="AdminReport">
       <Menu />
-      <Header title="BÁO CÁO" avt="http://surl.li/ggptd" />
+      <Header title="BÁO CÁO"/>
       <div className="AdminReport_main">
         <div className="AdminReport_information">
           <Box

@@ -479,7 +479,7 @@ function AdminChart() {
   return (
     <div className="AdminChart">
       <Menu />
-      <Header title="BIỂU ĐỒ" avt="http://surl.li/ggptd" />
+      <Header title="BIỂU ĐỒ"/>
       <div className="AdminChart_main">
         <div className="AdminChart_Top">
           <div className="AdminChart_Chart">

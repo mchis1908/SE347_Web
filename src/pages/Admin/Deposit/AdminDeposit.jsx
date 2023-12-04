@@ -237,7 +237,7 @@ function AdminDeposit(props) {
   return (
     <div className="AdminDeposit">
       <Menu />
-      <Header title="KÝ GỬI" avt="http://surl.li/ggptd" />
+      <Header title="KÝ GỬI"/>
       <div className="AdminDeposit_main">
         <div className="AdminDeposit_Bottom">
           <div className="AdminDeposit_Content">

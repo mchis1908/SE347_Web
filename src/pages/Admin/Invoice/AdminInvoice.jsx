@@ -64,7 +64,7 @@ function AdminInvoice(props) {
   return (
     <div className="AdminInvoice">
       <Menu />
-      <Header title="QUẢN LÝ HÓA ĐƠN" avt="http://surl.li/ggptd" />
+      <Header title="QUẢN LÝ HÓA ĐƠN"/>
       <div className="AdminInvoice_main">
         <div className="AdminInvoice_searchbar">
           <input

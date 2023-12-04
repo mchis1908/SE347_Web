@@ -61,7 +61,7 @@ function AdminAccount(props) {
   return (
     <div className="AdminAccount">
       <Menu />
-      <Header title="QUẢN LÝ TÀI KHOẢN" avt="http://surl.li/ggptd" />
+      <Header title="QUẢN LÝ TÀI KHOẢN"/>
       <div className="AdminAccount_main">
         <div className="AdminAccount_searchbar">
           <input

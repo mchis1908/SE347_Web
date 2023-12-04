@@ -64,7 +64,7 @@ function AdminProduct(props) {
   return (
     <div className="AdminProduct">
       <Menu />
-      <Header title="QUẢN LÝ SẢN PHẨM" avt="http://surl.li/ggptd" />
+      <Header title="QUẢN LÝ SẢN PHẨM"/>
       <div className="AdminProduct_main">
         <div className="AdminProduct_searchbar">
           <input

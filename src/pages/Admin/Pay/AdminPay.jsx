@@ -212,7 +212,7 @@ function AdminPay(props) {
   return (
     <div className="AdminPay">
       <Menu />
-      <Header title="THANH TOÁN" avt="http://surl.li/ggptd" />
+      <Header title="THANH TOÁN"/>
       <div className="AdminPay_main">
         <div className="AdminPay_Top">
           <input

@@ -72,7 +72,7 @@ function AdminStaff(props) {
   return (
     <div className="AdminStaff">
       <Menu />
-      <Header title="QUẢN LÝ NHÂN VIÊN" avt="http://surl.li/ggptd" />
+      <Header title="QUẢN LÝ NHÂN VIÊN"/>
       <div className="AdminStaff_main">
         <div className="AdminStaff_searchbar">
           <input

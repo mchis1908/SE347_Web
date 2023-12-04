@@ -68,7 +68,7 @@ function AdminCustomer(props) {
   return (
     <div className="AdminCustomer">
       <Menu />
-      <Header title="QUẢN LÝ KHÁCH HÀNG" avt="http://surl.li/ggptd" />
+      <Header title="QUẢN LÝ KHÁCH HÀNG"/>
       <div className="AdminCustomer_main">
         <div className="AdminCustomer_searchbar">
           <input

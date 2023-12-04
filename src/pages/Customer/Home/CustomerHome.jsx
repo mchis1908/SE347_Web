@@ -57,7 +57,7 @@ function CustomerHome() {
   return (
     <div className="CustomerHome">
       <Menu />
-      <Header title="TRANG CHỦ" avt="http://surl.li/ggptd" />
+      <Header title="TRANG CHỦ"/>
       <div className="CustomerHome_main">
         <div className='event-banner'>
           <Splide options={{

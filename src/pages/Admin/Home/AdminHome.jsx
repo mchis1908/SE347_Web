@@ -264,7 +264,7 @@ function AdminHome() {
   return (
     <div className="AdminHome">
       <Menu />
-      <Header title="TRANG CHỦ" avt="http://surl.li/ggptd" />
+      <Header title="TRANG CHỦ"/>
       <div className="AdminHome_main">
         <div className="AdminHome_Overview">
           <div className="Overview_block1">

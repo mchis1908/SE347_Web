@@ -67,7 +67,7 @@ function CustomerInvoice(props) {
   return (
     <div className="CustomerInvoice">
       <Menu />
-      <Header title="QUẢN LÝ HÓA ĐƠN" avt="http://surl.li/ggptd" />
+      <Header title="QUẢN LÝ HÓA ĐƠN"/>
       <div className="CustomerInvoice_main">
         <div className="CustomerInvoice_searchbar">
           <input
