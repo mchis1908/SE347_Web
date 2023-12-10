@@ -5,6 +5,7 @@ import Menu from '../Menu/CustomerMenu';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import Axios from 'axios';
+import { Slider } from 'antd';
 
 function CustomerHome() {
   let [sanphams, setSanPham] = useState([]);
@@ -118,16 +119,16 @@ function CustomerHome() {
                 )}
                 <div className="d-flex flex-column justify-content-center align-items-center" style={{ gap: '8px', height: '100%' }}>
                   <div className="book-item-text">
-                    <p>Tên sản phẩm:</p>
+                    <p>Tên sản phẩm: </p>
                     <p>{item.TENSANPHAM}</p>
                   </div>
                   <div className="book-item-text">
-                    <p>Loại sản phẩm</p>
+                    <p>Loại sản phẩm: </p>
                     <p>{item.LOAI}</p>
                   </div>
                   <div className="book-item-text">
-                    <p>Giá:</p>
-                    <p>{item.GIANHAN.toLocaleString('vi-VN', {maximumFractionDigits: 3})}</p>
+                    <p>Giá: </p>
+                    <p>{item.GIANHAN.toLocaleString('vi-VN', {maximumFractionDigits: 3})}đ</p>
                   </div>
                 </div>
               </div> 

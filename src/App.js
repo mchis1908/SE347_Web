@@ -37,7 +37,14 @@ function App() {
                 </>
               )
             }
-          />
+          >
+            <Route path=":id" element={
+              <>
+                <CustomerHome />
+                <KomunicateChat />
+              </>
+            }/>
+          </Route>
           <Route exact path="/customer" element={<AdminCustomer />} />
           <Route exact path="/product" element={<AdminProduct />} />
           <Route exact path="/invoice" element={<AdminInvoice />} />
@@ -55,7 +62,14 @@ function App() {
                 <KomunicateChat />
               </>
             } 
-          />
+          >
+            <Route path=":id" element={
+              <>
+                <CustomerInvoice />
+                <KomunicateChat />
+              </>
+            }/>
+          </Route>
         </Route>
       </Routes>
       {/* <KomunicateChat /> */}
