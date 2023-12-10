@@ -4,6 +4,7 @@ import logo from '../../../Images/logo.png';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../../redux/userSlice';
 import { useDispatch } from 'react-redux';
+import { setPathHome } from '../../../redux/userSlice';
 
 function CustomerMenu() {
   const location = useLocation();
@@ -48,9 +49,9 @@ function CustomerMenu() {
               <span>Trang Chủ</span>
             </Link>
             {isHome ? (
-              <i className="bi bi-chevron-down" style={{ '-webkit-text-stroke': '2px' }} onClick={() => setIsHome(false)}></i>
+              <i className="bi bi-chevron-down" style={{ '-webkit-text-stroke': '1px' }} onClick={() => setIsHome(false)}></i>
             ) : (
-              <i className="bi bi-chevron-up" style={{ '-webkit-text-stroke': '2px' }} onClick={() => setIsHome(true)}></i>
+              <i className="bi bi-chevron-up" style={{ '-webkit-text-stroke': '1px' }} onClick={() => setIsHome(true)}></i>
             )}
           </div>
           
@@ -59,7 +60,7 @@ function CustomerMenu() {
               <></>
             ) : (
               homeChild.map((item, index) => (
-                <Link
+                <Link onClick={()=> dispatch(setPathHome(item?.name))}
                   to={`/home/${item?.id}`}
                   className={`${path === `/home/${item?.id}` ? 'menu-item-child-selected' : 'menu-item-child'}`}
                   key={index}
@@ -77,9 +78,9 @@ function CustomerMenu() {
               <span>Hóa Đơn</span>
             </Link>
             {isInvoice ? (
-              <i className="bi bi-chevron-down" style={{ '-webkit-text-stroke': '2px' }} onClick={() => setIsInvoice(false)}></i>
+              <i className="bi bi-chevron-down" style={{ '-webkit-text-stroke': '1px' }} onClick={() => setIsInvoice(false)}></i>
             ) : (
-              <i className="bi bi-chevron-up" style={{ '-webkit-text-stroke': '2px' }} onClick={() => setIsInvoice(true)}></i>
+              <i className="bi bi-chevron-up" style={{ '-webkit-text-stroke': '1px' }} onClick={() => setIsInvoice(true)}></i>
             )}
           </div>
           <div className='d-flex flex-column' style={{ marginLeft: '50px', gap: '4px' }}>

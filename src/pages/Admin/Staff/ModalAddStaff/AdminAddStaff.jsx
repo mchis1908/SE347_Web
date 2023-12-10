@@ -77,7 +77,6 @@ function AdminAddStaff(props) {
       <div className="AdminAddStaff_modal">
         <div className="AdminAddStaff_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminAddStaff_modal-body">
           {props.children}

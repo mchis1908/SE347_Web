@@ -41,7 +41,6 @@ function AdminDetailAccount(props) {
       <div className="AdminDetailAccount_modal">
         <div className="AdminDetailAccount_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailAccount_modal-body">
           {props.children}

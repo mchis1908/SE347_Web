@@ -70,7 +70,6 @@ function AdminDetailDeposit(props) {
       <div className="AdminDetailDeposit_modal">
         <div className="AdminDetailDeposit_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailDeposit_modal-body">
           {props.children}

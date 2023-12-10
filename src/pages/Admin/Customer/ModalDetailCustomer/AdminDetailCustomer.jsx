@@ -52,7 +52,6 @@ function AdminDetailCustomer(props) {
       <div className="AdminDetailCustomer_modal">
         <div className="AdminDetailCustomer_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailCustomer_modal-body">
           {props.children}

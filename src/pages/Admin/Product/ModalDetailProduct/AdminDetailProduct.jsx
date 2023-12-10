@@ -42,7 +42,6 @@ function AdminDetailProduct(props) {
       <div className="AdminDetailProduct_modal">
         <div className="AdminDetailProduct_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailProduct_modal-body">
           {props.children}

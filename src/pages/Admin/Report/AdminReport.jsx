@@ -260,7 +260,7 @@ function AdminReport() {
                     alignItems: 'center',
                   }}
                 >
-                  <h4>Chọn tháng:</h4>
+                  <p>Chọn tháng:</p>
                   <DatePicker
                     style={{ width: '10vw', marginLeft: '1vw' }}
                     format="MM-YYYY"
@@ -462,7 +462,7 @@ function AdminReport() {
                     alignItems: 'center',
                   }}
                 >
-                  <h4>Chọn tháng:</h4>
+                  <p>Chọn tháng:</p>
                   <DatePicker
                     style={{ width: '10vw', marginLeft: '1vw' }}
                     format="MM-YYYY"
@@ -702,7 +702,7 @@ function AdminReport() {
                 </Button>
               </TabPanel>
               <TabPanel value="3">
-                <h4>Hóa đơn chưa nhận tiền trong vòng 60 ngày:</h4>
+                <p>Hóa đơn chưa nhận tiền trong vòng 60 ngày:</p>
                 <div style={{ maxHeight: '58vh', overflow: 'auto' }}>
                   <table>
                     <tr style={{ display: 'flex', flexDirection: 'row' }}>

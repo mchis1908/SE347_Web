@@ -15,7 +15,6 @@ function AdminDepositPrintBarcode(props) {
       <div className="AdminDepositPrintBarcode_modal">
         <div className="AdminDepositPrintBarcode_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDepositPrintBarcode_modal-body" ref={componentRef}>
           {props.children}

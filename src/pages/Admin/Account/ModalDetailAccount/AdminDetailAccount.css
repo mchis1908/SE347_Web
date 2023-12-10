@@ -29,6 +29,7 @@
     align-items: center;
 
     text-align: center;
+    gap:8px;
 }
 .AdminDetailAccount_modal-header{
     text-align: center;

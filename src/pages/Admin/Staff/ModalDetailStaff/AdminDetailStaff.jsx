@@ -60,7 +60,6 @@ function AdminDetailStaff(props) {
       <div className="AdminDetailStaff_modal">
         <div className="AdminDetailStaff_modal-header">
           <h3>{props.title}</h3>
-          <button onClick={props.onClose}>X</button>
         </div>
         <div className="AdminDetailStaff_modal-body">
           {props.children}
