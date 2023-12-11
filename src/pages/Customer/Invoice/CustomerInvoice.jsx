@@ -5,25 +5,33 @@ import Header from '../../../common/Header/Header';
 import CustomerDetailInvoice from './ModalDetailInvoice/CustomerDetailInvoice';
 import CustomerDetailInvoiceBanHang from './ModalDetailInvoiceBanHang/CustomerDetailInvoiceBanHang';
 import Axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPathInvoice} from '../../../redux/userSlice';
 
 function CustomerInvoice(props) {
+  const dispatch = useDispatch();
+  const path = useSelector((state) => state.pathInvoice);
   const user = useSelector((state) => state.value.sdt);
+  let [loaiHD, setLoaiHD] = useState('');
   let [hoadons, setHoaDon] = useState([]);
   const [searchkey, setSearchKey] = useState('');
+
   const getHoaDon = async () => {
     try {
-      const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadonbykhachhang/' + user);
+      const res = await Axios.get('http://localhost:8000/v1/hoadon/gethoadonbykhachhang/' + user + '?searchkey=' + searchkey +'&loai=' + loaiHD);
       setHoaDon(res.data);
-      hoadons = res.data;
     } catch (error) {
       console.log(error.message);
     }
   };
+
   useEffect(() => {
-    if (searchkey) handleSearch(searchkey);
-    else getHoaDon();
-  }, [searchkey]);
+    setLoaiHD(path ?? '')
+  }, [path]);
+
+  useEffect(() => {
+    getHoaDon();
+  }, [searchkey, loaiHD]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [hoadon, setMaHoaDon] = useState(['']);
@@ -37,6 +45,7 @@ function CustomerInvoice(props) {
     setIsOpen(false);
   };
   const [sortOrder, setSortOrder] = useState('ASC');
+
   const handleClick = (type) => {
     const sortedData = [...hoadons].sort((a, b) => {
       if (type === 'SOLUONG') {
@@ -56,14 +65,7 @@ function CustomerInvoice(props) {
       setHoaDon(sortedData);
     }
   };
-  const handleSearch = async (item) => {
-    if (item !== '') {
-      const res = await Axios.get(
-        'http://localhost:8000/v1/hoadon/searchhoadonbykhachhang/' + user + '/' + item
-      );
-      setHoaDon(res.data);
-    }
-  };
+
   return (
     <div className="CustomerInvoice">
       <Menu />

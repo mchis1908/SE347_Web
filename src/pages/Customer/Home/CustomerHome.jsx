@@ -40,7 +40,6 @@ function CustomerHome() {
   
   const getLoai = async () => {
     setLoaiSP(path ?? '')
-    console.log(path)
   };
 
   useEffect(() => {

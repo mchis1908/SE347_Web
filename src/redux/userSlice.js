@@ -11,6 +11,7 @@ export const userSlice = createSlice({
   initialState: {
     value: init,
     pathHome: null,
+    pathInvoice: null,
   },
   reducers: {
     login: (state, action) => {
@@ -22,8 +23,11 @@ export const userSlice = createSlice({
     setPathHome: (state, action) => {
       state.pathHome = action.payload;
     },
+    setPathInvoice: (state, action) => {
+      state.pathInvoice = action.payload;
+    },
   },
 });
 
-export const { login, logout, setPathHome  } = userSlice.actions;
+export const { login, logout, setPathHome, setPathInvoice  } = userSlice.actions;
 export default userSlice.reducer;

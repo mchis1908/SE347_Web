@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../../redux/userSlice';
 import { useDispatch } from 'react-redux';
 import { setPathHome } from '../../../redux/userSlice';
+import { setPathInvoice } from '../../../redux/userSlice';
 
 function CustomerMenu() {
   const location = useLocation();
@@ -44,7 +45,7 @@ function CustomerMenu() {
         </Link>
         <div>
           <div className='d-flex flex-row justify-content-between align-items-center' style={{padding:'0 8px'}}>
-            <Link to="/home" className={`${ path.includes('/home') ? 'sidebar-item-selector' : 'sidebar_item' }`}>
+            <Link onClick={()=> dispatch(setPathHome(''))} to="/home" className={`${ path.includes('/home') ? 'sidebar-item-selector' : 'sidebar_item' }`}>
               <i className="bi bi-house-check-fill menu-item-icon"></i>
               <span>Trang Chủ</span>
             </Link>
@@ -73,7 +74,7 @@ function CustomerMenu() {
         </div>
         <div>
           <div className='d-flex flex-row justify-content-between align-items-center' style={{padding:'0 8px'}}>
-            <Link to="/customer-invoice" className={`${ path.includes('/customer-invoice') ? 'sidebar-item-selector' : 'sidebar_item' }`}>
+            <Link onClick={()=> dispatch(setPathInvoice(''))} to="/customer-invoice" className={`${ path.includes('/customer-invoice') ? 'sidebar-item-selector' : 'sidebar_item' }`}>
               <i className="bi bi-receipt-cutoff menu-item-icon"></i>
               <span>Hóa Đơn</span>
             </Link>
@@ -88,7 +89,7 @@ function CustomerMenu() {
               <></>
             ) : (
               invoiceChild.map((item, index) => (
-                <Link
+                <Link onClick={()=> dispatch(setPathInvoice(item?.name))}
                   to={`/customer-invoice/${item?.id}`}
                   className={`${path === `/customer-invoice/${item?.id}` ? 'menu-item-child-selected' : 'menu-item-child'}`}
                   key={index}
