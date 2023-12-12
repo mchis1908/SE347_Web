@@ -108,12 +108,12 @@ function CustomerHome() {
           <div className="d-flex flex-row">
             <div className="col d-flex flex-row justify-content-start" style={{ gap: '16px' }}>
               <div className="d-flex justify-content-center align-items-center" style={{ fontWeight: 600, fontSize: '16px', color: '#065471' }}>
-                Search:
+                Tìm kiếm:
               </div>
               <input
                 className="search-input input"
                 type="text"
-                placeholder="Enter your input"
+                placeholder="Nhập tên sản phẩm"
                 style={{ width: '500px' }}
                 value={searchkey}
                 onChange={handleInputChange}

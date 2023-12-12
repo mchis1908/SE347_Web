@@ -25,6 +25,7 @@
     border-style: none;
     font-size: 15px;
     background-color: white;
+    box-shadow: 0 0 4px #000;
 }
 .search-btn{
     font-size: 30px;
@@ -56,12 +57,9 @@
 }
 .AdminAccount-information{
     width: 80vw;
-    height: 78vh;
+    height: calc( 100vh - 260px);
     overflow: auto;
     background-color: #fff;
-    
-    margin-left: 4vw;
-    margin-bottom: 4vh;
     border-radius: 10px;
 }
 .AdminAccount-information{

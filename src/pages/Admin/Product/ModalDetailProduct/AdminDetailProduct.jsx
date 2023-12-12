@@ -21,9 +21,9 @@ function AdminDetailProduct(props) {
     setHinhAnhSP(e.target.files[0])
   }
   const submitHandler = ()=>{
-    if (document.getElementById('tensanpham').value === ''
+    if (document.getElementById('tensp').value === ''
     || document.getElementById('loaisanpham').value === ''
-    || document.getElementById('giasanpham').value === '') {
+    || document.getElementById('gia').value === '') {
       // alert('Vui lòng nhập đầy đủ thông tin sản phẩm')
     message.error('Vui lòng nhập đầy đủ thông tin sản phẩm')
     return
@@ -32,7 +32,7 @@ function AdminDetailProduct(props) {
     fd.append('TENSANPHAM', tensp)
     fd.append('LOAI', loai)
     fd.append('GIANHAN', gia)
-    fd.append('HINHANH', hinhanhsp)
+    // fd.append('HINHANH', hinhanhsp)
     Axios.patch('http://localhost:8000/v1/sanpham/updatesanpham/'+ props.data.MASANPHAM, fd)
     message.success('Thay đổi thông tin sản phẩm thành công')
     window.location.reload()
