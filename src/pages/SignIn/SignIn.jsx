@@ -35,8 +35,10 @@ const SignIn = () => {
         user: account,
         role: data.PHANQUYEN,
         sdt: data.SDT,
-        tennv: data.TENNV
+        tennv: data.TENNV,
+        user_id: data._id,
       };
+      console.log(user);
       dispatch(login(user));
       navigate('/home');
     } else {

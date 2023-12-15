@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
 class KommunicateChat extends Component {
     // eslint-disable-next-line no-useless-constructor
@@ -6,23 +8,25 @@ class KommunicateChat extends Component {
         super(props);
     }
     componentDidMount() {
+        const { user_id, tennv } = this.props;
         (function(d, m){
             var kommunicateSettings = {
-                "userId": '055667788',
-                "userName": 'ABC',
+                "userId": !user_id ? '' : user_id,
+                "userName": !tennv ? '' : tennv,
                 "authenticationTypeId" : 1,
                 "appId":"2cfbc65b77f505c2ca3913979ba4b8ddf",
+                "automaticChatOpenOnNavigation":true,
                 "popupWidget":true,
                 "attachment": true,
-                "automaticChatOpenOnNavigation":false,
                 "voiceInput":true,
                 "voiceInputTimeout": 5,
                 "language": "en-US",
                 "quickReplies":
                     [
-                        "Speak with an Agent",
-                        "Book a Demo",
-                        "Sample Bots",
+                        "Đây có phải cửa hàng ký gửi quần áo cũ không?",
+                        "Mức phí mà tôi phải trả cho một sản phẩm là bao nhiêu?",
+                        "Thời gian cửa hàng hoạt động là?",
+                        "Cho tôi biết địa chỉ của cửa hàng?",
                     ],
                 
             };
@@ -38,4 +42,12 @@ class KommunicateChat extends Component {
         )
     }
 }
-export default KommunicateChat;
+
+// Map Redux state to component props
+const mapStateToProps = state => ({
+    user_id: state.value.user_id,
+    tennv: state.value.tennv,
+});
+
+// Connect the component to the Redux store
+export default connect(mapStateToProps)(KommunicateChat);

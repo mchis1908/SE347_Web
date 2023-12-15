@@ -6,6 +6,7 @@ import { logout } from '../../../redux/userSlice';
 import { useDispatch } from 'react-redux';
 import { setPathHome } from '../../../redux/userSlice';
 import { setPathInvoice } from '../../../redux/userSlice';
+import KomunicateChat from '../../../chat.js';
 
 function CustomerMenu() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function CustomerMenu() {
 
   const handleLogout = () => {
     dispatch(logout());
+    KomunicateChat.logout();
   };
   return (
     <div className="sidebar">

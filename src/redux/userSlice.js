@@ -4,7 +4,8 @@ const init = {
   user: '',
   role: '',
   sdt: '',
-  tennv: ''
+  tennv: '',
+  user_id: '',
 };
 export const userSlice = createSlice({
   name: 'user',

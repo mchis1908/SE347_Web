@@ -4,6 +4,7 @@ import logo from '../../../Images/logo.png';
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../../../redux/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import KomunicateChat from '../../../chat.js';
 
 function AdminMenu() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function AdminMenu() {
 
   const handleLogout = () => {
     dispatch(logout());
+    KomunicateChat.logout();
   };
   return (
     <div className="sidebar">
