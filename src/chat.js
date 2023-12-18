@@ -14,7 +14,7 @@ class KommunicateChat extends Component {
                 "userId": !user_id ? '' : user_id,
                 "userName": !tennv ? '' : tennv,
                 "authenticationTypeId" : 1,
-                "appId":"ba40f9d597326471f447b818cad725f3",
+                "appId":"2cfbc65b77f505c2ca3913979ba4b8ddf",
                 "automaticChatOpenOnNavigation":true,
                 "popupWidget":true,
                 "attachment": true,
