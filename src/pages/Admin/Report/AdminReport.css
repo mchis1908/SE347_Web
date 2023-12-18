@@ -4,7 +4,7 @@
     left : 12vw;
     width : 88vw;
     height : fit-content;
-    background: linear-gradient(90deg, rgba(226,233,243,1) 40%, rgba(227,227,245,1) 79%);
+    background-color: #EDEDED;
     color: rgb(0, 0, 0);
     height: calc( 100% - 60px);
 }
@@ -13,7 +13,7 @@
     position: absolute;
     width : 88vw;
     height : 92vh;
-    background: linear-gradient(90deg, rgba(226,233,243,1) 40%, rgba(227,227,245,1) 79%);
+    background-color: #EDEDED;
     max-width: 88vw;
     overflow-y: auto;
     overflow-x: hidden;
