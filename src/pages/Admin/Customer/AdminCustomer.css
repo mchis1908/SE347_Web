@@ -4,7 +4,7 @@
     left: 12vw;
     width: 88vw;
     height: fit-content;
-    background-color: #EDEDED;
+    background: linear-gradient(90deg, rgba(226,233,243,1) 40%, rgba(227,227,245,1) 79%);
     color: rgb(0, 0, 0);
     height: calc( 100% - 60px);
 }

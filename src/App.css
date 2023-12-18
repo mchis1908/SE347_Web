@@ -1,4 +1,4 @@
 .App {
-  background-color: #EDEDED;
+  background: linear-gradient(90deg, rgba(226,233,243,1) 40%, rgba(227,227,245,1) 79%);
   min-height: 100vh;
 }

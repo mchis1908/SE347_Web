@@ -4,13 +4,15 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(255, 255, 255);
+    background: #E2E9F3;
     overflow-x: hidden;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .sidebar_logo {
     display: inline-block;

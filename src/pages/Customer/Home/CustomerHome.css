@@ -4,7 +4,7 @@
     left: 12vw;
     width: 88vw;
     height: fit-content;
-    background-color: #EDEDED;
+    background: linear-gradient(90deg, rgba(226,233,243,1) 40%, rgba(227,227,245,1) 79%);
     color: rgb(0, 0, 0);
     min-height: calc( 100% - 60px);
     max-height: calc( 100% - 60px);
@@ -61,6 +61,7 @@
 
     position: relative;
     overflow:hidden;
+    cursor: pointer;
 }
   
 .book-item-text{
@@ -87,3 +88,37 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
+.img-product{
+    height: 100px;
+    object-fit: contain;
+    border-radius: 16px;
+    z-index: 0;
+}
+
+.book-item:hover{
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+  
