@@ -1,11 +1,11 @@
 .menu-item-child{
     color: #000;
-    font-size: 16px;
-    
+    font-size: 14px;
+    opacity: 0.8;
 }
 
 .menu-item-child-selected{
     color: #fe4880;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 }

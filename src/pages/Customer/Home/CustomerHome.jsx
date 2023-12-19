@@ -139,9 +139,9 @@ function CustomerHome() {
             sanphams.map((item, index) => (
               <div className="book-item" key={index}>
                 {item.HINHANH ? (
-                  <img src={'http://localhost:8000/' + item.HINHANH} style={{ height: '100px', objectFit: 'contain', zIndex: 0 }} alt='img'/>
+                  <img src={'http://localhost:8000/' + item.HINHANH} className="img-product" alt='img'/>
                 ) : (
-                  <img src="../../../Images/book-default.png" style={{ height: '100px', objectFit: 'contain', zIndex: 0 }} alt='img'/>
+                  <img src="../../../Images/book-default.png" className="img-product" alt='img'/>
                 )}
                 <div className="d-flex flex-column justify-content-center align-items-center" style={{ gap: '8px', height: '100%' }}>
                   <div className="book-item-text">

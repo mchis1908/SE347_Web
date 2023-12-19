@@ -37,7 +37,7 @@ function CustomerMenu() {
     KomunicateChat.logout();
   };
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={{boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px', background: '#E2E9F3',}}>
       <div>
         <Link to="/home">
           <div className="sidebar_logo">
