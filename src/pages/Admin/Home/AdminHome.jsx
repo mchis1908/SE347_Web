@@ -346,7 +346,7 @@ function AdminHome() {
                     <div className="CustomerRecent_Info">
                       <img
                         className="CustomerRecent_Avt"
-                        src="http://surl.li/ggptd"
+                        src="https://s.net.vn/xLDN"
                         alt="image"
                       />
                       <div className="CustomerRecent_Name">
